@@ -8,7 +8,7 @@ addLayer("D", {
 		points: new Decimal(0),
     }},
     color: "#0046ff",
-    requires: new Decimal(0.01), // Can be a function that takes requirement increases into account
+    requires: new Decimal(0.0000000000000000000000001), // Can be a function that takes requirement increases into account
     resource: "Dressy points", // Name of prestige currency
     baseResource: "points", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
@@ -19,7 +19,7 @@ addLayer("D", {
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
-        return new Decimal(0.01)
+        return new Decimal(0)
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
