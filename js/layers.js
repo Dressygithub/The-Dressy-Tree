@@ -5,7 +5,7 @@ addLayer("D", {
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: true,
-		points: new Decimal(10),
+		points: new Decimal(0),
     }},
     color: "#0046ff",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
@@ -19,7 +19,7 @@ addLayer("D", {
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
-        return new Decimal(10000000)
+        return new Decimal(0.01)
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
