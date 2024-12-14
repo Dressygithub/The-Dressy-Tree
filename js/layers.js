@@ -8,12 +8,12 @@ addLayer("D", {
 		points: new Decimal(0),
     }},
     color: "#0046ff",
-    requires: new Decimal(10), // Can be a function that takes requirement increases into account
+    requires: new Decimal(0.01), // Can be a function that takes requirement increases into account
     resource: "Dressy points", // Name of prestige currency
     baseResource: "points", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent: 0.00000000000000000000000000000000000000000000000000000000000000000000000000000000000001, // Prestige currency exponent
+    exponent: 12, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(2)
         return mult
@@ -54,4 +54,5 @@ addLayer("B", {
         {key: "B", description: "B: Reset for bob points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return true}
+  
 })
