@@ -1,12 +1,12 @@
 let modInfo = {
 	name: "The Dressy Tree",
 	author: "Dressyapper",
-	pointsName: "ponts",
+	pointsName: "points",
 	modFiles: ["layers.js", "tree.js"],
 
 	discordName: "",
 	discordLink: "",
-	initialStartPoints: new Decimal (1e30000), // Used for hard resets and new players
+	initialStartPoints: new Decimal (1e308), // Used for hard resets and new players
 	offlineLimit: 1,  // In hours
 }
 

@@ -25,7 +25,8 @@ addLayer("D", {
     hotkeys: [
         {key: "D", description: "D: Reset for Dressy points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    layerShown(){return true}
+    
+        etc
 })
 addLayer("B", {
     name: "bob", // This is optional, only used in a few places, If absent it just uses the layer id.
@@ -33,7 +34,7 @@ addLayer("B", {
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: true,
-		points: new Decimal(0),
+		points: new Decimal(1),
     }},
     color: "#4BDC13",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
