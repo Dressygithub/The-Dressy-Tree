@@ -2,18 +2,18 @@ let modInfo = {
 	name: "The Dressy Tree",
 	author: "Dressyapper",
 	pointsName: "points",
-	modFiles: ["layers.js", "tree.js"],
+	modFiles: ["layers.js", "tree.js", "components.js"],
 
 	discordName: "",
 	discordLink: "",
-	initialStartPoints: new Decimal (1e308), // Used for hard resets and new players
-	offlineLimit: 1,  // In hours
+	initialStartPoints: new Decimal (10), // Used for hard resets and new players
+	offlineLimit: 0,  // In hours
 }
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.1",
-	name: "The test",
+	num: "-1",
+	name: "No thanks",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
