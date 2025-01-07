@@ -29,6 +29,7 @@ addLayer("T", {
             title: "Upgrade Name Here",
             description: "Does Something.",
             cost: new Decimal(5),
+
         },
 
     },
