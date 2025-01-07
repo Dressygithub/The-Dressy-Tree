@@ -22,14 +22,6 @@ addLayer("T", {
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
-        {key: "p", description: "P: Reset for prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
-    ],     upgrades:    { 
-        11: {
-            title: "The First Upgrade",
-            description: "Double your point gain.",
-            cost: new Decimal(2),
-
-        },
-
-    },
+        {key: "t", description: "t: Reset for prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+    ],
 })
