@@ -26,6 +26,9 @@ addLayer("T", {
     ],
     layerShown(){return true},     upgrades: {
         11: {
+            title: "Upgrade Name Here",
+            description: "Does Something.",
+            cost: new Decimal(5),
 
         },
 
