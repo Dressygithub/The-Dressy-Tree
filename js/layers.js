@@ -28,7 +28,6 @@ addLayer("T", {
             title: "Please work",
             description: "Double your point gain.",
             cost: new Decimal(1),
-
         },
 
     },
