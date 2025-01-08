@@ -1,6 +1,6 @@
-addLayer("D", {
-    name: "Dressy", // This is optional, only used in a few places, If absent it just uses the layer id.
-    symbol: "D", // This appears on the layer's node. Default is the id with the first letter capitalized
+addLayer("T", {
+    name: "Test", // This is optional, only used in a few places, If absent it just uses the layer id.
+    symbol: "T", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: true,
@@ -8,8 +8,8 @@ addLayer("D", {
     }},
     color: "#4BDC13",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
-    resource: "Dressy points", // Name of prestige currency
-    baseResource: "Points", // Name of resource prestige is based on
+    resource: "test points", // Name of prestige currency
+    baseResource: "test points", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.5, // Prestige currency exponent
@@ -27,15 +27,14 @@ addLayer("D", {
         11: {
             title: "The first upgrade!",
             description: "Double your point gain.",
-            cost: new Decimal(2),
-
+            cost: new Decimal(1),
         },
         12: {
             title: "The second upgrade!",
-            description: "Lets double your point gain again.",
-            cost: new Decimal(1),
-
+            description: "Double your point gain again.",
+            cost: new Decimal(2),
         },
+
 
     },
 })
