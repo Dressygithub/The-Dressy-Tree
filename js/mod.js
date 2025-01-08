@@ -1,7 +1,7 @@
 let modInfo = {
 	name: "The Dressy Tree",
 	author: "Dressyapper",
-	pointsName: "points",
+	pointsName: "Points",
 	modFiles: ["DressyLayer.js", "tree.js", "components.js"],
 
 	discordName: "",
@@ -58,7 +58,7 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.points.gte(new decimal("1ee100"))
+	return player.points.gte(Decimal("1ee100"))
 }
 
 
