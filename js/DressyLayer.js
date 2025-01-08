@@ -60,10 +60,6 @@ addLayer("D", {
             description: "^1.01 point gain",
             cost: new Decimal(10),
             unlocked() {return hasUpgrade("D",15)},
-            effect() {
-                return (player.A.points.add(1)).times(1.05)
-                },
-                effectDisplay() { return format(upgradeEffect(this.layer, this.id)) + x },
 
         },
         
