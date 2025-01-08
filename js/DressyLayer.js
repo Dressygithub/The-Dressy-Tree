@@ -62,7 +62,7 @@ addLayer("D", {
         16: {
             title: "Hey, ever heard of exponents?",
             description: "^1.01 point gain",
-            cost: new Decimal(10),
+            cost: new Decimal(20),
             unlocked() {return hasUpgrade("D",15)},
 
         },
