@@ -39,7 +39,7 @@ addLayer("D", {
         },
         13: {
             title: "The third upgrade!",
-            description: effectDisplay(),
+            description: "Placeholder",
             cost: new Decimal(6),
             unlocked() {return hasUpgrade("D",12)},
             effect() {
