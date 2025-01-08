@@ -64,8 +64,5 @@ addLayer("D", {
         },
         
 
-    }, effect(){
-        
-
     },
 })
