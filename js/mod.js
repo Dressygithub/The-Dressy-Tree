@@ -47,6 +47,14 @@ function getPointGen() {
 	if (hasUpgrade('D', 13)) gain = gain.times(2)
 	if (hasUpgrade('D', 14)) gain = gain.times(2)
 	if (hasUpgrade('D', 16)) gain = gain.pow(1.01)
+	{	gain = gain.times(tmp.D.effect)
+	/*
+	  whenever you need to use an effect, use tmp not layers
+	  this would multiply gain by the effect
+	  but you can use any math thing
+	*/
+	return gain
+  }	
 	return gain
 }
 
