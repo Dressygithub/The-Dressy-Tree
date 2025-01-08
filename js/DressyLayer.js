@@ -58,36 +58,8 @@ addLayer("D", {
         16: {
             title: "Hey, ever heard of exponents?",
             description: "^1.01 point gain",
-            cost: new Decimal(16),
+            cost: new Decimal(10),
             unlocked() {return hasUpgrade("D",15)},
-
-        },
-        17: {
-            title: "Because i have",
-            description: "^1.01 point gain again",
-            cost: new Decimal(16),
-            unlocked() {return hasUpgrade("D",16)},
-
-        },
-        18: {
-            title: "They are pretty cool",
-            description: "^1.01 point gain for the third time",
-            cost: new Decimal(17),
-            unlocked() {return hasUpgrade("D",17)},
-
-        },
-        19: {
-            title: "Wanna see something cool",
-            description: "^1.001 point gain",
-            cost: new Decimal(5),
-            unlocked() {return hasUpgrade("D",18)},
-
-        },
-        20: {
-            title: "Thats big",
-            description: "Squares point gain",
-            cost: new Decimal(25),
-            unlocked() {return hasUpgrade("D",19)},
 
         },
         
