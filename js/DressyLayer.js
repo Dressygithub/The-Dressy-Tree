@@ -37,15 +37,5 @@ addLayer("D", {
             unlocked() {return hasUpgrade("D",11)}
 
         },
-        13: {
-            title: "",
-            description: ".",
-            cost: new Decimal(2),
-            unlocked() {return hasUpgrade("D",12)}
-
-        },
-
-
-
     },
 })
