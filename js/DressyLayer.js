@@ -23,7 +23,16 @@ addLayer("D", {
     row: 0, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "p", description: "P: Reset for prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
-    ],     upgrades: { 
+    ],     
+    clickables: {
+        11: {
+            display() {return "Blah"},
+            etc
+        },
+        etc
+    },
+    
+    upgrades: { 
         11: {
             title: "The first upgrade!",
             description: "2x points.",
@@ -62,7 +71,5 @@ addLayer("D", {
             unlocked() {return hasUpgrade("D",15)},
 
         },
-        
-
     },
 })
