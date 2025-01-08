@@ -8,8 +8,8 @@ addLayer("D", {
     }},
     color: "#4BDC13",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
-    resource: "test points", // Name of prestige currency
-    baseResource: "test points", // Name of resource prestige is based on
+    resource: "Dressy points", // Name of prestige currency
+    baseResource: "Points", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.5, // Prestige currency exponent
@@ -30,6 +30,14 @@ addLayer("D", {
             cost: new Decimal(1),
 
         },
+        12: {
+            title: "The first upgrade!",
+            description: "Double your point gain.",
+            cost: new Decimal(1),
+            unlocked() {return hasUpgrade("D",11)}
+
+        },
+
 
     },
 })
