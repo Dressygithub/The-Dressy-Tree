@@ -45,7 +45,7 @@ function getPointGen() {
 	if (hasUpgrade('D', 11)) gain = gain.times(2)
 	if (hasUpgrade('D', 12)) gain = gain.times(2)
 	if (hasUpgrade('D', 13)) gain = gain.times(2)
-	if (hasUpgrade('D', 14)) gain = gain.times(2)
+	if (hasUpgrade('D', 14)) gain = gain.add(1)
 	
 	return gain
 }
