@@ -24,14 +24,6 @@ addLayer("D", {
     hotkeys: [
         {key: "p", description: "P: Reset for prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],     
-    clickables: {
-        11: {
-            display() {return "Blah"},
-            etc
-        },
-        etc
-    },
-    
     upgrades: { 
         11: {
             title: "The first upgrade!",
