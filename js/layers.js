@@ -27,6 +27,12 @@ addLayer("T", {
         11: {
             title: "The first upgrade!",
             description: "Double your point gain.",
+            cost: new Decimal(2),
+
+        },
+        12: {
+            title: "The second upgrade!",
+            description: "Lets double your point gain again.",
             cost: new Decimal(1),
 
         },
