@@ -39,18 +39,9 @@ addLayer("D", {
         },
         13: {
             title: "The third upgrade!",
-            description: "Placeholder",
+            description: "Testing",
             cost: new Decimal(6),
             unlocked() {return hasUpgrade("D",12)},
-            effect() {
-                return player[this.layer].points.add(1).pow(0.5)
-            },
-            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
-            gainMult() {
-                let mult = new Decimal(1)
-                if (hasUpgrade('p', 13)) mult = mult.times(upgradeEffect('p', 12))
-                return mult
-            },
     
 
         },
