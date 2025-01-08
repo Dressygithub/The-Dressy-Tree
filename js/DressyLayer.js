@@ -26,25 +26,36 @@ addLayer("D", {
     ],     upgrades: { 
         11: {
             title: "The first upgrade!",
-            description: "2x Points.",
+            description: "2x points.",
             cost: new Decimal(1),
 
         },
         12: {
             title: "The second upgrade!",
-            description: "2x Points again.",
+            description: "2x points again.",
             cost: new Decimal(3),
             unlocked() {return hasUpgrade("D",11)}
 
         },
         13: {
             title: "The third upgrade!",
-            description: "Testing",
+            description: "2x points for the third time",
             cost: new Decimal(6),
             unlocked() {return hasUpgrade("D",12)},
-    
+
+        }, 14: {
+            title: "Double again yay",
+            description: "You might as well call it the double tree at this point",
+            cost: new Decimal(10),
+            unlocked() {return hasUpgrade("D",13)},
+
+        }, 15: {
+            title: "Ok i'll stop",
+            cost: new Decimal(0),
+            unlocked() {return hasUpgrade("D",14)},
 
         },
+        
 
     }, 
 })
