@@ -51,8 +51,9 @@ addLayer("D", {
             unlocked() {return hasUpgrade("D",13)},
 
         }, 15: {
-            title: "Ok i'll stop",
-            cost: new Decimal(0),
+            title: "No more doubling",
+            description: "yaaaaay",
+            cost: new Decimal(1),
             unlocked() {return hasUpgrade("D",14)},
 
         },
@@ -61,6 +62,34 @@ addLayer("D", {
             description: "^1.01 point gain",
             cost: new Decimal(10),
             unlocked() {return hasUpgrade("D",15)},
+
+        },
+        17: {
+            title: "Personally i think its a bit too early for that",
+            description: "1.01x point gain",
+            cost: new Decimal(3),
+            unlocked() {return hasUpgrade("D",16)},
+
+        },
+        18: {
+            title: "Shift",
+            description: "1.23x point gain",
+            cost: new Decimal(5),
+            unlocked() {return hasUpgrade("D",17)},
+
+        },
+        19: {
+            title: "The",
+            description: "2.31x point gain",
+            cost: new Decimal(7),
+            unlocked() {return hasUpgrade("D",18)},
+
+        },
+        20: {
+            title: "Number",
+            description: "3.21x point gain",
+            cost: new Decimal(10),
+            unlocked() {return hasUpgrade("D",19)},
 
         },
     },
