@@ -41,11 +41,8 @@ addLayer("D", {
             title: "The third upgrade!",
             description: "",
             cost: new Decimal(6),
-            unlocked() {return hasUpgrade("D",11)},
-            effect() {
-                return player[this.layer].points.add(1).pow(0.5)
-            },
-            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+            unlocked() {return hasUpgrade("D",11)}
+    
 
         },
 
