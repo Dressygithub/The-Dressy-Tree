@@ -46,7 +46,13 @@ addLayer("T", {
         description: "The formula is quite good.",
         cost: new Decimal(0),
 
-    }
+    },
+    15: {
+        title: "eternal",
+        description: "MAXIMUM POWER.",
+        cost: new Decimal(0),
+
+    },
 
 
     }
