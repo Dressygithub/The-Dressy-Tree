@@ -48,8 +48,20 @@ addLayer("T", {
 
     },
     15: {
-        title: "eternal",
+        title: "Tetrate",
         description: "MAXIMUM POWER.",
+        cost: new Decimal(0),
+
+    },
+    16: {
+        title: "Tetrate Master",
+        description: "INFINITY POWER.",
+        cost: new Decimal(0),
+
+    },
+    17: {
+        title: "Ultimate power",
+        description: "BEYOND TRANSCENDENT POWER.",
         cost: new Decimal(0),
 
     },
