@@ -98,7 +98,14 @@ addLayer("D", {
             title: "Five",
             description: "5x point gain",
             cost: new Decimal(50),
-            unlocked() {return hasUpgrade("D",23)},
+            unlocked() {return hasUpgrade("D",24)},
+
+        },
+        26: {
+            title: "Finale of row 2",
+            description: "22x point gain",
+            cost: new Decimal(222),
+            unlocked() {return hasUpgrade("D",25)},
 
         },
     },
