@@ -35,6 +35,18 @@ addLayer("T", {
         cost: new Decimal(0),
 
     },
+    13: {
+        title: "More",
+        description: "It grows more.",
+        cost: new Decimal(0),
+
+    },
+    14: {
+        title: "ULTIMATE",
+        description: "The formula is quite good.",
+        cost: new Decimal(0),
+
+    }
 
 
     }
