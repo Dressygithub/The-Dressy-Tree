@@ -83,14 +83,14 @@ addLayer("D", {
         23: {
             title: "The",
             description: "2.31x point gain",
-            cost: new Decimal(7),
+            cost: new Decimal(12),
             unlocked() {return hasUpgrade("D",22)},
 
         },
         24: {
             title: "Number",
             description: "3.21x point gain",
-            cost: new Decimal(10),
+            cost: new Decimal(22),
             unlocked() {return hasUpgrade("D",23)},
 
         },
