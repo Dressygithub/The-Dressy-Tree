@@ -2,7 +2,7 @@ let modInfo = {
 	name: "The Dressy Tree",
 	author: "Dressyapper",
 	pointsName: "Points",
-	modFiles: ["DressyLayer.js", "tree.js", "components.js","achievements.js","testinggrounds.js"],
+	modFiles: ["DressyLayer.js", "tree.js", "components.js","achievements.js","testinggrounds.js","Super.js"],
 
 	discordName: "",
 	discordLink: "",
