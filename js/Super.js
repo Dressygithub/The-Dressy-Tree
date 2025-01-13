@@ -25,9 +25,15 @@ addLayer("S", {
         {key: "p", description: "P: Reset for prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ], challenges: {
         11: {
-            name: "Ouch",
-            challengeDescription: "description of ouchie",
-            canComplete: function() {return player.points.gte(100)},
+            name: "The first challenge",
+            challengeDescription: "Do something",
+            canComplete: function() {return player.points.gte(100)}, 
         },
+    }, milestones: {
+        0: {
+            requirementDescription: "Test",
+            effectDescription: "blah",
+            done() { return player.w.points.gte(123) }
+        }
     }
 })
