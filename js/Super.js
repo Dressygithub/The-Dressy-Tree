@@ -33,7 +33,7 @@ addLayer("S", {
         1: {
             requirementDescription: "Testy",
             effectDescription: "bah",
-            done() { return player.w.points.gte(123) }
+            done() { return player.S.points.gte(123) }
         }
     }
 })
