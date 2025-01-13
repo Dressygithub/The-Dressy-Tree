@@ -26,13 +26,13 @@ addLayer("S", {
     ], challenges: {
         11: {
             name: "The first challenge",
-            challengeDescription: "Do something",
+            challengeDescription: "Does something",
             canComplete: function() {return player.points.gte(100)}, 
         },
     }, milestones: {
-        0: {
-            requirementDescription: "Test",
-            effectDescription: "blah",
+        1: {
+            requirementDescription: "Testy",
+            effectDescription: "bah",
             done() { return player.w.points.gte(123) }
         }
     }
