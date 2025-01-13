@@ -14,11 +14,11 @@ addLayer("S", {
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.5, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
-        mult = new Decimal(2)
+        mult = new Decimal(1)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
-        return new Decimal(2)
+        return new Decimal(1)
     },
     row: 1, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
@@ -30,8 +30,8 @@ addLayer("S", {
             done() { return player.S.points.gte(1) }
         },
         2: {
-            requirementDescription: "1 Super point",
-            effectDescription: "2x point gain",
+            requirementDescription: "25 Super point",
+            effectDescription: "Idk point gain",
             done() { return player.S.points.gte(25) }
         }
     }
