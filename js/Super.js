@@ -9,7 +9,7 @@ addLayer("S", {
     color: "#00fff0",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
     resource: "Super", // Name of prestige currency
-    baseResource: "Super", // Name of resource prestige is based on
+    baseResource: "Dressy points", // Name of resource prestige is based on
     baseAmount() {return player.D.points}, // Get the current amount of baseResource
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.5, // Prestige currency exponent
@@ -23,17 +23,16 @@ addLayer("S", {
     row: 1, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "p", description: "P: Reset for prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
-    ], challenges: {
-        11: {
-            name: "The first challenge",
-            challengeDescription: "Does something",
-            canComplete: function() {return player.points.gte(100)}, 
-        },
-    }, milestones: {
+    ],  milestones: {
         1: {
             requirementDescription: "1 Super point",
             effectDescription: "2x point gain",
-            done() { return player.S.points.gte(123) }
+            done() { return player.S.points.gte(1) }
+        },
+        2: {
+            requirementDescription: "1 Super point",
+            effectDescription: "2x point gain",
+            done() { return player.S.points.gte(25) }
         }
     }
 })

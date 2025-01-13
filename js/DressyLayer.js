@@ -106,7 +106,6 @@ addLayer("D", {
             description: "22x point gain",
             cost: new Decimal(222),
             unlocked() {return hasUpgrade("D",25)},
-
         },
     },
 })
