@@ -28,8 +28,6 @@ addLayer("S", {
             name: "Ouch",
             challengeDescription: "description of ouchie",
             canComplete: function() {return player.points.gte(100)},
-            etc
         },
-        etc
     }
 })
