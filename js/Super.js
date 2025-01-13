@@ -31,8 +31,8 @@ addLayer("S", {
         },
     }, milestones: {
         1: {
-            requirementDescription: "Testy",
-            effectDescription: "bah",
+            requirementDescription: "1 Super point",
+            effectDescription: "2x point gain",
             done() { return player.S.points.gte(123) }
         }
     }
