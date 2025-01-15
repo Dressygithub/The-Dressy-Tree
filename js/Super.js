@@ -23,7 +23,8 @@ addLayer("S", {
     row: 1, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "p", description: "P: Reset for prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
-    ],  milestones: {
+    ],
+      milestones: {
         1: {
             requirementDescription: "1 Super point",
             effectDescription: "Unlock super upgrades",
@@ -33,6 +34,20 @@ addLayer("S", {
             requirementDescription: "3 Super point",
             effectDescription: "2x point gain",
             done() { return player.S.points.gte(2) }
-        }, 
+        },
+    }, upgrades: {
+        11: {
+            title: "S",
+            description: "2x points.",
+            cost: new Decimal(1),
+            unlocked() {return hasMilestone("S",1)}
+        },
+    }, bars: {
+        bigBar: {
+            direction: RIGHT,
+            width: 200,
+            height: 50,
+            progress() { return 0 },
+        },
     }
 })
