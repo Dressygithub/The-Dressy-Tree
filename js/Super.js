@@ -37,18 +37,18 @@ addLayer("S", {
         },
     }, upgrades: {
         11: {
-            title: "S",
-            description: "Ploceholder.",
+            title: "Cross-boosting",
+            description: "Super boosts points(Finally I learnt how to do this).",
             cost: new Decimal(1),
             unlocked() {return hasMilestone("S",1)},
             effect() {
-                return player[this.layer].points.add(1).pow(0.5)
+                return player[this.layer].points.add(1).pow(2)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
         12: {
-            title: "S",
-            description: "Ploceholder.",
+            title: "Cross-boosting again",
+            description: "Super boosts points again.",
             cost: new Decimal(1),
             unlocked() {return hasMilestone("S",1)},
             effect() {
