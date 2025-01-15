@@ -40,7 +40,11 @@ addLayer("S", {
             title: "S",
             description: "2x points.",
             cost: new Decimal(1),
-            unlocked() {return hasMilestone("S",1)}
+            unlocked() {return hasMilestone("S",1)},
+            effect() {
+                return player[this.layer].points.add(1).pow(0.5)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
     }, bars: {
         bigBar: {
