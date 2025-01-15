@@ -36,7 +36,7 @@ addLayer("S", {
             done() { return player.S.points.gte(2) }
         },
     }, upgrades: {
-        11: {
+        12: {
             title: "S",
             description: "2x points.",
             cost: new Decimal(1),
