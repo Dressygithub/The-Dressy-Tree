@@ -59,15 +59,36 @@ addLayer("S", {
         13: {
             title: "Are you ready?",
             description: "Unlocks some upgrades",
-            cost: new Decimal(1),
+            cost: new Decimal(0),
             unlocked() {return hasUpgrade("S",12)} 
         },
-    }, bars: {
-        bigBar: {
-            direction: RIGHT,
-            width: 200,
-            height: 50,
-            progress() { return 0 },
+        21: {
+            title: "1",
+            description: "111x point gain",
+            cost: new Decimal(11),
+            unlocked() {return hasUpgrade("S",13)} 
         },
-    }
+        22: {
+            title: "2",
+            description: "2x point gain",
+            cost: new Decimal(2),
+            unlocked() {return hasUpgrade("S",13)} 
+        },
+        23: {
+            title: "3",
+            description: "3.33x point gain",
+            cost: new Decimal(3),
+            unlocked() {return hasUpgrade("S",13)} 
+        },
+        24: {
+            title: "4",
+            description: "Gain +4 point generation for every super",
+            cost: new Decimal(1),
+            unlocked() {return hasUpgrade("S",11)},
+            effect() {
+                return player[this.layer].points.add(4)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+        },
+    },
 })
