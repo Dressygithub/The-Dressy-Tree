@@ -83,7 +83,7 @@ addLayer("S", {
         24: {
             title: "4",
             description: "Gain +4 point generation for every super",
-            cost: new Decimal(1),
+            cost: new Decimal(4),
             unlocked() {return hasUpgrade("S",11)},
             effect() {
                 return player[this.layer].points.add(4)
