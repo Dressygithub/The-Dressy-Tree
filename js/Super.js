@@ -38,7 +38,7 @@ addLayer("S", {
     }, upgrades: {
         11: {
             title: "Cross-boosting",
-            description: "Super boosts points(Finally I learnt how to do this).",
+            description: "Super boosts points (Finally I learnt how to do this).",
             cost: new Decimal(1),
             unlocked() {return hasMilestone("S",1)},
             effect() {
@@ -52,7 +52,7 @@ addLayer("S", {
             cost: new Decimal(1),
             unlocked() {return hasMilestone("S",1)},
             effect() {
-                return player[this.layer].points.add(1).pow(0.5)
+                return player[this.layer].points.add(1).pow(1000)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
@@ -62,7 +62,7 @@ addLayer("S", {
             cost: new Decimal(1),
             unlocked() {return hasMilestone("S",1)},
             effect() {
-                return player.D.points.add(1).pow(0.5)
+                return player[this.layer].points.add(1).pow(0.5)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
