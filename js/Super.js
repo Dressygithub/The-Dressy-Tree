@@ -56,6 +56,16 @@ addLayer("S", {
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
+        13: {
+            title: "Cross-boosting but...",
+            description: "Super boosts points again.",
+            cost: new Decimal(1),
+            unlocked() {return hasMilestone("S",1)},
+            effect() {
+                return player.D.points.add(1).pow(0.5)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+        },
     }, bars: {
         bigBar: {
             direction: RIGHT,
