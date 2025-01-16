@@ -82,13 +82,13 @@ addLayer("S", {
         },
         24: {
             title: "4",
-            description: "Gain +4 point generation for every super",
+            description: "",
             cost: new Decimal(4),
             unlocked() {return hasUpgrade("S",13)},
             effect() {
                 return player[this.layer].points.add(4)
             },
-            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"+" }, // Add formatting to the effect
         },
     },
 })
