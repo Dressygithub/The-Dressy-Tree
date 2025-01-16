@@ -52,7 +52,7 @@ addLayer("S", {
             cost: new Decimal(1),
             unlocked() {return hasMilestone("S",1)},
             effect() {
-                return player[this.layer].points.add(1).pow(1000)
+                return player[this.layer].points.add(1).pow(player[this.layer].points)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
