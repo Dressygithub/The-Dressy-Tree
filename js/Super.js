@@ -60,7 +60,7 @@ addLayer("S", {
             title: "Are you ready?",
             description: "Unlocks some upgrades",
             cost: new Decimal(1),
-            unlocked() {return hasUpgrade("D",12)} 
+            unlocked() {return hasUpgrade("S",12)} 
         },
     }, bars: {
         bigBar: {
