@@ -39,10 +39,10 @@ addLayer("S", {
         11: {
             title: "Cross-boosting",
             description: "Super boosts points (Finally I learnt how to do this).",
-            cost: new Decimal(1),
+            cost: new Decimal(2),
             unlocked() {return hasMilestone("S",1)},
             effect() {
-                return player[this.layer].points.add(1).pow(2)
+                return player[this.layer].points.add(1).pow(0.7)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
@@ -50,21 +50,17 @@ addLayer("S", {
             title: "Cross-boosting again",
             description: "Super boosts points again.",
             cost: new Decimal(1),
-            unlocked() {return hasMilestone("S",1)},
+            unlocked() {return hasUpgrade("S",11)},
             effect() {
-                return player[this.layer].points.add(1).pow(player[this.layer].points)
+                return player[this.layer].points.add(1).pow(0.1)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
         13: {
-            title: "Cross-boosting but...",
-            description: "Super boosts points again.",
+            title: "Are you ready?",
+            description: "Unlocks some upgrades",
             cost: new Decimal(1),
-            unlocked() {return hasMilestone("S",1)},
-            effect() {
-                return player[this.layer].points.add(1).pow(0.5)
-            },
-            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+            unlocked() {return hasUpgrade("D",12)} 
         },
     }, bars: {
         bigBar: {
