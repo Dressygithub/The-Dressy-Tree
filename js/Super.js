@@ -86,7 +86,7 @@ addLayer("S", {
             cost: new Decimal(4),
             unlocked() {return hasUpgrade("S",13)},
             effect() {
-                return player[this.layer].points.add(4)
+                return player[this.layer].points.add(4).add(4)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"+" }, // Add formatting to the effect
         },
