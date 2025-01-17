@@ -64,8 +64,8 @@ addLayer("S", {
         },
         21: {
             title: "1",
-            description: "111x point gain",
-            cost: new Decimal(11),
+            description: "^1.01 points",
+            cost: new Decimal(1),
             unlocked() {return hasUpgrade("S",13)} 
         },
         22: {
@@ -83,12 +83,37 @@ addLayer("S", {
         24: {
             title: "4",
             description: "Points boost themselves",
-            cost: new Decimal(44),
+            cost: new Decimal(4),
             unlocked() {return hasUpgrade("S",13)},
             effect() {
                 return player.points.add(1).pow(0.04)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
+        25: {
+            title: "5",
+            description: "^1.05 point gain",
+            cost: new Decimal(5),
+            unlocked() {return hasUpgrade("S",13)},
+        },
+        31: {
+            title: "6",
+            description: "6x point gain",
+            cost: new Decimal(6),
+            unlocked() {return hasUpgrade("S",13)},
+        },
+        32: {
+            title: "7",
+            description: "^1.77 point gain (should get this later)",
+            cost: new Decimal(777),
+            unlocked() {return hasUpgrade("S",13)},
+        },
+        33: {
+            title: "8",
+            description: "something point gain",
+            cost: new Decimal(777),
+            unlocked() {return hasUpgrade("S",13)},
+        },
+        
     },
 })
