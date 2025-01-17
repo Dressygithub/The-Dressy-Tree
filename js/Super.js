@@ -82,11 +82,11 @@ addLayer("S", {
         },
         24: {
             title: "4",
-            description: "",
-            cost: new Decimal(4),
+            description: "Points boost something",
+            cost: new Decimal(44),
             unlocked() {return hasUpgrade("S",13)},
             effect() {
-                return player[this.layer].points.add(4).add(4)
+                return player.points.add(1).pow(0.4)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"+" }, // Add formatting to the effect
         },
