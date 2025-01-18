@@ -65,7 +65,7 @@ addLayer("S", {
         },
         21: {
             title: "1",
-            description: "^1.01 points",
+            description: "1.1x points",
             cost: new Decimal(1),
             unlocked() {return hasUpgrade("S",13)} 
         },
@@ -112,7 +112,7 @@ addLayer("S", {
         33: {
             title: "8",
             description: "Points boost themselves more than before",
-            cost: new Decimal(4),
+            cost: new Decimal(8),
             unlocked() {return hasUpgrade("S",13)},
             effect() {
                 return player.points.add(1).pow(0.08)
