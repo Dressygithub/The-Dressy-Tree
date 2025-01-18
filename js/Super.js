@@ -33,13 +33,8 @@ addLayer("S", {
       milestones: {
         1: {
             requirementDescription: "1 Super point",
-            effectDescription: "Unlock super upgrades and 1.5x point gain",
+            effectDescription: "Unlock super upgrades and 1.5x points",
             done() { return player.S.points.gte(1) }
-        },
-        2: {
-            requirementDescription: "3 Super point",
-            effectDescription: "2x point gain",
-            done() { return player.S.points.gte(2) }
         },
     }, upgrades: {
         11: {
