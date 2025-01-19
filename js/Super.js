@@ -99,8 +99,8 @@ addLayer("S", {
         },
         31: {
             title: "6",
-            description: "6x point gain",
-            cost: new Decimal(6),
+            description: "6x dressy point gain",
+            cost: new Decimal(66),
             unlocked() {return hasUpgrade("S",13)},
         },
         32: {
@@ -118,7 +118,7 @@ addLayer("S", {
                 return player.points.add(1).pow(0.08)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
-        },
+        }, 
         
     },
 })
