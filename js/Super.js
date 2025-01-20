@@ -99,8 +99,8 @@ addLayer("S", {
         },
         31: {
             title: "6",
-            description: "6x dressy point gain",
-            cost: new Decimal(66),
+            description: "1.6x dressy point gain",
+            cost: new Decimal(6),
             unlocked() {return hasUpgrade("S",13)},
         },
         32: {
