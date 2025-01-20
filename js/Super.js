@@ -139,8 +139,8 @@ addLayer("S", {
         11: {
             name: "Super",
             challengeDescription: "^0.01 point gain, dressy points and super",
-            goalDescription: "5 million points",
-            canComplete: function() {return player.points.gte(5e6)},
+            goalDescription: "5 million dressy points",
+            canComplete: function() {return player.D.points.gte(5e6)},
         },
     }
 })
