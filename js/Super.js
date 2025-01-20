@@ -9,8 +9,7 @@ addLayer("S", {
                     let visible = false
                     if (hasUpgrade('D', 26) || player.S.unlocked) visible = true
                    return visible
-                }
-    
+                },
     }},
     color: "#00fff0",
     requires: new Decimal(1e3), // Can be a function that takes requirement increases into account
@@ -35,6 +34,11 @@ addLayer("S", {
             requirementDescription: "1 Super point",
             effectDescription: "Unlock super upgrades and 1.5x points",
             done() { return player.S.points.gte(1) }
+        },
+        2: {
+            requirementDescription: "15 Super point",
+            effectDescription: "Passively generate dressy points",
+            done() { return player.S.points.gte(15) }
         },
     }, upgrades: {
         11: {
@@ -113,6 +117,16 @@ addLayer("S", {
             title: "8",
             description: "Points boost themselves more than before",
             cost: new Decimal(8),
+            unlocked() {return hasUpgrade("S",13)},
+            effect() {
+                return player.points.add(1).pow(0.08)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+        }, 
+        34: {
+            title: "Super",
+            description: "Super points boost dressy points",
+            cost: new Decimal(1),
             unlocked() {return hasUpgrade("S",13)},
             effect() {
                 return player.points.add(1).pow(0.08)
