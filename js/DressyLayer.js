@@ -7,7 +7,7 @@ addLayer("D", {
                 points: new Decimal(0),
     }},
     passiveGeneration() {
-        return 0.01
+        return 0.1
     },
     color: "#0055ff",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
