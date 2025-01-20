@@ -109,7 +109,7 @@ addLayer("S", {
         },
         32: {
             title: "7",
-            description: "^1.77 point gain",
+            description: "^1.77 point gain (leave this for later)",
             cost: new Decimal(777),
             unlocked() {return hasUpgrade("S",13)},
         },
@@ -127,9 +127,9 @@ addLayer("S", {
             title: "Super",
             description: "Super points boost dressy points",
             cost: new Decimal(1),
-            unlocked() {return hasUpgrade("S",13)},
+            unlocked() {return hasUpgrade("S",33) && hasUpgrade("S",31) && hasUpgrade("S",25) && hasUpgrade("S",24) && hasUpgrade("S",23) && hasUpgrade("S",22) && hasUpgrade("S",21)  },
             effect() {
-                return player.points.add(1).pow(0.08)
+                return player.S.points.add(1).pow(0.5)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         }, 
