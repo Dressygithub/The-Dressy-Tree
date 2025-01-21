@@ -11,6 +11,7 @@ addLayer("D", {
         return 0
     },
     color: "#0055ff",
+    branches: ["D", "S"], 
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
     resource: "Dressy points", // Name of prestige currency
     baseResource: "Points", // Name of resource prestige is based on
