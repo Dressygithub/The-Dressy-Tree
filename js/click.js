@@ -24,6 +24,6 @@ addLayer("C", {
 })
 clickables: {
     11; {
-        display(); {return "Blah"}
+        display(); {return 2}
     }
 }
