@@ -135,6 +135,7 @@ addLayer("S", {
             name: "Super",
             challengeDescription: "0.5x dressy points",
             goalDescription: "30000 dressy points",
+            rewardDescription: "2x dressy points and a new layer",
             canComplete: function() {return player.D.points.gte(30000)},
         },
     }
