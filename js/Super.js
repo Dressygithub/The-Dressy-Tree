@@ -128,19 +128,15 @@ addLayer("S", {
             title: "Super",
             description: "Unlock a challenge",
             cost: new Decimal(1),
-            unlocked() {return hasUpgrade("S",33) && hasUpgrade("S",31) && hasUpgrade("S",25) && hasUpgrade("S",24) && hasUpgrade("S",23) && hasUpgrade("S",22) && hasUpgrade("S",21)  },
-            effect() {
-                return player.S.points.add(1).pow(0.5)
-            },
-            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         }, 
         
     }, challenges: {
         11: {
             name: "Super",
             challengeDescription: "0.5x dressy points",
-            goalDescription: "5 million dressy points",
-            canComplete: function() {return player.D.points.gte(5e6)},
+            goalDescription: "30000 dressy points",
+            rewardDisplay() {"2x dressy points and a new layer"},
+            canComplete: function() {return player.D.points.gte(30000)},
         },
     }
 })
