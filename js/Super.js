@@ -7,9 +7,9 @@ addLayer("S", {
                 points: new Decimal(0),
                 layerShown(){
                     let visible = false
-                    if (hasUpgrade('D', 26) || player.S.unlocked) visible = false
+                    if (hasUpgrade('D', 26) || player.D.unlocked) visible = true
                    return visible
-                },
+                 },
     }},
     color: "#00fff0",
     requires: new Decimal(1e3), // Can be a function that takes requirement increases into account
@@ -135,7 +135,7 @@ addLayer("S", {
             name: "Super",
             challengeDescription: "0.5x dressy points",
             goalDescription: "30000 dressy points",
-            rewardDescription: "2x dressy points and a new layer",
+            rewardDescription: "2x dressy points, gain 20% of dressy points and a new layer",
             canComplete: function() {return player.D.points.gte(30000)},
         },
     }

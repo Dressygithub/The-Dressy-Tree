@@ -8,7 +8,7 @@ addLayer("D", {
     }},
     passiveGeneration() {
         if (hasMilestone('S', 2)) return 0.1
-        if (hasChallenge('S', 2)) return 0.2
+        if (hasChallenge('S', 11)) return 0.2
         return 0
     },
     color: "#0055ff",
