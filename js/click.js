@@ -26,7 +26,7 @@ addLayer("C", {
         title: "Clicky",
         display() {return 'Something'},
         canClick() {return true},
-        effect() {addPoints('C',1)}
+        onclick() {addPoints('C',1)}
         }
     }
 })
