@@ -24,6 +24,7 @@ addLayer("C", {
 })
 clickables: {
     11; {
+        title: something
         display(); {return 2}
     }
 }
