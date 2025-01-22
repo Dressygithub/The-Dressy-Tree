@@ -21,10 +21,9 @@ addLayer("C", {
         return new Decimal(1)
     },
     row: "side", // Row the layer is in on the tree (0 is the first row)
-})
-clickables: {
+}),
+clickables; {
     11; {
-        title: something
-        display(); {return "Clicky"}
+    title: "Clicky"
     }
 }
