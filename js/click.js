@@ -24,6 +24,7 @@ addLayer("C", {
     clickables: {
         11: {
         title: "Clicky",
+        display() {return 'Something'},
         canClick() {return true}
         }
     }
