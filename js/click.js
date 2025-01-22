@@ -23,7 +23,8 @@ addLayer("C", {
     row: "side", // Row the layer is in on the tree (0 is the first row)
     clickables: {
         11: {
-        title: "Clicky"
+        title: "Clicky",
+        canClick() {return true}
         }
     }
 })
