@@ -20,7 +20,6 @@ addLayer("S", {
     exponent: 0.5, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
-        if (inChallenge('S', 11)) mult = mult.pow(0.01)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -138,7 +137,7 @@ addLayer("S", {
     }, challenges: {
         11: {
             name: "Super",
-            challengeDescription: "^0.01 point gain, dressy points and super",
+            challengeDescription: "0.5x dressy points",
             goalDescription: "5 million dressy points",
             canComplete: function() {return player.D.points.gte(5e6)},
         },
