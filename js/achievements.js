@@ -12,6 +12,7 @@ addLayer("A", {
     achievements: {
         11: {
             name: "Reset",
+            tooltip: "Do your first reset for a dressy point .",
             done() {player.D.points.gte(1)}
         },
     }
