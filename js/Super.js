@@ -7,7 +7,7 @@ addLayer("S", {
                 points: new Decimal(0),
                 layerShown(){
                     let visible = false
-                    if (hasUpgrade('D', 26) || player.D.unlocked) visible = true
+                    if (hasUpgrade('D', 26) || player.S.unlocked) visible = true
                    return visible
                  },
     }},
