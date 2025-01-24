@@ -4,7 +4,7 @@ addLayer("H", {
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: false,
-                points: new Decimal(500),
+                points: new Decimal(0),
                 layerShown(){
                     let visible = false
                     if (hasUpgrade('S', 35) || player.H.unlocked) visible = true
