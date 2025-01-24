@@ -12,7 +12,7 @@ addLayer("H", {
                  },
     }},
     color: "#38ffa4",
-    requires: new Decimal(500), // Can be a function that takes requirement increases into account
+    requires: new Decimal(25), // Can be a function that takes requirement increases into account
     resource: "Hyper", // Name of prestige currency
     baseResource: "Super", // Name of resource prestige is based on
     baseAmount() {return player.S.points}, // Get the current amount of baseResource
