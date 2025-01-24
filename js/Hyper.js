@@ -5,10 +5,11 @@ addLayer("H", {
     startData() { return {
         unlocked: false,
                 points: new Decimal(500),
-    layerShown(){
-        let visible = false
-        if {hasUpgrade(return hasUpgrade("S",35)} visible = true
-       return visible
+                layerShown(){
+                    let visible = false
+                    if (hasUpgrade('S', 35) || player.H.unlocked) visible = true
+                   return visible
+                 },
     }},
     color: "#4BDC13",
     requires: new Decimal(500), // Can be a function that takes requirement increases into account
