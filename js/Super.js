@@ -127,6 +127,13 @@ addLayer("S", {
             title: "Super",
             description: "Unlock a challenge",
             cost: new Decimal(1),
+            unlocked() {return hasUpgrade("S",33) && hasUpgrade("S",32) && hasUpgrade("S",31) && hasUpgrade("S",25) && hasUpgrade("S",24) && hasUpgrade("S",23) && hasUpgrade("S",22) && hasUpgrade("S",21) },
+        }, 
+        35: {
+            title: "Ascend",
+            description: "Unlocks a new layer",
+            cost: new Decimal(0),
+            unlocked() {return hasChallenge("S", 11)}
         }, 
         
     }, challenges: {
@@ -134,7 +141,7 @@ addLayer("S", {
             name: "Super",
             challengeDescription: "0.5x dressy points",
             goalDescription: "30000 dressy points",
-            rewardDescription: "Gain 20% of dressy points and a new layer",
+            rewardDescription: "A new upgrade",
             canComplete: function() {return player.D.points.gte(30000)},
         },
     }
