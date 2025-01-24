@@ -11,7 +11,7 @@ addLayer("H", {
                    return visible
                  },
     }},
-    color: "#4BDC13",
+    color: "#38ffa4",
     requires: new Decimal(500), // Can be a function that takes requirement increases into account
     resource: "Hyper", // Name of prestige currency
     baseResource: "Super", // Name of resource prestige is based on
