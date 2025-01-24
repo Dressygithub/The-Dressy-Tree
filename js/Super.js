@@ -127,7 +127,7 @@ addLayer("S", {
             title: "Super",
             description: "Unlock a challenge",
             cost: new Decimal(1),
-            unlocked() {return hasUpgrade("S",33) && hasUpgrade("S",32) && hasUpgrade("S",31) && hasUpgrade("S",25) && hasUpgrade("S",24) && hasUpgrade("S",23) && hasUpgrade("S",22) && hasUpgrade("S",21) },
+            unlocked() {return hasUpgrade("S",33) && hasUpgrade("S",31) && hasUpgrade("S",25) && hasUpgrade("S",24) && hasUpgrade("S",23) && hasUpgrade("S",22) && hasUpgrade("S",21) },
         }, 
         35: {
             title: "Ascend",
