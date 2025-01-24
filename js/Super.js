@@ -12,7 +12,7 @@ addLayer("S", {
                  },
     }},
     branches: ["S", "H"], 
-    color: "#00fff0",
+    color: "#38ffa4",
     requires: new Decimal(1e3), // Can be a function that takes requirement increases into account
     resource: "Super", // Name of prestige currency
     baseResource: "Dressy points", // Name of resource prestige is based on
