@@ -11,6 +11,7 @@ addLayer("S", {
                    return visible
                  },
     }},
+    branches: ["S", "H"], 
     color: "#00fff0",
     requires: new Decimal(1e3), // Can be a function that takes requirement increases into account
     resource: "Super", // Name of prestige currency
