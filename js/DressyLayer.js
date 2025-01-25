@@ -28,7 +28,6 @@ addLayer("D", {
         if (layers.H.effect().gte(1)) mult = mult.times(layers.H.effect())
         if (hasUpgrade('S', 31)) mult = mult.times(1.6)
         if (inChallenge('S', 11)) mult = mult.times(0.5)
-        if (hasMilestone('H', 1)) mult = mult.times(buyableEffect("D", 11))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -37,23 +36,7 @@ addLayer("D", {
     row: 0, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "p", description: "P: Reset for prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
-    ],
-    buyables: {
-        11: {
-            title: "Dressy point booster <br>",
-            purchaseLimit: 100,
-            cost(x) { return new Decimal(5).mul(Decimal.times(1.56, x)) },
-            display() { return "Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Dressy points" + "<br>Bought: " + getBuyableAmount(this.layer, this.id) + "<br>Currently: " + format(buyableEffect('D', 11)) +"x"},
-            canAfford() { return player.H.points.gte(this.cost()) },
-            effect() {
-                return player[this.layer].points.add(1).pow(0.4)
-            },
-            buy() {
-                player.H.points = player.H.points.sub(this.cost())
-                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
-            },
-        },
-    },     
+    ],     
     upgrades: { 
         11: {
             title: "The first upgrade!",
