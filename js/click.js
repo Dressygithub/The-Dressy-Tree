@@ -16,16 +16,19 @@ addLayer("C", {
     exponent: 1, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
-        if (hasUpgrade('S', 11)) mult = mult.times(2)
-        if (hasUpgrade('S', 12)) mult = mult.times(3)
-        if (hasUpgrade('S', 13)) mult = mult.times(4)
-        if (hasUpgrade('S', 21)) mult = mult.times(4)
-        if (hasUpgrade('S', 22)) mult = mult.times(9)
-        if (hasUpgrade('S', 23)) mult = mult.times(16)
-        if (hasUpgrade('S', 31)) mult = mult.times(16)
-        if (hasUpgrade('S', 31)) mult = mult.times(81)
-        if (hasUpgrade('S', 31)) mult = mult.times(256)
         return mult
+    },
+    directMult() {mult = new Decimal(1)
+        if (hasUpgrade('S', 11)) mult = mult.times(2)
+            if (hasUpgrade('S', 12)) mult = mult.times(3)
+            if (hasUpgrade('S', 13)) mult = mult.times(4)
+            if (hasUpgrade('S', 21)) mult = mult.times(4)
+            if (hasUpgrade('S', 22)) mult = mult.times(9)
+            if (hasUpgrade('S', 23)) mult = mult.times(16)
+            if (hasUpgrade('S', 31)) mult = mult.times(16)
+            if (hasUpgrade('S', 31)) mult = mult.times(81)
+            if (hasUpgrade('S', 31)) mult = mult.times(256)
+            return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
