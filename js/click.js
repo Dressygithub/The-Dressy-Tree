@@ -8,8 +8,8 @@ addLayer("C", {
     }},
     color: "#FF0000",
     canBuyMax() {return false},
-    prestigeButtonText() {return ""},
-    resetsNothing: "true",
+    prestigeButtonText() {return "Click"},
+    resetsNothing: true,
     requires: new Decimal(0), // Can be a function that takes requirement increases into account
     resource: "Click points", // Name of prestige currency
     baseResource: "Click", // Name of resource prestige is based on
