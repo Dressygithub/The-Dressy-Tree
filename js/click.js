@@ -21,5 +21,11 @@ addLayer("C", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
-    row: "side", // Row the layer is in on the tree (0 is the first row)
+    row: "side", // Row the layer is in on the tree (0 is the first row),
+    infoboxes: {
+        main: {
+            title: "Minigame",
+            body() { return "This is a minigame, it will not contribute to any of the main game but will only be here as an extra part of the game" },
+        },
+    }
 })
