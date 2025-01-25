@@ -12,7 +12,7 @@ addLayer("H", {
                  },   
     }},
     effect() {
-        Heff = player[this.layer].points.add(1).times(player.H.points).pow(0.32)
+        Heff = player[this.layer].points.add(1).pow(0.32)
         return Heff
         },
         effectDescription() {
