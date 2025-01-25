@@ -34,12 +34,12 @@ addLayer("S", {
       milestones: {
         1: {
             requirementDescription: "1 Super point",
-            effectDescription: "Unlock super upgrades and 1.5x points",
+            effectDescription: "1.5x points",
             done() { return player.S.points.gte(1) }
         },
         2: {
             requirementDescription: "15 Super point",
-            effectDescription: "Passively generate dressy points",
+            effectDescription: "Generate 10% of dressy point reset",
             done() { return player.S.points.gte(15) }
         },
     }, upgrades: {
@@ -47,7 +47,7 @@ addLayer("S", {
             title: "Cross-boosting",
             description: "Super boosts points (Finally I learnt how to do this).",
             cost: new Decimal(2),
-            unlocked() {return hasMilestone("S",1)},
+            unlocked() {return player.S.points.gte(1)},
             effect() {
                 return player[this.layer].points.add(1).pow(0.7)
             },
