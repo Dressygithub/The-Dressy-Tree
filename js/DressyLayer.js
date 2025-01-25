@@ -111,7 +111,7 @@ addLayer("D", {
         },
         26: {
             title: "Finale of row 2",
-            description: "22x point gain",
+            description: "22x point gain and unlock a new layer",
             cost: new Decimal(222),
             unlocked() {return hasUpgrade("D",25)},
         },
