@@ -5,12 +5,12 @@ addLayer("H", {
     startData() { return {
         unlocked: false,
                 points: new Decimal(0),
-                layerShown(){
-                    let visible = false
-                    if (hasUpgrade('S', 35) || layer.H.unlocked) visible = true
-                   return visible
-                 },   
     }},
+    layerShown(){
+        let visible = false
+        if (hasUpgrade('S', 35) || layer.H.unlocked) visible = true
+       return visible
+     },   
     effect() {
         Heff = player[this.layer].points.add(1).pow(0.9)
         return Heff

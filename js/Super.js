@@ -5,12 +5,12 @@ addLayer("S", {
     startData() { return {
         unlocked: false,
                 points: new Decimal(0),
-                layerShown(){
-                    let visible = false
-                    if (hasUpgrade('D', 26) || player.S.unlocked) visible = true
-                   return visible
-                 },
     }},
+    layerShown(){
+        let visible = false
+        if (hasUpgrade('D', 26) || player.S.unlocked) visible = true
+       return visible
+     },
     branches: ["S", "H"], 
     color: "#00FFF3",
     requires: new Decimal(1e3), // Can be a function that takes requirement increases into account
