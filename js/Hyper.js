@@ -40,7 +40,7 @@ addLayer("H", {
     milestones: {
         1: {
             requirementDescription: "1 Hyper point",
-            effectDescription: "Gain 15% of dressy point reset, 1% of super reset, autobuy dressy point upgrades and 1.1^ points",
+            effectDescription: "Gain 15% of dressy point reset, 1% of super reset, autobuy dressy point upgrades and ^1.1 points",
             done() { return player.H.points.gte(1) }
         },
     }
