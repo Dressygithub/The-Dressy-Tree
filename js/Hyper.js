@@ -8,7 +8,7 @@ addLayer("H", {
     }},
     layerShown(){
         let visible = false
-        if (hasUpgrade('S', 35) || layer.H.unlocked) visible = true
+        if (hasUpgrade('S', 35) || player.H.unlocked) visible = true
        return visible
      },   
     effect() {
