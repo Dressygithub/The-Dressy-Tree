@@ -12,11 +12,11 @@ addLayer("H", {
                  },   
     }},
     effect() {
-        Heff = player[this.layer].points.add(1).sqrt()
+        Heff = player[this.layer].points.times(player.H.points).pow(0.32)
         return Heff
         },
         effectDescription() {
-            eff = this.effect();
+            Heff = this.effect();
             return "that are boosting Dressy point gain AND super gain by "+format(Heff)+"."
         },
     color: "#38ffa4",
