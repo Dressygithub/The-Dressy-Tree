@@ -7,7 +7,7 @@ addLayer("H", {
                 points: new Decimal(0),
                 layerShown(){
                     let visible = false
-                    if (hasUpgrade('S', 35) || player.Hyper.unlocked) visible = true
+                    if (hasUpgrade('S', 35) || layer.H.unlocked) visible = true
                    return visible
                  },   
     }},
