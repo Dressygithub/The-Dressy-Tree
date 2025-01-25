@@ -17,7 +17,7 @@ addLayer("H", {
         },
         effectDescription() {
             Heff = this.effect();
-            return "that are boosting Dressy point gain AND super gain by "+format(Heff)+"."
+            return "that are boosting Dressy point gain AND super gain by "+format(Heff)+"x."
         },
     color: "#38ffa4",
     requires: new Decimal(25), // Can be a function that takes requirement increases into account
