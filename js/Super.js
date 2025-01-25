@@ -15,6 +15,10 @@ addLayer("S", {
         if (hasMilestone('H', 2)) return 0.05
         if (hasMilestone('H', 1)) return 0.01
     return 0},
+    autoPrestige() {
+        if (hasChallenge('H',11)) return true
+        return false
+    },
     branches: ["S", "H"], 
     color: "#00FFF3",
     requires: new Decimal(1e3), // Can be a function that takes requirement increases into account
@@ -134,19 +138,13 @@ addLayer("S", {
             cost: new Decimal(1),
             unlocked() {return hasUpgrade("S",33) && hasUpgrade("S",31) && hasUpgrade("S",25) && hasUpgrade("S",24) && hasUpgrade("S",23) && hasUpgrade("S",22) && hasUpgrade("S",21) },
         }, 
-        35: {
-            title: "Ascend",
-            description: "Unlocks a new layer",
-            cost: new Decimal(0),
-            unlocked() {return hasChallenge("S", 11)}
-        }, 
         
     }, challenges: {
         11: {
             name: "Super",
             challengeDescription: "0.5x dressy points",
             goalDescription: "30000 dressy points",
-            rewardDescription: "A new upgrade",
+            rewardDescription: "A new layer",
             canComplete: function() {return player.D.points.gte(30000)},
             unlocked() {return hasUpgrade("S",34)},
         },

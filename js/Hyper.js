@@ -9,7 +9,7 @@ addLayer("H", {
     }},
     layerShown(){
         let visible = false
-        if (hasUpgrade('S', 35) || player.H.unlocked) visible = true
+        if (hasChallenge('S', 11) || player.H.unlocked) visible = true
        return visible
      },   
     effect() {
@@ -58,6 +58,7 @@ addLayer("H", {
         11: {
             name: "Automation",
             challengeDescription: "Automation of layers is a good thing, right?",
+            rewardDescription: "Autobuy super upgrades",
             canComplete: function() {return player.points.gte(100)},
             unlocked() {return hasMilestone("H",3)},
         },
