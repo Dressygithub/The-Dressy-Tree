@@ -19,7 +19,8 @@ addLayer("A", {
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
-    },clickables: {
+    },
+    clickables: {
         11: {
             title: "+1000 dressy points",
             canClick() {return true},
