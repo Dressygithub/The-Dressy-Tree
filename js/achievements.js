@@ -1,5 +1,5 @@
 addLayer("A", {
-    name: "Achievements", // This is optional, only used in a few places, If absent it just uses the layer id.
+    name: "Dev panel", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "A", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
@@ -21,13 +21,10 @@ addLayer("A", {
         return new Decimal(1)
     },clickables: {
         11: {
-            title: "Hyper",
-            display() {return "Sets game to first hyper reset"},
+            title: "+1000 dressy points",
             canClick() {return true},
-            onClick() {return hardReset() && addPoints('S',25)}
-
-            
-        }
+            onClick() {return addPoints('D',1e3)}
+        },
 
     },
     achievements: {
