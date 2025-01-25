@@ -53,11 +53,31 @@ addLayer("H", {
             effectDescription: "Unlock a challenge",
             done() { return player.H.points.gte(10) }
         },
+        4: {
+            requirementDescription: "10 Hyper points",
+            effectDescription: "Unlock a challenge",
+            done() { return player.H.points.gte(10) }
+        },
+        5: {
+            requirementDescription: "10 Hyper points",
+            effectDescription: "Unlock a challenge",
+            done() { return player.H.points.gte(10) }
+        },
+        6: {
+            requirementDescription: "10 Hyper points",
+            effectDescription: "Unlock a challenge",
+            done() { return player.H.points.gte(10) }
+        },
+        7: {
+            requirementDescription: "10 Hyper points",
+            effectDescription: "Unlock a challenge",
+            done() { return player.H.points.gte(10) }
+        },
     }, challenges: {
         11: {
             name: "Automation",
             challengeDescription: "Automation of layers is a good thing, right?",
-            rewardDescription: "Autobuy super upgrades",
+            rewardDescription: "Autobuy super upgrades and more milestones",
             canComplete: function() {return player.points.gte(100)},
             unlocked() {return hasMilestone("H",3)},
         },
