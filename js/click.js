@@ -8,9 +8,9 @@ addLayer("C", {
     }},
     color: "#4BDC13",
     canBuyMax() {return false},
-    requires: new Decimal(10), // Can be a function that takes requirement increases into account
+    requires: new Decimal(0), // Can be a function that takes requirement increases into account
     resource: "Click points", // Name of prestige currency
-    baseResource: "", // Name of resource prestige is based on
+    baseResource: "Click", // Name of resource prestige is based on
     baseAmount() {return player.C.points}, // Get the current amount of baseResource
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.5, // Prestige currency exponent
