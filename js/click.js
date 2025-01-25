@@ -6,7 +6,7 @@ addLayer("C", {
         unlocked: true,
                 points: new Decimal(0),
     }},
-    color: "#4BDC13",
+    color: "#FF0000",
     canBuyMax() {return false},
     prestigeButtonText() {return ""},
     requires: new Decimal(0), // Can be a function that takes requirement increases into account
