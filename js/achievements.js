@@ -32,14 +32,24 @@ addLayer("A", {
             onClick() {return addPoints('D',player.D.points)}
         },
         13: {
-            title: "+25 super",
+            title: "Reset dressy points",
+            canClick() {return true},
+            onClick() {return addPoints('D',player.D.points.sub(player.D.points.times(2)))}
+        },
+        14: {
+            title: "25+ super",
             canClick() {return true},
             onClick() {return addPoints('S',25)}
         },
-        14: {
+        15: {
             title: "Double super",
             canClick() {return true},
             onClick() {return addPoints('S',player.S.points)}
+        },
+        16: {
+            title: "Reset super",
+            canClick() {return true},
+            onClick() {return addPoints('S',player.S.points.sub(player.S.points.times(2)))}
         },
 
     },
