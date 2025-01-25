@@ -14,9 +14,10 @@ addLayer("S", {
      passiveGeneration() {
         if (hasMilestone('H', 2)) return 0.05
         if (hasMilestone('H', 1)) return 0.01
+        if (inChallenge('H', 11)) return 0
     return 0},
     autoPrestige() {
-        if (hasChallenge('H',11)) return true
+        if (inChallenge('H',11)) return true
         return false
     },
     branches: ["S", "H"], 
