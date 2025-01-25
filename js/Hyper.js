@@ -5,6 +5,7 @@ addLayer("H", {
     startData() { return {
         unlocked: false,
                 points: new Decimal(0),
+                HyperEffectPower: new Decimal(0.9),
     }},
     layerShown(){
         let visible = false
@@ -12,7 +13,7 @@ addLayer("H", {
        return visible
      },   
     effect() {
-        Heff = player[this.layer].points.add(1).pow(0.9)
+        Heff = player[this.layer].points.add(1).pow(HyperEffectPower)
         return Heff
         },
         effectDescription() {
