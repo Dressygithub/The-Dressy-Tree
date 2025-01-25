@@ -15,6 +15,10 @@ addLayer("D", {
         if (hasMilestone('H', 1)) return true
         return false
     },
+    autoPrestige() {
+        if (inChallenge('H',11)) return true
+        return false
+    },
     color: "#0055ff",
     branches: ["D", "S"], 
     requires: new Decimal(10), // Can be a function that takes requirement increases into account

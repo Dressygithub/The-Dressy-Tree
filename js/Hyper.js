@@ -45,9 +45,21 @@ addLayer("H", {
             done() { return player.H.points.gte(1) }
         },
         2: {
-            requirementDescription: "3 Hyper point",
+            requirementDescription: "3 Hyper points",
             effectDescription: "Gain 5% of super reset instead of the 1%",
             done() { return player.H.points.gte(3) }
+        },
+        3: {
+            requirementDescription: "10 Hyper points",
+            effectDescription: "Unlock a challenge",
+            done() { return player.H.points.gte(10) }
+        },
+    }, challenges: {
+        11: {
+            name: "Automation",
+            challengeDescription: "Automation of layers is a good thing, right?",
+            canComplete: function() {return player.points.gte(100)},
+            unlocked() {return hasMilestone("H",3)},
         },
     }
 })
