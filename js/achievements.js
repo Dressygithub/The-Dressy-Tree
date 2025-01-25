@@ -26,6 +26,21 @@ addLayer("A", {
             canClick() {return true},
             onClick() {return addPoints('D',1e3)}
         },
+        12: {
+            title: "Double dressy points",
+            canClick() {return true},
+            onClick() {return addPoints('D',player.D.points)}
+        },
+        13: {
+            title: "+25 super",
+            canClick() {return true},
+            onClick() {return addPoints('S',25)}
+        },
+        14: {
+            title: "Double super",
+            canClick() {return true},
+            onClick() {return addPoints('S',player.S.points)}
+        },
 
     },
     achievements: {
