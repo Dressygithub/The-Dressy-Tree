@@ -12,6 +12,7 @@ addLayer("S", {
        return visible
      },
      passiveGeneration() {
+        if (hasMilestone('H', 2)) return 0.05
         if (hasMilestone('H', 1)) return 0.01
     return 0},
     branches: ["S", "H"], 
