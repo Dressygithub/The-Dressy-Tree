@@ -43,7 +43,7 @@ addLayer("D", {
             title: "Dressy point booster <br>",
             purchaseLimit: 100,
             cost(x) { return new Decimal(5).mul(Decimal.times(1.56, x)) },
-            display() { return "Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Planetoids" + "<br>Bought: " + getBuyableAmount(this.layer, this.id) + "<br>Currently: " + format(buyableEffect('D', 11)) +"x"},
+            display() { return "Cost: " + format(tmp[this.layer].buyables[this.id].cost) + "Dressy" + "<br>Bought: " + getBuyableAmount(this.layer, this.id) + "<br>Currently: " + format(buyableEffect('D', 11)) +"x"},
             canAfford() { return player.H.points.gte(this.cost()) },
             buy() {
                 player.H.points = player.H.points.sub(this.cost())
