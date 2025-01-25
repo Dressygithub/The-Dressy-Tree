@@ -21,7 +21,11 @@ addLayer("A", {
         return new Decimal(1)
     },clickables: {
         11: {
-            display() {return "Blah"},
+            title: "Hyper",
+            display() {return "Sets game to first hyper reset"},
+            canClick() {return true},
+            onClick() {return hardReset() && addPoints('S',25)}
+
             
         }
 
