@@ -28,6 +28,7 @@ addLayer("D", {
         if (layers.H.effect().gte(1)) mult = mult.times(layers.H.effect())
         if (hasUpgrade('S', 31)) mult = mult.times(1.6)
         if (inChallenge('S', 11)) mult = mult.times(0.5)
+        if (hasMilestone('H', 1)) mult = mult.times(buyableEffect("stars", 12))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -39,11 +40,13 @@ addLayer("D", {
     ],
     buyables: {
         11: {
-            cost(x) { return new Decimal(1).mul(2) },
-            display() { return "Blah" },
-            canAfford() { return player[this.layer].points.gte(this.cost()) },
+            title: "Dressy point booster <br>",
+            purchaseLimit: 100,
+            cost(x) { return new Decimal(5).mul(Decimal.times(1.56, x)) },
+            display() { return "Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Planetoids" + "<br>Bought: " + getBuyableAmount(this.layer, this.id) + "<br>Currently: " + format(buyableEffect('D', 11)) +"x"},
+            canAfford() { return player.H.points.gte(this.cost()) },
             buy() {
-                player[this.layer].points = player[this.layer].points.sub(this.cost())
+                player.H.points = player.H.points.sub(this.cost())
                 setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
             },
         },
