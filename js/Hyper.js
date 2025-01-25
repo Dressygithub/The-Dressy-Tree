@@ -36,5 +36,12 @@ addLayer("H", {
     row: 2, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "t", description: "t: Reset for prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
-    ],
+    ], 
+    milestones: {
+        1: {
+            requirementDescription: "1 Hyper point",
+            effectDescription: "Gain 15% of dressy point reset, 1% of super reset, autobuy dressy point upgrades and 1.1^ points",
+            done() { return player.H.points.gte(1) }
+        },
+    }
 })

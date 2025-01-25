@@ -11,6 +11,9 @@ addLayer("S", {
         if (hasUpgrade('D', 26) || player.S.unlocked) visible = true
        return visible
      },
+     passiveGeneration() {
+        if (hasMilestone('H', 1)) return 0.01
+    return 0},
     branches: ["S", "H"], 
     color: "#00FFF3",
     requires: new Decimal(1e3), // Can be a function that takes requirement increases into account

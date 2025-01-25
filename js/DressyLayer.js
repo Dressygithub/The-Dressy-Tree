@@ -7,9 +7,13 @@ addLayer("D", {
                 points: new Decimal(0),
     }},
     passiveGeneration() {
+        if (hasMilestone('H', 1)) return 0.15
         if (hasMilestone('S', 2)) return 0.1
-        if (hasChallenge('S', 11)) return 0.2
         return 0
+    },
+    autoUpgrade() {
+        if (hasMilestone('H', 1)) return true
+        return false
     },
     color: "#0055ff",
     branches: ["D", "S"], 
