@@ -19,6 +19,12 @@ addLayer("A", {
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
+    },clickables: {
+        11: {
+            display() {return "Blah"},
+            
+        }
+
     },
     achievements: {
         11: {
