@@ -144,6 +144,7 @@ addLayer("S", {
             goalDescription: "30000 dressy points",
             rewardDescription: "A new upgrade",
             canComplete: function() {return player.D.points.gte(30000)},
+            unlocked() {return hasUpgrade("S",34)},
         },
     }
 })
