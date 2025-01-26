@@ -56,25 +56,26 @@ addLayer("H", {
         4: {
             requirementDescription: "10 Hyper points",
             effectDescription: "Unlock a challenge",
-            done() { return player.H.points.gte(10) }
+            done() { return player.H.points.gte(10) },
+            unlocked() {return hasChallenge("H",11)},
         },
         5: {
-            requirementDescription: "10 Hyper points",
-            effectDescription: "Unlock a challenge",
-            done() { return player.H.points.gte(10) },
+            requirementDescription: "100 Hyper points",
+            effectDescription: "Unlock 3 dressy upgrades",
+            done() { return player.H.points.gte(100) },
             unlocked() {return hasChallenge("H",11)},
         },
         6: {
-            requirementDescription: "10 Hyper points",
-            effectDescription: "Unlock a challenge",
+            requirementDescription: "250 Hyper points",
+            effectDescription: "Unlock a side layer",
             done() { return player.H.points.gte(10) },
-            unlocked() {return hasChallenge("H",11)},
+            unlocked() {return hasChallenge("D",11)},
         },
         7: {
-            requirementDescription: "10 Hyper points",
-            effectDescription: "Unlock a challenge",
+            requirementDescription: "1000 Hyper points",
+            effectDescription: "Move on",
             done() { return player.H.points.gte(10) },
-            unlocked() {return hasChallenge("H",11)},
+            unlocked() {return hasChallenge("D",11)},
         },
     }, challenges: {
         11: {

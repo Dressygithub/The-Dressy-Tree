@@ -7,6 +7,7 @@ addLayer("D", {
                 points: new Decimal(0),
     }},
     passiveGeneration() {
+        if (hasUpgrade('D',31)) return 0.3
         if (hasMilestone('H', 1)) return 0.15
         if (hasMilestone('S', 2)) return 0.1
         if (inChallenge('H', 11)) return 0
@@ -30,6 +31,7 @@ addLayer("D", {
     exponent: 0.5, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+        if (hasUpgrade('D', 32)) mult = mult.times(3)
         if (layers.H.effect().gte(1)) mult = mult.times(layers.H.effect())
         if (hasMilestone('H', 1)) mult = mult.times(getBuyableAmount('D', '11')).add(1)
         if (hasUpgrade('S', 31)) mult = mult.times(1.6)
@@ -137,5 +139,32 @@ addLayer("D", {
             cost: new Decimal(222),
             unlocked() {return hasUpgrade("D",25)},
         },
-    },
+        31: {
+            title: "We are so back",
+            description: "Gain 30% of dressy point reset",
+            cost: new Decimal(1e10),
+            unlocked() {return hasMilestone("H",5)},
+        },
+        32: {
+            title: "Dresstastic",
+            description: "x3 dressy point gain",
+            cost: new Decimal(1e12),
+            unlocked() {return hasUpgrade("D",31)},
+        },
+        33: {
+            title: "One for each layer",
+            description: "Unlock a challenge",
+            cost: new Decimal(1e17),
+            unlocked() {return hasUpgrade("D",32)},
+        },
+    }, 
+    challenges: {
+        11: {
+            name: "Negative",
+            challengeDescription: "You gain -50% dressy point reset",
+            rewardDescription: "--2x point gain (haha see what i did there) also more hyper milestones",
+            canComplete: function() {return player.S.points.gte(1000)},
+            unlocked() {return hasUpgrade("H",3)},
+        }
+        },
 })
