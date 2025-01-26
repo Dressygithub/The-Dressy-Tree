@@ -31,6 +31,7 @@ addLayer("D", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
         if (layers.H.effect().gte(1)) mult = mult.times(layers.H.effect())
+        if (hasMilestone('H', 1)) mult = mult.times(getBuyableAmount('D', '11'))
         if (hasUpgrade('S', 31)) mult = mult.times(1.6)
         if (inChallenge('S', 11)) mult = mult.times(0.5)
         return mult
@@ -41,7 +42,19 @@ addLayer("D", {
     row: 0, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "p", description: "P: Reset for prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
-    ],     
+    ],
+    buyables: {
+        11: {
+            title: "Point booster",
+            cost(x) { return new Decimal(1).mul(x) },
+            display() { return "" },
+            canAfford() { return player[this.layer].points.gte(this.cost()) },
+            buy() {
+                player[this.layer].points = player[this.layer].points.sub(this.cost())
+                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+            },
+        },
+    },
     upgrades: { 
         11: {
             title: "The first upgrade!",
