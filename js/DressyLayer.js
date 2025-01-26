@@ -49,7 +49,7 @@ addLayer("D", {
         11: {
             title: "<br>Point booster<br>",
             cost(x) { return new Decimal(1).mul(x) },
-            display() { return "Boosts dressy point gain" },
+            display() { return "Boosts dressy point gain" +  format(tmp[this.layer].buyables[this.id].cost) },
             canAfford() { return player[this.layer].points.gte(this.cost()) },
             buy() {
                 player[this.layer].points = player[this.layer].points.sub(this.cost())
