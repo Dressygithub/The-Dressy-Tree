@@ -47,7 +47,7 @@ addLayer("D", {
     ],
     buyables: {
         11: {
-            title: "Point booster",
+            title: "<br>Point booster<br>",
             cost(x) { return new Decimal(1).mul(x) },
             display() { return "Boosts dressy point gain" },
             canAfford() { return player[this.layer].points.gte(this.cost()) },
