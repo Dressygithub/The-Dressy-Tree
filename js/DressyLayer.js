@@ -31,7 +31,7 @@ addLayer("D", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
         if (layers.H.effect().gte(1)) mult = mult.times(layers.H.effect())
-        if (hasMilestone('H', 1)) mult = mult.times(getBuyableAmount('D', '11'))
+        if (hasMilestone('H', 1)) mult = mult.times(getBuyableAmount('D', '11')).add(1)
         if (hasUpgrade('S', 31)) mult = mult.times(1.6)
         if (inChallenge('S', 11)) mult = mult.times(0.5)
         return mult
