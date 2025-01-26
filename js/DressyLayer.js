@@ -49,7 +49,7 @@ addLayer("D", {
         11: {
             title: "Point booster",
             cost(x) { return new Decimal(1).mul(x) },
-            display() { return "" },
+            display() { return "Boosts dressy point gain" },
             canAfford() { return player[this.layer].points.gte(this.cost()) },
             buy() {
                 player[this.layer].points = player[this.layer].points.sub(this.cost())
@@ -147,7 +147,7 @@ addLayer("D", {
         },
         32: {
             title: "Dresstastic",
-            description: "x3 dressy point gain",
+            description: "x300 dressy point gain",
             cost: new Decimal(1e12),
             unlocked() {return hasUpgrade("D",31)},
         },
