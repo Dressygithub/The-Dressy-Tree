@@ -31,7 +31,7 @@ addLayer("D", {
     exponent: 0.5, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
-        if (hasUpgrade('D', 32)) mult = mult.times(3)
+        if (hasUpgrade('D', 32)) mult = mult.times(300)
         if (layers.H.effect().gte(1)) mult = mult.times(layers.H.effect())
         if (hasMilestone('H', 1)) mult = mult.times(getBuyableAmount('D', '11')).add(1)
         if (hasUpgrade('S', 31)) mult = mult.times(1.6)
@@ -142,19 +142,19 @@ addLayer("D", {
         31: {
             title: "We are so back",
             description: "Gain 30% of dressy point reset",
-            cost: new Decimal(1e10),
+            cost: new Decimal(1e9),
             unlocked() {return hasMilestone("H",5)},
         },
         32: {
             title: "Dresstastic",
             description: "x300 dressy point gain",
-            cost: new Decimal(1e12),
+            cost: new Decimal(1e11),
             unlocked() {return hasUpgrade("D",31)},
         },
         33: {
             title: "One for each layer",
             description: "Unlock a challenge",
-            cost: new Decimal(1e17),
+            cost: new Decimal(1e14),
             unlocked() {return hasUpgrade("D",32)},
         },
     }, 
