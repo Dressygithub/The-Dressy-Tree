@@ -12,7 +12,7 @@ addLayer("C", {
        return visible
      },  
     color: "#4BDC13",
-    requires: new Decimal(10), // Can be a function that takes requirement increases into account
+    requires: new Decimal(0), // Can be a function that takes requirement increases into account
     resource: "Challenges completed", // Name of prestige currency
     type: "none", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.5, // Prestige currency exponent
