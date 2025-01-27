@@ -25,7 +25,7 @@ addLayer("H", {
     baseResource: "Super", // Name of resource prestige is based on
     baseAmount() {return player.S.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent: 0.1, // Prestige currency exponent
+    exponent: 0.4, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
         return mult
@@ -62,19 +62,19 @@ addLayer("H", {
         5: {
             requirementDescription: "100 Hyper points",
             effectDescription: "Unlock 3 dressy upgrades",
-            done() { return player.H.points.gte(100) },
+            done() { return player.H.points.gte(100) && hasChallenge("H",11)  },
             unlocked() {return hasChallenge("H",11)},
         },
         6: {
             requirementDescription: "250 Hyper points",
             effectDescription: "Unlock a side layer",
-            done() { return player.H.points.gte(10) },
+            done() { return player.H.points.gte(10) && hasChallenge("H",11)},
             unlocked() {return hasChallenge("D",11)},
         },
         7: {
             requirementDescription: "1000 Hyper points",
             effectDescription: "Move on",
-            done() { return player.H.points.gte(10) },
+            done() { return player.H.points.gte(10) && hasChallenge("H",11)},
             unlocked() {return hasChallenge("D",11)},
         },
     }, challenges: {
