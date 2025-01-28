@@ -11,7 +11,7 @@ addLayer("D", {
         if (hasMilestone('H', 1)) return 0.15
         if (hasMilestone('S', 2)) return 0.1
         if (inChallenge('H', 11)) return 0
-        if (inChallenge('D', 11)) return 0.5.sub(1)
+        if (inChallenge('D', 11)) return new Decimal(0.5).sub(1)
         return 0
     },
     autoUpgrade() {
