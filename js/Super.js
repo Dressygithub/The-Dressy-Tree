@@ -49,7 +49,7 @@ addLayer("S", {
         },
         2: {
             requirementDescription: "15 Super point",
-            effectDescription: "Generate 10% of dressy point resets",
+            effectDescription: "Generate 10% of dressy point reset",
             done() { return player.S.points.gte(15) }
         },
     }, upgrades: {
