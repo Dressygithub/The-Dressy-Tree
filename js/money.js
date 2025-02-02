@@ -8,7 +8,7 @@ addLayer("Money", {
     }},
     layerShown(){
         let visible = false
-        if (hasChallenge('D', 11) || player.M.unlocked) visible = true
+        if (hasChallenge('D', 11) || player.H.unlocked) visible = true
        return visible
      },
     color: "#4BDC13",
