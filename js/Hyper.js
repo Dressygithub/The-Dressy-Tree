@@ -65,18 +65,6 @@ addLayer("H", {
             done() { return player.H.points.gte(100) && hasChallenge("H",11)  },
             unlocked() {return hasChallenge("H",11)},
         },
-        6: {
-            requirementDescription: "250 Hyper points",
-            effectDescription: "Unlock a side layer",
-            done() { return player.H.points.gte(10) && hasChallenge("H",11)},
-            unlocked() {return hasChallenge("D",11)},
-        },
-        7: {
-            requirementDescription: "1000 Hyper points",
-            effectDescription: "Move on",
-            done() { return player.H.points.gte(10) && hasChallenge("H",11)},
-            unlocked() {return hasChallenge("D",11)},
-        },
     }, challenges: {
         11: {
             name: "Automation",

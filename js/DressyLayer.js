@@ -163,7 +163,7 @@ addLayer("D", {
         11: {
             name: "Negative",
             challengeDescription: "You gain -50% dressy point reset",
-            rewardDescription: "--2x point gain (haha see what i did there) also more hyper milestones",
+            rewardDescription: "--2x point gain (haha see what i did there) also new layer",
             canComplete: function() {return player.S.points.gte(1000)},
             unlocked() {return hasUpgrade("D",33)},
         }
