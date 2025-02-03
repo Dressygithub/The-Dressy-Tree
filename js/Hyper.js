@@ -19,6 +19,7 @@ addLayer("H", {
             Heff = this.effect();
             return "that are boosting Dressy point gain AND super gain by "+format(Heff)+"x."
         },
+    branches: ["H", "M"], 
     color: "#38ffa4",
     requires: new Decimal(25), // Can be a function that takes requirement increases into account
     resource: "Hyper", // Name of prestige currency
