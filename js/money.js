@@ -11,10 +11,13 @@ addLayer("M", {
         if (hasChallenge('D', 11) || player.H.unlocked) visible = true
        return visible
      },
+     passiveGeneration() {
+        if (hasUpgrade('M', 11)) return 1
+        return 0
+    },
     color: "#048c1b",
     requires: new Decimal(150), // Can be a function that takes requirement increases into account
     resource: "Money", // Name of prestige currency
-    baseAmount() {return player.H.points}, // Get the current amount of baseResource
     type: "none", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 10000000000000000000000000000000000000, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
@@ -28,4 +31,11 @@ addLayer("M", {
     hotkeys: [
         {key: "t", description: "t: Reset for prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
+    upgrades: { 
+        11: {
+            title: "Lemonade stand",
+            description: "Generate +1 money per second.",
+            cost: new Decimal(1),
+        },
+    }
 })
