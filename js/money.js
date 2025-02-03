@@ -11,7 +11,7 @@ addLayer("Money", {
         if (hasChallenge('D', 11) || player.H.unlocked) visible = true
        return visible
      },
-    color: "#4BDC13",
+    color: "#048c1b",
     requires: new Decimal(150), // Can be a function that takes requirement increases into account
     baseAmount() {return player.H.points}, // Get the current amount of baseResource
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
@@ -23,7 +23,7 @@ addLayer("Money", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
-    row: 0, // Row the layer is in on the tree (0 is the first row)
+    row: 3, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "t", description: "t: Reset for prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],

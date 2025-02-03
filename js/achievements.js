@@ -51,6 +51,38 @@ addLayer("A", {
             canClick() {return true},
             onClick() {return addPoints('S',player.S.points.sub(player.S.points.times(2)))}
         },
+        21: {
+            title: "150+ hyper",
+            canClick() {return true},
+            onClick() {return addPoints('H',150)}
+        },
+        22: {
+            title: "Double hyper",
+            canClick() {return true},
+            onClick() {return addPoints('H',player.H.points)}
+        },
+        23: {
+            title: "Reset hyper",
+            canClick() {return true},
+            onClick() {return addPoints('H',player.H.points.sub(player.H.points.times(2)))}
+        },
+        24: {
+            title: "1+ money",
+            canClick() {return true},
+            onClick() {return addPoints('M',1)}
+        },
+        25: {
+            title: "Double money",
+            canClick() {return true},
+            onClick() {return addPoints('M',player.M.points)}
+        },
+        26: {
+            title: "Reset money",
+            canClick() {return true},
+            onClick() {return addPoints('M',player.M.points.sub(player.M.points.times(2)))}
+        },
+
+
 
     },
     achievements: {
