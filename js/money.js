@@ -15,7 +15,7 @@ addLayer("M", {
     requires: new Decimal(150), // Can be a function that takes requirement increases into account
     resource: "Money", // Name of prestige currency
     baseAmount() {return player.H.points}, // Get the current amount of baseResource
-    type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    type: "none", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 10000000000000000000000000000000000000, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
