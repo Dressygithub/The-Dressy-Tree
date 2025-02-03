@@ -11,7 +11,7 @@ addLayer("M", {
         if (hasChallenge('D', 11) || player.H.unlocked) visible = true
        return visible
      },
-     passiveGeneration() {
+    passiveGeneration() {
         if (hasUpgrade('M', 11)) return 1
         return 0
     },
@@ -35,7 +35,7 @@ addLayer("M", {
         11: {
             title: "Lemonade stand",
             description: "Generate +1 money per second.",
-            cost: new Decimal(1),
+            cost: new Decimal(0),
         },
     }
 })
