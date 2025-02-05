@@ -21,7 +21,7 @@ addLayer("M", {
     baseResource: "Hyper", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResourc
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent: 1,
+    exponent: 999999999999999999999999999999999999999999,
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
         return mult
