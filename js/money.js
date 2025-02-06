@@ -38,5 +38,10 @@ addLayer("M", {
             description: "Generate +1 money per second.",
             cost: new Decimal(0),
         },
+        11: {
+            title: "Lemonade stand",
+            description: "Generate +1 money per second.",
+            cost: new Decimal(15),
+        },
     }
 })
