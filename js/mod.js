@@ -30,7 +30,8 @@ let Ma_effect = 0.1
 let Ma_exponent = 2.5
 let Globallayereffectpow = 1
 let Globallayereffectmult = 1
-let click = 1
+let clicky = 1
+
 function getStartPoints(){
     return new Decimal(modInfo.initialStartPoints)
 }
