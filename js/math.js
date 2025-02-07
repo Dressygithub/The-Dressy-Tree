@@ -12,13 +12,13 @@ addLayer("Ma", {
        return visible
      }, 
     effect() {
-        let matheffect = 0.5
+        let matheffect = 0.1
         Heff = player[this.layer].points.times(1).pow(matheffect)
         return Heff
         },
         effectDescription() {
             Heff = this.effect();
-            return "that are boosting Dressy point gain AND super gain by "+format(Heff)+"x."
+            return "that are boosting point gain by "+format(Heff)+"x."
         },
     color: "#4BDC13",
     requires: new Decimal(2000), // Can be a function that takes requirement increases into account
