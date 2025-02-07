@@ -13,7 +13,7 @@ let modInfo = {
 // Set your version in num and name
 let VERSION = {
 	num: "1",
-	name: "No thanks",
+	name:"No",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
@@ -28,6 +28,8 @@ let winText = `Congratulations! You have reached the end and beaten this game, b
 var doNotCallTheseFunctionsEveryTick = ["blowUpEverything"]
 let Ma_effect = 0.1
 let Ma_exponent = 2.5
+let Globallayereffectpow = 1
+let Globallayereffectmult = 1
 
 function getStartPoints(){
     return new Decimal(modInfo.initialStartPoints)
