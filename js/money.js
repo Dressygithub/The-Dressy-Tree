@@ -63,7 +63,7 @@ addLayer("M", {
         },
         15: {
             title: "Expand stand",
-            description: "Generate 20 money per second",
+            description: "Generate 25 money per second",
             cost: new Decimal(400),
         },
         16: {
