@@ -13,7 +13,7 @@ addLayer("Ma", {
      }, 
     effect() {
         let Ma_effect = 0.1
-        Heff = player[this.layer].points.times(1).pow(Ma_effect)
+        Heff = player[this.layer].points.add(1).times(1).pow(Ma_effect)
         return Heff
         },
         effectDescription() {
