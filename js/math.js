@@ -12,8 +12,8 @@ addLayer("Ma", {
        return visible
      }, 
     effect() {
-        let matheffect = 0.1
-        Heff = player[this.layer].points.times(1).pow(matheffect)
+        let Ma_effect = 0.1
+        Heff = player[this.layer].points.times(1).pow(Ma_effect)
         return Heff
         },
         effectDescription() {
@@ -40,6 +40,11 @@ addLayer("Ma", {
     ], milestones: {
         1: {
             requirementDescription: "1 Mathematician",
+            effectDescription: "Unlock addition",
+            done() { return player.Ma.points.gte(1) }
+        },
+        2: {
+            requirementDescription: "Test",
             effectDescription: "Unlock addition",
             done() { return player.Ma.points.gte(1) }
         },
