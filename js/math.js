@@ -12,7 +12,7 @@ addLayer("Ma", {
        return visible
      }, 
     effect() {
-        Heff1 = player[this.layer].points.add(1).times(2).pow(Ma_effect)
+        Heff1 = player[this.layer].points.add(1).times(2).pow(0.5)
         Heff2 = player[this.layer].points.add(1).pow(0.3)
         return Heff1 && Heff2
         },
