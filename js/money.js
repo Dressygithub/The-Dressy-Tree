@@ -30,7 +30,7 @@ addLayer("M", {
     exponent: 0.0000000000000000000001,
     requires: new Decimal(150),
     gainMult() { // Calculate the multiplier for main currency from bonuses
-        mult = new Decimal(1)
+        mult = new Decimal(2)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses

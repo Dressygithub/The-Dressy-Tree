@@ -17,7 +17,7 @@ addLayer("P", {
         },
         effectDescription() {
             Aeff = this.effect();
-            return "that are boosting point gain by ^"+format(Aeff)
+            return "that are boosting money gain by ^"+format(Aeff)
         },
         
     color: "#4BDC13",
