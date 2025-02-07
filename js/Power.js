@@ -1,14 +1,14 @@
-addLayer("Add", {
-    name: "A", // This is optional, only used in a few places, If absent it just uses the layer id.
-    symbol: "+", // This appears on the layer's node. Default is the id with the first letter capitalized
-    position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+addLayer("P", {
+    name: "Power", // This is optional, only used in a few places, If absent it just uses the layer id.
+    symbol: "^", // This appears on the layer's node. Default is the id with the first letter capitalized
+    position: 2, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: false,
                 points: new Decimal(0),
     }},
     layerShown(){
         let visible = false
-        if (hasMilestone('Ma',1) || player.A.unlocked) visible = true
+        if (hasMilestone('Ma',3) || player.P.unlocked) visible = true
        return visible
     }, 
     effect() {
@@ -17,10 +17,11 @@ addLayer("Add", {
         },
         effectDescription() {
             Aeff = this.effect();
-            return "that are boosting point gain base by +"+format(Aeff)
+            return "that are boosting point gain by ^"+format(Aeff)
         },
+        
     color: "#4BDC13",
-    resource: "Addition", // Name of prestige currency
+    resource: "Exponent", // Name of prestige currency
     baseResource: "Money", // Name of resource prestige is based on
     baseAmount() {return player.M.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have

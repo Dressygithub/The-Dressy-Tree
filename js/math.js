@@ -12,13 +12,14 @@ addLayer("Ma", {
        return visible
      }, 
     effect() {
-        Heff1 = player[this.layer].points.add(1).times(2).pow(0.5)
-        return Heff1
+        Maeff = player[this.layer].points.add(1).times(2).pow(0.5)
+        return Maeff
         },
         effectDescription() {
-            Heff1 = this.effect();
-            return "that are boosting point gain by "+format(Heff1)+"x."
+            Maeff1 = this.effect();
+            return "that are boosting point gain by "+format(Maeff)+"x."
         },
+        branches: ["Ma", "A","Mu","P"], 
     color: "#4BDC13",
     requires: new Decimal(2000), // Can be a function that takes requirement increases into account
     resource: "Mathematicians", // Name of prestige currency
@@ -44,8 +45,13 @@ addLayer("Ma", {
         },
         2: {
             requirementDescription: "2 Mathematicians",
-            effectDescription: "The mathematician effect is increased",
-            done() { return player.Ma.points.gte(1) }
+            effectDescription: "Unlock multiplication",
+            done() { return player.Ma.points.gte(2) }
+        },
+        2: {
+            requirementDescription: "3 Mathematicians",
+            effectDescription: "Unlock power",
+            done() { return player.Ma.points.gte(3) }
         },
     }
 })

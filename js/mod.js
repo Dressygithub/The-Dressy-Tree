@@ -26,11 +26,6 @@ let winText = `Congratulations! You have reached the end and beaten this game, b
 // If you add new functions anywhere inside of a layer, and those functions have an effect when called, add them here.
 // (The ones here are examples, all official functions are already taken care of)
 var doNotCallTheseFunctionsEveryTick = ["blowUpEverything"]
-let Ma_effect = 0.1
-let Ma_exponent = 2.5
-let Globallayereffectpow = 1
-let Globallayereffectmult = 1
-let clicky = 1
 
 function getStartPoints(){
     return new Decimal(modInfo.initialStartPoints)
@@ -41,12 +36,19 @@ function canGenPoints(){
 	return true
 }
 
+function getPointBase(){
+	let gain = new Decimal(0)
+	if (layers.A.effect().gte(1)) gain = gain.add(layers.A.effect())
+	return gain
+}
+
 // Calculate points/sec!
 function getPointGen() {
 	if(!canGenPoints())
 		return new Decimal(0)
 
 	let gain = new Decimal(1)
+	////////////////////////////////////////////////////////////////
 	if (hasUpgrade('D', 11)) gain = gain.times(2)
 	if (hasUpgrade('D', 12)) gain = gain.times(2)
 	if (hasUpgrade('D', 13)) gain = gain.times(2)
@@ -71,6 +73,8 @@ function getPointGen() {
 	if (hasUpgrade('S', 33)) gain = gain.times(upgradeEffect('S', 33))
 	if (hasMilestone('H', 1)) gain = gain.pow(1.1)
 	if (layers.Ma.effect().gte(1)) gain = gain.times(layers.Ma.effect())
+	if (layers.P.effect().gte(1)) gain = gain.pow(layers.P.effect())
+	if (layers.Mu.effect().gte(1)) gain = gain.times(layers.Mu.effect())
 	return gain
 }
 
