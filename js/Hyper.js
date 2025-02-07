@@ -12,7 +12,7 @@ addLayer("H", {
        return visible
      },   
     effect() {
-        Heff = player[this.layer].points.add(1).pow(0.9).pow(Globallayereffectpow).times(Globallayereffectmult)
+        Heff = player[this.layer].points.add(1).pow(0.9)
         return Heff
         },
         effectDescription() {
