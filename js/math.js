@@ -12,18 +12,19 @@ addLayer("Ma", {
        return visible
      }, 
     effect() {
-        let Ma_effect = 0.1
-        Heff = player[this.layer].points.add(1).times(1).pow(Ma_effect)
-        return Heff
+        Heff1 = player[this.layer].points.add(1).times(2).pow(Ma_effect)
+        Heff2 = player[this.layer].points.add(1).pow(0.3)
+        return Heff1 && Heff2
         },
         effectDescription() {
-            Heff = this.effect();
-            return "that are boosting point gain by "+format(Heff)+"x."
+            Heff1 = this.effect();
+            Heff2 = this.effect();
+            return "that are boosting point gain by "+format(Heff1)+"x and ^"+format(Heff2)+"."
         },
     color: "#4BDC13",
     requires: new Decimal(2000), // Can be a function that takes requirement increases into account
     resource: "Mathematicians", // Name of prestige currency
-    baseResource: "Addition", // Name of resource prestige is based on
+    baseResource: "Money", // Name of resource prestige is based on
     baseAmount() {return player.M.points}, // Get the current amount of baseResource
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: Ma_exponent, // Prestige currency exponent
@@ -44,8 +45,8 @@ addLayer("Ma", {
             done() { return player.Ma.points.gte(1) }
         },
         2: {
-            requirementDescription: "Test",
-            effectDescription: "Unlock addition",
+            requirementDescription: "2 Mathematicians",
+            effectDescription: "The mathematician effect is increased",
             done() { return player.Ma.points.gte(1) }
         },
     }
