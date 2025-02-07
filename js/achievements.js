@@ -81,6 +81,21 @@ addLayer("A", {
             canClick() {return true},
             onClick() {return addPoints('M',player.M.points.sub(player.M.points.times(2)))}
         },
+        31: {
+            title: "1+ MA",
+            canClick() {return true},
+            onClick() {return addPoints('Ma',1)}
+        },
+        32: {
+            title: "Double MA",
+            canClick() {return true},
+            onClick() {return addPoints('Ma',player.Ma.points)}
+        },
+        33: {
+            title: "Reset MA",
+            canClick() {return true},
+            onClick() {return addPoints('Ma',player.Ma.points.sub(player.Ma.points.times(2)))}
+        },
 
 
 
