@@ -2,7 +2,7 @@ let modInfo = {
 	name: "The Dressy Tree",
 	author: "Dressyapper",
 	pointsName: "Points",
-	modFiles: ["DressyLayer.js", "tree.js", "components.js","achievements.js","Super.js","Hyper.js","Challengetree.js","money.js","math.js"],
+	modFiles: ["DressyLayer.js", "tree.js", "components.js","achievements.js","Super.js","Hyper.js","Click.js","money.js","math.js"],
 
 	discordName: "",
 	discordLink: "",
@@ -30,7 +30,7 @@ let Ma_effect = 0.1
 let Ma_exponent = 2.5
 let Globallayereffectpow = 1
 let Globallayereffectmult = 1
-
+let click = 1
 function getStartPoints(){
     return new Decimal(modInfo.initialStartPoints)
 }
