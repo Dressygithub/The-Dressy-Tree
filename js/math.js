@@ -11,6 +11,15 @@ addLayer("Ma", {
         if (hasUpgrade('M', 22) || player.Ma.unlocked) visible = true
        return visible
      }, 
+    effect() {
+        let matheffect = 0.5
+        Heff = player[this.layer].points.times(1).pow(matheffect)
+        return Heff
+        },
+        effectDescription() {
+            Heff = this.effect();
+            return "that are boosting Dressy point gain AND super gain by "+format(Heff)+"x."
+        },
     color: "#4BDC13",
     requires: new Decimal(2000), // Can be a function that takes requirement increases into account
     resource: "Mathematicians", // Name of prestige currency
