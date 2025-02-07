@@ -23,7 +23,7 @@ addLayer("C", {
         11: {
             title: "Click",
             canClick() {return true},
-            onClick() {return addPoint('C',clicky)}
+            onClick() {return addPoints('C',clicky)}
         },
     },
     upgrades: {
