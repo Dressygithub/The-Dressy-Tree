@@ -26,7 +26,7 @@ addLayer("Ma", {
     baseResource: "Money", // Name of resource prestige is based on
     baseAmount() {return player.M.points}, // Get the current amount of baseResource
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent: 2.5, // Prestige currency exponent
+    exponent: Ma_exponent, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
         return mult
@@ -37,5 +37,11 @@ addLayer("Ma", {
     row: 3, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "t", description: "t: Reset for prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
-    ],
+    ], milestones: {
+        1: {
+            requirementDescription: "1 Mathematician",
+            effectDescription: "Unlock addition",
+            done() { return player.Ma.points.gte(1) }
+        },
+    }
 })
