@@ -13,13 +13,11 @@ addLayer("Ma", {
      }, 
     effect() {
         Heff1 = player[this.layer].points.add(1).times(2).pow(0.5)
-        Heff2 = player[this.layer].points.add(1).pow(0.3)
-        return Heff1 && Heff2
+        return Heff1
         },
         effectDescription() {
             Heff1 = this.effect();
-            Heff2 = this.effect();
-            return "that are boosting point gain by "+format(Heff1)+"x and ^"+format(Heff2)+"."
+            return "that are boosting point gain by "+format(Heff1)+"x."
         },
     color: "#4BDC13",
     requires: new Decimal(2000), // Can be a function that takes requirement increases into account
