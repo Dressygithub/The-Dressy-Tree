@@ -20,7 +20,7 @@ addLayer("A", {
             return "that are boosting point gain base by +"+format(Aeff)
         },
     color: "#4BDC13",
-    requires: new Decimal(), // Can be a function that takes requirement increases into account
+    requires: new Decimal(2500), // Can be a function that takes requirement increases into account
     resource: "Addition", // Name of prestige currency
     baseResource: "Money", // Name of resource prestige is based on
     baseAmount() {return player.M.points}, // Get the current amount of baseResource
