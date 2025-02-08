@@ -45,11 +45,11 @@ addLayer("Ma", {
             done() { return player.Ma.points.gte(1) }
         },
         2: {
-            requirementDescription: "2 Mathematicians",
+            requirementDescription: "3 Mathematicians",
             effectDescription: "Unlock multiplication",
             done() { return player.Ma.points.gte(2) }
         },
-        2: {
+        3: {
             requirementDescription: "3 Mathematicians",
             effectDescription: "Unlock power",
             done() { return player.Ma.points.gte(3) }

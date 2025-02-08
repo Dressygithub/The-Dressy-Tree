@@ -1,5 +1,5 @@
-addLayer("Multiply", {
-    name: "Mu", // This is optional, only used in a few places, If absent it just uses the layer id.
+addLayer("Mu", {
+    name: "Multiplication", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "*", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 1, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
@@ -10,7 +10,7 @@ addLayer("Multiply", {
         let visible = false
         if (hasMilestone('Ma',2) || player.Mu.unlocked) visible = true
        return visible
-    },  
+    },
     effect() {
         Mueff = player[this.layer].points.add(1).pow(0.5)
         return Mueff
