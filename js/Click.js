@@ -33,7 +33,7 @@ addLayer("C", {
             description: "Most creative upgrade name ever.",
             cost: new Decimal(1),
             effect() {
-                return clicky + 1
+                return clicky = new Decimal(2)
             },
         },
     }
