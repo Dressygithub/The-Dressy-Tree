@@ -5,7 +5,6 @@ addLayer("C", {
     startData() { return {
         unlocked: true,
                 points: new Decimal(0),
-                clicky: new Decimal(1),
     }},
     layerShown(){
         let visible = false
@@ -34,7 +33,7 @@ addLayer("C", {
             description: "Most creative upgrade name ever.",
             cost: new Decimal(1),
             effect() {
-                return clicky = 2 
+                return clicky.add(1)
             },
         },
     }
