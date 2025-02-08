@@ -5,6 +5,7 @@ addLayer("C", {
     startData() { return {
         unlocked: true,
                 points: new Decimal(0),
+                clicky: new Decimal(1),
     }},
     layerShown(){
         let visible = false
@@ -26,6 +27,7 @@ addLayer("C", {
             onClick() {return addPoints('C',clicky)}
         },
     },
+    
     upgrades: {
         11: {
             title: "The first click upgrade",
