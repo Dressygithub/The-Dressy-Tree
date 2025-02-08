@@ -13,7 +13,7 @@ addLayer("Multiply", {
     },  
     effect() {
         Mueff = player[this.layer].points.add(1).pow(0.5)
-        return Aeff
+        return Mueff
         },
         effectDescription() {
             Mueff = this.effect();

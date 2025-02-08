@@ -12,8 +12,8 @@ addLayer("P", {
        return visible
     }, 
     effect() {
-        Aeff = player[this.layer].points.add(1).pow(0.1)
-        return Aeff
+        Peff = player[this.layer].points.add(1).pow(0.1)
+        return Peff
         },
         effectDescription() {
             Aeff = this.effect();
