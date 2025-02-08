@@ -15,7 +15,7 @@ addLayer("C", {
     requires: new Decimal(0), // Can be a function that takes requirement increases into account
     resource: "Click", // Name of prestige currency
     type: "none", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    row: 0, // Row the layer is in on the tree (0 is the first row)
+    row: "side", // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "t", description: "t: Reset for prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ], 
