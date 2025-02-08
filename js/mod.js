@@ -73,7 +73,6 @@ function getPointGen() {
 	if (hasUpgrade('S', 33)) gain = gain.times(upgradeEffect('S', 33))
 	if (hasMilestone('H', 1)) gain = gain.pow(1.1)
 	if (layers.Ma.effect().gte(1)) gain = gain.times(layers.Ma.effect())
-	if (layers.Mu.effect().gte(1)) gain = gain.times(layers.Mu.effect())
 	return gain
 }
 
