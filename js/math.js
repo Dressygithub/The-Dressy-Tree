@@ -41,18 +41,8 @@ addLayer("Ma", {
     ], milestones: {
         1: {
             requirementDescription: "1 Mathematician",
-            effectDescription: "Unlock addition",
+            effectDescription: "",
             done() { return player.Ma.points.gte(1) }
-        },
-        2: {
-            requirementDescription: "3 Mathematicians",
-            effectDescription: "Unlock multiplication",
-            done() { return player.Ma.points.gte(2) }
-        },
-        3: {
-            requirementDescription: "3 Mathematicians",
-            effectDescription: "Unlock power",
-            done() { return player.Ma.points.gte(3) }
         },
     }
 })
