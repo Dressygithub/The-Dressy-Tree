@@ -2,7 +2,7 @@ let modInfo = {
 	name: "The Dressy Tree",
 	author: "Dressyapper",
 	pointsName: "Points",
-	modFiles: ["DressyLayer.js", "tree.js", "components.js","achievements.js","Super.js","Hyper.js","Click.js","money.js","math.js","Addition.js","Multiplication.js","Power.js"],
+	modFiles: ["DressyLayer.js", "tree.js", "components.js","achievements.js","Super.js","Hyper.js","Click.js","money.js","math.js"],
 
 	discordName: "",
 	discordLink: "",
@@ -39,7 +39,7 @@ function canGenPoints(){
 }
 
 function getPointBase(){
-	let gain = new Decimal(0)
+	let gain = new Decimal(1)
 	if (layers.A.effect().gte(1)) gain = gain.add(layers.A.effect())
 	return gain
 }
