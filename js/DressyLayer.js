@@ -56,6 +56,7 @@ addLayer("D", {
                 player[this.layer].points = player[this.layer].points.sub(this.cost())
                 setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
             },
+            unlocked() { return hasMilestone('M',1)}
         },
     },
     upgrades: { 

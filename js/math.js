@@ -41,7 +41,7 @@ addLayer("Ma", {
     ], milestones: {
         1: {
             requirementDescription: "1 Mathematician",
-            effectDescription: "",
+            effectDescription: "Unlock a dressy point buyable",
             done() { return player.Ma.points.gte(1) }
         },
     }
