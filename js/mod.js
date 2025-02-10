@@ -28,6 +28,7 @@ let winText = `Congratulations! You have reached the end and beaten this game, b
 var doNotCallTheseFunctionsEveryTick = ["blowUpEverything"]
 let clicky = new Decimal(1)
 let Ma_effect = new Decimal(0.1)
+let moneygain = new Decimal(0)
 
 function getStartPoints(){
     return new Decimal(modInfo.initialStartPoints)
