@@ -26,9 +26,9 @@ let winText = `Congratulations! You have reached the end and beaten this game, b
 // If you add new functions anywhere inside of a layer, and those functions have an effect when called, add them here.
 // (The ones here are examples, all official functions are already taken care of)
 var doNotCallTheseFunctionsEveryTick = ["blowUpEverything"]
-let clicky = new Decimal(1)
-let Ma_effect = new Decimal(0.1)
-let moneygain = new Decimal(0)
+var clicky = new Decimal(1)
+var Ma_effect = new Decimal(0.1)
+var moneygain = new Decimal(0)
 
 function getStartPoints(){
     return new Decimal(modInfo.initialStartPoints)
