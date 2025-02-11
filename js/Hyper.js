@@ -52,15 +52,10 @@ addLayer("H", {
         3: {
             requirementDescription: "10 Hyper points",
             effectDescription: "Unlock a challenge",
-            done() { return player.H.points.gte(10) }
-        },
-        4: {
-            requirementDescription: "10 Hyper points",
-            effectDescription: "Unlock a challenge",
             done() { return player.H.points.gte(10) },
             unlocked() {return hasChallenge("H",11)},
         },
-        5: {
+        4: {
             requirementDescription: "100 Hyper points",
             effectDescription: "Unlock 3 dressy upgrades",
             done() { return player.H.points.gte(100) && hasChallenge("H",11)  },
