@@ -71,6 +71,7 @@ addLayer("H", {
             name: "Automation",
             challengeDescription: "Automation of layers is a good thing, right?",
             rewardDescription: "Autobuy super upgrades and more milestones",
+            goalDescription: "1000 super",
             canComplete: function() {return player.S.points.gte(1000)},
             unlocked() {return hasMilestone("H",3)},
         },
