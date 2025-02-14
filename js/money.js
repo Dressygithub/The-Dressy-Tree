@@ -41,7 +41,7 @@ addLayer("M", {
             description: "Generate 1 money per second",
             cost: new Decimal(0),
             onPurchase() {
-                layer.M.moneygain = new Decimal(1)
+                moneygain = 1
             },
         },
         12: {
