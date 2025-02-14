@@ -34,7 +34,14 @@ addLayer("M", {
     row: 3, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "t", description: "t: Reset for prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
-    ],
+    ], clickables:
+    {
+        11: {
+            title: "fix money earn",
+            canClick() {return true},
+            onClick() {return moneygain = 1},
+        },
+    },
     upgrades: { 
         11: {
             title: "Lemonade stand",
