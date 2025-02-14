@@ -32,6 +32,7 @@ addLayer("D", {
     exponent: 0.5, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+        mult = mult.times(DBeff)
         if (hasUpgrade('D', 32)) mult = mult.times(300)
         if (layers.H.effect().gte(1)) mult = mult.times(layers.H.effect())
         if (hasMilestone('H', 1)) mult = mult.times(getBuyableAmount('D', '11')).add(1)
@@ -50,13 +51,14 @@ addLayer("D", {
         11: {
             title: "<br>Point booster<br>",
             cost(x) { return new Decimal(1).mul(x) },
-            display() { return "Boosts dressy point gain<br>" + "Cost:" + format(tmp[this.layer].buyables[this.id].cost) + "<br>Currently:" + format(tmp[this.layer].buyables[this.id].effect) },
+            display() { return "Boosts dressy point gain<br>" + "Cost: " + format(tmp[this.layer].buyables[this.id].cost) + "<br>Currently: " + format(tmp[this.layer].buyables[this.id].effect)+"x" },
             canAfford() { return player[this.layer].points.gte(this.cost()) },
             buy() {
                 player[this.layer].points = player[this.layer].points.sub(this.cost())
                 setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
             },
-            unlocked() { return hasMilestone('M',1)}
+            effect() {let DBeff = getBuyableAmount('D',11)},
+            unlocked() {return hasMilestone('Ma',1)}
         },
     },
     upgrades: { 

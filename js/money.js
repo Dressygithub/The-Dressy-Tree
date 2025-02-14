@@ -39,7 +39,7 @@ addLayer("M", {
         11: {
             title: "fix money earn",
             canClick() {return true},
-            onClick() {return moneygain = 1},
+            onClick() {return },
         },
     },
     upgrades: { 
