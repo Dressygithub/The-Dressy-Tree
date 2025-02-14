@@ -57,7 +57,7 @@ addLayer("D", {
                 player[this.layer].points = player[this.layer].points.sub(this.cost())
                 setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
             },
-            effect() {let DBeff = getBuyableAmount('D',11)},
+            effect() {return getBuyableAmount('D',11)},
             unlocked() {return hasMilestone('Ma',1)}
         },
     },
