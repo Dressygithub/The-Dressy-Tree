@@ -48,31 +48,49 @@ addLayer("M", {
             title: "Marketing stratergy",
             description: "Generate 2 money per second",
             cost: new Decimal(15),
+            onPurchase() {
+                moneygain = 2
+            },
         },
         13: {
             title: "Marketing team",
             description: "Generate 5 money per second",
             cost: new Decimal(45),
+            onPurchase() {
+                moneygain = 5
+            },
         },
         14: {
             title: "More drinks",
             description: "Just go to the store to get more drinks anyways generate 10 money per second",
             cost: new Decimal(120),
+            onPurchase() {
+                moneygain = 10
+            },
         },
         15: {
             title: "Expand stand",
             description: "Generate 25 money per second",
             cost: new Decimal(400),
+            onPurchase() {
+                moneygain = 25
+            },
         },
         16: {
             title: "Building permit",
             description: "Generate 35 money because you made a store",
             cost: new Decimal(750),
+            onPurchase() {
+                moneygain = 35
+            },
         },
         21: {
             title: "No more lemonade",
             description: "You now sell other things and generate 50 money.",
             cost: new Decimal(1250),
+            onPurchase() {
+                moneygain = 50
+            },
         },
         22: {
             title: "Hire mathematicians",
