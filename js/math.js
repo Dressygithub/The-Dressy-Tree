@@ -44,5 +44,11 @@ addLayer("Ma", {
             effectDescription: "Unlock a dressy point buyable",
             done() { return player.Ma.points.gte(1) }
         },
+        2: {
+            requirementDescription: "2 Mathematician",
+            effectDescription: "test",
+            done() { return player.Ma.points.gte(1) },
+            oncomplete() { return Ma_effect = 0.2 }
+        },
     }
 })
