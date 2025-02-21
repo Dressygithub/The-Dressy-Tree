@@ -17,10 +17,11 @@ addLayer("Mi", {
     //baseResource: "", // Name of resource prestige is based on
     //baseAmount() {return player.points}, // Get the current amount of baseResource
     //type: "normal", // normal: cost to gain currency depends on amount ganed. static: cost depends on how much you already have
-    exponent: 1.72, // Prestige currency exponent
+    //exponent: 1.72, // Prestige currency exponent
     //passiveGeneration() {
         //return 1
     //},
+    row: "side", // Row the layer is in on the tree (0 is the first row)
     gainMult() {
         let mult = new Decimal(1)
         return mult
@@ -32,7 +33,7 @@ addLayer("Mi", {
         11: {
             title: "+"+format(clicky)+" points",
             canClick() {return true},
-            onClick() {return addPoints('D',1e3)}
+            onClick() {return addPoints('D',new Decimal(clicky))},
         },
     }
 })
