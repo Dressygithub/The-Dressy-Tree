@@ -45,10 +45,21 @@ addLayer("Ma", {
             done() { return player.Ma.points.gte(1) }
         },
         2: {
-            requirementDescription: "2 Mathematician",
-            effectDescription: "test",
-            done() { return player.Ma.points.gte(1) },
+            requirementDescription: "2 Mathematicians",
+            effectDescription: "Layer effect is better",
+            done() { return player.Ma.points.gte(2) },
             oncomplete() { return Ma_effect = 0.2 }
+        },
+        3: {
+            requirementDescription: "3 Mathematicians",
+            effectDescription: "Layer effect is much more better",
+            done() { return player.Ma.points.gte(3) },
+            oncomplete() { return Ma_effect = 0.5 }
+        },
+        4: {
+            requirementDescription: "5 Mathematicians",
+            effectDescription: "Unlock a bunch of upgrades",
+            done() { return player.Ma.points.gte(5) },
         },
     }
 })

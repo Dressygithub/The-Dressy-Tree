@@ -170,4 +170,19 @@ addLayer("D", {
             unlocked() {return hasUpgrade("D",33)},
         }
         },
+        tabFormat: {
+            "Dressy layer": {
+                content: [
+                    "main-display",
+                    "blank",
+                    "prestige-button",
+                    "blank",
+                    "blank",
+                    "upgrades",
+                    "blank",
+                    "blank",
+                    ["main"],
+                ],
+            },
+        }
 })
