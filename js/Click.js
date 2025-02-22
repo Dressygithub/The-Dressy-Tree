@@ -35,7 +35,7 @@ addLayer("Mi", {
         11: {
             title: "+"+format(clicky.times(clickmult).pow(clickpow))+" points",
             canClick() {return true},
-            onClick() {return addPoints('Mi',new Decimal(clicky.times(clickmult).pow(clickpow)))},
+            onClick() {return addPoints('Mi',new Decimal(clicky).times(clickmult).pow(clickpow))},
         },
     },
     upgrades: {
