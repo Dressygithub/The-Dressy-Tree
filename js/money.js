@@ -5,7 +5,7 @@ addLayer("M", {
     startData() { return {
         unlocked: true,
                 points: new Decimal(0),
-                moneygain: new Decimal(0)
+                moneygain: new Decimal(0),
     }},
     layerShown(){
         let visible = false
@@ -21,8 +21,8 @@ addLayer("M", {
     resource: "Money", // Name of prestige currency
     baseResource: "Hyper", // Name of resource prestige is based on
     baseAmount() {return player.H.points}, // Get the current amount of baseResourc
-    type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent: 0.0000000000000000000001,
+    //type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    //exponent: 0.0000000000000000000001,
     requires: new Decimal(150),
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(2)
@@ -39,7 +39,7 @@ addLayer("M", {
         11: {
             title: "fix money earn",
             canClick() {return true},
-            onClick() {return },
+            onClick() {return (hasUpgrade('M',11))  = 1},
         },
     },
     upgrades: { 
