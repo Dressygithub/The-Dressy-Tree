@@ -48,7 +48,7 @@ addLayer("Mi", {
             },
         },
         12: {
-            title: "Clicky upgrade",
+            title: "Clicky upgrade 2",
             description: "3 click",
             cost: new Decimal(10),
             onPurchase() {
