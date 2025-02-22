@@ -5,6 +5,7 @@ addLayer("Mi", {
         unlocked: true,
 		points: new Decimal(0),
         clicky: new Decimal(1),
+        clickformat: new Decimal(clicky),
         clickpow: new Decimal(1),
         clickmult: new Decimal(1),
     }},
@@ -33,7 +34,7 @@ addLayer("Mi", {
     },
     clickables: {
         11: {
-            title: "+"+format(clicky.times(clickmult).pow(clickpow))+" points",
+            title: "+"+format(new Decimal(clickformat))+" points",
             canClick() {return true},
             onClick() {return addPoints('Mi',new Decimal(clicky).times(clickmult).pow(clickpow))},
         },
