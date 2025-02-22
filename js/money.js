@@ -13,7 +13,13 @@ addLayer("M", {
        return visible
      },
     passiveGeneration() {
-        if (hasUpgrade('M', 11)) return 
+        if (hasUpgrade('M', 21)) return 50
+        if (hasUpgrade('M', 16)) return 35
+        if (hasUpgrade('M', 15)) return 25
+        if (hasUpgrade('M', 14)) return 10
+        if (hasUpgrade('M', 13)) return 5
+        if (hasUpgrade('M', 12)) return 2
+        if (hasUpgrade('M', 11)) return 1
         return 0
     },
     color: "#048c1b",
