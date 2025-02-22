@@ -39,7 +39,7 @@ addLayer("M", {
         11: {
             title: "Sell your hyper<br> <h3>2 hyper = 1 money</h3>",
             canClick() {return true},
-            onClick() {return ()},
+            onClick() {return (addPoints(''))},
         },
     },
     upgrades: { 
