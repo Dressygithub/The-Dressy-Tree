@@ -36,7 +36,7 @@ addLayer("Mi", {
         11: {
             title: "+"+format(new Decimal(clickformat))+" points",
             canClick() {return true},
-            onClick() {return addPoints('Mi',new Decimal(clicky).times(clickmult).pow(clickpow))},
+            onClick() {return Math.random()},
         },
     },
     upgrades: {
@@ -45,7 +45,7 @@ addLayer("Mi", {
             description: "2 click",
             cost: new Decimal(10),
             onPurchase() {
-                clicky = 2
+                clicky == 2
             },
         },
         12: {
@@ -53,7 +53,7 @@ addLayer("Mi", {
             description: "3 click",
             cost: new Decimal(10),
             onPurchase() {
-                clicky = 3
+                clicky == 3
             },
         },
     }
