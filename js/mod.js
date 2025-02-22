@@ -37,6 +37,11 @@ function getStartPoints(){
     return new Decimal(modInfo.initialStartPoints)
 }
 
+function playaudio(audioname){
+	var audio = new Audio(audioname);
+	return audio
+}
+
 // Determines if it should show points/sec
 function canGenPoints(){
 	return true

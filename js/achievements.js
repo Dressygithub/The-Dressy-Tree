@@ -31,7 +31,7 @@ addLayer("De", {
                 "clickables",
                 "blank",
                 "blank",
-                ["main"],
+                ["main","clickables"],
             ],
         },
     clickables: {
