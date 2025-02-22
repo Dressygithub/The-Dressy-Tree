@@ -37,9 +37,9 @@ addLayer("M", {
     ], clickables:
     {
         11: {
-            title: "sell hyper<br> 2 hyper = 1 money",
+            title: "Sell your hyper<br> <h3>2 hyper = 1 money</h3>",
             canClick() {return true},
-            onClick() {return },
+            onClick() {return ()},
         },
     },
     upgrades: { 
@@ -57,9 +57,6 @@ addLayer("M", {
             title: "Marketing team",
             description: "Generate 5 money per second",
             cost: new Decimal(45),
-            effect() {
-                moneygain = 5
-            },
         },
         14: {
             title: "More drinks",
