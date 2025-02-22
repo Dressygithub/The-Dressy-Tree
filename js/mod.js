@@ -27,6 +27,8 @@ let winText = `Congratulations! You have reached the end and beaten this game, b
 // (The ones here are examples, all official functions are already taken care of)
 var doNotCallTheseFunctionsEveryTick = ["blowUpEverything"]
 var clicky = new Decimal(1)
+var clickmult = new Decimal(1)
+var clickpow = new Decimal(1)
 var Ma_effect = new Decimal(0.1)
 var moneygain = new Decimal(0)
 
