@@ -13,7 +13,7 @@ addLayer("M", {
        return visible
      },
     passiveGeneration() {
-        if (hasUpgrade('M', 11)) return moneygain
+        if (hasUpgrade('M', 11)) return 
         return 0
     },
     color: "#048c1b",
@@ -37,9 +37,9 @@ addLayer("M", {
     ], clickables:
     {
         11: {
-            title: "fix money earn",
+            title: "sell hyper<br> 2 hyper = 1 money",
             canClick() {return true},
-            onClick() {return (hasUpgrade('M',11))  = 1},
+            onClick() {return },
         },
     },
     upgrades: { 
@@ -47,17 +47,11 @@ addLayer("M", {
             title: "Lemonade stand",
             description: "Generate 1 money per second",
             cost: new Decimal(0),
-            effect() {
-                moneygain = 1
-            },
         },
         12: {
             title: "Marketing stratergy",
             description: "Generate 2 money per second",
             cost: new Decimal(15),
-            effect() {
-                moneygain = 2
-            },
         },
         13: {
             title: "Marketing team",
@@ -71,33 +65,21 @@ addLayer("M", {
             title: "More drinks",
             description: "Just go to the store to get more drinks anyways generate 10 money per second",
             cost: new Decimal(120),
-            effect() {
-                moneygain = 10
-            },
         },
         15: {
             title: "Expand stand",
             description: "Generate 25 money per second",
             cost: new Decimal(400),
-            effect() {
-                moneygain = 25
-            },
         },
         16: {
             title: "Building permit",
             description: "Generate 35 money because you made a store",
             cost: new Decimal(750),
-            effect() {
-                moneygain = 35
-            },
         },
         21: {
             title: "No more lemonade",
             description: "You now sell other things and generate 50 money.",
-            cost: new Decimal(1250),
-            effect() {
-                moneygain = 50
-            },
+            cost: new Decimal(1250)
         },
         22: {
             title: "Hire mathematicians",
