@@ -43,7 +43,7 @@ addLayer("M", {
     ], clickables:
     {
         11: {
-            title: "Sell your hyper<br> <h3>2 hyper = 1 money</h3>",
+            title: "Sell your hyper<br> <h6>2 hyper = 1 money</h6>",
             canClick() {return true},
             onClick() {return (addPoints(''))},
         },
