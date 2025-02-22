@@ -97,5 +97,4 @@ addLayer("De", {
             onClick() {return addPoints('Ma',player.Ma.points.sub(player.Ma.points.times(2)))}
         },    
     },
-}
 })
