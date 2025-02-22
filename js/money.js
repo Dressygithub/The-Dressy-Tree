@@ -47,7 +47,7 @@ addLayer("M", {
             title: "Lemonade stand",
             description: "Generate 1 money per second",
             cost: new Decimal(0),
-            onPurchase() {
+            hasUpgrade('M',11) {
                 moneygain = 1
             },
         },
