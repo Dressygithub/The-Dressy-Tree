@@ -4,7 +4,9 @@ addLayer("Mi", {
     startData() { return {
         unlocked: true,
 		points: new Decimal(0),
-        clicky: new Decimal(1)
+        clicky: new Decimal(1),
+        clickpow: new Decimal(1),
+        clickmult: new Decimal(1),
     }},
 
     layerShown(){
@@ -31,19 +33,27 @@ addLayer("Mi", {
     },
     clickables: {
         11: {
-            title: "+"+format(clicky)+" points",
+            title: "+"+format(clicky.pow(clickpow))+" points",
             canClick() {return true},
-            onClick() {return addPoints('D',new Decimal(clicky))},
+            onClick() {return addPoints('D',new Decimal(clicky.pow(clickpow)))},
         },
     },
     upgrades: {
         11: {
             title: "Clicky upgrade",
-            description: "2x click",
+            description: "2 click",
             cost: new Decimal(10),
             onPurchase() {
-                clicky = 1
+                clicky = 2
             },
-        }
+        },
+        12: {
+            title: "Clicky upgrade",
+            description: "3 click",
+            cost: new Decimal(10),
+            onPurchase() {
+                clicky = 3
+            },
+        },
     }
 })
