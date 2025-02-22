@@ -13,7 +13,7 @@ addLayer("M", {
        return visible
      },
     passiveGeneration() {
-        if (hasUpgrade('M', 11)) return new Decimal(moneygain)
+        if (hasUpgrade('M', 11)) return moneygain
         return 0
     },
     color: "#048c1b",
