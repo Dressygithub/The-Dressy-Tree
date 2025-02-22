@@ -9,7 +9,6 @@ addLayer("Mi", {
         clickpow: new Decimal(1),
         clickmult: new Decimal(1),
     }},
-
     layerShown(){
         let visible = true
        return visible
@@ -36,25 +35,8 @@ addLayer("Mi", {
         11: {
             title: "+"+format(new Decimal(clickformat))+" points",
             canClick() {return true},
-            onClick() {return addPoints('Mi',new Decimal(clicky))},
+            onClick() {return addPoints('Mi',new Decimal(player.Mi.clicky))},
         },
     },
-    upgrades: {
-        11: {
-            title: "Clicky upgrade",
-            description: "2 click",
-            cost: new Decimal(10),
-            onPurchase() {
-                clicky == 2
-            },
-        },
-        12: {
-            title: "Clicky upgrade 2",
-            description: "3 click",
-            cost: new Decimal(10),
-            onPurchase() {
-                clicky == 3
-            },
-        },
-    }
+    
 })
