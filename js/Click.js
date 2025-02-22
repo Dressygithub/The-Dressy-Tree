@@ -35,5 +35,11 @@ addLayer("Mi", {
             canClick() {return true},
             onClick() {return addPoints('D',new Decimal(clicky))},
         },
+    },
+    upgrades: {
+        11: {
+            title: "hi"
+            
+        }
     }
 })
