@@ -20,20 +20,6 @@ addLayer("De", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
-    tabFormat: {
-        "Points": {
-            content: [
-                "main-display",
-                "blank",
-                "prestige-button",
-                "blank",
-                "blank",
-                "clickables",
-                "blank",
-                "blank",
-                ["main","clickables"],
-            ],
-        },
     clickables: {
         11: {
             title: "+1000 dressy points",
