@@ -9,7 +9,7 @@ addLayer("M", {
     }},
     layerShown(){
         let visible = false
-        if (hasChallenge('D', 11) || player.H.unlocked) visible = true
+        if (hasChallenge('D', 11) || player.M.unlocked) visible = true
        return visible
      },
     passiveGeneration() {
