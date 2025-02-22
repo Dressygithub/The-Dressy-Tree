@@ -36,7 +36,7 @@ addLayer("Mi", {
         11: {
             title: "+"+format(new Decimal(clickformat))+" points",
             canClick() {return true},
-            onClick() {return Math.random()},
+            onClick() {return addPoints('Mi',new Decimal(clicky))},
         },
     },
     upgrades: {
