@@ -4,7 +4,7 @@ addLayer("Mi", {
     startData() { return {
         unlocked: true,
 		points: new Decimal(0),
-        clicky: new Decimal(1)
+        clicky: new Decimal(1),
     }},
 
     layerShown(){
@@ -33,7 +33,23 @@ addLayer("Mi", {
         11: {
             title: "+"+format(clicky)+" points",
             canClick() {return true},
-            onClick() {return addPoints('D',new Decimal(clicky))},
+            onClick() { return addPoints('Mi',new Decimal(clicky)) },
         },
-    }
+    },
+    upgrades: { 
+        11: {
+            title: "Clicky upgrade",
+            description: "2x click",
+            cost: new Decimal(1),
+            effect() {return clicky = 2},
+        },
+    },
+    milestones: {  
+        1: {
+        requirementDescription: "3 Mathematicians",
+        effectDescription: "Layer effect is much more better",
+        done() { return player.Mi.points.gte(3) },
+        oncomplete() { return clicky = 2 }
+    },
+}
 })

@@ -5,15 +5,22 @@ addLayer("M", {
     startData() { return {
         unlocked: true,
                 points: new Decimal(0),
-                moneygain: new Decimal(0)
+                moneygain: new Decimal(0),
+                selldisplay: new Decimal(new Decimal(player.H.points).div(2))
     }},
     layerShown(){
         let visible = false
-        if (hasChallenge('D', 11) || player.H.unlocked) visible = true
+        if (hasChallenge('D', 11) || player.M.unlocked) visible = true
        return visible
      },
     passiveGeneration() {
-        if (hasUpgrade('M', 11)) return new Decimal(moneygain)
+        if (hasUpgrade('M', 21)) return 50
+        if (hasUpgrade('M', 16)) return 35
+        if (hasUpgrade('M', 15)) return 25
+        if (hasUpgrade('M', 14)) return 10
+        if (hasUpgrade('M', 13)) return 5
+        if (hasUpgrade('M', 12)) return 2
+        if (hasUpgrade('M', 11)) return 1
         return 0
     },
     color: "#048c1b",
@@ -37,9 +44,12 @@ addLayer("M", {
     ], clickables:
     {
         11: {
-            title: "fix money earn",
+            title: "Sell all your hyper<br> <h4>2 hyper = 1 money</h4>",
             canClick() {return true},
-            onClick() {return },
+            onClick() {return (addPoints('M',new Decimal(player.H.points).div(2)))
+                (addPoints('H',new Decimal(player.H.points).sub(new Decimal(player.H.points).times(2))))
+                (playaudio('sound.mp3'))
+            },
         },
     },
     upgrades: { 
@@ -47,63 +57,41 @@ addLayer("M", {
             title: "Lemonade stand",
             description: "Generate 1 money per second",
             cost: new Decimal(0),
-            onPurchase() {
-                moneygain = 1
-            },
         },
         12: {
             title: "Marketing stratergy",
             description: "Generate 2 money per second",
             cost: new Decimal(15),
-            onPurchase() {
-                moneygain = 2
-            },
         },
         13: {
             title: "Marketing team",
             description: "Generate 5 money per second",
             cost: new Decimal(45),
-            onPurchase() {
-                moneygain = 5
-            },
         },
         14: {
             title: "More drinks",
             description: "Just go to the store to get more drinks anyways generate 10 money per second",
             cost: new Decimal(120),
-            onPurchase() {
-                moneygain = 10
-            },
         },
         15: {
             title: "Expand stand",
             description: "Generate 25 money per second",
             cost: new Decimal(400),
-            onPurchase() {
-                moneygain = 25
-            },
         },
         16: {
             title: "Building permit",
             description: "Generate 35 money because you made a store",
             cost: new Decimal(750),
-            onPurchase() {
-                moneygain = 35
-            },
         },
         21: {
             title: "No more lemonade",
             description: "You now sell other things and generate 50 money.",
-            cost: new Decimal(1250),
-            onPurchase() {
-                moneygain = 50
-            },
+            cost: new Decimal(1250)
         },
         22: {
             title: "Hire mathematicians",
             description: "Hire some mathematicians",
             cost: new Decimal(1250),
         },
-
     }
 })
