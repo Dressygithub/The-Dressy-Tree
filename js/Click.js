@@ -54,8 +54,5 @@ addLayer("Mi", {
         done() { return player.Mi.points.gte(3) },
         oncomplete() { return clicky = 2 }
     },
-}
-            onClick() {return addPoints('Mi',new Decimal(player.Mi.clicky))},
-        },
-    },
+    }
 })
