@@ -44,7 +44,7 @@ addLayer("Mi", {
             title: "Clicky upgrade",
             description: "2x click",
             cost: new Decimal(1),
-            effect() {return clicky = 2},
+            oncomplete() {return clicky = 2},
         },
     },
     milestones: {  
