@@ -32,6 +32,7 @@ var clickmult = new Decimal(1)
 var clickpow = new Decimal(1)
 var Ma_effect = new Decimal(0.1)
 var moneygain = new Decimal(0)
+var selldisplay = new Decimal(new Decimal(player.H.points).div(2))
 
 function getStartPoints(){
     return new Decimal(modInfo.initialStartPoints)
