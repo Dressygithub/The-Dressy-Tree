@@ -48,13 +48,17 @@ addLayer("Ma", {
             requirementDescription: "2 Mathematicians",
             effectDescription: "Layer effect is better",
             done() { return player.Ma.points.gte(2) },
-            oncomplete() { return Ma_effect = 0.2 }
+            oncomplete() { 
+                return Ma_effect = 0.2
+            }
         },
         3: {
             requirementDescription: "3 Mathematicians",
             effectDescription: "Layer effect is much more better",
             done() { return player.Ma.points.gte(3) },
-            oncomplete() { return Ma_effect = 0.5 }
+            oncomplete() { 
+                return Ma_effect = 0.5
+            }
         },
         4: {
             requirementDescription: "5 Mathematicians",

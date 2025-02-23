@@ -5,8 +5,11 @@ addLayer("Mi", {
         unlocked: true,
 		points: new Decimal(0),
         clicky: new Decimal(1),
+        clickformat: new Decimal(clicky),
+        clickpow: new Decimal(1),
+        clickmult: new Decimal(1),
+        clicky: new Decimal(1),
     }},
-
     layerShown(){
         let visible = true
        return visible
@@ -31,7 +34,7 @@ addLayer("Mi", {
     },
     clickables: {
         11: {
-            title: "+"+format(clicky)+" points",
+            title: "+"+format(new Decimal(clickformat))+" points",
             canClick() {return true},
             onClick() { return addPoints('Mi',new Decimal(clicky)) },
         },
@@ -52,4 +55,7 @@ addLayer("Mi", {
         oncomplete() { return clicky = 2 }
     },
 }
+            onClick() {return addPoints('Mi',new Decimal(player.Mi.clicky))},
+        },
+    },
 })

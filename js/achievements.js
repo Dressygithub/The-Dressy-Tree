@@ -21,6 +21,13 @@ addLayer("De", {
         return new Decimal(1)
     },
     clickables: {
+        other: {
+            11: {
+            title: "Custom",
+            canClick() {return true},
+            onClick() {return addPoints(prompt,prompt())}
+        },
+    },
         11: {
             title: "+1000 dressy points",
             canClick() {return true},
@@ -95,7 +102,6 @@ addLayer("De", {
             title: "Reset MA",
             canClick() {return true},
             onClick() {return addPoints('Ma',player.Ma.points.sub(player.Ma.points.times(2)))}
-        },
+        },    
     },
-    
 })

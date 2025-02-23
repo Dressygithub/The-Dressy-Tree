@@ -155,7 +155,13 @@ addLayer("D", {
             unlocked() {return hasUpgrade("D",31)},
         },
         33: {
-            title: "One for each layer",
+            title: "One for each layer(currently)",
+            description: "Unlock a challenge",
+            cost: new Decimal(1e14),
+            unlocked() {return hasUpgrade("D",32)},
+        },
+        34: {
+            title: "One for each layer(currently)",
             description: "Unlock a challenge",
             cost: new Decimal(1e14),
             unlocked() {return hasUpgrade("D",32)},
