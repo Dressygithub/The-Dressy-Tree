@@ -46,7 +46,7 @@ addLayer("M", {
             title: "Sell all your hyper<br> <h4>2 hyper = 1 money</h4>",
             canClick() {return true},
             onClick() {return (addPoints('M',new Decimal(player.H.points).div(2)))
-                (addPoints('H',new Decimal(player.H.points).sub(new Decimal(player.H.points).times(2))))
+                (addPoints('H', new Decimal(player.H.points).sub(new Decimal(player.H.points).times(2))))
                 (playaudio('sound.mp3'))
             },
         },
