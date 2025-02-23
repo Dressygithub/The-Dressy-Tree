@@ -3,13 +3,13 @@ addLayer("M", {
     symbol: "M", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 2, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
-        unlocked: true,
+        unlocked: false,
                 points: new Decimal(0),
                 moneygain: new Decimal(0),
     }},
     layerShown(){
         let visible = false
-        if (hasChallenge('D', 11) || player.M.unlocked) visible = true
+        if (hasChallenge('D', 11) || player.H.unlocked) visible = true
        return visible
      },
     passiveGeneration() {
