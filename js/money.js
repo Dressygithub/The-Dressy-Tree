@@ -6,7 +6,6 @@ addLayer("M", {
         unlocked: true,
                 points: new Decimal(0),
                 moneygain: new Decimal(0),
-                selldisplay: new Decimal(new Decimal(player.H.points).div(2))
     }},
     layerShown(){
         let visible = false
