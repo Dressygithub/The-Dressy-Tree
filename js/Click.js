@@ -38,5 +38,4 @@ addLayer("Mi", {
             onClick() {return addPoints('Mi',new Decimal(player.Mi.clicky))},
         },
     },
-    
 })
