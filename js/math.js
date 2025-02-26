@@ -20,7 +20,7 @@ addLayer("Ma", {
             Maeff1 = this.effect();
             return "that are boosting point gain by "+format(Maeff)+"x."
         },
-        branches: ["Ma", "A","Mu","P"], 
+        branches: [], 
     color: "#4BDC13",
     requires: new Decimal(2000), // Can be a function that takes requirement increases into account
     resource: "Mathematicians", // Name of prestige currency
