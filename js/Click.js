@@ -44,15 +44,7 @@ addLayer("Mi", {
             title: "Clicky upgrade",
             description: "2x click",
             cost: new Decimal(1),
-            oncomplete() {return clicky = 2},
+            onPurchase() {clicky = 2},
         },
     },
-    milestones: {  
-        1: {
-        requirementDescription: "3 Mathematicians",
-        effectDescription: "Layer effect is much more better",
-        done() { return player.Mi.points.gte(3) },
-        oncomplete() { return clicky = 2 }
-    },
-    }
 })
