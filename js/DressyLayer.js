@@ -89,7 +89,7 @@ addLayer("D", {
         }, 
         15: {
             title: "No more doubling",
-            description: "1.01x",
+            description: "1.01x dressy point gain",
             cost: new Decimal(1),
             unlocked() {return hasUpgrade("D",14)},
 
