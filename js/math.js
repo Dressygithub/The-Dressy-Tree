@@ -5,15 +5,14 @@ addLayer("Ma", {
     startData() { return {
         unlocked: false,
                 points: new Decimal(0),
-                Ma_effect: new Decimal(0.1)
     }},
     layerShown(){
         let visible = false
         if (hasUpgrade('M', 22) || player.Ma.unlocked) visible = true
        return visible
-     }, 
+     },
     effect() {
-        Maeff = player[this.layer].points.add(1).pow(Ma_effect)
+        Maeff = player[this.layer].points.pow(player.Ma.Ma_effect).add(1)
         return Maeff
         },
         effectDescription() {
@@ -42,28 +41,42 @@ addLayer("Ma", {
         1: {
             requirementDescription: "1 Mathematician",
             effectDescription: "Unlock a dressy point buyable",
-            done() { return player.Ma.points.gte(1) }
+            done() { return player.Ma.points.gte(1) },
         },
         2: {
             requirementDescription: "2 Mathematicians",
             effectDescription: "Layer effect is better",
-            done() { return player.Ma.points.gte(2) },
-            oncomplete() { 
-                return Ma_effect = 0.2
-            }
+            done() { return player.Ma.points.gte(2) }
         },
         3: {
             requirementDescription: "3 Mathematicians",
             effectDescription: "Layer effect is much more better",
             done() { return player.Ma.points.gte(3) },
-            oncomplete() { 
-                return Ma_effect = 0.5
-            }
         },
         4: {
             requirementDescription: "5 Mathematicians",
-            effectDescription: "Unlock a bunch of upgrades",
+            effectDescription: "Unlock Mathematician upgrades",
             done() { return player.Ma.points.gte(5) },
         },
+    }, 
+    upgrades: {
+    11: {
+        title: "Buy this to make the effect work",
+        description: "Uh",
+        cost: new Decimal(0),
+        unlocked() {if (hasUpgrade("Ma",11)) return false
+            else return true
+        },
+        effect() {
+            return Maeff
+        },
+        effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+    },
+    12: {
+        title: "Pythagoras",
+        description: "6^2 + 8^2 = 10^2 super gain",
+        cost: new Decimal(2),
+        unlocked() {if (hasMilestone("Ma",4)) return true},
     }
+}
 })

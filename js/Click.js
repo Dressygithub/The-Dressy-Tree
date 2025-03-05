@@ -5,10 +5,10 @@ addLayer("Mi", {
         unlocked: true,
 		points: new Decimal(0),
         clicky: new Decimal(1),
-        clickformat: new Decimal(clicky),
-        clickpow: new Decimal(1),
-        clickmult: new Decimal(1),
-        clicky: new Decimal(1),
+        clickypow: new Decimal(1),
+        clickymult: new Decimal(1),
+        clickyeff1: new Decimal(1),
+
     }},
     layerShown(){
         let visible = true
@@ -34,17 +34,58 @@ addLayer("Mi", {
     },
     clickables: {
         11: {
-            title: "+"+format(new Decimal(clickformat))+" points",
+            title: "Click",
             canClick() {return true},
-            onClick() { return addPoints('Mi',new Decimal(clicky)) },
+            onClick() { return addPoints('Mi',new Decimal(player.Mi.clicky)) },
         },
     },
     upgrades: { 
         11: {
             title: "Clicky upgrade",
             description: "2x click",
-            cost: new Decimal(1),
-            onPurchase() {clicky = 2},
+            cost: new Decimal(10),
+            onPurchase() {
+                player.Mi.clicky = player.Mi.clicky.times(2)
+            },
+        },
+        12: {
+            title: "Clicker upgrade",
+            description: "3x click",
+            cost: new Decimal(40),
+            onPurchase() {
+                player.Mi.clicky = player.Mi.clicky.times(3)
+            },
+            unlocked() { return hasUpgrade('Mi', 11) }
+        },
+        13: {
+            title: "Clicketh upgradeth",
+            description: "2x click",
+            cost: new Decimal(30),
+            onPurchase() {
+                player.Mi.clicky = player.Mi.clicky.times(2)
+            },
+            unlocked() { return hasUpgrade('Mi', 12) }
+        },
+        13: {
+            title: "Clicketh upgradeth",
+            description: "2x click",
+            cost: new Decimal(30),
+            onPurchase() {
+                player.Mi.clicky = player.Mi.clicky.times(2)
+            },
+            unlocked() { return hasUpgrade('Mi', 12) }
+        },
+        14: {
+            title: "Click boost",
+            description: "click boost click",
+            cost: new Decimal(30),
+            effect() {
+                let clickyeff1 = player.Mi.clicky.times(0.5)
+                player.Mi.clicky = player.Mi.clicky.times(clickyeff1)
+                return clickyeff1
+            },
+            effectDisplay() { return format(clickyeff1)+"x" },
+            unlocked() { return hasUpgrade('Mi', 13) }
         },
     },
 })

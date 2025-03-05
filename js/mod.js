@@ -2,6 +2,7 @@ let modInfo = {
 	name: "The Dressy Tree",
 	author: "Dressyapper",
 	pointsName: "Points",
+	id : "dressyapper",
 	modFiles: ["DressyLayer.js", "tree.js", "components.js","achievements.js","Super.js","Hyper.js","Click.js","money.js","math.js"],
 
 	discordName: "",
@@ -23,15 +24,11 @@ let changelog = `<h1>Changelog:</h1><br>
 
 let winText = `Congratulations! You have reached the end and beaten this game, but for now...`
 
+
 // If you add new functions anywhere inside of a layer, and those functions have an effect when called, add them here.
 // (The ones here are examples, all official functions are already taken care of)
 var doNotCallTheseFunctionsEveryTick = ["blowUpEverything"]
-let clicky = new Decimal(1)
-let clickformat = new Decimal(1)
-let clickmult = new Decimal(1)
-let clickpow = new Decimal(1)
-let Ma_effect = new Decimal(0.1)
-let moneygain = new Decimal(0)
+var playaudio = new Audio(audioname);
 
 function getStartPoints(){
     return new Decimal(modInfo.initialStartPoints)
@@ -83,7 +80,8 @@ function getPointGen() {
 	if (hasUpgrade('S', 31)) gain = gain.times(6)
 	if (hasUpgrade('S', 33)) gain = gain.times(upgradeEffect('S', 33))
 	if (hasMilestone('H', 1)) gain = gain.pow(1.1)
-	if (layers.Ma.effect().gte(1)) gain = gain.times(layers.Ma.effect())
+	if (hasUpgrade('Ma', 11)) gain = gain.times(upgradeEffect('Ma', 11))
+	
 	return gain
 }
 
@@ -91,9 +89,9 @@ function getPointGen() {
 function addedPlayerData() { return {
 }}
 
+
 // Display extra things at the top of the page
-var displayThings = [
-]
+var displayThings = ["hi"]
 
 // Determines when the game "ends"
 function isEndgame() {
