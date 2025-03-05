@@ -69,22 +69,19 @@ addLayer("Mi", {
         13: {
             title: "Clicketh upgradeth",
             description: "2x click",
-            cost: new Decimal(30),
+            cost: new Decimal(100),
             onPurchase() {
                 player.Mi.clicky = player.Mi.clicky.times(2)
             },
             unlocked() { return hasUpgrade('Mi', 12) }
         },
         14: {
-            title: "Click boost",
-            description: "click boost click",
-            cost: new Decimal(30),
-            effect() {
-                let clickyeff1 = player.Mi.clicky.times(0.5)
-                player.Mi.clicky = player.Mi.clicky.times(clickyeff1)
-                return clickyeff1
+            title: "Grindy Click upgrade",
+            description: "+10 click",
+            cost: new Decimal(500),
+            onPurchase() {
+                player.Mi.clicky = player.Mi.clicky.add(10)
             },
-            effectDisplay() { return format(clickyeff1)+"x" },
             unlocked() { return hasUpgrade('Mi', 13) }
         },
     },
