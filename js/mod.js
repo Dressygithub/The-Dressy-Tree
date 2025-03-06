@@ -98,7 +98,9 @@ function isEndgame() {
 	return player.points.gte(new Decimal("1ee100"))
 }
 
-
+function randint(min, max) {
+	return Math.floor(Math.random() * (max - min) ) + min;
+  }
 
 // Less important things beyond this point!
 

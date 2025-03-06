@@ -71,7 +71,6 @@ addLayer("D", {
             description: "2x points again.",
             cost: new Decimal(3),
             unlocked() {return hasUpgrade("D",11)}
-
         },
         13: {
             title: "The third upgrade!",

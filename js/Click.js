@@ -1,13 +1,10 @@
 addLayer("Mi", {
     position: 4, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
-    row: 4,
+    row: "side",
     startData() { return {
         unlocked: true,
 		points: new Decimal(0),
         clicky: new Decimal(1),
-        clickypow: new Decimal(1),
-        clickymult: new Decimal(1),
-        clickyeff1: new Decimal(1),
 
     }},
     layerShown(){
@@ -37,6 +34,12 @@ addLayer("Mi", {
             title: "Click",
             canClick() {return true},
             onClick() { return addPoints('Mi',new Decimal(player.Mi.clicky)) },
+        },
+        12: {
+            title: "",
+            canClick() {return true},
+            onClick() { return addPoints('Mi',new Decimal(player.Mi.clicky)) },
+            unlocked() {return hasUpgrade('Mi',21)}
         },
     },
     upgrades: { 
@@ -78,11 +81,38 @@ addLayer("Mi", {
         14: {
             title: "Grindy Click upgrade",
             description: "+10 click",
-            cost: new Decimal(500),
+            cost: new Decimal(1000),
             onPurchase() {
                 player.Mi.clicky = player.Mi.clicky.add(10)
             },
             unlocked() { return hasUpgrade('Mi', 13) }
+        },
+        15: {
+            title: "Click upgrade again",
+            description: "^1.1 click",
+            cost: new Decimal(1750),
+            onPurchase() {
+                player.Mi.clicky = player.Mi.clicky.pow(1.1)
+            },
+            unlocked() { return hasUpgrade('Mi', 14) }
+        },
+        16: {
+            title: "Finale of row",
+            description: "^2 click :o",
+            cost: new Decimal(2500),
+            onPurchase() {
+                player.Mi.clicky = player.Mi.clicky.pow(2)
+            },
+            unlocked() { return hasUpgrade('Mi', 15) }
+        },
+        21: {
+            title: "Buyable",
+            description: "^2 click :o",
+            cost: new Decimal(1000000),
+            onPurchase() {
+                player.Mi.clicky = player.Mi.clicky.pow(2)
+            },
+            unlocked() { return hasUpgrade('Mi', 15) }
         },
     },
 })
