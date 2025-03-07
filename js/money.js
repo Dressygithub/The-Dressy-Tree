@@ -13,6 +13,8 @@ addLayer("M", {
        return visible
      },
     passiveGeneration() {
+        if (hasUpgrade('M', 3)) return 5000
+        if (hasUpgrade('Ma', 2)) return 500
         if (hasUpgrade('M', 21)) return 50
         if (hasUpgrade('M', 16)) return 35
         if (hasUpgrade('M', 15)) return 25
