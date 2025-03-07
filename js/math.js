@@ -45,12 +45,12 @@ addLayer("Ma", {
         },
         2: {
             requirementDescription: "2 Mathematicians",
-            effectDescription: "Layer effect is better",
+            effectDescription: "500 money gain",
             done() { return player.Ma.points.gte(2) }
         },
         3: {
             requirementDescription: "3 Mathematicians",
-            effectDescription: "Layer effect is much more better",
+            effectDescription: "5000 money gain",
             done() { return player.Ma.points.gte(3) },
         },
         4: {
@@ -75,6 +75,12 @@ addLayer("Ma", {
     12: {
         title: "Pythagoras",
         description: "6^2 + 8^2 = 10^2 super gain",
+        cost: new Decimal(2),
+        unlocked() {if (hasMilestone("Ma",4)) return true},
+    },
+    13: {
+        title: "Pi",
+        description: "3.141592653589793238462643383279502884197169399375105820974944592307",
         cost: new Decimal(2),
         unlocked() {if (hasMilestone("Ma",4)) return true},
     }

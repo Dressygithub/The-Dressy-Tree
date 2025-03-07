@@ -5,12 +5,15 @@ addLayer("Mi", {
         unlocked: true,
 		points: new Decimal(0),
         clicky: new Decimal(1),
+        clickyadd: new Decimal(1),
+        clickyrandmin: new Decimal(-20),
+        clickyrandmax: new Decimal(-10),
 
     }},
     layerShown(){
         let visible = true
        return visible
-     },
+    },
     name: "Minigame", // This is optional, only used in a few places, If absent it just uses the layer id.
     resource: "Minigame points", // Name of prestige currency
     //requires: new Decimal(1), // Can be a function that takes requirement increases into account
@@ -36,9 +39,10 @@ addLayer("Mi", {
             onClick() { return addPoints('Mi',new Decimal(player.Mi.clicky)) },
         },
         12: {
-            title: "",
+            title: "Random<br>",
             canClick() {return true},
-            onClick() { return addPoints('Mi',new Decimal(player.Mi.clicky)) },
+            display() {return "have a chance to gain more or less points"},
+            onClick() { return addPoints('Mi',new Decimal(player.Mi.clicky))},
             unlocked() {return hasUpgrade('Mi',21)}
         },
     },
@@ -106,8 +110,23 @@ addLayer("Mi", {
             unlocked() { return hasUpgrade('Mi', 15) }
         },
         21: {
-            title: "Buyable",
-            description: "^2 click :o",
+            title: "A second clickable",
+            description: "2 clickables now",
+            cost: new Decimal(1000000),
+            onPurchase() {
+                player.Mi.clicky = player.Mi.clicky.pow(2)
+            },
+            unlocked() { return hasUpgrade('Mi', 15) }
+        },
+        22: {
+            title: "",
+            description: "",
+            cost: new Decimal(2000000),
+            unlocked() { return hasUpgrade('Mi', 15) }
+        },
+        23: {
+            title: "A second clickable",
+            description: "2 clickables now",
             cost: new Decimal(1000000),
             onPurchase() {
                 player.Mi.clicky = player.Mi.clicky.pow(2)
