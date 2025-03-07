@@ -36,13 +36,13 @@ addLayer("Mi", {
         11: {
             title: "Click",
             canClick() {return true},
-            onClick() { return addPoints('Mi',new Decimal(player.Mi.clicky)) },
+            onClick() { return addPoints('Mi',new Decimal(player.Mi.clicky.add( ))) },
         },
         12: {
-            title: "Random<br>",
+            title: "Increase click add",
             canClick() {return true},
-            display() {return "have a chance to gain more or less points"},
-            onClick() { return addPoints('Mi',new Decimal(player.Mi.clicky))},
+            display() {return },
+            onClick() { return player.Mi.clickyadd},
             unlocked() {return hasUpgrade('Mi',21)}
         },
     },
@@ -67,7 +67,7 @@ addLayer("Mi", {
         13: {
             title: "Clicketh upgradeth",
             description: "2x click",
-            cost: new Decimal(30),
+            cost: new Decimal(300),
             onPurchase() {
                 player.Mi.clicky = player.Mi.clicky.times(2)
             },
@@ -112,7 +112,7 @@ addLayer("Mi", {
         21: {
             title: "A second clickable",
             description: "2 clickables now",
-            cost: new Decimal(1000000),
+            cost: new Decimal(250000),
             onPurchase() {
                 player.Mi.clicky = player.Mi.clicky.pow(2)
             },

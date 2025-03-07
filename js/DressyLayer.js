@@ -32,6 +32,7 @@ addLayer("D", {
     exponent: 0.5, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+        if (hasUpgrade('Ma', 13)) mult = mult.times(Math.PI)
         if (hasUpgrade('D', 32)) mult = mult.times(300)
         if (layers.H.effect().gte(1)) mult = mult.times(layers.H.effect())
         if (hasMilestone('H', 1)) mult = mult.times(getBuyableAmount('D', '11')).add(1)
