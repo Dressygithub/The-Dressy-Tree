@@ -153,10 +153,10 @@ addLayer("Mi", {
         },
         26: {
             title: "Finale of row 1+1",
-            description: "Finale of row 1 effects but ^2",
+            description: "Finale of row 1 but 1.1",
             cost: new Decimal(40000000),
             onPurchase() {
-                player.Mi.clicky = player.Mi.clicky.pow(4)
+                player.Mi.clicky = player.Mi.clicky.pow(1.1)
             },
             unlocked() { return hasUpgrade('Mi', 25) }
         },
