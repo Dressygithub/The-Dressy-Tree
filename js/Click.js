@@ -79,15 +79,6 @@ addLayer("Mi", {
             },
             unlocked() { return hasUpgrade('Mi', 12) }
         },
-        13: {
-            title: "Clicketh upgradeth",
-            description: "2x click",
-            cost: new Decimal(100),
-            onPurchase() {
-                player.Mi.clicky = player.Mi.clicky.times(2)
-            },
-            unlocked() { return hasUpgrade('Mi', 12) }
-        },
         14: {
             title: "Grindy Click upgrade",
             description: "+10 click",
