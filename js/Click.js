@@ -5,7 +5,7 @@ addLayer("Mi", {
         unlocked: true,
 		points: new Decimal(0),
         clicky: new Decimal(1),
-        clickyadd: new Decimal(1),
+        clickyadd: new Decimal(0),
         clickymult: new Decimal(1),
 
     }},
@@ -161,11 +161,11 @@ addLayer("Mi", {
             unlocked() { return hasUpgrade('Mi', 25) }
         },
         31: {
-            title: "",
-            description: "Finale of row 1 effects but ^2",
+            title: "2x row becuase",
+            description: "Im really running out of ideas",
             cost: new Decimal(40000000),
             onPurchase() {
-                player.Mi.clicky = player.Mi.clicky.pow(4)
+                player.Mi.clicky = player.Mi.clicky.times(2)
             },
             unlocked() { return hasUpgrade('Mi', 25) }
         },

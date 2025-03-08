@@ -86,7 +86,13 @@ addLayer("Ma", {
     },
     14: {
         title: "Euler",
-        description: "2.71 hyper gain",
+        description: "2.71x hyper gain",
+        cost: new Decimal(4),
+        unlocked() {if (hasMilestone("Ma",4)) return true},
+    },
+    15: {
+        title: "Add",
+        description: "2.71x hyper gain",
         cost: new Decimal(4),
         unlocked() {if (hasMilestone("Ma",4)) return true},
     }
