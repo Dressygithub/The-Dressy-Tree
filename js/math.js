@@ -82,19 +82,19 @@ addLayer("Ma", {
         title: "Pi",
         description: "3.141592653589793238462643383279502884197169399375105820974944592307 dressy point gain",
         cost: new Decimal(3),
-        unlocked() {if (hasMilestone("Ma",4)) return true},
+        unlocked() {if (hasUpgrade("Ma",12)) return true},
     },
     14: {
         title: "Euler",
         description: "2.71x hyper gain",
         cost: new Decimal(4),
-        unlocked() {if (hasMilestone("Ma",4)) return true},
+        unlocked() {if (hasUpgrade("Ma",13)) return true},
     },
     15: {
         title: "Add",
         description: "Add 1 money to the selling hyper clickable which now just makes it a 1:1 ratio",
         cost: new Decimal(4),
-        unlocked() {if (hasMilestone("Ma",4)) return true},
+        unlocked() {if (hasUpgrade("Ma",14)) return true},
     }
 }
 })
