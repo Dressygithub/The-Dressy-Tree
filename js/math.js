@@ -5,7 +5,7 @@ addLayer("Ma", {
     startData() { return {
         unlocked: false,
                 points: new Decimal(0),
-                Ma_effect: new Decimal(1)
+                Ma_effectpow: new Decimal(1)
     }},
     layerShown(){
         let visible = false
@@ -13,7 +13,7 @@ addLayer("Ma", {
        return visible
      },
     effect() {
-        Maeff = player[this.layer].points.pow(player.Ma.Ma_effect).add(1)
+        Maeff = player[this.layer].points.pow(player.Ma.Ma_effectpow).add(1)
         return Maeff
         },
         effectDescription() {
