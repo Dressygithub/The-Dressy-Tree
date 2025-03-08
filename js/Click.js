@@ -163,7 +163,7 @@ addLayer("Mi", {
         31: {
             title: "2x row becuase",
             description: "Im really running out of ideas",
-            cost: new Decimal(40000000),
+            cost: new Decimal(1e8),
             onPurchase() {
                 player.Mi.clicky = player.Mi.clicky.times(2)
             },
