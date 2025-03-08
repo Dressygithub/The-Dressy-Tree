@@ -42,7 +42,9 @@ addLayer("Mi", {
             canClick() {return true},
             display() {return },
             onClick() { new Audio('sound.mp3')
-                player.Mi.clickyadd.add(10)
+                if (hasUpgrade('Mi',21)) player.Mi.clickyadd.add(10)
+                if (hasUpgrade('Mi',22)) player.Mi.clickyadd.times(1.01)
+                
                 
             },
             unlocked() {return hasUpgrade('Mi',21)}
@@ -118,18 +120,15 @@ addLayer("Mi", {
             unlocked() { return hasUpgrade('Mi', 16) }
         },
         22: {
-            title: "Mult",
-            description: "the second clickable now boosts clicky by 1.01x clicky",
-            cost: new Decimal(2000000),
+            title: "Clicky why",
+            description: "the second clickable now boosts clicky by +20 clicky instead of +10",
+            cost: new Decimal(300000),
             unlocked() { return hasUpgrade('Mi', 21) }
         },
         23: {
             title: "Epic formula",
-            description: "2 clickables now",
+            description: "",
             cost: new Decimal(1000000),
-            onPurchase() {
-                player.Mi.clicky = player.Mi.clicky.pow(2)
-            },
             unlocked() { return hasUpgrade('Mi', 22) }
         },
         24: {
