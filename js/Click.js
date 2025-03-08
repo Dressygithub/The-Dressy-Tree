@@ -44,7 +44,7 @@ addLayer("Mi", {
             onClick() { new Audio('sound.mp3')
                 if (hasUpgrade('Mi',21)) player.Mi.clickyadd = player.Mi.clickyadd.add(10)
                 if (hasUpgrade('Mi',22)) player.Mi.clickyadd = player.Mi.clickyadd.add(20)
-                if (hasUpgrade('Mi',23)) player.Mi.clickyadd = player.Mi.clickyadd.times(times(sqrt().pow(0.9)).pow(1.01)).times(2)
+                if (hasUpgrade('Mi',23)) player.Mi.clickyadd = player.Mi.clickyadd.add(sqrt())
                 
                 
                 
@@ -123,27 +123,33 @@ addLayer("Mi", {
         },
         22: {
             title: "Clicky why",
-            description: "the second clickable now boosts clicky by +20 clicky instead of +10",
+            description: "The second clickable now boosts clicky by +20 clicky instead of +10",
             cost: new Decimal(300000),
             unlocked() { return hasUpgrade('Mi', 21) }
         },
         23: {
-            title: "Epic formula",
-            description: "",
-            cost: new Decimal(1000000),
+            title: "Clicky maybe better",
+            description: "booster clickable formula is now x+sqrt(x) or not.",
+            cost: new Decimal(500000),
             unlocked() { return hasUpgrade('Mi', 22) }
         },
         24: {
-            title: "A second clickable",
-            description: "2 clickables now",
+            title: "3",
+            description: "+3,3x and ^3 click but they are placed at the",
             cost: new Decimal(250000),
-            unlocked() { return hasUpgrade('Mi', 16) }
+            onPurchase() {
+                player.Mi.clicky = player.Mi.clicky.pow(2)
+            },
+            unlocked() { return hasUpgrade('Mi', 23) }
         },
         25: {
             title: "",
             description: "",
             cost: new Decimal(2000000),
-            unlocked() { return hasUpgrade('Mi', 21) }
+            onPurchase() {
+                player.Mi.clicky = player.Mi.clicky.pow(2)
+            },
+            unlocked() { return hasUpgrade('Mi', 24) }
         },
         26: {
             title: "A  clickable",
@@ -152,7 +158,7 @@ addLayer("Mi", {
             onPurchase() {
                 player.Mi.clicky = player.Mi.clicky.pow(2)
             },
-            unlocked() { return hasUpgrade('Mi', 22) }
+            unlocked() { return hasUpgrade('Mi', 25) }
         },
     },
 })
