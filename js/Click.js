@@ -136,7 +136,7 @@ addLayer("Mi", {
         24: {
             title: "Convenient",
             description: "+100,30x and ^1.1 click but they are placed at the most inconvenient places",
-            cost: new Decimal(250000),
+            cost: new Decimal(750000),
             onPurchase() {
                 player.Mi.clicky = player.Mi.clicky.pow(1.1).times(30).add(100)
             },
