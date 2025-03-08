@@ -152,9 +152,54 @@ addLayer("Mi", {
             unlocked() { return hasUpgrade('Mi', 25) }
         },
         31: {
-            title: "2x row becuase",
+            title: "2x row becuase1",
             description: "Im really running out of ideas",
             cost: new Decimal(1e8),
+            onPurchase() {
+                player.Mi.clicky = player.Mi.clicky.times(2)
+            },
+            unlocked() { return hasUpgrade('Mi', 26) }
+        },
+        32: {
+            title: "2x row becuase2",
+            description: "Im really running out of ideas",
+            cost: new Decimal(2e8),
+            onPurchase() {
+                player.Mi.clicky = player.Mi.clicky.times(2)
+            },
+            unlocked() { return hasUpgrade('Mi', 25) }
+        },
+        33: {
+            title: "2x row becuase3",
+            description: "Im really running out of ideas",
+            cost: new Decimal(4e8),
+            onPurchase() {
+                player.Mi.clicky = player.Mi.clicky.times(2)
+            },
+            unlocked() { return hasUpgrade('Mi', 25) }
+        },
+        34: {
+            title: "2x row becuase4",
+            description: "Im really running out of ideas",
+            cost: new Decimal(8e8),
+            onPurchase() {
+                player.Mi.clicky = player.Mi.clicky.times(2)
+            },
+            unlocked() { return hasUpgrade('Mi', 25) }
+        },
+        35: {
+            title: "2x row becuase5",
+            description: "Im really running out of ideas",
+            cost: new Decimal(1.6e9),
+            onPurchase() {
+                player.Mi.clicky = player.Mi.clicky.times(2)
+            },
+            unlocked() { return hasUpgrade('Mi', 25) }
+        },
+        36: {
+            title: "2x row becuase6",
+            description: "Im really running out of ideas",
+            cost: new Decimal(3.2e9),
             onPurchase() {
                 player.Mi.clicky = player.Mi.clicky.times(2)
             },
