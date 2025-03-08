@@ -152,11 +152,11 @@ addLayer("Mi", {
             unlocked() { return hasUpgrade('Mi', 24) }
         },
         26: {
-            title: "A  clickable",
-            description: "2 clickables now",
-            cost: new Decimal(1000000),
+            title: "Finale of row 1+1",
+            description: "Finale of row 1 effects but ^2",
+            cost: new Decimal(40000000),
             onPurchase() {
-                player.Mi.clicky = player.Mi.clicky.pow(2)
+                player.Mi.clicky = player.Mi.clicky.pow(4)
             },
             unlocked() { return hasUpgrade('Mi', 25) }
         },
