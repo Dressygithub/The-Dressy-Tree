@@ -5,6 +5,7 @@ addLayer("Ma", {
     startData() { return {
         unlocked: false,
                 points: new Decimal(0),
+                Ma_effect: new Decimal(1)
     }},
     layerShown(){
         let visible = false
@@ -91,6 +92,12 @@ addLayer("Ma", {
         unlocked() {if (hasUpgrade("Ma",13)) return true},
     },
     15: {
+        title: "Add",
+        description: "Add 1 money to the selling hyper clickable which now just makes it a 1:1 ratio",
+        cost: new Decimal(4),
+        unlocked() {if (hasUpgrade("Ma",14)) return true},
+    }
+    16: {
         title: "Add",
         description: "Add 1 money to the selling hyper clickable which now just makes it a 1:1 ratio",
         cost: new Decimal(4),
