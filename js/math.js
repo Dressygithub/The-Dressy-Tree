@@ -12,10 +12,7 @@ addLayer("Ma", {
         if (hasUpgrade('M', 22) || player.Ma.unlocked) visible = true
        return visible
      },
-    effect() {
-        Maeff = player[this.layer].points.pow(player.Ma.Ma_effectpow).add(1)
-        return Maeff
-        },
+   
         effectDescription() {
             Maeff1 = this.effect();
             return "that are boosting point gain by "+format(Maeff)+"x."
@@ -69,8 +66,9 @@ addLayer("Ma", {
             else return true
         },
         effect() {
-            return player.Ma.Maeff
-        },
+            Maeff = player[this.layer].points.pow(player.Ma.Ma_effectpow).add(1)
+            return Maeff
+            },
         effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
     },
     12: {

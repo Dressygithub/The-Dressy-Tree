@@ -22,6 +22,16 @@ var colors = {
 		background: "#001f3f",
 		background_tooltip: "rgba(0, 15, 31, 0.75)",
 	},
+	AAAAA: {
+		1: "#bfdfff",
+		2: "#8fa7bf",
+		3: "#5f6f7f",
+		color: "#bfdfff",
+		points: "#dfefff",
+		locked: "#c4a7b3",
+		background: "#001f3f",
+		background_tooltip: "rgba(0, 15, 31, 0.75)",
+	},
 }
 function changeTheme() {
 
