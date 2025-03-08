@@ -6,8 +6,7 @@ addLayer("Mi", {
 		points: new Decimal(0),
         clicky: new Decimal(1),
         clickyadd: new Decimal(1),
-        clickyrandmin: new Decimal(-20),
-        clickyrandmax: new Decimal(-10),
+        clickymult: new Decimal(1),
 
     }},
     layerShown(){
@@ -36,13 +35,16 @@ addLayer("Mi", {
         11: {
             title: "Click",
             canClick() {return true},
-            onClick() { return addPoints('Mi',new Decimal(player.Mi.clicky.add( ))) },
+            onClick() { return addPoints('Mi',new Decimal(player.Mi.clicky)) },
         },
         12: {
-            title: "Increase click add",
+            title: "Boost click",
             canClick() {return true},
             display() {return },
-            onClick() { return player.Mi.clickyadd},
+            onClick() { new Audio('sound.mp3')
+                player.Mi.clickyadd.add(10)
+                
+            },
             unlocked() {return hasUpgrade('Mi',21)}
         },
     },
@@ -113,25 +115,43 @@ addLayer("Mi", {
             title: "A second clickable",
             description: "2 clickables now",
             cost: new Decimal(250000),
-            onPurchase() {
-                player.Mi.clicky = player.Mi.clicky.pow(2)
-            },
-            unlocked() { return hasUpgrade('Mi', 15) }
+            unlocked() { return hasUpgrade('Mi', 16) }
         },
         22: {
-            title: "",
-            description: "",
+            title: "Mult",
+            description: "the second clickable now boosts clicky by 1.01x clicky",
             cost: new Decimal(2000000),
-            unlocked() { return hasUpgrade('Mi', 15) }
+            unlocked() { return hasUpgrade('Mi', 21) }
         },
         23: {
-            title: "A second clickable",
+            title: "Epic formula",
             description: "2 clickables now",
             cost: new Decimal(1000000),
             onPurchase() {
                 player.Mi.clicky = player.Mi.clicky.pow(2)
             },
-            unlocked() { return hasUpgrade('Mi', 15) }
+            unlocked() { return hasUpgrade('Mi', 22) }
+        },
+        24: {
+            title: "A second clickable",
+            description: "2 clickables now",
+            cost: new Decimal(250000),
+            unlocked() { return hasUpgrade('Mi', 16) }
+        },
+        25: {
+            title: "",
+            description: "",
+            cost: new Decimal(2000000),
+            unlocked() { return hasUpgrade('Mi', 21) }
+        },
+        26: {
+            title: "A  clickable",
+            description: "2 clickables now",
+            cost: new Decimal(1000000),
+            onPurchase() {
+                player.Mi.clicky = player.Mi.clicky.pow(2)
+            },
+            unlocked() { return hasUpgrade('Mi', 22) }
         },
     },
 })
