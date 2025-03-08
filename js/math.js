@@ -80,8 +80,14 @@ addLayer("Ma", {
     },
     13: {
         title: "Pi",
-        description: "3.141592653589793238462643383279502884197169399375105820974944592307",
-        cost: new Decimal(2),
+        description: "3.141592653589793238462643383279502884197169399375105820974944592307 dressy point gain",
+        cost: new Decimal(3),
+        unlocked() {if (hasMilestone("Ma",4)) return true},
+    },
+    14: {
+        title: "Euler",
+        description: "2.71 hyper gain",
+        cost: new Decimal(4),
         unlocked() {if (hasMilestone("Ma",4)) return true},
     }
 }
