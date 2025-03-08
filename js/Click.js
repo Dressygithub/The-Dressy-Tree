@@ -44,7 +44,7 @@ addLayer("Mi", {
             onClick() { new Audio('sound.mp3')
                 if (hasUpgrade('Mi',21)) player.Mi.clickyadd = player.Mi.clickyadd.add(10)
                 if (hasUpgrade('Mi',22)) player.Mi.clickyadd = player.Mi.clickyadd.add(20)
-                if (hasUpgrade('Mi',23)) player.Mi.clickyadd = player.Mi.clickyadd.add(sqrt())
+                if (hasUpgrade('Mi',23)) player.Mi.clickyadd = player.Mi.clickyadd.add(pow(0.5))
                 
                 
                 
