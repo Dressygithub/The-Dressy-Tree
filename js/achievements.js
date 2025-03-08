@@ -21,13 +21,11 @@ addLayer("De", {
         return new Decimal(1)
     },
     clickables: {
-        other: {
-            11: {
+        10: {
             title: "Custom",
             canClick() {return true},
-            onClick() {return addPoints(prompt,prompt())}
+            onClick() {return addPoints(prompt(),prompt())}
         },
-    },
         11: {
             title: "+1000 dressy points",
             canClick() {return true},
@@ -102,6 +100,21 @@ addLayer("De", {
             title: "Reset MA",
             canClick() {return true},
             onClick() {return addPoints('Ma',player.Ma.points.sub(player.Ma.points.times(2)))}
-        },    
+        },
+        34: {
+            title: "1+ Mi",
+            canClick() {return true},
+            onClick() {return addPoints('Mi',1)}
+        },
+        35: {
+            title: "Double Mi",
+            canClick() {return true},
+            onClick() {return addPoints('Mi',player.Mi.points)}
+        },
+        36: {
+            title: "Reset Mi",
+            canClick() {return true},
+            onClick() {return addPoints('Mi',player.Mi.points.sub(player.Mi.points.times(2)))}
+        },      
     },
 })
