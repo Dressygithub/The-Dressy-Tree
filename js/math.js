@@ -92,7 +92,7 @@ addLayer("Ma", {
     },
     15: {
         title: "Add",
-        description: "2.71x hyper gain",
+        description: "Add 1 money to the selling hyper clickable which now just makes it a 1:1 ratio",
         cost: new Decimal(4),
         unlocked() {if (hasMilestone("Ma",4)) return true},
     }
