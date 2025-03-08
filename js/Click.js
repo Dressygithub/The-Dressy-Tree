@@ -134,11 +134,11 @@ addLayer("Mi", {
             unlocked() { return hasUpgrade('Mi', 22) }
         },
         24: {
-            title: "3",
-            description: "+3,3x and ^3 click but they are placed at the",
+            title: "Convenient",
+            description: "+100,30x and ^1.1 click but they are placed at the most inconvenient places",
             cost: new Decimal(250000),
             onPurchase() {
-                player.Mi.clicky = player.Mi.clicky.pow(2)
+                player.Mi.clicky = player.Mi.clicky.pow(1.1).times(30).add(100)
             },
             unlocked() { return hasUpgrade('Mi', 23) }
         },
