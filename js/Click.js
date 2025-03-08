@@ -160,5 +160,14 @@ addLayer("Mi", {
             },
             unlocked() { return hasUpgrade('Mi', 25) }
         },
+        31: {
+            title: "",
+            description: "Finale of row 1 effects but ^2",
+            cost: new Decimal(40000000),
+            onPurchase() {
+                player.Mi.clicky = player.Mi.clicky.pow(4)
+            },
+            unlocked() { return hasUpgrade('Mi', 25) }
+        },
     },
 })
