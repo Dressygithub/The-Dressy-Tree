@@ -45,11 +45,17 @@ addLayer("M", {
     ], clickables:
     {
         11: {
-            title: "Sell all your hyper<br> <h4>2 hyper = 1 money</h4>",
+            display() {if (hasUpgrade("Ma",15)) return "Sell all your hyper<br> 1 hyper = 1 money"
+                else; return "Sell all your hyper<br> 2 hyper = 1 money"
+            },
             canClick() {return true},
-            onClick() {return (addPoints('M',new Decimal(player.H.points).div(2)))
+            onClick() {if (hasUpgrade('Ma',15)) (addPoints('M',new Decimal(player.H.points).div(2)))
                 (addPoints('H', new Decimal(player.H.points).sub(new Decimal(player.H.points).times(2))))
-                (playaudio('sound.mp3'))
+                ////////////////////////////////////////////
+                else; addPoints('M',new Decimal(player.H.points))
+                addPoints('H', new Decimal(player.H.points).sub(new Decimal(player.H.points).times(2)))
+
+                return
             },
         },
     },
