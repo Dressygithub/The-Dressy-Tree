@@ -35,7 +35,7 @@ addLayer("Mi", {
         11: {
             title: "Click",
             canClick() {return true},
-            onClick() { return addPoints('Mi',new Decimal(player.Mi.clicky)) },
+            onClick() { return addPoints('Mi',new Decimal(player.Mi.clicky.add(player.Mi.clickyadd).times(player.Mi.clickymult))) },
         },
         12: {
             title: "Boost click",
