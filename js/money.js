@@ -45,8 +45,8 @@ addLayer("M", {
     ], clickables:
     {
         11: {
-            display() {if (hasUpgrade("Ma",15)) return "Sell all your hyper<br> 1 hyper = 1 money"
-                else; return "Sell all your hyper<br> 2 hyper = 1 money"
+            display() {if (hasUpgrade("Ma",15)) return "<h2>Sell all your hyper</h2><br> <h4>1 hyper = 1 money</h4>"
+                else; return "<h2>Sell all your hyper</h2><br> <h4>2 hyper = 1 money</h4>"
             },
             canClick() {return true},
             onClick() {if (hasUpgrade('Ma',15)) (addPoints('M',new Decimal(player.H.points).div(2)))

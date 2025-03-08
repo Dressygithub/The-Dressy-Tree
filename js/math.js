@@ -96,7 +96,7 @@ addLayer("Ma", {
         description: "Add 1 money to the selling hyper clickable which now just makes it a 1:1 ratio",
         cost: new Decimal(4),
         unlocked() {if (hasUpgrade("Ma",14)) return true},
-    }
+    },
     16: {
         title: "Add",
         description: "Add 1 money to the selling hyper clickable which now just makes it a 1:1 ratio",
