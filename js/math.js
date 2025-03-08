@@ -68,7 +68,7 @@ addLayer("Ma", {
             else return true
         },
         effect() {
-            return Maeff
+            return player.Ma.Maeff
         },
         effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
     },
