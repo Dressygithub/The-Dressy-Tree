@@ -167,7 +167,7 @@ addLayer("Mi", {
             onPurchase() {
                 player.Mi.clicky = player.Mi.clicky.times(2)
             },
-            unlocked() { return hasUpgrade('Mi', 25) }
+            unlocked() { return hasUpgrade('Mi', 31) }
         },
         33: {
             title: "2x row becuase3",
@@ -176,7 +176,7 @@ addLayer("Mi", {
             onPurchase() {
                 player.Mi.clicky = player.Mi.clicky.times(2)
             },
-            unlocked() { return hasUpgrade('Mi', 25) }
+            unlocked() { return hasUpgrade('Mi', 32) }
         },
         34: {
             title: "2x row becuase4",
@@ -185,7 +185,7 @@ addLayer("Mi", {
             onPurchase() {
                 player.Mi.clicky = player.Mi.clicky.times(2)
             },
-            unlocked() { return hasUpgrade('Mi', 25) }
+            unlocked() { return hasUpgrade('Mi', 33) }
         },
         35: {
             title: "2x row becuase5",
@@ -194,7 +194,7 @@ addLayer("Mi", {
             onPurchase() {
                 player.Mi.clicky = player.Mi.clicky.times(2)
             },
-            unlocked() { return hasUpgrade('Mi', 25) }
+            unlocked() { return hasUpgrade('Mi', 34) }
         },
         36: {
             title: "2x row becuase6",
@@ -203,7 +203,7 @@ addLayer("Mi", {
             onPurchase() {
                 player.Mi.clicky = player.Mi.clicky.times(2)
             },
-            unlocked() { return hasUpgrade('Mi', 25) }
+            unlocked() { return hasUpgrade('Mi', 35) }
         },
     },
 })
