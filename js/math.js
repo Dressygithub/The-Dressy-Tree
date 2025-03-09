@@ -57,8 +57,7 @@ addLayer("Ma", {
         title: "Mathematical advancement",
         description: "Mathematicians boost points",
         cost: new Decimal(0),
-        unlocked() {if (player.Ma.points.gte(1)) return false
-            else return true
+        unlocked() {if (player.Ma.points.gte(1)) return true
         },
         effect() {
             return new Decimal(player[this.layer].points).pow(0.5)
