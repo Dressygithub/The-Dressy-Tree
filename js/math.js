@@ -90,10 +90,15 @@ addLayer("Ma", {
         unlocked() {if (hasUpgrade("Ma",14)) return true},
     },
     16: {
-        title: "Multiply",
-        description: "Add 1 money to the selling hyper clickable which now just makes it a 1:1 ratio",
-        cost: new Decimal(4),
-        unlocked() {if (hasUpgrade("Ma",14)) return true},
-    }
+        title: "Mathematical advancement",
+        description: "Mathematicians boost points",
+        cost: new Decimal(0),
+        unlocked() {if (hasUpgrade("Ma",15)) return true
+        },
+        effect() {
+            return new Decimal(player[this.layer].points).pow(0.5)
+        },
+        effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+    },
 }
 })
