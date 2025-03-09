@@ -12,11 +12,6 @@ addLayer("Ma", {
         if (hasUpgrade('M', 22) || player.Ma.unlocked) visible = true
        return visible
      },
-   
-        effectDescription() {
-            Maeff1 = this.effect();
-            return "that are boosting point gain by "+format(Maeff)+"x."
-        },
         branches: [], 
     color: "#4BDC13",
     requires: new Decimal(2000), // Can be a function that takes requirement increases into account
@@ -59,16 +54,15 @@ addLayer("Ma", {
     }, 
     upgrades: {
     11: {
-        title: "Buy this to make the effect work",
-        description: "Uh",
+        title: "Mathematical advancement",
+        description: "Mathematicians boost points",
         cost: new Decimal(0),
-        unlocked() {if (hasUpgrade("Ma",11)) return false
+        unlocked() {if (player.Ma.points.gte(1)) return false
             else return true
         },
         effect() {
-            Maeff = player[this.layer].points.pow(player.Ma.Ma_effectpow).add(1)
-            return Maeff
-            },
+            return new Decimal(player[this.layer].points).pow(0.5)
+        },
         effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
     },
     12: {
