@@ -89,8 +89,8 @@ addLayer("Ma", {
         unlocked() {if (hasUpgrade("Ma",14)) return true},
     },
     16: {
-        title: "Mathematical advancement",
-        description: "Mathematicians boost points",
+        title: "Multiply",
+        description: "Points boost points",
         cost: new Decimal(0),
         unlocked() {if (hasUpgrade("Ma",15)) return true
         },
