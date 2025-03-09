@@ -205,5 +205,14 @@ addLayer("Mi", {
             },
             unlocked() { return hasUpgrade('Mi', 35) }
         },
+        41: {
+            title: "",
+            description: "Im really running out of ideas",
+            cost: new Decimal(3.2e9),
+            onPurchase() {
+                player.Mi.clicky = player.Mi.clicky.times(2)
+            },
+            unlocked() { return hasUpgrade('Mi', 35) }
+        },
     },
 })
