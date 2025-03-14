@@ -1,5 +1,5 @@
 addLayer("Mi", {
-    position: 4, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+    position: 1, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     row: "side",
     startData() { return {
         unlocked: true,
@@ -7,6 +7,8 @@ addLayer("Mi", {
         clicky: new Decimal(1),
         clickyadd: new Decimal(0),
         clickymult: new Decimal(1),
+        resetamt: new Decimal(1e10),
+        resettimes: 0
 
     }},
     layerShown(){
@@ -30,6 +32,23 @@ addLayer("Mi", {
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
+    },
+    tabFormat: {
+        "Clicky": {
+            content: [
+                "main-display",
+                ["clickables",[1, 2]],
+                "blank", 
+                ["upgrades", [1, 2, 3]],
+            ],
+        },
+        "Minigame": {
+            content: [
+                "main-display",
+                "",
+              
+            ],
+        },
     },
     clickables: {
         11: {
@@ -201,7 +220,6 @@ addLayer("Mi", {
             description: "Unlock something...",
             cost: new Decimal(3.2e9),
             onPurchase() {
-                player.Mi.clicky = player.Mi.clicky.times(2)
             },
             unlocked() { return hasUpgrade('Mi', 35) }
         },
