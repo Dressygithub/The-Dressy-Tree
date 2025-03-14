@@ -7,8 +7,9 @@ addLayer("Mi", {
         clicky: new Decimal(1),
         clickyadd: new Decimal(0),
         clickymult: new Decimal(1),
-        resetamt: new Decimal(1e10),
-        resettimes: 0
+        chargedclicky: new Decimal(0),
+        CCadd: new Decimal(1),
+
 
     }},
     layerShown(){
@@ -37,17 +38,29 @@ addLayer("Mi", {
         "Clicky": {
             content: [
                 "main-display",
-                ["clickables",[1, 2]],
+                ["clickables",[1]],
+                ["display-text",
+                    function(){
+                        let txt = "You are getting "+new Decimal(player.Mi.clicky.add(player.Mi.clickyadd).times(player.Mi.clickymult).floor())+" per click"
+                        return txt
+                    }
+                ],
                 "blank", 
                 ["upgrades", [1, 2, 3]],
             ],
         },
-        "Minigame": {
+        "Overcharged clicky": {
             content: [
-                "main-display",
-                "",
+                ["display-text",
+                    function(){
+                        let txt = "<h2>You have "+new Decimal(player.Mi.chargedclicky)+" Overchargium</h2> "
+                        return txt
+                    }
+                ],
+                ["clickables",[2]]
               
             ],
+            unlocked() { return hasUpgrade('Mi',36) },
         },
     },
     clickables: {
@@ -69,6 +82,11 @@ addLayer("Mi", {
                 
             },
             unlocked() {return hasUpgrade('Mi',21)}
+        },
+        21: {
+            title: "Overcharge click",
+            canClick() {return true},
+            onClick() { return player.Mi.chargedclicky.add(player.Mi.CCadd)},
         },
     },
     upgrades: { 

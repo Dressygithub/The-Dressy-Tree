@@ -13,7 +13,7 @@ addLayer("M", {
        return visible
      },
     passiveGeneration() {
-        if (hasMilestone('Ma', 3)) return 5000
+        if (hasMilestone('Ma', 3)) return 10000
         if (hasMilestone('Ma', 2)) return 500
         if (hasUpgrade('M', 21)) return 50
         if (hasUpgrade('M', 16)) return 35

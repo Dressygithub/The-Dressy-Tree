@@ -43,7 +43,7 @@ addLayer("Ma", {
         },
         3: {
             requirementDescription: "3 Mathematicians",
-            effectDescription: "5000 money gain",
+            effectDescription: "10000 money gain",
             done() { return player.Ma.points.gte(3) },
         },
         4: {
@@ -57,10 +57,10 @@ addLayer("Ma", {
         title: "Mathematical advancement",
         description: "Mathematicians boost points",
         cost: new Decimal(0),
-        unlocked() {if (player.Ma.points.gte(1)) return true
+        unlocked() {if (player.Ma.points.gte(1) || player.Ma.unlocked) return true
         },
         effect() {
-            return new Decimal(player[this.layer].points).pow(0.5)
+            return new Decimal(player[this.layer].points).pow(0.5).add(1)
         },
         effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
     },
@@ -90,12 +90,12 @@ addLayer("Ma", {
     },
     16: {
         title: "Multiply",
-        description: "Points boost points",
-        cost: new Decimal(0),
+        description: "Mathematicians boost points with a quite good formula also unlock new super upgrades",
+        cost: new Decimal(5),
         unlocked() {if (hasUpgrade("Ma",15)) return true
         },
         effect() {
-            return new Decimal(player[this.layer].points).pow(0.5)
+            return new Decimal(player[this.layer].points).times(20).pow(0.99).add(1)
         },
         effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
     },

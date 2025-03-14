@@ -33,6 +33,8 @@ addLayer("S", {
         mult = new Decimal(1)
         if (layers.H.effect().gte(1)) mult = mult.times(layers.H.effect())
         if (hasUpgrade('Ma', 12)) mult = mult.times(10)
+        if (hasUpgrade('S', 35)) mult = mult.times(2)
+        if (hasUpgrade('S', 36)) mult = mult.times(upgradeEffect('S', 36))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -141,8 +143,26 @@ addLayer("S", {
             cost: new Decimal(1),
             unlocked() {return hasUpgrade("S",33) && hasUpgrade("S",31) && hasUpgrade("S",25) && hasUpgrade("S",24) && hasUpgrade("S",23) && hasUpgrade("S",22) && hasUpgrade("S",21) },
         }, 
+        35: {
+            title: "Super duper",
+            description: "2x super",
+            cost: new Decimal(1e6),
+            unlocked() {return hasUpgrade("Ma",16)},
+        }, 
+        36: {
+            title: "Ultra",
+            description: "Self boosting",
+            cost: new Decimal(5e6),
+            unlocked() {return hasUpgrade("S",35)},
+            effect() {
+                return player[this.layer].points.add(1).pow(0.08)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+        }, 
+    },
+         
         
-    }, challenges: {
+    challenges: {
         11: {
             name: "Super",
             challengeDescription: "0.5x dressy points",
