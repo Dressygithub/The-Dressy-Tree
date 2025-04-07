@@ -12,7 +12,7 @@ addLayer("Ma", {
         if (hasUpgrade('M', 22) || player.Ma.unlocked) visible = true
        return visible
      },
-        branches: [], 
+        branches: ["Ma","P"], 
     color: "#4BDC13",
     requires: new Decimal(2000), // Can be a function that takes requirement increases into account
     resource: "Mathematicians", // Name of prestige currency
@@ -98,6 +98,13 @@ addLayer("Ma", {
             return new Decimal(player[this.layer].points).times(20).pow(0.99).add(1)
         },
         effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+    },
+    21: {
+        title: "Philosiphy",
+        description: "Unlock a new layer",
+        cost: new Decimal(5),
+        unlocked() {if (hasUpgrade("S",36) || hasUpgrade(this.layer, 21)) return true
+        },
     },
 }
 })

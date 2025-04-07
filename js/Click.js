@@ -8,7 +8,8 @@ addLayer("Mi", {
         clickyadd: new Decimal(0),
         clickymult: new Decimal(1),
         chargedclicky: new Decimal(0),
-        CCadd: new Decimal(1),
+        CCadd: new Decimal(0.01),
+        CCeff: new Decimal(1),
 
 
     }},
@@ -49,45 +50,35 @@ addLayer("Mi", {
                 ["upgrades", [1, 2, 3]],
             ],
         },
-        "Overcharged clicky": {
+        "Clicky 2": {
             content: [
-                ["display-text",
-                    function(){
-                        let txt = "<h2>You have "+new Decimal(player.Mi.chargedclicky)+" Overchargium</h2> "
-                        return txt
-                    }
-                ],
-                ["clickables",[2]]
-              
+                ["display-text","<h1>you win</h1>"],
+                "blank", 
+                ["upgrades", [123]],
             ],
-            unlocked() { return hasUpgrade('Mi',36) },
         },
     },
     clickables: {
         11: {
             title: "Click",
             canClick() {return true},
-            onClick() { return addPoints('Mi',new Decimal(player.Mi.clicky.add(player.Mi.clickyadd).times(player.Mi.clickymult))) },
+            onClick() { return addPoints('Mi',new Decimal(player.Mi.clicky.add(player.Mi.clickyadd).times(player.Mi.clickymult).floor())) },
         },
         12: {
             title: "Boost click",
             canClick() {return true},
             display() {return },
-            onClick() { new Audio('sound.mp3')
+            onClick() {
                 if (hasUpgrade('Mi',21)) player.Mi.clickyadd = player.Mi.clickyadd.add(10)
-                if (hasUpgrade('Mi',22)) player.Mi.clickyadd = player.Mi.clickyadd.add(20)
-                if (hasUpgrade('Mi',23)) player.Mi.clickyadd = player.Mi.clickyadd.add(pow(0.5))
+                else; if (hasUpgrade('Mi',22)) player.Mi.clickyadd = player.Mi.clickyadd.add(20)
+                else; if (hasUpgrade('Mi',23)) player.Mi.clickyadd = player.Mi.clickyadd.add(player.Mi.clickyadd.sqrt())
                 
                 
                 
             },
             unlocked() {return hasUpgrade('Mi',21)}
         },
-        21: {
-            title: "Overcharge click",
-            canClick() {return true},
-            onClick() { return player.Mi.chargedclicky.add(player.Mi.CCadd)},
-        },
+
     },
     upgrades: { 
         11: {
@@ -240,6 +231,15 @@ addLayer("Mi", {
             onPurchase() {
             },
             unlocked() { return hasUpgrade('Mi', 35) }
+        },
+        1234: {
+            title: "Winner",
+            description: "Here is 10x clicky and 3x points ok bye",
+            cost: new Decimal(Math.PI),
+            onPurchase() {
+                player.Mi.clicky = player.Mi.clicky.times(10)
+            },
+            unlocked() { return true }
         },
     },
 })

@@ -3,7 +3,7 @@ let modInfo = {
 	author: "Dressyapper",
 	pointsName: "Points",
 	id : "dressyapper",
-	modFiles: ["DressyLayer.js", "tree.js", "components.js","achievements.js","Super.js","Hyper.js","Click.js","Superclick.js","money.js","math.js"],
+	modFiles: ["DressyLayer.js", "tree.js", "components.js","achievements.js","Super.js","Hyper.js","Click.js","money.js","math.js","philosophy.js"],
 
 	discordName: "",
 	discordLink: "",
@@ -28,15 +28,10 @@ let winText = `Congratulations! You have reached the end and beaten this game, b
 // If you add new functions anywhere inside of a layer, and those functions have an effect when called, add them here.
 // (The ones here are examples, all official functions are already taken care of)
 var doNotCallTheseFunctionsEveryTick = ["blowUpEverything"]
-var playaudio = new Audio(audioname);
+
 
 function getStartPoints(){
     return new Decimal(modInfo.initialStartPoints)
-}
-
-function playaudio(audioname){
-	var audio = new Audio(audioname);
-	return audio
 }
 
 // Determines if it should show points/sec
@@ -69,6 +64,7 @@ function getPointGen() {
 	if (hasUpgrade('D', 24)) gain = gain.times(3.21)		
 	if (hasUpgrade('D', 25)) gain = gain.times(5)
 	if (hasUpgrade('D', 26)) gain = gain.times(22)
+	if (getBuyableAmount('D', '11').gte(1)) mult = mult.times(getBuyableAmount('D', '11').pow(player.D.Dbuyablepower)).add(1)
 	if (hasMilestone('S', 1)) gain = gain.times(1.5)
 	if (hasUpgrade('S', 11)) gain = gain.times(upgradeEffect('S', 11))	
 	if (hasUpgrade('S', 12)) gain = gain.times(upgradeEffect('S', 12))
@@ -82,21 +78,23 @@ function getPointGen() {
 	if (hasMilestone('H', 1)) gain = gain.pow(1.1)
 	if (hasUpgrade('Ma', 11)) gain = gain.times(upgradeEffect('Ma', 11))
 	if (hasUpgrade('Ma', 16)) gain = gain.times(upgradeEffect('Ma', 16))	
+	if (hasUpgrade('Mi', 1234)) gain = gain.times(3)
 	
 	return gain
 }
 
 // You can add non-layer related variables that should to into "player" and be saved here, along with default values
 function addedPlayerData() { return {
-	layerview: 0
+	layerview: 0,
+	endgame: new Decimal("1e100")
 }}
 
 // Display extra things at the top of the page
-var displayThings = ["hi"]
+var displayThings = ["Text"]
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.points.gte(new Decimal("1ee100"))
+	return player.points.gte(new Decimal(player.endgame))
 }
 
 function randint(min, max) {
@@ -112,7 +110,7 @@ var backgroundStyle = {
 
 // You can change this if you have things that can be messed up by long tick lengths
 function maxTickLength() {
-	return(1) // Default is 1 hour which is just arbitrarily large
+	return (1) // Default is 1 hour which is just arbitrarily large
 }
 
 // Use this if you need to undo inflation from an older version. If the version is older than the version that fixed the issue,

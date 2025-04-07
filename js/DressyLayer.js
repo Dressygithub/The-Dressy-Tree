@@ -4,7 +4,8 @@ addLayer("D", {
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: true,
-                points: new Decimal(0),
+        points: new Decimal(0),
+        Dbuyablepower: new Decimal(1)
     }},
     passiveGeneration() {
         if (inChallenge('D', 11)) return -0.5
@@ -35,7 +36,6 @@ addLayer("D", {
         if (hasUpgrade('Ma', 13)) mult = mult.times(Math.PI)
         if (hasUpgrade('D', 32)) mult = mult.times(300)
         if (layers.H.effect().gte(1)) mult = mult.times(layers.H.effect())
-        if (hasMilestone('H', 1)) mult = mult.times(getBuyableAmount('D', '11')).add(1)
         if (hasUpgrade('S', 31)) mult = mult.times(1.6)
         if (inChallenge('S', 11)) mult = mult.times(0.5)
         return mult
@@ -50,14 +50,14 @@ addLayer("D", {
     buyables: {
         11: {
             title: "<br>Point booster<br>",
-            cost(x) { return new Decimal(1).mul(x) },
+            cost(x) { return new Decimal(getBuyableAmount(this.layer, this.id).pow(3)) },
             display() { return "Boosts dressy point gain<br>" + "Cost: " + format(tmp[this.layer].buyables[this.id].cost) + "<br>Currently: " + format(tmp[this.layer].buyables[this.id].effect)+"x" },
             canAfford() { return player[this.layer].points.gte(this.cost()) },
             buy() {
                 player[this.layer].points = player[this.layer].points.sub(this.cost())
                 setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
             },
-            effect() {return getBuyableAmount('D',11)},
+            effect() {getBuyableAmount(this.layer, this.id)},
             unlocked() {return hasMilestone('Ma',1)}
         },
     },
@@ -185,6 +185,19 @@ addLayer("D", {
                     "blank",
                     "blank",
                     "upgrades",
+                    "blank",
+                    "blank",
+                    ["main"],
+                ],
+            },
+            "Buyables": {
+                content: [
+                    "main-display",
+                    "blank",
+                    "prestige-button",
+                    "blank",
+                    "blank",
+                    ["buyables",[1]],
                     "blank",
                     "blank",
                     ["main"],
