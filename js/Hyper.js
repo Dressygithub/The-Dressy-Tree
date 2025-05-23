@@ -54,7 +54,7 @@ addLayer("H", {
             requirementDescription: "10 Hyper points",
             effectDescription: "Unlock a challenge",
             done() { return player.H.points.gte(10) },
-            unlocked() {return hasChallenge("H",11)},
+            unlocked() {return player.H.points.gte(10)},
         },
         4: {
             requirementDescription: "100 Hyper points",
