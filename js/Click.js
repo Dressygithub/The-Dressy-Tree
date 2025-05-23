@@ -234,7 +234,7 @@ addLayer("Mi", {
         },
         1234: {
             title: "Winner",
-            description: "Here is 10x clicky and 3x points ok bye",
+            description: "Here is 10x clicky",
             cost: new Decimal(Math.PI),
             onPurchase() {
                 player.Mi.clicky = player.Mi.clicky.times(10)

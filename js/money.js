@@ -9,7 +9,7 @@ addLayer("M", {
     }},
     layerShown(){
         let visible = false
-        if (hasChallenge('D', 11) || player.H.unlocked) visible = true
+        if (hasChallenge('D', 11) || player.M.unlocked) visible = true
        return visible
      },
     passiveGeneration() {
@@ -29,7 +29,6 @@ addLayer("M", {
     resource: "Money", // Name of prestige currency
     baseResource: "Hyper", // Name of resource prestige is based on
     baseAmount() {return player.H.points}, // Get the current amount of baseResourc
-    type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.0000000000000000000001,
     requires: new Decimal(150),
     gainMult() { // Calculate the multiplier for main currency from bonuses
@@ -64,6 +63,9 @@ addLayer("M", {
             title: "Lemonade stand",
             description: "Generate 1 money per second",
             cost: new Decimal(0),
+            onPurchase() {
+                console.log("hi")
+            }
         },
         12: {
             title: "Marketing stratergy",

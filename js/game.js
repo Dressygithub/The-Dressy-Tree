@@ -109,7 +109,7 @@ function shouldNotify(layer){
 			}
 		}
 	}
-	 
+	
 	return false
 	
 }
