@@ -14,7 +14,6 @@ addLayer("S", {
      passiveGeneration() {
         if (hasMilestone('H', 2)) return 0.05
         if (hasMilestone('H', 1)) return 0.01
-        if (inChallenge('H', 11)) return 0
     return 0},
     autoPrestige() {
         if (inChallenge('H',11)) return true
@@ -35,6 +34,7 @@ addLayer("S", {
         if (hasUpgrade('Ma', 12)) mult = mult.times(10)
         if (hasUpgrade('S', 35)) mult = mult.times(2)
         if (hasUpgrade('S', 36)) mult = mult.times(upgradeEffect('S', 36))
+        if (inChallenge('H', 11)) mult = mult.times(0.5)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -164,7 +164,7 @@ addLayer("S", {
         
     challenges: {
         11: {
-            name: "Super",
+            name: "Halved production",
             challengeDescription: "0.5x dressy points",
             goalDescription: "30000 dressy points",
             rewardDescription: "A new layer",

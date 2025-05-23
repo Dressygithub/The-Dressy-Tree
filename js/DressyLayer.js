@@ -12,7 +12,6 @@ addLayer("D", {
         if (hasUpgrade('D',31)) return 0.3
         if (hasMilestone('H', 1)) return 0.15
         if (hasMilestone('S', 2)) return 0.1
-        if (inChallenge('H', 11)) return 0
         return 0
     },
     autoUpgrade() {
@@ -38,6 +37,7 @@ addLayer("D", {
         if (layers.H.effect().gte(1)) mult = mult.times(layers.H.effect())
         if (hasUpgrade('S', 31)) mult = mult.times(1.6)
         if (inChallenge('S', 11)) mult = mult.times(0.5)
+        if (inChallenge('H', 11)) mult = mult.times(0.25)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses

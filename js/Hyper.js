@@ -64,7 +64,7 @@ addLayer("H", {
     }, challenges: {
         11: {
             name: "Automation",
-            challengeDescription: "Automation of layers is a good thing, right?",
+            challengeDescription: "0.25x dressy points AND 0.5x super points",
             rewardDescription: "Autobuy super upgrades and more milestones",
             goalDescription: "1000 super",
             canComplete: function() {return player.S.points.gte(1000)},
