@@ -63,6 +63,9 @@ addLayer("Mi", {
             title: "Click",
             canClick() {return true},
             onClick() { return addPoints('Mi',new Decimal(player.Mi.clicky.add(player.Mi.clickyadd).times(player.Mi.clickymult).floor())) },
+            style() {return {
+                
+            }},
         },
         12: {
             title: "Boost click",
@@ -226,9 +229,10 @@ addLayer("Mi", {
         },
         36: {
             title: "Finale of #",
-            description: "Unlock something...",
+            description: "2x click",
             cost: new Decimal(3.2e9),
             onPurchase() {
+                player.Mi.clicky = player.Mi.clicky.times(2)
             },
             unlocked() { return hasUpgrade('Mi', 35) }
         },
