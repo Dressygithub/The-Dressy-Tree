@@ -12,7 +12,7 @@ addLayer("H", {
        return visible
      },   
     effect() {
-        Heff = player[this.layer].points.add(1).pow(0.9)
+        Heff = player[this.layer].points.add(1).pow(0.5)
         return Heff
         },
         effectDescription() {
@@ -56,9 +56,9 @@ addLayer("H", {
             done() { return player.H.points.gte(10) },
         },
         4: {
-            requirementDescription: "100 Hyper points",
+            requirementDescription: "25 Hyper points",
             effectDescription: "Unlock 3 dressy upgrades",
-            done() { return player.H.points.gte(100) && hasChallenge("H",11)  },
+            done() { return player.H.points.gte(25) && hasChallenge("H",11)  },
             unlocked() {return hasChallenge("H",11)},
         },
     }, challenges: {

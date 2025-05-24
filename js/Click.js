@@ -232,14 +232,5 @@ addLayer("Mi", {
             },
             unlocked() { return hasUpgrade('Mi', 35) }
         },
-        1234: {
-            title: "Winner",
-            description: "Here is 10x clicky",
-            cost: new Decimal(Math.PI),
-            onPurchase() {
-                player.Mi.clicky = player.Mi.clicky.times(10)
-            },
-            unlocked() { return true }
-        },
     },
 })

@@ -12,6 +12,14 @@ addLayer("Ma", {
         if (hasUpgrade('M', 22) || player.Ma.unlocked) visible = true
        return visible
      },
+    effect() {
+        Maeff = player[this.layer].points.add(1).pow(0.9)
+        return Maeff
+        },
+        effectDescription() {
+            Maeff = this.effect();
+            return "that are  "+format(Maeff)+"x."
+        },
         branches: ["Ma","P"], 
     color: "#4BDC13",
     requires: new Decimal(2000), // Can be a function that takes requirement increases into account
@@ -99,12 +107,5 @@ addLayer("Ma", {
         },
         effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
     },
-    21: {
-        title: "Philosiphy",
-        description: "Unlock a new layer",
-        cost: new Decimal(5),
-        unlocked() {if (hasUpgrade("S",36) || hasUpgrade(this.layer, 21)) return true
-        },
     },
-}
 })
