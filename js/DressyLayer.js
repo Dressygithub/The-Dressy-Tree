@@ -146,7 +146,7 @@ addLayer("D", {
             title: "We are so back",
             description: "Gain 30% of dressy point reset",
             cost: new Decimal(1e9),
-            unlocked() {return hasMilestone("H",5)},
+            unlocked() {return hasMilestone("H",4)},
         },
         32: {
             title: "Dresstastic",
@@ -155,12 +155,6 @@ addLayer("D", {
             unlocked() {return hasUpgrade("D",31)},
         },
         33: {
-            title: "One for each layer(currently)",
-            description: "Unlock a challenge",
-            cost: new Decimal(1e14),
-            unlocked() {return hasUpgrade("D",32)},
-        },
-        34: {
             title: "One for each layer(currently)",
             description: "Unlock a challenge",
             cost: new Decimal(1e14),
@@ -175,7 +169,7 @@ addLayer("D", {
             canComplete: function() {return player.S.points.gte(1000)},
             unlocked() {return hasUpgrade("D",33)},
         }
-        },
+    },
         tabFormat: {
             "Dressy layer": {
                 content: [
@@ -203,5 +197,12 @@ addLayer("D", {
                     ["main"],
                 ],
             },
+            "Challenges": {
+                content: [
+                    "main-display",
+                    "blank"
+                    ["challenges",[1]],
+                ]
+            }
         }
 })
