@@ -164,11 +164,12 @@ addLayer("D", {
     challenges: {
         11: {
             name: "Negative",
-            challengeDescription: "You gain -50% dressy point reset",
-            rewardDescription: "--2x point gain (haha see what i did there) also new layer",
+            challengeDescription: "Lose 50% of your dressy point reset",
+            rewardDescription: "--2x point gain (haha see what i did there) also new layer)",
+            goalDescription: "1000 super",
             canComplete: function() {return player.S.points.gte(1000)},
-            unlocked() {return hasUpgrade("D",33)},
-        }
+            unlocked() {return hasMilestone("H",3)},
+        },
     },
         tabFormat: {
             "Dressy layer": {
@@ -181,7 +182,9 @@ addLayer("D", {
                     "upgrades",
                     "blank",
                     "blank",
+                    "challenges"
                     ["main"],
+                    ["challenges"]
                 ],
             },
             "Buyables": {
@@ -197,12 +200,5 @@ addLayer("D", {
                     ["main"],
                 ],
             },
-            "Challenges": {
-                content: [
-                    "main-display",
-                    "blank"
-                    ["challenges",[1]],
-                ]
-            }
         }
 })

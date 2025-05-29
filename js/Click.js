@@ -47,15 +47,26 @@ addLayer("Mi", {
                     }
                 ],
                 "blank", 
-                ["upgrades", [1, 2, 3]],
+                ["upgrades", [1, 2, 3, 4]],
             ],
         },
-        "Clicky 2": {
+        "Milestone": {
             content: [
                 ["display-text","<h1>you win</h1>"],
                 "blank", 
-                ["upgrades", [123]],
+                ["milestones",[1,2,3,4,5]],
             ],
+            unlocked() {return hasUpgrade("Mi",41)}
+        },
+    },
+    milestones: {
+        1: {
+            requirementDescription: "1e9 points",
+            effectDescription: "Points in these milestones reference the click points also 2x click",
+            done() { return player.Mi.points.gte(5e9) },
+            onComplete() {
+                player.Mi.Clicky = player.Mi.clicky.times(2)
+            }
         },
     },
     clickables: {
@@ -79,7 +90,11 @@ addLayer("Mi", {
                 
                 
             },
-            unlocked() {return hasUpgrade('Mi',21)}
+            unlocked() {
+                if (hasUpgrade("Mi",41)) {return false}
+                else if (hasUpgrade("Mi",21)) {return true}
+            
+        }
         },
 
     },
@@ -235,6 +250,24 @@ addLayer("Mi", {
                 player.Mi.clicky = player.Mi.clicky.times(2)
             },
             unlocked() { return hasUpgrade('Mi', 35) }
+        },
+        41: {
+            title: "Im guessing you are not using the Boost click button at all",
+            description: "Remove boost click but unlock milestones",
+            cost: new Decimal(5e9),
+            onPurchase() {
+    
+            },
+            unlocked() { return hasUpgrade('Mi', 36) }
+        },
+        42: {
+            title: "Cool upgrade",
+            description: "Its so cool that 1.5x points",
+            cost: new Decimal(1e10),
+            onPurchase() {
+                player.Mi.clicky = player.Mi.clicky.times(1.5)
+            },
+            unlocked() { return hasUpgrade('Mi', 36) }
         },
     },
 })
