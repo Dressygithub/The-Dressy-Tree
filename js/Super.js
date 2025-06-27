@@ -15,11 +15,6 @@ addLayer("S", {
         if (hasMilestone('H', 2)) return 0.05
         if (hasMilestone('H', 1)) return 0.01
     return 0},
-
-    autoPrestige() {
-        if (inChallenge('H',11)) return true
-        return false
-    },
     
     autoUpgrade() {
         if (hasChallenge('H', 11)) return true

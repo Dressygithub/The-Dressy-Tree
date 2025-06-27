@@ -8,7 +8,6 @@ addLayer("D", {
         Dbuyablepower: new Decimal(1)
     }},
     passiveGeneration() {
-        if (inChallenge('D', 11)) return -0.5
         if (hasUpgrade('D',31)) return 0.3
         if (hasMilestone('H', 1)) return 0.15
         if (hasMilestone('S', 2)) return 0.1
@@ -16,10 +15,6 @@ addLayer("D", {
     },
     autoUpgrade() {
         if (hasMilestone('H', 1)) return true
-        return false
-    },
-    autoPrestige() {
-        if (inChallenge('H',11)) return true
         return false
     },
     color: "#0055ff",
@@ -155,22 +150,12 @@ addLayer("D", {
             unlocked() {return hasUpgrade("D",31)},
         },
         33: {
-            title: "One for each layer(currently)",
-            description: "Unlock a challenge",
+            title: "Capitalism",
+            description: "Unlock the next layer",
             cost: new Decimal(1e14),
             unlocked() {return hasUpgrade("D",32)},
         },
     }, 
-    challenges: {
-        11: {
-            name: "Negative",
-            challengeDescription: "Lose 50% of your dressy point reset",
-            rewardDescription: "--2x point gain (haha see what i did there) also new layer)",
-            goalDescription: "1000 super",
-            canComplete: function() {return player.S.points.gte(1000)},
-            unlocked() {return hasMilestone("H",3)},
-        },
-    },
         tabFormat: {
             "Dressy layer": {
                 content: [
