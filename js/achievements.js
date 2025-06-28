@@ -21,10 +21,10 @@ addLayer("De", {
         return new Decimal(1)
     },
     clickables: {
-        10: {
+        91: {
             title: "Custom",
             canClick() {return true},
-            onClick() {return addPoints(prompt(),prompt())}
+            onClick() {return addPoints(prompt("Layer?"),prompt("alue?"))}
         },
         11: {
             title: "+1000 dressy points",

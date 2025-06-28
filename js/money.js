@@ -6,6 +6,9 @@ addLayer("M", {
         unlocked: true,
         points: new Decimal(10),
         moneygain: new Decimal(0),
+
+        FSPEcost: new Decimal(1e6), 
+        FSPEtime: new Decimal(0), 
     }},
     layerShown(){
         let visible = false
@@ -44,41 +47,25 @@ addLayer("M", {
     hotkeys: [
         {key: "t", description: "t: Reset for prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ], 
-    clickables:{
+    buyables: {
         11: {
-            display() {if (hasUpgrade("Ma",15)) {return "<h2>Sell all your hyper</h2><br> <h4>1 hyper = 1 money</h4>"}
-                else {return "<h2>Sell all your hyper</h2><br> <h4>2 hyper = 1 money</h4>"}
+            title: "<br>Point thing<br>",
+            cost(x) { return new Decimal(15).times(new Decimal(2).pow(getBuyableAmount(this.layer, this.id))) },
+            display() { return "Boosts points<br>" + "Cost: " + format(tmp[this.layer].buyables[this.id].cost) + "<br>Currently: " + format(new Decimal(2).pow(getBuyableAmount(this.layer, this.id)))+"x" },
+            canAfford() { return player[this.layer].points.gte(this.cost()) },
+            buy() {
+                player[this.layer].points = player[this.layer].points.sub(this.cost())
+                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
             },
-            canClick() {return true},
-            onClick() {
-                if (hasUpgrade('Ma',15)) {
-                    addPoints('M',new Decimal(player.H.points))
-                    addPoints('H', new Decimal(player.H.points).sub(new Decimal(player.H.points).times(2)))
-                
-                }
-                ////////////////////////////////////////////
-                else {
-                    addPoints('M',new Decimal(player.H.points).div(2))
-                    addPoints('H', new Decimal(player.H.points).sub(new Decimal(player.H.points).times(2)))
-                }
-
-                return
-            },
-        },
-        21: {
-            title: "5 second point energy",
-            canClick() {return true},
-            onClick() { return console.log("no") },
-            style() {return {
-                
-            }},
+            effect() {new Decimal(2).pow(getBuyableAmount(this.layer, this.id))},
         },
     },
-     tabFormat: {
+    tabFormat: {
             "Money": {
                 content: [
                     "main-display",
                     "blank",
+                    ["clickables", [1]],
                     "blank",
                     "blank",
                     "upgrades",
@@ -90,7 +77,7 @@ addLayer("M", {
                     "blank",
                     "blank",
                     "blank",
-                    ["buyables",[1]],
+                    ["buyables", [1]],
                     "blank",
                     "blank",
                     ["main"],
