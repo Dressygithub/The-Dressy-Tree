@@ -88,7 +88,7 @@ addLayer("M", {
         11: {
             title: "Lemonade stand",
             description: "Generate 1 money per second",
-            cost: new Decimal(10),
+            cost: new Decimal(0),
             onPurchase() {
                 console.log("THE DUCK WALKED UP TO THE")
             }
