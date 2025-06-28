@@ -4,7 +4,7 @@ addLayer("M", {
     position: 2, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: true,
-        points: new Decimal(10),
+        points: new Decimal(9),
         moneygain: new Decimal(0),
 
         FSPEcost: new Decimal(1e6), 
