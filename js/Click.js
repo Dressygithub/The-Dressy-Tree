@@ -360,9 +360,9 @@ addLayer("Mi", {
             unlocked() { return hasUpgrade('Mi', 51) }
         },
         53: {
-            title: "Thats a decently big jump",
+            title: "Tha",
             description: "1.2x points",
-            cost: new Decimal(1e14),
+            cost: new Decimal(2e13),
             onPurchase() {
                 player.Mi.clicky = player.Mi.clicky.times(1.2)
             },

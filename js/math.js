@@ -9,7 +9,7 @@ addLayer("Ma", {
     }},
     layerShown(){
         let visible = false
-        if (hasUpgrade('M', 22) || player.Ma.unlocked) visible = true
+        if (hasUpgrade('M', 22) || player.Ma.unlocked) visible = false //no
        return visible
      },
     effect() {
