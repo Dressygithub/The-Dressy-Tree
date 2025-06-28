@@ -4,7 +4,7 @@ addLayer("M", {
     position: 2, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: true,
-        points: new Decimal(9),
+        points: new Decimal(10),
         moneygain: new Decimal(0),
 
         FSPEcost: new Decimal(1e6), 
@@ -51,7 +51,7 @@ addLayer("M", {
         11: {
             title: "<br>Point thing<br>",
             cost(x) { return new Decimal(15).times(new Decimal(2).pow(getBuyableAmount(this.layer, this.id))) },
-            display() { return "Boosts points<br>" + "Cost: " + format(tmp[this.layer].buyables[this.id].cost) + "<br>Currently: " + format(new Decimal(2).pow(getBuyableAmount(this.layer, this.id)))+"x" },
+            display() { return "Boosts points<br>" + "Costs: " + format(tmp[this.layer].buyables[this.id].cost) + " money <br>Currently: " + format(new Decimal(2).pow(getBuyableAmount(this.layer, this.id)))+"x" },
             canAfford() { return player[this.layer].points.gte(this.cost()) },
             buy() {
                 player[this.layer].points = player[this.layer].points.sub(this.cost())
@@ -70,6 +70,7 @@ addLayer("M", {
                     "blank",
                     "blank",
                     "upgrades",
+                    ["raw-html","<div id='calculator' style='width: 600px; height: 400px;'></div>"],
                 ],
             },
             "SHOPPING": {
