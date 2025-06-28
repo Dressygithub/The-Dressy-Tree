@@ -64,6 +64,7 @@ addLayer("M", {
             "Money": {
                 content: [
                     "main-display",
+                    "prestige-button",
                     "blank",
                     ["clickables", [1]],
                     "blank",
