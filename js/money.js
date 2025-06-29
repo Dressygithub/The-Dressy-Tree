@@ -16,6 +16,9 @@ addLayer("M", {
         return visible
     },
     passiveGeneration() {
+        if (hasUpgrade('M', 32)) return 1000
+        if (hasUpgrade('M', 31)) return 500
+        if (hasUpgrade('M', 26)) return 300
         if (hasUpgrade('M', 25)) return 200
         if (hasUpgrade('M', 24)) return 150
         if (hasUpgrade('M', 23)) return 100
@@ -51,13 +54,39 @@ addLayer("M", {
         11: {
             title: "<br>Point thing<br>",
             cost(x) { return new Decimal(15).times(new Decimal(2).pow(getBuyableAmount(this.layer, this.id))) },
-            display() { return "Boosts points<br>" + "Costs: " + format(tmp[this.layer].buyables[this.id].cost) + " money <br>Currently: " + format(new Decimal(2).pow(getBuyableAmount(this.layer, this.id)))+"x" },
+            display() { return "Boosts points<br>" + "Costs: " + format(tmp[this.layer].buyables[this.id].cost) + " money <br>Currently: " + format(buyableEffect("M",11))+"x" },
             canAfford() { return player[this.layer].points.gte(this.cost()) },
             buy() {
                 player[this.layer].points = player[this.layer].points.sub(this.cost())
                 setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
             },
-            effect() {new Decimal(2).pow(getBuyableAmount(this.layer, this.id))},
+            effect() {return new Decimal(2).pow(getBuyableAmount(this.layer, this.id))},
+        },
+        12: {
+            title: "<br>Super thing<br>",
+            cost(x) { return new Decimal(100).pow(getBuyableAmount(this.layer, this.id)) },
+            display() { return "Boosts points<br>" + "Costs: " + format(tmp[this.layer].buyables[this.id].cost) + " money <br>Currently: " + format(buyableEffect(this.layer,this.id))+"x" },
+            canAfford() { return player[this.layer].points.gte(this.cost()) },
+            buy() {
+                player[this.layer].points = player[this.layer].points.sub(this.cost())
+                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+            },
+            effect() {return new Decimal(1.5).pow(getBuyableAmount(this.layer, this.id))},
+        },
+
+
+
+        13: {
+            title: "<br>Epic<br>",
+            cost(x) { return new Decimal(1).times(getBuyableAmount(this.layer, this.id).div(100).add(1)) },
+            display() { return "Does nothing<br>" + "Costs: " + format(tmp[this.layer].buyables[this.id].cost) + " money <br>You have " + format(getBuyableAmount("M",999991))+"" },
+            canAfford() { return player[this.layer].points.gte(this.cost()) },
+            buy() {
+                buyMaxBuyable("M",13)
+                player[this.layer].points = player[this.layer].points.sub(this.cost())
+                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+            },
+            effect() {new Decimal(0)},
         },
     },
     tabFormat: {
@@ -70,7 +99,6 @@ addLayer("M", {
                     "blank",
                     "blank",
                     "upgrades",
-                    ["raw-html","<div id='calculator' style='width: 600px; height: 400px;'></div>"],
                 ],
             },
             "SHOPPING": {
@@ -79,7 +107,7 @@ addLayer("M", {
                     "blank",
                     "blank",
                     "blank",
-                    ["buyables", [1]],
+                    ["buyables",[1,99999]],
                     "blank",
                     "blank",
                     ["main"],
@@ -144,6 +172,21 @@ addLayer("M", {
             title: "Country",
             description: "Your stores are now across the country and you are generating 200 money",
             cost: new Decimal(12500)
+        },
+        26: {
+            title: "Online marketing",
+            description: "You advertise your stuff online and you are generating 300",
+            cost: new Decimal(20000)
+        },
+        31: {
+            title: "Epic money",
+            description: "Generate 500 money",
+            cost: new Decimal(25000)
+        },
+        32: {
+            title: "Epic money 2",
+            description: "Generate 1000 money",
+            cost: new Decimal(27500)
         },
         
     }

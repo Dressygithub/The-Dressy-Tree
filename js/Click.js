@@ -93,24 +93,24 @@ addLayer("Mi", {
         11: {
             title: "<br>Minigame booster<br>",
             cost(x) { return new Decimal(x).pow(10).div(getBuyableAmount("Mi",12).add(1)) },
-            display() { return "Boosts minigame point gain<br>" + "Cost: " + format(tmp[this.layer].buyables[this.id].cost) + "<br>Currently: " + format(getBuyableAmount("Mi",11).add(1).times(player.Mi.buyableboost))+"x" },
+            display() { return "Boosts minigame point gain<br>" + "Cost: " + format(tmp[this.layer].buyables[this.id].cost) + "<br>Currently: " + format(buyableEffect("Mi",11))+"x" },
             canAfford() { return player[this.layer].points.gte(this.cost()) },
             buy() {
                 player[this.layer].points = player[this.layer].points.sub(this.cost())
                 setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
             },
-            effect() {getBuyableAmount(this.layer, this.id)},
+            effect() {return getBuyableAmount("Mi",11).add(1).times(player.Mi.buyableboost)},
         },
         12: {
             title: "<br>Discount services<br>",
             cost(x) { return new Decimal(x).pow(new Decimal(x).log(5)) },
-            display() { return "Divide the first buyable cost<br>" + "Cost: " + format(tmp[this.layer].buyables[this.id].cost) + "<br>Currently: /" + format(getBuyableAmount("Mi",12).add(1))},
+            display() { return "Divide the first buyable cost<br>" + "Cost: " + format(tmp[this.layer].buyables[this.id].cost) + "<br>Currently: /" + format(buyableEffect("M",12))},
             canAfford() { return player[this.layer].points.gte(this.cost()) },
             buy() {
                 player[this.layer].points = player[this.layer].points.sub(this.cost())
                 setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
             },
-            effect() {getBuyableAmount(this.layer, this.id)},
+            effect() {return getBuyableAmount(this.layer, this.id).add(1)},
             unlocked() {{return hasUpgrade('Mi',61)}}
         },
     },
@@ -118,7 +118,7 @@ addLayer("Mi", {
         11: {
             title: "Click",
             canClick() {return true},
-            onClick() { return addPoints('Mi',new Decimal(player.Mi.clicky.add(player.Mi.clickyadd).times(player.Mi.clickymult).times(getBuyableAmount("Mi",11).add(1).times(player.Mi.buyableboost)).floor())) },
+            onClick() { return addPoints('Mi',new Decimal(player.Mi.clicky.add(player.Mi.clickyadd).times(player.Mi.clickymult).times(buyableEffect("Mi",11)).floor())) },
             style() {return {
                 
             }},
