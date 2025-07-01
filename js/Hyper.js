@@ -12,7 +12,8 @@ addLayer("H", {
        return visible
      },   
     effect() {
-        Heff = player[this.layer].points.add(1).pow(0.5)
+        Heff = player[this.layer].points.add(1).log(2)
+        softcap(Heff, new Decimal(100), 0.9)
         return Heff
         },
         effectDescription() {
@@ -26,7 +27,7 @@ addLayer("H", {
     baseResource: "Super", // Name of resource prestige is based on
     baseAmount() {return player.S.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent: 0.4, // Prestige currency exponent
+    exponent: 0.1, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
         if (hasUpgrade('Ma', 14)) mult = mult.times(Math.E)

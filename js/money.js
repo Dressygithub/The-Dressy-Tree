@@ -6,9 +6,7 @@ addLayer("M", {
         unlocked: true,
         points: new Decimal(10),
         moneygain: new Decimal(0),
-
-        FSPEcost: new Decimal(1e6), 
-        FSPEtime: new Decimal(0), 
+        moneymult: new Decimal(1)
     }},
     layerShown(){
         let visible = false
@@ -16,6 +14,10 @@ addLayer("M", {
         return visible
     },
     passiveGeneration() {
+        if (hasUpgrade('M', 36)) return 5000
+        if (hasUpgrade('M', 35)) return 3000
+        if (hasUpgrade('M', 34)) return 2000
+        if (hasUpgrade('M', 33)) return 1500
         if (hasUpgrade('M', 32)) return 1000
         if (hasUpgrade('M', 31)) return 500
         if (hasUpgrade('M', 26)) return 300
@@ -74,15 +76,12 @@ addLayer("M", {
             effect() {return new Decimal(1.5).pow(getBuyableAmount(this.layer, this.id))},
         },
 
-
-
-        13: {
+        999991: {
             title: "<br>Epic<br>",
             cost(x) { return new Decimal(1).times(getBuyableAmount(this.layer, this.id).div(100).add(1)) },
             display() { return "Does nothing<br>" + "Costs: " + format(tmp[this.layer].buyables[this.id].cost) + " money <br>You have " + format(getBuyableAmount("M",999991))+"" },
             canAfford() { return player[this.layer].points.gte(this.cost()) },
             buy() {
-                buyMaxBuyable("M",13)
                 player[this.layer].points = player[this.layer].points.sub(this.cost())
                 setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
             },
@@ -187,6 +186,26 @@ addLayer("M", {
             title: "Epic money 2",
             description: "Generate 1000 money",
             cost: new Decimal(27500)
+        },
+        33: {
+            title: "Epic money 3",
+            description: "Generate 1500 money",
+            cost: new Decimal(30000)
+        },
+        34: {
+            title: "Epic money 4",
+            description: "Generate 2000 money",
+            cost: new Decimal(35000)
+        },
+        35: {
+            title: "Epic money 6",
+            description: "Generate 3000 money",
+            cost: new Decimal(40000)
+        },
+        36: {
+            title: "Epic money 6",
+            description: "Generate 5000 money",
+            cost: new Decimal(50000)
         },
         
     }
