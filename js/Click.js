@@ -49,6 +49,7 @@ addLayer("Mi", {
                 ],
                 "blank", 
                 ["upgrades",[1,2,3,4,5,6]],
+                "bars"
             ],
         },
         "Buyables": {
@@ -82,11 +83,17 @@ addLayer("Mi", {
         },
     },
     bars: {
-        bigBar: {
+        replicate: {
             direction: RIGHT,
-            width: 200,
-            height: 50,
-            progress() { return 0 },
+            width: 600,
+            height: 60,
+            fillStyle: { 'background-color': "green" },
+            borderStyle() { return { "border-color": "white" } },
+            progress() {
+                let prog = 0
+                if (player.points.gte(1e20)) {prog = 1}
+                return prog
+            },
         },
     },
     buyables: {
@@ -453,7 +460,7 @@ addLayer("Mi", {
 
         71: {
             title: "The skill tree",
-            description: "2x points and start to generate 1% of click per second",
+            description: "2x points ",
             branches: ['81','82'],
             cost: new Decimal(1e18),
             onPurchase() {

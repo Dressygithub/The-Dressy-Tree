@@ -4,9 +4,10 @@ addLayer("M", {
     position: 2, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: true,
-        points: new Decimal(10),
+        points: new Decimal(0),
         moneygain: new Decimal(0),
-        moneymult: new Decimal(1)
+        moneymult: new Decimal(1),
+
     }},
     layerShown(){
         let visible = false
@@ -14,6 +15,7 @@ addLayer("M", {
         return visible
     },
     passiveGeneration() {
+        if (hasUpgrade('M', 36)) return 10000
         if (hasUpgrade('M', 36)) return 5000
         if (hasUpgrade('M', 35)) return 3000
         if (hasUpgrade('M', 34)) return 2000
@@ -65,15 +67,49 @@ addLayer("M", {
             effect() {return new Decimal(2).pow(getBuyableAmount(this.layer, this.id))},
         },
         12: {
+            title: "<br>Dressy point thing<br>",
+            cost(x) { return new Decimal(30).pow(getBuyableAmount(this.layer, this.id)) },
+            display() { return "Boosts Dressy points<br>" + "Costs: " + format(tmp[this.layer].buyables[this.id].cost) + " money <br>Currently: " + format(buyableEffect(this.layer,this.id))+"x" },
+            canAfford() { return player[this.layer].points.gte(this.cost()) },
+            buy() {
+                player[this.layer].points = player[this.layer].points.sub(this.cost())
+                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+            },
+            effect() {return new Decimal(1.75).pow(getBuyableAmount(this.layer, this.id))},
+        },
+        13: {
             title: "<br>Super thing<br>",
-            cost(x) { return new Decimal(100).pow(getBuyableAmount(this.layer, this.id)) },
-            display() { return "Boosts points<br>" + "Costs: " + format(tmp[this.layer].buyables[this.id].cost) + " money <br>Currently: " + format(buyableEffect(this.layer,this.id))+"x" },
+            cost(x) { return new Decimal(50).pow(getBuyableAmount(this.layer, this.id)) },
+            display() { return "Boosts Super<br>" + "Costs: " + format(tmp[this.layer].buyables[this.id].cost) + " money <br>Currently: " + format(buyableEffect(this.layer,this.id))+"x" },
             canAfford() { return player[this.layer].points.gte(this.cost()) },
             buy() {
                 player[this.layer].points = player[this.layer].points.sub(this.cost())
                 setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
             },
             effect() {return new Decimal(1.5).pow(getBuyableAmount(this.layer, this.id))},
+        },
+        14: {
+            title: "<br>Hyper thing<br>",
+            cost(x) { return new Decimal(150).pow(getBuyableAmount(this.layer, this.id)) },
+            display() { return "Boosts Hyper<br>" + "Costs: " + format(tmp[this.layer].buyables[this.id].cost) + " money <br>Currently: " + format(buyableEffect(this.layer,this.id))+"x" },
+            canAfford() { return player[this.layer].points.gte(this.cost()) },
+            buy() {
+                player[this.layer].points = player[this.layer].points.sub(this.cost())
+                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+            },
+            effect() {return new Decimal(1.1).pow(getBuyableAmount(this.layer, this.id))},
+        },
+        15: {
+            title: "<br>Upgrades<br>",
+            purchaseLimit: new Decimal(5),
+            cost(x) { return new Decimal(10000).pow(getBuyableAmount(this.layer, this.id)) },
+            display() { return "Its literally upgrades, go find them<br>" + "Costs: " + format(tmp[this.layer].buyables[this.id].cost) + " money<br>" + getBuyableAmount("M",15) +"/"+this.purchaseLimit},
+            canAfford() { return player[this.layer].points.gte(this.cost()) },
+            buy() {
+                player[this.layer].points = player[this.layer].points.sub(this.cost())
+                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+            },
+            effect() {return "no"},
         },
 
         999991: {
@@ -206,6 +242,11 @@ addLayer("M", {
             title: "Epic money 6",
             description: "Generate 5000 money",
             cost: new Decimal(50000)
+        },
+        41: {
+            title: "Global",
+            description: "You are known everywhere now and are generating 10000 money",
+            cost: new Decimal(75000)
         },
         
     }

@@ -29,10 +29,13 @@ addLayer("D", {
         mult = new Decimal(1)
         if (hasUpgrade('Ma', 13)) mult = mult.times(Math.PI)
         if (hasUpgrade('D', 32)) mult = mult.times(300)
+        if (hasUpgrade('D', 34)) mult = mult.times(3)
+        if (hasUpgrade('D', 35)) mult = mult.times(1.5)
         if (layers.H.effect().gte(1)) mult = mult.times(layers.H.effect())
         if (hasUpgrade('S', 31)) mult = mult.times(1.6)
         if (inChallenge('S', 11)) mult = mult.times(0.5)
         if (inChallenge('H', 11)) mult = mult.times(0.25)
+        if (getBuyableAmount("M",12).gte(0)) mult = mult.times(buyableEffect("M",12))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -145,7 +148,7 @@ addLayer("D", {
         },
         32: {
             title: "Dresstastic",
-            description: "x300 dressy point gain",
+            description: "300x dressy point gain",
             cost: new Decimal(1e11),
             unlocked() {return hasUpgrade("D",31)},
         },
@@ -154,6 +157,18 @@ addLayer("D", {
             description: "Unlock the next layer",
             cost: new Decimal(1e14),
             unlocked() {return hasUpgrade("D",32)},
+        },
+        34: {
+            title: "Epic",
+            description: "3x points & dressy point gain ",
+            cost: new Decimal(1e23),
+            unlocked() {return getBuyableAmount("M",15).gte(1)},
+        },
+        35: {
+            title: "Epic 2",
+            description: "1.5x points, dressy points, super and hyper",
+            cost: new Decimal(1e30),
+            unlocked() {return getBuyableAmount("M",15).gte(4)},
         },
     }, 
         tabFormat: {

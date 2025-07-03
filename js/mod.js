@@ -78,7 +78,9 @@ function getPointGen() {
 	if (hasMilestone('H', 1)) gain = gain.pow(1.1)
 	if (hasUpgrade('Ma', 11)) gain = gain.times(upgradeEffect('Ma', 11))
 	if (hasUpgrade('Ma', 16)) gain = gain.times(upgradeEffect('Ma', 16))	
-	if (getBuyableAmount("M",11).gte(0)) gain = gain.times(buyableEffect("M",11))	
+	if (getBuyableAmount("M",11).gte(0)) gain = gain.times(buyableEffect("M",11))
+	if (hasUpgrade('D', 34)) gain = gain.times(3)
+	if (hasUpgrade('D', 35)) mult = mult.times(1.5)
 	return gain
 }
 
