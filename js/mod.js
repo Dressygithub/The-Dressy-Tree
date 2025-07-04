@@ -3,7 +3,7 @@ let modInfo = {
 	author: "Dressyapper",
 	pointsName: "Points",
 	id : "dressyapper",
-	modFiles: ["DressyLayer.js", "tree.js", "components.js","achievements.js","Super.js","Hyper.js","Click.js","money.js","math.js"],
+	modFiles: ["DressyLayer.js", "tree.js", "components.js","achievements.js","Super.js","Hyper.js","Click.js","money.js","math.js","Layerverse.js"],
 
 	discordName: "",
 	discordLink: "",
@@ -80,7 +80,10 @@ function getPointGen() {
 	if (hasUpgrade('Ma', 16)) gain = gain.times(upgradeEffect('Ma', 16))	
 	if (getBuyableAmount("M",11).gte(0)) gain = gain.times(buyableEffect("M",11))
 	if (hasUpgrade('D', 34)) gain = gain.times(3)
-	if (hasUpgrade('D', 35)) mult = mult.times(1.5)
+	if (hasUpgrade('D', 35)) gain = gain.times(1.5)
+	if (layers.L.effect().gte(1)) gain = gain.times(layers.L.effect())
+	if (hasUpgrade('L', 16)) gain = gain.times(upgradeEffect('L', 16))	
+	if (hasUpgrade('L', 12)) gain = gain.times(5)
 	return gain
 }
 

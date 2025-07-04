@@ -32,7 +32,9 @@ addLayer("H", {
         mult = new Decimal(1)
         if (hasUpgrade('D', 35)) mult = mult.times(1.5)
         if (getBuyableAmount("M",14).gte(0)) mult = mult.times(buyableEffect("M",14))	
-        if (hasUpgrade('Ma', 14)) mult = mult.times(Math.E)
+        //if (hasUpgrade('Ma', 14)) mult = mult.times(Math.E)
+        if (hasUpgrade('L', 16)) mult = mult.times(upgradeEffect('L', 16))
+        if (hasUpgrade('L', 15)) mult = mult.times(1.5)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses

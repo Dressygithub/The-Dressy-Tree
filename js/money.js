@@ -11,11 +11,22 @@ addLayer("M", {
     }},
     layerShown(){
         let visible = false
-        if (hasUpgrade('D', 33) || hasUpgrade('M',11)) visible = true
+        if (hasUpgrade('D', 33) || hasUpgrade('M',11) || player.L.unlocked) visible = true
         return visible
     },
     passiveGeneration() {
-        if (hasUpgrade('M', 36)) return 10000
+        if (hasUpgrade('M', 56)) return 1e14
+        if (hasUpgrade('M', 55)) return 1e11
+        if (hasUpgrade('M', 54)) return 1e10
+        if (hasUpgrade('M', 53)) return 1e9
+        if (hasUpgrade('M', 52)) return 1e8
+        if (hasUpgrade('M', 51)) return 1e7
+        if (hasUpgrade('M', 46)) return 1e6
+        if (hasUpgrade('M', 45)) return 100000
+        if (hasUpgrade('M', 44)) return 50000
+        if (hasUpgrade('M', 43)) return 25000
+        if (hasUpgrade('M', 42)) return 15000
+        if (hasUpgrade('M', 41)) return 10000
         if (hasUpgrade('M', 36)) return 5000
         if (hasUpgrade('M', 35)) return 3000
         if (hasUpgrade('M', 34)) return 2000
@@ -36,6 +47,7 @@ addLayer("M", {
         if (hasUpgrade('M', 11)) return 1
         return 0
     },
+    branches: ["M", "L"], 
     color: "#048c1b",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
     resource: "Money", // Name of prestige currency
@@ -248,6 +260,68 @@ addLayer("M", {
             description: "You are known everywhere now and are generating 10000 money",
             cost: new Decimal(75000)
         },
+        42: {
+            title: "Super Millionare",
+            description: "Generate 15000 money",
+            cost: new Decimal(250000),
+        },
+        43: {
+            title: "Super duper Millionare",
+            description: "Generate 25000 money",
+            cost: new Decimal(750000),
+        },
+        44: {
+            title: "Super duper idk what comes after Millionare",
+            description: "Generate 50000 money",
+            cost: new Decimal(1e6),
+        },
+        45: {
+            title: "Coolionare",
+            description: "Generate 100000 money",
+            cost: new Decimal(1.5e6),
+        },
+        46: {
+            title: "Billionare",
+            description: "Generate 1e6 money",
+            cost: new Decimal(1e7),
+        },
+        51: {
+            title: "Extremely lazy development",
+            description: "Generate 1e7",
+            cost: new Decimal(1e9)
+        },
+        52: {
+            title: "Extremely lazy development",
+            description: "Generate 1e8",
+            cost: new Decimal(1e10)
+        },
+        53: {
+            title: "Extremely lazy development",
+            description: "Generate 1e9",
+            cost: new Decimal(5e10)
+        },
+        54: {
+            title: "Extremely lazy development",
+            description: "Generate 1e10",
+            cost: new Decimal(1e11)
+        },
+        55: {
+            title: "Extremely lazy development",
+            description: "Generate 1e11",
+            cost: new Decimal(5e11)
+        },
+        56: {
+            title: "Money",
+            description: "Generate 1e14",
+            cost: new Decimal(1e13)
+        },
+        61: {
+            title: "The next layer",
+            description: "Unlock the next layer",
+            cost: new Decimal(1e15),
+            unlocked() {return getBuyableAmount("M",15).gte(5)},
+        },
+        
         
     }
 })
