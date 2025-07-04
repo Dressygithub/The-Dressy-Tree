@@ -288,22 +288,22 @@ addLayer("M", {
         51: {
             title: "Extremely lazy development",
             description: "Generate 1e7",
-            cost: new Decimal(1e9)
+            cost: new Decimal(1e8)
         },
         52: {
             title: "Extremely lazy development",
             description: "Generate 1e8",
-            cost: new Decimal(1e10)
+            cost: new Decimal(1e9)
         },
         53: {
             title: "Extremely lazy development",
             description: "Generate 1e9",
-            cost: new Decimal(5e10)
+            cost: new Decimal(5e9)
         },
         54: {
             title: "Extremely lazy development",
             description: "Generate 1e10",
-            cost: new Decimal(1e11)
+            cost: new Decimal(1e10)
         },
         55: {
             title: "Extremely lazy development",
