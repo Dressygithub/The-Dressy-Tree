@@ -8,12 +8,12 @@ addLayer("L", {
         complete: new Decimal(0),
     }},
     layerShown(){
-        let visible = false
-        if (hasUpgrade('M', 61) || player.L.unlocked) visible = true
+        let visible = true
+        if (hasUpgrade('M', 61) || player.L.points.gte()) visible = true
        return visible
      },   
     color: "rgb(132, 0, 255)",
-    requires: new Decimal(1e70), // Can be a function that takes requirement increases into account
+    requires: new Decimal(1e60), // Can be a function that takes requirement increases into account
     resource: "Layer points", // Name of prestige currency
     baseResource: "Points", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
@@ -37,19 +37,28 @@ addLayer("L", {
         return Leff
         },
         effectDescription() {
-            Heff = this.effect();
+            Leff=this.effect();
             return "that are boosting point gain by "+format(Leff)+"x."
         },
     row: 5, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "t", description: "t: Reset for prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
+    challenges: {
+        11: {
+            name: "The first layer",
+            challengeDescription: "Complete the Prestige layer",
+            rewardDescription: "All layers are boosted by their order",
+            goalDescription: "An amount of prestige points",
+            canComplete: function() {return player.S.points.gte(1000)},
+        },
+    },
     upgrades: { 
         11: {
             title: "Welcome to the layerverse",
             description: "Unlock challenges",
             cost: new Decimal(0),
-            unlocked() {return player.L.points.gte(1)}
+            unlocked() {return player.L.points.gte(1) || hasUpgrade("L",11)}
         },
         12: {
             title: "Point enchancer",
@@ -81,7 +90,7 @@ addLayer("L", {
             cost: new Decimal(2),
             unlocked() {return hasUpgrade("L",11)},
             effect() {
-                return player[this.layer].points.add(1).pow(0.1)
+                return player.M.points.add(1).pow(0.01)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
@@ -100,6 +109,24 @@ addLayer("L", {
                     "blank",
                     "blank",
                     "upgrades",
+                ],
+            },
+            "Challenges": {
+                content: [
+                    ["display-text",
+                    function(){
+                        return "You have <h2><span style='color:rgb(0, 0, 255); text-shadow: 0px 0px 10px rgb(132, 0, 255); font-family: Lucida Console, Courier New, monospace'>"+ 0 +"</span></h2> Completeted layers"
+                    }
+                ],  
+                    ["display-text",
+                    function(){
+                        return "<b>NOTE: THESE CHALLENGES WONT SAVE IF YOU EXIT THEM AND NORMAL PROGRESSION WONT SAVE WHEN ENTERING THEM</b>"
+                    }
+                ],  
+                    "blank",
+                    "blank",
+                    "blank",
+                    "challenges",
                 ],
             },
         }

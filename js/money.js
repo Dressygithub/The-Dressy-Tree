@@ -11,7 +11,8 @@ addLayer("M", {
     }},
     layerShown(){
         let visible = false
-        if (hasUpgrade('D', 33) || hasUpgrade('M',11) || player.L.unlocked) visible = true
+        if (hasUpgrade('D', 33) || hasUpgrade('M',11)) visible = true
+        if (inChallenge("L",11)) visible = false
         return visible
     },
     passiveGeneration() {
@@ -57,6 +58,10 @@ addLayer("M", {
     exponent: 1, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(0.99)
+        return mult
+    },
+    directMult() {
+        mult = new Decimal(2)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses

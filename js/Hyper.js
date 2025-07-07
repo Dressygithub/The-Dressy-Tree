@@ -5,11 +5,12 @@ addLayer("H", {
     startData() { return {
         unlocked: false,
         points: new Decimal(0),
-        effboost: new Decimal(1)
+        effboost: new Decimal(1),
     }},
     layerShown(){
         let visible = false
         if (hasChallenge('S', 11) || player.H.unlocked) visible = true
+        if (inChallenge("L",11)) visible = false
        return visible
      },   
     effect() {

@@ -9,7 +9,8 @@ addLayer("S", {
     layerShown(){
         let visible = false
         if (hasUpgrade('D', 26) || player.S.unlocked) visible = true
-       return visible
+        if (inChallenge("L",11)) visible = false
+        return visible
      },
     passiveGeneration() {
         if (hasMilestone('H', 2)) return 0.05

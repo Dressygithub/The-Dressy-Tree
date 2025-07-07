@@ -3,7 +3,7 @@ let modInfo = {
 	author: "Dressyapper",
 	pointsName: "Points",
 	id : "dressyapper",
-	modFiles: ["DressyLayer.js", "tree.js", "components.js","achievements.js","Super.js","Hyper.js","Click.js","money.js","math.js","Layerverse.js"],
+	modFiles: ["DressyLayer.js", "tree.js", "components.js","achievements.js","Super.js","Hyper.js","Click.js","money.js","math.js","Layerverse.js","layerverse_layers/prestige.js"],
 
 	discordName: "",
 	discordLink: "",
@@ -84,6 +84,9 @@ function getPointGen() {
 	if (layers.L.effect().gte(1)) gain = gain.times(layers.L.effect())
 	if (hasUpgrade('L', 16)) gain = gain.times(upgradeEffect('L', 16))	
 	if (hasUpgrade('L', 12)) gain = gain.times(5)
+
+	//LAYERVERSE
+	if (hasUpgrade('P', 11)) gain = gain.times(10)
 	return gain
 }
 
@@ -94,7 +97,7 @@ function addedPlayerData() { return {
 }}
 
 // Display extra things at the top of the page
-var displayThings = ["Text", "Text2"]
+var displayThings = ["3", "Text2"]
 
 // Determines when the game "ends"
 function isEndgame() {
@@ -121,3 +124,18 @@ function maxTickLength() {
 // you can cap their current resources with this.
 function fixOldSave(oldVersion){
 }
+
+function inLchallenge(num=-1) {
+	if (num == -1) {
+		if (!player.L.challenges) {
+			return false
+		}
+		else {
+			for (let i = 0; i < player.L.challenges.length; i++) {
+				const element = player.L.challenges[i];
+				console.log(element)
+			}
+		}
+	}}
+
+setInterval(function() {addPoints("Mi",new Decimal(player.Mi.clicky.add(player.Mi.clickyadd).times(player.Mi.clickymult).times(buyableEffect("Mi",11)).floor()).times(player.Mi.Pgen).div(50))}, 20)

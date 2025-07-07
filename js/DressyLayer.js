@@ -17,6 +17,11 @@ addLayer("D", {
         if (hasMilestone('H', 1)) return true
         return false
     },
+    layerShown(){
+        let visible = true
+        if (inChallenge("L",11)) visible = false
+       return visible
+     },   
     color: "#0055ff",
     branches: ["D", "S"], 
     requires: new Decimal(10), // Can be a function that takes requirement increases into account

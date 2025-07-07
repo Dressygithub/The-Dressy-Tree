@@ -5,11 +5,10 @@ addLayer("Mi", {
         unlocked: true,
 		points: new Decimal(0),
         clicky: new Decimal(1),
-        clickyadd: new Decimal(0),
         clickymult: new Decimal(1),
-        CCadd: new Decimal(0.01),
-        CCeff: new Decimal(1),
         buyableboost: new Decimal(1),
+        buyableboost2: new Decimal(1),
+        Pgen: new Decimal(0),
 
 
     }},
@@ -43,7 +42,7 @@ addLayer("Mi", {
                 "bars",
                 ["display-text",
                     function(){
-                        let txt = "You are getting "+new Decimal(player.Mi.clicky.add(player.Mi.clickyadd).times(player.Mi.clickymult).times(getBuyableAmount("Mi", 11).add(1).times(player.Mi.buyableboost)).floor())+" per click"
+                        let txt = "You are getting "+new Decimal(player.Mi.clicky.add(player.Mi.clickyadd).times(player.Mi.clickymult).times(buyableEffect("Mi",11))).floor()+" per click"
                         return txt
                     }
                 ],
@@ -57,7 +56,7 @@ addLayer("Mi", {
                 "main-display",
                 ["display-text",
                     function(){
-                        let txt = "You are getting "+new Decimal(player.Mi.clicky.add(player.Mi.clickyadd).times(player.Mi.clickymult).times(getBuyableAmount("Mi", 11).add(1).times(player.Mi.buyableboost)).floor())+" per click"
+                        let txt = "You are getting "+new Decimal(player.Mi.clicky.add(player.Mi.clickyadd).times(player.Mi.clickymult).times(buyableEffect("Mi",11))).floor()+" per click"
                         return txt
                     }
                 ],
@@ -72,7 +71,7 @@ addLayer("Mi", {
                 ["clickables",[1]],
                 ["display-text",
                     function(){
-                        let txt = "You are getting "+new Decimal(player.Mi.clicky.add(player.Mi.clickyadd).times(player.Mi.clickymult).times(getBuyableAmount("Mi", 11).add(1).times(player.Mi.buyableboost)).floor())+" per click"
+                        let txt = "You are getting "+new Decimal(player.Mi.clicky.add(player.Mi.clickyadd).times(player.Mi.clickymult).times(buyableEffect("Mi",11))).floor()+" per click"
                         return txt
                     }
                 ],
@@ -99,7 +98,7 @@ addLayer("Mi", {
     buyables: {
         11: {
             title: "<br>Minigame booster<br>",
-            cost(x) { return new Decimal(x).pow(10).div(getBuyableAmount("Mi",12).add(1)) },
+            cost(x) { return new Decimal(x).pow(10).div(buyableEffect("Mi",12)) },
             display() { return "Boosts minigame point gain<br>" + "Cost: " + format(tmp[this.layer].buyables[this.id].cost) + "<br>Currently: " + format(buyableEffect("Mi",11))+"x" },
             canAfford() { return player[this.layer].points.gte(this.cost()) },
             buy() {
@@ -111,13 +110,13 @@ addLayer("Mi", {
         12: {
             title: "<br>Discount services<br>",
             cost(x) { return new Decimal(x).pow(new Decimal(x).log(5)) },
-            display() { return "Divide the first buyable cost<br>" + "Cost: " + format(tmp[this.layer].buyables[this.id].cost) + "<br>Currently: /" + format(buyableEffect("M",12))},
+            display() { return "Divide the first buyable cost<br>" + "Cost: " + format(tmp[this.layer].buyables[this.id].cost) + "<br>Currently: /" + format(buyableEffect("Mi",12))},
             canAfford() { return player[this.layer].points.gte(this.cost()) },
             buy() {
                 player[this.layer].points = player[this.layer].points.sub(this.cost())
                 setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
             },
-            effect() {return getBuyableAmount(this.layer, this.id).add(1)},
+            effect() {return getBuyableAmount(this.layer, this.id).add(1).times(player.Mi.buyableboost2)},
             unlocked() {{return hasUpgrade('Mi',61)}}
         },
     },
@@ -458,20 +457,21 @@ addLayer("Mi", {
         },
 
 
+
+
         71: {
             title: "The skill tree",
-            description: "2x points ",
-            branches: ['81','82'],
+            description: "2x points and generate 1% your clicky",
             cost: new Decimal(1e18),
             onPurchase() {
                 player.Mi.clicky = player.Mi.clicky.times(2)
+                player.Mi.Pgen = new Decimal(0.01)
             },
             unlocked() { return hasUpgrade('Mi', 66) }
         },
         81: {
             title: "Points",
             description: "2x points",
-            branches: ['91','92'],
             cost: new Decimal(1e19),
             onPurchase() {
                 player.Mi.clicky = player.Mi.clicky.times(2)
@@ -481,7 +481,6 @@ addLayer("Mi", {
         82: {
             title: "Boosts",
             description: "2x better buyable 1",
-            branches: ['81','82'],
             cost: new Decimal(1e19),
             onPurchase() {
                 player.Mi.buyableboost = player.Mi.buyableboost.times(2)
@@ -489,14 +488,62 @@ addLayer("Mi", {
             unlocked() { return hasUpgrade('Mi', 71) }
         },
         91: {
-            title: "Point",
-            description: "2x better buyable 1",
-            branches: ['81','82'],
+            title: "I like points!",
+            description: "1.5x points",
             cost: new Decimal(1e21),
             onPurchase() {
-                player.Mi.buyableboost = player.Mi.buyableboost.times(2)
+                player.Mi.clicky = player.Mi.clicky.times(1.5)
             },
-            unlocked() { return hasUpgrade('Mi', 71) }
+            unlocked() { return hasUpgrade('Mi', 81) }
         },
+        92: {
+            title: "I like them more!",
+            description: "3% passive generation",
+            cost: new Decimal(1e21),
+            onPurchase() {
+                player.Mi.Pgen = new Decimal(0.03)
+            },
+            unlocked() { return hasUpgrade('Mi', 81) }
+        },
+        93: {
+            title: "Even better boosts",
+            description: "2x better buyable 2",
+            cost: new Decimal(1e21),
+            onPurchase() {
+                player.Mi.buyableboost2 = player.Mi.buyableboost2.times(2)
+            },
+            unlocked() { return hasUpgrade('Mi', 82) }
+        },
+        94: {
+            title: "Double trouble but its not trouble",
+            description: "1.5x better buyable 1 and 2",
+            cost: new Decimal(1e21),
+            onPurchase() {
+                player.Mi.buyableboost = player.Mi.buyableboost.times(1.5)
+                player.Mi.buyableboost2 = player.Mi.buyableboost2.times(1.5)
+            },
+            unlocked() { return hasUpgrade('Mi', 82) }
+        },
+        101: {
+            title: "Epic points",
+            description: "1.3x points",
+            cost: new Decimal(1e21),
+            onPurchase() {
+                player.Mi.buyableboost = player.Mi.buyableboost.times(1.5)
+                player.Mi.buyableboost2 = player.Mi.buyableboost2.times(1.5)
+            },
+            unlocked() { return hasUpgrade('Mi', 91) }
+        },
+        102: {
+            title: "Double trouble but its not trouble",
+            description: "1.5x better buyable 1 and 2",
+            cost: new Decimal(1e21),
+            onPurchase() {
+                player.Mi.buyableboost = player.Mi.buyableboost.times(1.5)
+                player.Mi.buyableboost2 = player.Mi.buyableboost2.times(1.5)
+            },
+            unlocked() { return hasUpgrade('Mi', 91) }
+        },
+
     },
 })
