@@ -26,6 +26,9 @@ addLayer("P", {
         if (hasUpgrade('P', 14)) mult = mult.times(upgradeEffect('P', 14))
         if (hasUpgrade('P', 15)) mult = mult.times(upgradeEffect('P', 15))
         if (hasUpgrade('P', 16)) mult = mult.times(upgradeEffect('P', 16))
+        if (hasUpgrade('P', 21)) mult = mult.times(1.5)
+        if (hasUpgrade('P', 22)) mult = mult.times(1.5)
+        if (hasUpgrade('P', 23)) mult = mult.times(upgradeEffect('P', 23)) 
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -66,7 +69,7 @@ addLayer("P", {
         15: {
             title: "Self-synergy 2",
             description: "Boost prestige points based on prestige points",
-            cost: new Decimal(1000),
+            cost: new Decimal(200),
             effect() {
                 return player[this.layer].points.add(1).pow(0.11)
             },
@@ -76,7 +79,7 @@ addLayer("P", {
         16: {
             title: "Self-synergy 3",
             description: "Boost prestige points based on TOTAL prestige points",
-            cost: new Decimal(1e6),
+            cost: new Decimal(500),
             effect() {
                 return player[this.layer].total.add(1).pow(0.2)
             },
@@ -86,8 +89,34 @@ addLayer("P", {
         21: {
             title: "Do you see the pattern in this layer now?",
             description: "1.5x PP",
-            cost: new Decimal(1e8),
+            cost: new Decimal(2000),
             unlocked() {return hasUpgrade("P",16)}
+        },
+        22: {
+            title: "This layer has no point boosts",
+            description: "1.5x PP",
+            cost: new Decimal(7500),
+            unlocked() {return hasUpgrade("P",21)}
+        },
+        23: {
+            title: "And quite a few self boosing upgrades",
+            description: "Boost prestige points based on TOTAL prestige points",
+            cost: new Decimal(15000),
+            effect() {
+                return player[this.layer].total.add(1).pow(0.3)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+            unlocked() {return hasUpgrade("P",22)}
+        },
+        24: {
+            title: "That was a big jump",
+            description: "Boost prestige points based on prestige points",
+            cost: new Decimal(2.5e7),
+            effect() {
+                return player[this.layer].total.add(1).log(5)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+            unlocked() {return hasUpgrade("P",22)}
         },
     },
 })
