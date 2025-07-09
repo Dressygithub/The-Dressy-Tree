@@ -10,6 +10,7 @@ addLayer("P", {
     layerShown(){
         let visible = false
         if (inChallenge("L",11)) visible = true
+        if (!inChallenge("L",11)) visible = false
         return visible
      },
     color: "#4BDC13",
@@ -68,30 +69,33 @@ addLayer("P", {
         },
         14: {
             title: "Self-synergy",
-            description: "Boost prestige points based on prestige points",
+            description: "Boost prestige points based on prestige points, capped at 10",
             cost: new Decimal(60),
             effect() {
-                return player[this.layer].points.add(1).pow(0.1)
+                if (player[this.layer].total.add(1).pow(0.1).lt(10)) return player[this.layer].total.add(1).pow(0.1)
+                else return new Decimal(10)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
             unlocked() {return hasUpgrade("P",13)}
         },
         15: {
             title: "Self-synergy 2",
-            description: "Boost prestige points based on prestige points",
+            description: "Boost prestige points based on prestige points, capped at 100",
             cost: new Decimal(200),
             effect() {
-                return player[this.layer].points.add(1).pow(0.11)
+                if (player[this.layer].total.add(1).pow(0.1).lt(100)) return player[this.layer].total.add(1).pow(0.1)
+                else return new Decimal(100)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
             unlocked() {return hasUpgrade("P",14)}
         },
         16: {
             title: "Self-synergy 3",
-            description: "Boost prestige points based on TOTAL prestige points",
+            description: "Boost prestige points based on TOTAL prestige points, capped at 25",
             cost: new Decimal(500),
             effect() {
-                return player[this.layer].total.add(1).pow(0.2)
+                if (player[this.layer].total.add(1).pow(0.1).lt(25)) return player[this.layer].total.add(1).pow(0.1)
+                else return new Decimal(25)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
             unlocked() {return hasUpgrade("P",15)}
@@ -105,35 +109,38 @@ addLayer("P", {
         22: {
             title: "This layer has no point boosts",
             description: "1.5x PP",
-            cost: new Decimal(7500),
+            cost: new Decimal(4000),
             unlocked() {return hasUpgrade("P",21)}
         },
         23: {
             title: "And quite a few self boosing upgrades",
-            description: "Boost prestige points based on TOTAL prestige points",
-            cost: new Decimal(15000),
+            description: "Boost prestige points based on TOTAL prestige points, capped at 1e10",
+            cost: new Decimal(8000),
             effect() {
-                return player[this.layer].total.add(1).pow(0.1)
+                if (player[this.layer].total.add(1).pow(0.1).lt(1e10)) return player[this.layer].total.add(1).pow(0.1)
+                else return new Decimal(1e10)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
             unlocked() {return hasUpgrade("P",22)}
         },
         24: {
             title: "Please stop with the self boosting",
-            description: "Boost prestige points based on prestige points",
-            cost: new Decimal(1.5e5),
+            description: "Boost prestige points based on prestige points, capped at 1e50",
+            cost: new Decimal(25000),
             effect() {
-                return player[this.layer].total.add(1).log(5)
+                if (player[this.layer].total.add(1).log(5).lt(1e50)) return player[this.layer].total.add(1).log(5)
+                else return new Decimal(1e50)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
             unlocked() {return hasUpgrade("P",23)}
         },
         25: {
             title: "no",
-            description: "Boost prestige points based on prestige points",
-            cost: new Decimal(1e7),
+            description: "Boost prestige points based on prestige points, capped at 1e100",
+            cost: new Decimal(3e5),
             effect() {
-                return player[this.layer].total.add(1).log(5)
+                if (player[this.layer].total.add(1).log(5).lt(1e100)) return player[this.layer].total.add(1).log(5)
+                else return new Decimal(1e100)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
             unlocked() {return hasUpgrade("P",24)}
@@ -147,13 +154,13 @@ addLayer("P", {
         31: {
             title: "Unlock a buyable",
             description: "This totally isnt switched",
-            cost: new Decimal(1e9),
+            cost: new Decimal(1e8),
             unlocked() {return hasUpgrade("P",26)}
         },
         32: {
             title: "Better Buyable",
             description: "buyable effect is squared",
-            cost: new Decimal(5e21),
+            cost: new Decimal(1e20),
             unlocked() {return hasUpgrade("P",31)},
             onPurchase() {
                 return player.P.buyablepower = new Decimal(2)
@@ -161,8 +168,8 @@ addLayer("P", {
         },
         33: {
             title: "Better Buyable 2",
-            description: "Buyable effect is doubled",
-            cost: new Decimal(1e43),
+            description: "Buyable effect is squared again",
+            cost: new Decimal(1e37),
             unlocked() {return hasUpgrade("P",32)},
             onPurchase() {
                 return player.P.buyablepower = player.P.buyablepower.times(2)
@@ -170,20 +177,23 @@ addLayer("P", {
         },
         34: {
             title: "Why so much cost???",
-            description: "Boost prestige points based on prestige points",
+            description: "Boost prestige points based on prestige points, capped at 1.5",
             cost: new Decimal(1e100),
             effect() {
-                return player[this.layer].total.add(1).pow(0.0002)
+                if (player[this.layer].total.add(1).pow(0.01).lt(1.5)) return player[this.layer].total.add(1).pow(0.01)
+                else return new Decimal(1.5)
             },
             effectDisplay() { return "^"+format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
             unlocked() {return hasUpgrade("P",33)}
         },
         35: {
             title: "Half way there!, well not really",
-            description: "Boost prestige points based on prestige points",
+            description: "Boost prestige points based on prestige points, capeed at 2",
             cost: new Decimal(2).pow(1024).pow(0.5),
             effect() {
-                return player[this.layer].total.add(1).pow(0.0004)
+                
+                if (player[this.layer].total.add(1).pow(0.0001).lt(2)) return player[this.layer].total.add(1).pow(0.0005)
+                else return new Decimal(2)
             },
             effectDisplay() { return "^"+format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
             unlocked() {return hasUpgrade("P",34)}
@@ -192,7 +202,7 @@ addLayer("P", {
     buyables: {
         11: {
             title: "<br>Prestige booster<br>",
-            cost(x) { return new Decimal(1e6).pow(getBuyableAmount(this.layer, this.id).div(100)) },
+            cost(x) { return new Decimal(1e6).pow(getBuyableAmount(this.layer, this.id).div(270)) },
             display() { return "Boosts prestige point gain<br>" + "Cost: " + format(tmp[this.layer].buyables[this.id].cost) + "<br>Currently: " + format(tmp[this.layer].buyables[this.id].effect)+"x" },
             canAfford() { return player[this.layer].points.gte(this.cost()) },
             buy() {

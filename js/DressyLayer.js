@@ -19,7 +19,7 @@ addLayer("D", {
     },
     layerShown(){
         let visible = true
-        if (inChallenge("L",11)) visible = false
+        if (player.L.inchallenge) visible = false
        return visible
      },   
     color: "#0055ff",

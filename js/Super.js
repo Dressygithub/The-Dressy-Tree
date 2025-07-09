@@ -4,12 +4,12 @@ addLayer("S", {
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: false,
-                points: new Decimal(0),
+        points: new Decimal(0),
     }},
     layerShown(){
         let visible = false
         if (hasUpgrade('D', 26) || player.S.unlocked) visible = true
-        if (inChallenge("L",11)) visible = false
+        if (player.L.inChallenge) visible = false
         return visible
      },
     passiveGeneration() {

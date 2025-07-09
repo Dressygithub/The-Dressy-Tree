@@ -6,11 +6,12 @@ addLayer("L", {
         unlocked: true,
         points: new Decimal(0),
         complete: new Decimal(0),
+        inchallenge: false
     }},
     layerShown(){
         let visible = true
         if (hasUpgrade('M', 61) || player.L.unlocked) visible = true
-       return visible
+        return visible
      },   
     color: "rgb(132, 0, 255)",
     requires: new Decimal(1e60), // Can be a function that takes requirement increases into account
@@ -48,9 +49,28 @@ addLayer("L", {
         11: {
             name: "The first layer",
             challengeDescription: "Complete the Prestige layer",
-            rewardDescription: "",
+            rewardDescription: "Points are boosted by points",
             goalDescription: "Infinity prestige points?",
             canComplete: function() {return player.P.points.gte(new Decimal(2).pow(1024))},
+            rewardEffect() {
+                return player.points.add(1).log(10).add(1)
+            },
+            rewardDisplay() { return format(challengeEffect(this.layer, this.id))+"x" },
+            onEnter() {return player.L.inchallenge = true},
+            onExit() {return player.L.inchallenge = false}
+        },
+        12: {
+            name: "Geometry Layer",
+            challengeDescription: "Complete the Geometricality layer",
+            rewardDescription: "Points are boosted by points",
+            goalDescription: "Infinity prestige points?",
+            canComplete: function() {return player.P.points.gte(new Decimal(2).pow(1024))},
+            rewardEffect() {
+                return player.points.add(1).log(10).add(1)
+            },
+            rewardDisplay() { return format(challengeEffect(this.layer, this.id))+"x" },
+            onEnter() {return player.L.inchallenge = true},
+            onExit() {return player.L.inchallenge = false}
         },
     },
     upgrades: { 
