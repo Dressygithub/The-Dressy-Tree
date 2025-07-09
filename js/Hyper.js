@@ -86,5 +86,5 @@ addLayer("H", {
             cost: new Decimal(100),
             unlocked() {return getBuyableAmount("M",15).gte(3)},
         },
-    }
+    },
 })

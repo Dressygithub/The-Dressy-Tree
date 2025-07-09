@@ -48,9 +48,9 @@ addLayer("L", {
         11: {
             name: "The first layer",
             challengeDescription: "Complete the Prestige layer",
-            rewardDescription: "All layers are boosted by their order",
-            goalDescription: "An amount of prestige points",
-            canComplete: function() {return player.S.points.gte(1000)},
+            rewardDescription: "",
+            goalDescription: "Infinity prestige points?",
+            canComplete: function() {return player.P.points.gte(new Decimal(2).pow(1024))},
         },
     },
     upgrades: { 
