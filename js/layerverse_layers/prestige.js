@@ -176,7 +176,7 @@ addLayer("P", {
                 return player[this.layer].total.add(1).pow(0.0002)
             },
             effectDisplay() { return "^"+format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
-            unlocked() {return hasUpgrade("P",24)}
+            unlocked() {return hasUpgrade("P",33)}
         },
         35: {
             title: "Half way there!, well not really",
@@ -186,7 +186,7 @@ addLayer("P", {
                 return player[this.layer].total.add(1).pow(0.0004)
             },
             effectDisplay() { return "^"+format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
-            unlocked() {return hasUpgrade("P",24)}
+            unlocked() {return hasUpgrade("P",34)}
         },
     },
     buyables: {

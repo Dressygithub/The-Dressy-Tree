@@ -9,7 +9,7 @@ addLayer("L", {
     }},
     layerShown(){
         let visible = true
-        if (hasUpgrade('M', 61) || player.L.points.gte()) visible = true
+        if (hasUpgrade('M', 61) || player.L.unlocked) visible = true
        return visible
      },   
     color: "rgb(132, 0, 255)",
