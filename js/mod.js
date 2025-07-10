@@ -3,7 +3,7 @@ let modInfo = {
 	author: "Dressyapper",
 	pointsName: "Points",
 	id : "dressyapper",
-	modFiles: ["DressyLayer.js", "tree.js", "components.js","achievements.js","Super.js","Hyper.js","Click.js","money.js","math.js","Layerverse.js","layerverse_layers/prestige.js", "layerverse_layers/Geometricality.js"],
+	modFiles: ["DressyLayer.js", "tree.js", "components.js","achievements.js","Super.js","Hyper.js","Click.js","money.js","Layerverse.js","layerverse_layers/prestige.js", "layerverse_layers/math.js"],
 
 	discordName: "",
 	discordLink: "",
@@ -76,8 +76,6 @@ function getPointGen() {
 	if (hasUpgrade('S', 31)) gain = gain.times(6)
 	if (hasUpgrade('S', 33)) gain = gain.times(upgradeEffect('S', 33))
 	if (hasMilestone('H', 1)) gain = gain.pow(1.1)
-	if (hasUpgrade('Ma', 11)) gain = gain.times(upgradeEffect('Ma', 11))
-	if (hasUpgrade('Ma', 16)) gain = gain.times(upgradeEffect('Ma', 16))	
 	if (getBuyableAmount("M",11).gte(0)) gain = gain.times(buyableEffect("M",11))
 	if (hasUpgrade('D', 34)) gain = gain.times(3)
 	if (hasUpgrade('D', 35)) gain = gain.times(1.5)
@@ -89,6 +87,9 @@ function getPointGen() {
 	if (hasChallenge('L',11)) gain = gain.times(challengeEffect('L', 11))
 
 	if (hasUpgrade('P', 11)) gain = gain.times(10)
+	
+	if (hasUpgrade('Ma', 11)) gain = gain.add(upgradeEffect('Ma', 11))
+	if (hasUpgrade('Ma', 15)) gain = gain.pow(upgradeEffect('Ma', 15))	
 	return gain
 }
 

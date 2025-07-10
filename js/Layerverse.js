@@ -60,8 +60,8 @@ addLayer("L", {
             onExit() {return player.L.inchallenge = false}
         },
         12: {
-            name: "Geometry Layer",
-            challengeDescription: "Complete the Geometricality layer",
+            name: "Math Layer",
+            challengeDescription: "Everyones favourite subject! Complete the math layer",
             rewardDescription: "Points are boosted by points",
             goalDescription: "Infinity prestige points?",
             canComplete: function() {return player.P.points.gte(new Decimal(2).pow(1024))},

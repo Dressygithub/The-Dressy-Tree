@@ -5,7 +5,7 @@ addLayer("P", {
     startData() { return {
         unlocked: true,
         points: new Decimal(0),
-        buyablepower: new Decimal(1)
+        buyablepower: new Decimal(1),
     }},
     layerShown(){
         let visible = false
