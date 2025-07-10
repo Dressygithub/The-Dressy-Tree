@@ -10,11 +10,11 @@ addLayer("H", {
     layerShown(){
         let visible = false
         if (hasChallenge('S', 11) || player.H.unlocked) visible = true
-        if (inChallenge("L",11)) visible = false
+        if (player.L.inchallenge) visible = false
        return visible
      },   
     effect() {
-        Heff = player[this.layer].points.add(1).log(2).times(player.H.effboost)
+        Heff = player[this.layer].points.add(1).log(1.5).times(player.H.effboost)
         return Heff
         },
         effectDescription() {

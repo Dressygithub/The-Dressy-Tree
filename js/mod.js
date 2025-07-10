@@ -90,6 +90,13 @@ function getPointGen() {
 	
 	if (hasUpgrade('Ma', 11)) gain = gain.add(upgradeEffect('Ma', 11))
 	if (hasUpgrade('Ma', 15)) gain = gain.pow(upgradeEffect('Ma', 15))	
+	if (hasUpgrade('Ma', 22)) gain = gain.times(upgradeEffect('Ma', 22))	
+	if (hasUpgrade('Ma', 23)) gain = gain.times(upgradeEffect('Ma', 23))
+	if (hasUpgrade('Ma', 24)) gain = gain.times(upgradeEffect('Ma', 24))
+	if (hasUpgrade("Ma",31)) gain = gain.times(upgradeEffect("Ma",31))
+	if (hasUpgrade("Ma",32)) gain = gain.times(upgradeEffect("Ma",32))
+	if (hasUpgrade("Ma",33)) gain = gain.times(upgradeEffect("Ma",33))
+	if (hasUpgrade("Ma",34)) gain = gain.times(upgradeEffect("Ma",34))   	   			
 	return gain
 }
 

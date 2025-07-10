@@ -9,7 +9,7 @@ addLayer("S", {
     layerShown(){
         let visible = false
         if (hasUpgrade('D', 26) || player.S.unlocked) visible = true
-        if (player.L.inChallenge) visible = false
+        if (player.L.inchallenge) visible = false
         return visible
      },
     passiveGeneration() {
