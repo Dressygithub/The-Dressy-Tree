@@ -62,11 +62,26 @@ addLayer("L", {
         12: {
             name: "Math Layer",
             challengeDescription: "Everyones favourite subject! Complete the math layer",
-            rewardDescription: "Points are boosted by points",
-            goalDescription: "Infinity prestige points?",
-            canComplete: function() {return player.P.points.gte(new Decimal(2).pow(1024))},
+            rewardDescription: "Points are boosted by points at a lesser scale",
+            goalDescription: "10 million math",
+            canComplete: function() {return player.Ma.points.gte(10000000)},
+            unlocked() {return hasChallenge("L",11)},
             rewardEffect() {
-                return player.points.add(1).log(10).add(1)
+                return player.points.add(1).log(20).add(1)
+            },
+            rewardDisplay() { return format(challengeEffect(this.layer, this.id))+"x" },
+            onEnter() {return player.L.inchallenge = true},
+            onExit() {return player.L.inchallenge = false}
+        },
+        13: {
+            name: "Time layer",
+            challengeDescription: "Patience is key, complete the time layer",
+            rewardDescription: "Points are boosted by points at a lesser scale",
+            goalDescription: "10 million math",
+            canComplete: function() {return player.Ma.points.gte(10000000)},
+            unlocked() {return hasChallenge("L",11)},
+            rewardEffect() {
+                return player.points.add(1).log(20).add(1)
             },
             rewardDisplay() { return format(challengeEffect(this.layer, this.id))+"x" },
             onEnter() {return player.L.inchallenge = true},

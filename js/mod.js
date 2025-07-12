@@ -3,7 +3,7 @@ let modInfo = {
 	author: "Dressyapper",
 	pointsName: "Points",
 	id : "dressyapper",
-	modFiles: ["DressyLayer.js", "tree.js", "components.js","achievements.js","Super.js","Hyper.js","Click.js","money.js","Layerverse.js","layerverse_layers/prestige.js", "layerverse_layers/math.js"],
+	modFiles: ["DressyLayer.js", "tree.js", "components.js","achievements.js","Super.js","Hyper.js","Click.js","money.js","Layerverse.js","layerverse_layers/prestige.js", "layerverse_layers/math.js", "layerverse_layers/time.js"],
 
 	discordName: "",
 	discordLink: "",
@@ -85,6 +85,7 @@ function getPointGen() {
 
 	//LAYERVERSE
 	if (hasChallenge('L',11)) gain = gain.times(challengeEffect('L', 11))
+	if (hasChallenge('L',12)) gain = gain.times(challengeEffect('L', 12))
 
 	if (hasUpgrade('P', 11)) gain = gain.times(10)
 	
@@ -136,3 +137,4 @@ function fixOldSave(oldVersion){
 }
 
 setInterval(function() {addPoints("Mi",new Decimal(player.Mi.clicky.add(player.Mi.clickyadd).times(player.Mi.clickymult).times(buyableEffect("Mi",11)).floor()).times(player.Mi.Pgen).div(50))}, 20)
+setInterval(function() {player.T.points = player.T.points.add(new Decimal(0.05).times(player.T.mult).pow(player.T.pow))},50) 
