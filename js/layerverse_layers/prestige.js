@@ -168,32 +168,31 @@ addLayer("P", {
         },
         33: {
             title: "Better Buyable 2",
-            description: "Buyable effect is squared again",
-            cost: new Decimal(1e37),
+            description: "Buyable effect is ^1.25",
+            cost: new Decimal(1e50),
             unlocked() {return hasUpgrade("P",32)},
             onPurchase() {
-                return player.P.buyablepower = player.P.buyablepower.times(2)
+                return player.P.buyablepower = player.P.buyablepower.times(1.5)
             }
         },
         34: {
             title: "Why so much cost???",
-            description: "Boost prestige points based on prestige points, capped at 1.5",
+            description: "Boost prestige points based on prestige points, capped at 1.13",
             cost: new Decimal(1e100),
             effect() {
-                if (player[this.layer].total.add(1).pow(0.01).lt(1.5)) return player[this.layer].total.add(1).pow(0.01)
-                else return new Decimal(1.5)
+                if (player[this.layer].total.add(1).pow(0.01).lt(1.13)) return player[this.layer].total.add(1).pow(0.01)
+                else return new Decimal(1.13)
             },
             effectDisplay() { return "^"+format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
             unlocked() {return hasUpgrade("P",33)}
         },
         35: {
             title: "Half way there!, well not really",
-            description: "Boost prestige points based on prestige points, capeed at 2",
+            description: "Boost prestige points based on prestige points, capeed at 1.65",
             cost: new Decimal(2).pow(1024).pow(0.5),
             effect() {
-                
-                if (player[this.layer].total.add(1).pow(0.0001).lt(2)) return player[this.layer].total.add(1).pow(0.0005)
-                else return new Decimal(2)
+                if (player[this.layer].total.add(1).pow(0.001).lt(1.65)) return player[this.layer].total.add(1).pow(0.001)
+                else return new Decimal(1.65)
             },
             effectDisplay() { return "^"+format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
             unlocked() {return hasUpgrade("P",34)}
@@ -202,15 +201,16 @@ addLayer("P", {
     buyables: {
         11: {
             title: "<br>Prestige booster<br>",
+            purchaseLimit: 1400,
             cost(x) { return new Decimal(1e6).pow(getBuyableAmount(this.layer, this.id).div(270)) },
-            display() { return "Boosts prestige point gain<br>" + "Cost: " + format(tmp[this.layer].buyables[this.id].cost) + "<br>Currently: " + format(tmp[this.layer].buyables[this.id].effect)+"x" },
+            display() { return "Boosts prestige point gain<br>" + "Cost: " + format(tmp[this.layer].buyables[this.id].cost) + "<br>Currently: " + format(tmp[this.layer].buyables[this.id].effect)+"x<br>" + getBuyableAmount("P",11) +"/"+this.purchaseLimit},
             canAfford() { return player[this.layer].points.gte(this.cost()) },
             buy() {
-                player[this.layer].points = player[this.layer].points.sub(this.cost())
-                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+                    player[this.layer].points = player[this.layer].points.sub(this.cost())
+                    setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
             },
-            effect() {return new Decimal(2).pow(getBuyableAmount(this.layer, this.id).pow(0.5)).pow(player.P.buyablepower)},
-            unlocked() {return hasUpgrade('P',31)}
+            effect() {return new Decimal(2).pow(getBuyableAmount(this.layer, this.id).pow(0.70)).pow(player.P.buyablepower)},
+            unlocked() {return hasUpgrade('P',31)},
         },
     },
 })

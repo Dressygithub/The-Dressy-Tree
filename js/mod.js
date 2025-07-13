@@ -137,4 +137,3 @@ function fixOldSave(oldVersion){
 }
 
 setInterval(function() {addPoints("Mi",new Decimal(player.Mi.clicky.add(player.Mi.clickyadd).times(player.Mi.clickymult).times(buyableEffect("Mi",11)).floor()).times(player.Mi.Pgen).div(50))}, 20)
-setInterval(function() {player.T.points = player.T.points.add(new Decimal(0.05).times(player.T.mult).pow(player.T.pow))},50) 
