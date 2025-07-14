@@ -86,6 +86,7 @@ function getPointGen() {
 	//LAYERVERSE
 	if (hasChallenge('L',11)) gain = gain.times(challengeEffect('L', 11))
 	if (hasChallenge('L',12)) gain = gain.times(challengeEffect('L', 12))
+	if (hasChallenge('L',13)) gain = gain.times(challengeEffect('L', 13))
 
 	if (hasUpgrade('P', 11)) gain = gain.times(10)
 	
@@ -104,7 +105,7 @@ function getPointGen() {
 // You can add non-layer related variables that should to into "player" and be saved here, along with default values
 function addedPlayerData() { return {
 	layerview: 0,
-	endgame: new Decimal("1e100")
+	endgame: new Decimal("1eee1000")
 }}
 
 // Display extra things at the top of the page

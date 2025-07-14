@@ -76,12 +76,12 @@ addLayer("L", {
         13: {
             name: "Time layer",
             challengeDescription: "Patience is key, complete the time layer",
-            rewardDescription: "Points are boosted by points at a lesser scale",
-            goalDescription: "10 million math",
-            canComplete: function() {return player.Ma.points.gte(10000000)},
+            rewardDescription: "Points are boosted by total played time",
+            goalDescription: "The age of the universe",
+            canComplete: function() {return new Decimal(player.T.points).div(60).div(60).div(24).div(7).div(4).div(12).floor().gte(13.7e9)},
             unlocked() {return hasChallenge("L",11)},
             rewardEffect() {
-                return player.points.add(1).log(20).add(1)
+                return new Decimal(player.time).slog()
             },
             rewardDisplay() { return format(challengeEffect(this.layer, this.id))+"x" },
             onEnter() {return player.L.inchallenge = true},

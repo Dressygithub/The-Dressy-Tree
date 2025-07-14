@@ -460,16 +460,15 @@ addLayer("Mi", {
 
 
         71: {
-            title: "The skill tree",
-            description: "2x points and generate 1% your clicky",
+            title: "The next upgrade section",
+            description: "25% passive generation",
             cost: new Decimal(1e18),
             onPurchase() {
-                player.Mi.clicky = player.Mi.clicky.times(2)
-                player.Mi.Pgen = new Decimal(0.01)
+                player.Mi.Pgen = new Decimal(0.25)
             },
             unlocked() { return hasUpgrade('Mi', 66) }
         },
-        81: {
+        72: {
             title: "Points",
             description: "2x points",
             cost: new Decimal(1e19),
@@ -478,72 +477,125 @@ addLayer("Mi", {
             },
             unlocked() { return hasUpgrade('Mi', 71) }
         },
-        82: {
+        73: {
             title: "Boosts",
             description: "2x better buyable 1",
             cost: new Decimal(1e19),
             onPurchase() {
                 player.Mi.buyableboost = player.Mi.buyableboost.times(2)
             },
-            unlocked() { return hasUpgrade('Mi', 71) }
+            unlocked() { return hasUpgrade('Mi', 72) }
         },
-        91: {
+        74: {
             title: "I like points!",
             description: "1.5x points",
             cost: new Decimal(1e21),
             onPurchase() {
                 player.Mi.clicky = player.Mi.clicky.times(1.5)
             },
-            unlocked() { return hasUpgrade('Mi', 81) }
+            unlocked() { return hasUpgrade('Mi', 73) }
         },
-        92: {
+        75: {
             title: "I like them more!",
-            description: "3% passive generation",
+            description: "50% passive generation",
             cost: new Decimal(1e21),
             onPurchase() {
-                player.Mi.Pgen = new Decimal(0.03)
+                player.Mi.Pgen = new Decimal(0.50)
             },
-            unlocked() { return hasUpgrade('Mi', 81) }
+            unlocked() { return hasUpgrade('Mi', 74) }
         },
-        93: {
+        76: {
             title: "Even better boosts",
             description: "2x better buyable 2",
-            cost: new Decimal(1e21),
+            cost: new Decimal(3e21),
             onPurchase() {
                 player.Mi.buyableboost2 = player.Mi.buyableboost2.times(2)
             },
-            unlocked() { return hasUpgrade('Mi', 82) }
+            unlocked() { return hasUpgrade('Mi', 75) }
         },
-        94: {
+        81: {
             title: "Double trouble but its not trouble",
             description: "1.5x better buyable 1 and 2",
-            cost: new Decimal(1e21),
+            cost: new Decimal(3e21),
             onPurchase() {
                 player.Mi.buyableboost = player.Mi.buyableboost.times(1.5)
                 player.Mi.buyableboost2 = player.Mi.buyableboost2.times(1.5)
             },
-            unlocked() { return hasUpgrade('Mi', 82) }
+            unlocked() { return hasUpgrade('Mi', 76) }
         },
-        101: {
+        82: {
             title: "Epic points",
             description: "1.3x points",
-            cost: new Decimal(1e21),
+            cost: new Decimal(5e21),
             onPurchase() {
-                player.Mi.buyableboost = player.Mi.buyableboost.times(1.5)
-                player.Mi.buyableboost2 = player.Mi.buyableboost2.times(1.5)
+                player.Mi.clicky = player.Mi.clicky.times(1.3)
+            },
+            unlocked() { return hasUpgrade('Mi', 81) }
+        },
+        83: {
+            title: "Buyables are useful i think",
+            description: "3x better buyable 1 and 2",
+            cost: new Decimal(1e22),
+            onPurchase() {
+                player.Mi.buyableboost = player.Mi.buyableboost.times(3)
+                player.Mi.buyableboost2 = player.Mi.buyableboost2.times(3)
+            },
+            unlocked() { return hasUpgrade('Mi', 82) }
+        },
+        84: {
+            title: "I love exponents",
+            description: "^1.05 point mult",
+            cost: new Decimal(1.25e22),
+            onPurchase() {
+                player.Mi.clicky = player.Mi.clicky.pow(1.05)
+            },
+            unlocked() { return hasUpgrade('Mi', 83) }
+        },
+        85: {
+            title: "I love exponents again",
+            description: "^1.05 point mult again",
+            cost: new Decimal(1.75e22),
+            onPurchase() {
+                player.Mi.clicky = player.Mi.clicky.pow(1.05)
+            },
+            unlocked() { return hasUpgrade('Mi', 84) }
+        },
+        86: {
+            title: "Passive generational upgrade",
+            description: "75% passive generation",
+            cost: new Decimal(5e22),
+            onPurchase() {
+                player.Mi.Pgen = new Decimal(0.75)
+            },
+            unlocked() { return hasUpgrade('Mi', 85) }
+        },
+        91: {
+            title: "I exponents exponents",
+            description: "^1.1 point mult",
+            cost: new Decimal(1e23),
+            onPurchase() {
+                player.Mi.clicky = player.Mi.clicky.pow(1.1)
+            },
+            unlocked() { return hasUpgrade('Mi', 86) }
+        },
+        92: {
+            title: "Exponents exponents exponents",
+            description: "^1.1 point mult again",
+            cost: new Decimal(2e23),
+            onPurchase() {
+                player.Mi.clicky = player.Mi.clicky.pow(1.1)
             },
             unlocked() { return hasUpgrade('Mi', 91) }
         },
-        102: {
-            title: "Double trouble but its not trouble",
-            description: "1.5x better buyable 1 and 2",
-            cost: new Decimal(1e21),
+        93: {
+            title: "A",
+            description: "^1.5 point mult again",
+            cost: new Decimal(1e25),
             onPurchase() {
-                player.Mi.buyableboost = player.Mi.buyableboost.times(1.5)
-                player.Mi.buyableboost2 = player.Mi.buyableboost2.times(1.5)
+                player.Mi.clicky = player.Mi.clicky.pow(1.5)
             },
-            unlocked() { return hasUpgrade('Mi', 91) }
+            unlocked() { return hasUpgrade('Mi', 92) }
         },
-
+        
     },
 })

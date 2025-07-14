@@ -41,37 +41,43 @@ addLayer("T", {
                     "main-display",
                     ["display-text",
                     function(){
-                        return "You have <h2><span style='color:rgb(255, 0, 85); text-shadow: 0px 0px 10px rgb(255, 0, 76); font-family: Lucida Console, Courier New, monospace'>"+new Decimal(player.T.points).div(60).floor()+"</span></h2> Minutes"
+                        return "You have <h2><span style='color:rgb(255, 0, 0); text-shadow: 0px 0px 10px rgb(255, 0, 76); font-family: Lucida Console, Courier New, monospace'>"+new Decimal(player.T.points).div(60).floor()+"</span></h2> Minutes"
                     }
                 ],
                     "blank",
                     ["display-text",
                     function(){
-                        return "You have <h2><span style='color:rgb(255, 0, 85); text-shadow: 0px 0px 10px rgb(255, 0, 76); font-family: Lucida Console, Courier New, monospace'>"+new Decimal(player.T.points).div(60).div(60).floor()+"</span></h2> Hours"
+                        return "You have <h2><span style='color:rgb(255, 0, 0); text-shadow: 0px 0px 10px rgb(255, 0, 76); font-family: Lucida Console, Courier New, monospace'>"+new Decimal(player.T.points).div(60).div(60).floor()+"</span></h2> Hours"
                     }
                 ],
                     "blank",
                 ["display-text",
                     function(){
-                        return "You have <h2><span style='color:rgb(255, 0, 85); text-shadow: 0px 0px 10px rgb(255, 0, 76); font-family: Lucida Console, Courier New, monospace'>"+new Decimal(player.T.points).div(60).div(60).div(24).floor()+"</span></h2> Days"
+                        return "You have <h2><span style='color:rgb(255, 0, 0); text-shadow: 0px 0px 10px rgb(255, 0, 76); font-family: Lucida Console, Courier New, monospace'>"+new Decimal(player.T.points).div(60).div(60).div(24).floor()+"</span></h2> Days"
                     }
                 ],
                     "blank",
                 ["display-text",
                     function(){
-                        return "You have <h2><span style='color:rgb(255, 0, 85); text-shadow: 0px 0px 10px rgb(255, 0, 76); font-family: Lucida Console, Courier New, monospace'>"+new Decimal(player.T.points).div(60).div(60).div(24).div(7).floor()+"</span></h2> Weeks"
+                        return "You have <h2><span style='color:rgb(255, 0, 0); text-shadow: 0px 0px 10px rgb(255, 0, 76); font-family: Lucida Console, Courier New, monospace'>"+new Decimal(player.T.points).div(60).div(60).div(24).div(7).floor()+"</span></h2> Weeks"
                     }
                 ],
                 "blank",
                 ["display-text",
                     function(){
-                        return "You have <h2><span style='color:rgb(255, 0, 85); text-shadow: 0px 0px 10px rgb(255, 0, 76); font-family: Lucida Console, Courier New, monospace'>"+new Decimal(player.T.points).div(60).div(60).div(24).div(7).div(4).floor()+"</span></h2> Months"
+                        return "You have <h2><span style='color:rgb(255, 0, 0); text-shadow: 0px 0px 10px rgb(255, 0, 76); font-family: Lucida Console, Courier New, monospace'>"+new Decimal(player.T.points).div(60).div(60).div(24).div(7).div(4).floor()+"</span></h2> Months"
                     }
                 ],
                 "blank",
                 ["display-text",
                     function(){
-                        return "You have <h2><span style='color:rgb(255, 0, 85); text-shadow: 0px 0px 10px rgb(255, 0, 76); font-family: Lucida Console, Courier New, monospace'>"+new Decimal(player.T.points).div(60).div(60).div(24).div(7).div(4).div(12).floor()+"</span></h2> Years"
+                        return "You have <h2><span style='color:rgb(255, 0, 0); text-shadow: 0px 0px 10px rgb(255, 0, 76); font-family: Lucida Console, Courier New, monospace'>"+new Decimal(player.T.points).div(60).div(60).div(24).div(7).div(4).div(12).floor()+"</span></h2> Years"
+                    }
+                ],
+                "blank",
+                ["display-text",
+                    function(){
+                        return "Time format: "+formatTime(player.T.points)
                     }
                 ],
                     "blank",
@@ -166,7 +172,7 @@ addLayer("T", {
             description: "^1.3 seconds",
             cost: new Decimal(3e6),   
             onPurchase() {
-                return player.T.pow = player.T.pow.times(1.1)
+                return player.T.pow = player.T.pow.times(1.3)
             }
         },
         26: {
@@ -175,6 +181,14 @@ addLayer("T", {
             cost: new Decimal(2e7),   
             onPurchase() {
                 return player.T.pow = player.T.pow.times(1.5)
+            }
+        },
+        31: {
+            title: "Eternity",
+            description: "1.5x seconds",
+            cost: new Decimal(1e13),   
+            onPurchase() {
+                return player.T.mult = player.T.mult.times(100)
             }
         },
     }
