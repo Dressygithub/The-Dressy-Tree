@@ -49,7 +49,7 @@ addLayer("S", {
     hotkeys: [
         {key: "p", description: "P: Reset for prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-      milestones: {
+    milestones: {
         1: {
             requirementDescription: "1 Super point",
             effectDescription: "1.5x points",

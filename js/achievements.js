@@ -42,17 +42,25 @@ addLayer("De", {
         done() {return hasChallenge('S', 11)}
     },
 
-},
- tabFormat: {
-            "Achievements": {
-                content: [
-                    "main-display",
-                    "blank",
-                    "blank",
-                    "achievements",
-                    "blank",
-                    "blank",
-                ],
-            },
-        }
+    },
+    tabFormat: {
+        "Achievements": {
+            content: [
+                "main-display",
+                "blank",
+                "blank",
+                "achievements",
+                "blank",
+                "clickables",
+                "blank",
+            ],
+        },
+    },
+    clickables: {
+        11: {
+            title: "Import time",
+            canClick() {return true},
+            onClick() {return importSave(player.saves.time)}
+        },
+    }
 })

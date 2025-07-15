@@ -204,7 +204,7 @@ addLayer("Ma", {
     25: {
         title: "Constants",
         description: "Boost math gain by 2x",
-        cost: new Decimal(999),
+        cost: new Decimal(500),
         effect() {
             if (hasUpgrade("Ma",25)) {
                 return new Decimal(2)
@@ -213,7 +213,7 @@ addLayer("Ma", {
                 return new Decimal(1)
             }
         },
-        unlocked() {return hasUpgrade("Ma",22)}
+        unlocked() {return hasUpgrade("Ma",24)}
     },
     26: {
         title: "Variables",
@@ -228,7 +228,7 @@ addLayer("Ma", {
             }
         },
         effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
-        unlocked() {return hasUpgrade("Ma",22)}
+        unlocked() {return hasUpgrade("Ma",25)}
     },
     31: {
         title: "Pi",
