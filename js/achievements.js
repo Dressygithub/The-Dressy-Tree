@@ -62,5 +62,10 @@ addLayer("De", {
             canClick() {return true},
             onClick() {return importSave(player.saves.time)}
         },
+        12: {
+            title: "Import Space",
+            canClick() {return true},
+            onClick() {return importSave(player.saves.space)}
+        },
     }
 })

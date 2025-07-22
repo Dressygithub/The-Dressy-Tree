@@ -36,7 +36,7 @@ addLayer("D", {
         if (hasUpgrade('D', 32)) mult = mult.times(300)
         if (hasUpgrade('D', 34)) mult = mult.times(3)
         if (hasUpgrade('D', 35)) mult = mult.times(1.5)
-        if (layers.H.effect().gte(1)) mult = mult.times(layers.H.effect())
+        mult = mult.times(layers.H.effect())
         if (hasUpgrade('S', 31)) mult = mult.times(1.6)
         if (inChallenge('S', 11)) mult = mult.times(0.5)
         if (inChallenge('H', 11)) mult = mult.times(0.25)
