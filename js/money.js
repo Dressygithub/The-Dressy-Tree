@@ -61,7 +61,7 @@ addLayer("M", {
         return mult
     },
     directMult() {
-        mult = new Decimal(2)
+        mult = new Decimal(1)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -81,7 +81,7 @@ addLayer("M", {
                 player[this.layer].points = player[this.layer].points.sub(this.cost())
                 setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
             },
-            effect() {return new Decimal(2).pow(getBuyableAmount(this.layer, this.id))},
+            effect() {return new Decimal(2).pow(getBuyableAmount(this.layer, this.id).div(1))},
         },
         12: {
             title: "<br>Dressy point thing<br>",
@@ -92,7 +92,7 @@ addLayer("M", {
                 player[this.layer].points = player[this.layer].points.sub(this.cost())
                 setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
             },
-            effect() {return new Decimal(1.75).pow(getBuyableAmount(this.layer, this.id))},
+            effect() {return new Decimal(1.75).pow(getBuyableAmount(this.layer, this.id).div(new Decimal(Number(inChallenge("L",11))).times(5).add(1)))},
         },
         13: {
             title: "<br>Super thing<br>",
@@ -103,7 +103,7 @@ addLayer("M", {
                 player[this.layer].points = player[this.layer].points.sub(this.cost())
                 setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
             },
-            effect() {return new Decimal(1.5).pow(getBuyableAmount(this.layer, this.id))},
+            effect() {return new Decimal(1.5).pow(getBuyableAmount(this.layer, this.id).div(new Decimal(Number(inChallenge("L",11))).times(5).add(1)))},
         },
         14: {
             title: "<br>Hyper thing<br>",
@@ -114,7 +114,7 @@ addLayer("M", {
                 player[this.layer].points = player[this.layer].points.sub(this.cost())
                 setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
             },
-            effect() {return new Decimal(1.1).pow(getBuyableAmount(this.layer, this.id))},
+            effect() {return new Decimal(1.1).pow(getBuyableAmount(this.layer, this.id).div(new Decimal(Number(inChallenge("L",11))).times(5).add(1)))},
         },
         15: {
             title: "<br>Upgrades<br>",
@@ -124,14 +124,14 @@ addLayer("M", {
             canAfford() { return player[this.layer].points.gte(this.cost()) },
             buy() {
                 player[this.layer].points = player[this.layer].points.sub(this.cost())
-                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1).div(new Decimal(Number(inChallenge("L",11))).times(5).add(1)))
             },
             effect() {return "no"},
         },
 
         999991: {
             title: "<br>Epic<br>",
-            cost(x) { return new Decimal(1).times(getBuyableAmount(this.layer, this.id).div(100).add(1)) },
+            cost(x) { return new Decimal(1.444490).pow(getBuyableAmount(this.layer, this.id).pow(0.1).add(1)) },
             display() { return "Does nothing<br>" + "Costs: " + format(tmp[this.layer].buyables[this.id].cost) + " money <br>You have " + format(getBuyableAmount("M",999991))+"" },
             canAfford() { return player[this.layer].points.gte(this.cost()) },
             buy() {
@@ -170,7 +170,7 @@ addLayer("M", {
         11: {
             title: "Lemonade stand",
             description: "Generate 1 money per second",
-            cost: new Decimal(0),
+            cost: new Decimal(1),
             onPurchase() {
                 console.log("THE DUCK WALKED UP TO THE")
             }

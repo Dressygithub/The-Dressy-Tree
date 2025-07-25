@@ -6,7 +6,9 @@ addLayer("L", {
         unlocked: true,
         points: new Decimal(0),
         complete: new Decimal(0),
-        inchallenge: false
+        inchallenge: false,
+
+        spacecompletionnlimit: new Decimal(10),
     }},
     layerShown(){
         let visible = true
@@ -90,16 +92,31 @@ addLayer("L", {
         14: {
             name: "Space",
             challengeDescription: "Elements of space, complete the space layers",
-            rewardDescription: "Points are boosted by total played time",
-            goalDescription: "The age of the universe",
-            canComplete: function() {return new Decimal(player.T.points).div(60).div(60).div(24).div(7).div(4).div(12).floor().gte(13.7e9)},
-            unlocked() {return hasChallenge("L",11)},
+            rewardDescription: "For every time you beat this challenge, get +1.5x points",
+            goalDescription: "Hydrogen milestone 10",
+            completionLimit: 10,
+            canComplete: function() {return hasMilestone("Hy",10)},
+            unlocked() {return hasChallenge("L",11) && hasChallenge("L",12) && hasChallenge("L",13)},
             rewardEffect() {
-                return new Decimal(player.time).slog()
+                return new Decimal(1.5).times(challengeCompletions(this.layer, this.id)).add(1)
             },
             rewardDisplay() { return format(challengeEffect(this.layer, this.id))+"x" },
             onEnter() {return player.L.inchallenge = true},
             onExit() {return player.L.inchallenge = false}
+        },
+        15: {
+            name: "Not a new layer?",
+            challengeDescription: "From the beginning, complete the main layers again but /5 dressy points, super, hyper and money buyable power.",
+            rewardDescription: "3x points, 2x dressy points, 1.5x super, 1.25x hyper",
+            goalDescription: "The last money upgrade",
+            canComplete: function() {return hasUpgrade("M",61)},
+            unlocked() {return hasChallenge("L",14)},
+            rewardEffect() {
+                return "Yes"
+            },
+            rewardDisplay() { return format(challengeEffect(this.layer, this.id)) },
+            onEnter() {return 1},
+            onExit() {return 1}
         },
     },
     upgrades: { 

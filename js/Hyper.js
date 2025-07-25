@@ -14,7 +14,7 @@ addLayer("H", {
        return visible
      },   
     effect() {
-        Heff = player[this.layer].points.add(1).log(1.5).times(player.H.effboost)
+        Heff = player[this.layer].points.add(1).log(1.5).times(player.H.effboost).add(1)
         return Heff
         },
         effectDescription() {

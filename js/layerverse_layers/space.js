@@ -74,7 +74,7 @@ addLayer("Da", {
             description: "Dark matter boosts the multiplier for itself",
             cost: new Decimal(15),
             effect() {
-                return player.Da.points.add(1).log(3).times(upgradeEffect("St",13))
+                return player.Da.points.add(1).log(3).times(upgradeEffect("St",13)).div(new Decimal(2).pow(new Decimal(challengeCompletions("L",14))))
             },
             effectDisplay() { return "+"+format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
             unlocked() {return hasUpgrade("Da",12)}
@@ -96,7 +96,7 @@ addLayer("Da", {
             description: "Points boosts itself",
             cost: new Decimal(175),
             effect() {
-                return player.points.add(1).log(3).add(1)
+                return player.points.add(1).log(3).add(1).div(new Decimal(2).pow(new Decimal(challengeCompletions("L",14))))
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
             unlocked() {return hasUpgrade("Da",15)}
@@ -121,6 +121,10 @@ addLayer("St", {
     autoUpgrade() {
         if (hasMilestone("Hy",8)) return true
         return false
+    },
+    passiveGeneration() {
+        if (hasMilestone("Hy",8)) return 0.25
+        return 0
     },
     color: "#ffd900ff",
     requires: new Decimal(1000), // Can be a function that takes requirement increases into account
@@ -150,7 +154,7 @@ addLayer("St", {
             description: "Total stardust boosts points",
             cost: new Decimal(1),
             effect() {
-                return player[this.layer].total.add(1).pow(0.3).add(1)
+                return player[this.layer].total.add(1).pow(0.3).add(1).div(new Decimal(2).pow(new Decimal(challengeCompletions("L",14))))
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
@@ -159,7 +163,7 @@ addLayer("St", {
             description: "Total stardust boosts points again",
             cost: new Decimal(3),
             effect() {
-                return player[this.layer].total.add(1).pow(0.5).add(1)
+                return player[this.layer].total.add(1).pow(0.5).add(1).div(new Decimal(2).pow(new Decimal(challengeCompletions("L",14))))
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
             unlocked() {return hasUpgrade("St",11)}
@@ -204,7 +208,7 @@ addLayer("Hy", {
     symbol: "H", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
-        unlocked: true,
+        unlocked: false,
         points: new Decimal(0),
     }},
     passiveGeneration() {
@@ -219,8 +223,12 @@ addLayer("Hy", {
         if (!inChallenge("L",14)) visible = false
         return visible
      },   
+    canBuyMax() {
+        if (hasMilestone("Hy",9)) return true
+        return false
+    },
     effect() {
-        Hyeff = player[this.layer].points.add(1).log(1.5)
+        Hyeff = player[this.layer].points.add(1).log(1.5).div(new Decimal(2).pow(new Decimal(challengeCompletions("L",14)))).add(1)
         return Hyeff
         },
         effectDescription() {
@@ -284,8 +292,18 @@ addLayer("Hy", {
     },
     8: {
         requirementDescription: "25 Hydrogen",
-        effectDescription: "Autobuy Stardust upgrades",
+        effectDescription: "Autobuy Stardust upgrades and 25% Stardust reset",
         done() { return player.Hy.points.gte(25) }
+    },
+    9: {
+        requirementDescription: "50 Hydrogen",
+        effectDescription: "You can reset max",
+        done() { return player.Hy.points.gte(50) }
+    },
+    10: {
+        requirementDescription: "400 Hydrogen",
+        effectDescription: "Win",
+        done() { return player.Hy.points.gte(400) }
     },
 
 },
