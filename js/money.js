@@ -4,7 +4,7 @@ addLayer("M", {
     position: 2, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: true,
-        points: new Decimal(0),
+        points: new Decimal(10),
         moneygain: new Decimal(0),
         moneymult: new Decimal(1),
 
@@ -124,14 +124,14 @@ addLayer("M", {
             canAfford() { return player[this.layer].points.gte(this.cost()) },
             buy() {
                 player[this.layer].points = player[this.layer].points.sub(this.cost())
-                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1).div(new Decimal(Number(inChallenge("L",11))).times(5).add(1)))
+                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id))
             },
             effect() {return "no"},
         },
 
         999991: {
             title: "<br>Epic<br>",
-            cost(x) { return new Decimal(1.444490).pow(getBuyableAmount(this.layer, this.id).pow(0.1).add(1)) },
+            cost(x) { return new Decimal(1.1).pow(getBuyableAmount(this.layer, this.id).pow(0.1).add(1)) },
             display() { return "Does nothing<br>" + "Costs: " + format(tmp[this.layer].buyables[this.id].cost) + " money <br>You have " + format(getBuyableAmount("M",999991))+"" },
             canAfford() { return player[this.layer].points.gte(this.cost()) },
             buy() {

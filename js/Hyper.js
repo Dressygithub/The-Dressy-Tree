@@ -36,6 +36,7 @@ addLayer("H", {
         //if (hasUpgrade('Ma', 14)) mult = mult.times(Math.E)
         if (hasUpgrade('L', 16)) mult = mult.times(upgradeEffect('L', 16))
         if (hasUpgrade('L', 15)) mult = mult.times(1.5)
+        if (inChallenge("L",15)) mult = mult.div(5)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses

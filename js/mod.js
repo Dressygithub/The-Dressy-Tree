@@ -109,6 +109,9 @@ function getPointGen() {
 	if (hasUpgrade('St', 15)) gain = gain.times(2.5)
 	if (hasMilestone('Hy', 2)) gain = gain.times(2)
 	if (new Decimal(challengeCompletions("L",14)).gte(1)) gain = gain.times(challengeEffect("L",14))
+	if (inChallenge("L",14)) gain = gain.div(new Decimal(2).pow(challengeCompletions("L",14)))
+
+	if (inChallenge("L",15)) gain = gain.div(5)
 	
 	return gain
 }

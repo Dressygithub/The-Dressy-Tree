@@ -91,7 +91,7 @@ addLayer("L", {
         },
         14: {
             name: "Space",
-            challengeDescription: "Elements of space, complete the space layers",
+            challengeDescription: "Elements of space, complete the space layers (you can only complete this 10 times)",
             rewardDescription: "For every time you beat this challenge, get +1.5x points",
             goalDescription: "Hydrogen milestone 10",
             completionLimit: 10,
@@ -106,8 +106,8 @@ addLayer("L", {
         },
         15: {
             name: "Not a new layer?",
-            challengeDescription: "From the beginning, complete the main layers again but /5 dressy points, super, hyper and money buyable power.",
-            rewardDescription: "3x points, 2x dressy points, 1.5x super, 1.25x hyper",
+            challengeDescription: "From the beginning, complete the main layers again but /5 points, dressy points, super, hyper and money buyable power.",
+            rewardDescription: "3x points, 2x dressy points, 1.5x super, 1.25x hyper and more layerverse upgrades",
             goalDescription: "The last money upgrade",
             canComplete: function() {return hasUpgrade("M",61)},
             unlocked() {return hasChallenge("L",14)},
@@ -153,6 +153,22 @@ addLayer("L", {
         16: {
             title: "Money boosts ALL",
             description: "Money boosts points, dressy points, super and hyper",
+            cost: new Decimal(2),
+            unlocked() {return hasUpgrade("L",11)},
+            effect() {
+                return player.M.points.add(1).pow(0.01)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+        },
+        21: {
+            title: "Time saving upgrade",
+            description: "You start with 1e10 money",
+            cost: new Decimal(2),
+            unlocked() {return hasChallenge("L",15)},
+        },
+        22: {
+            title: "Points boost ALLish",
+            description: "Points boosts points, dressy points, super and hyper",
             cost: new Decimal(2),
             unlocked() {return hasUpgrade("L",11)},
             effect() {
