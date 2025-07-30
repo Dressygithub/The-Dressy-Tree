@@ -170,7 +170,7 @@ addLayer("L", {
             title: "Points boost ALLish",
             description: "Points boosts points, dressy points, super and hyper",
             cost: new Decimal(2),
-            unlocked() {return hasUpgrade("L",11)},
+            unlocked() {return hasChallenge("L",15)},
             effect() {
                 return player.M.points.add(1).pow(0.01)
             },

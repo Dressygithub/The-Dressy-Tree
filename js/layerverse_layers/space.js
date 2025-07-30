@@ -46,6 +46,7 @@ addLayer("Da", {
         if (hasUpgrade('St', 14)) mult = mult.times(3)
         if (hasUpgrade('St', 16)) mult = mult.times(2.5)
         if (hasMilestone("Hy",6)) mult = mult.times(1.5)
+        if (hasChallenge("L",14)) mult = mult.div(new Decimal(challengeCompletions("L",14)).add(1))
         mult = mult.times(layers.Hy.effect())
         return mult
     },
@@ -138,6 +139,7 @@ addLayer("St", {
         if (hasMilestone("Hy",3)) mult = mult.times(1.5)
         if (hasMilestone("Hy",4)) mult = mult.times(3)
         if (hasMilestone("Hy",6)) mult = mult.times(1.5)
+        if (hasChallenge("L",14)) mult = mult.div(new Decimal(challengeCompletions("L",14)).add(1))
         mult = mult.times(layers.Hy.effect())
         return mult
     },

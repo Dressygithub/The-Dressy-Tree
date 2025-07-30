@@ -112,6 +112,7 @@ function getPointGen() {
 	if (inChallenge("L",14)) gain = gain.div(new Decimal(2).pow(challengeCompletions("L",14)))
 
 	if (inChallenge("L",15)) gain = gain.div(5)
+	if (hasChallenge("L",15)) gain = gain.times(3)
 	
 	return gain
 }
