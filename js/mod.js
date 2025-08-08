@@ -80,7 +80,7 @@ function getPointGen() {
 	if (hasUpgrade('D', 34)) gain = gain.times(3)
 	if (hasUpgrade('D', 35)) gain = gain.times(1.5)
 	if (layers.L.effect().gte(1)) gain = gain.times(layers.L.effect())
-	if (hasUpgrade('L', 16)) gain = gain.times(upgradeEffect('L', 16))	
+	if (hasUpgrade('L', 21)) gain = gain.times(upgradeEffect('L', 21))	
 	if (hasUpgrade('L', 12)) gain = gain.times(5)
 
 	//LAYERVERSE

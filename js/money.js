@@ -132,7 +132,7 @@ addLayer("M", {
 
         999991: {
             title: "<br>Epic<br>",
-            cost(x) { return new Decimal(1.1).pow(getBuyableAmount(this.layer, this.id).pow(0.1).add(1)) },
+            cost(x) { return new Decimal(1).times(getBuyableAmount(this.layer, this.id).div(10)) },
             display() { return "Does nothing<br>" + "Costs: " + format(tmp[this.layer].buyables[this.id].cost) + " money <br>You have " + format(getBuyableAmount("M",999991))+"" },
             canAfford() { return player[this.layer].points.gte(this.cost()) },
             buy() {
