@@ -151,25 +151,35 @@ addLayer("L", {
             unlocked() {return hasUpgrade("L",11)}
         },
         16: {
+            title: "Time saving upgrade",
+            description: "Always start with 1e9 money generated per second",
+            cost: new Decimal(1),
+            unlocked() {return hasUpgrade("L",11)},
+        },
+        21: {
             title: "Money boosts ALL",
             description: "Money boosts points, dressy points, super and hyper",
-            cost: new Decimal(2),
-            unlocked() {return hasUpgrade("L",11)},
+            cost: new Decimal(1),
+            unlocked() {return hasChallenge("L",15)},
             effect() {
                 return player.M.points.add(1).pow(0.01)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
-        21: {
-            title: "Time saving upgrade",
-            description: "You start with 1e10 money",
-            cost: new Decimal(2),
-            unlocked() {return hasChallenge("L",15)},
-        },
         22: {
             title: "Points boost ALLish",
             description: "Points boosts points, dressy points, super and hyper",
             cost: new Decimal(2),
+            unlocked() {return hasChallenge("L",15)},
+            effect() {
+                return player.M.points.add(1).pow(0.01)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+        },
+        22: {
+            title: "A new layer",
+            description: "Points boosts points, dressy points, super and hyper",
+            cost: new Decimal(3),
             unlocked() {return hasChallenge("L",15)},
             effect() {
                 return player.M.points.add(1).pow(0.01)
