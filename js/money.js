@@ -16,10 +16,10 @@ addLayer("M", {
         return visible
     },
     passiveGeneration() {
-        if (hasUpgrade('L', 16)) return 1e9
         if (hasUpgrade('M', 56)) return 1e14
         if (hasUpgrade('M', 55)) return 1e11
         if (hasUpgrade('M', 54)) return 1e10
+        if (hasUpgrade('L', 16)) return 1e9
         if (hasUpgrade('M', 53)) return 1e9
         if (hasUpgrade('M', 52)) return 1e8
         if (hasUpgrade('M', 51)) return 1e7
