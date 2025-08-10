@@ -106,7 +106,7 @@ addLayer("L", {
         },
         15: {
             name: "Not a new layer?",
-            challengeDescription: "From the beginning, complete the main layers again but /5 points, dressy points, super, hyper and money buyable power.",
+            challengeDescription: "From the beginning, complete the main layers again but /5 points, dressy points, super (only when you have 5) and money buyable power.",
             rewardDescription: "3x points, 2x dressy points, 1.5x super, 1.25x hyper and more layerverse upgrades",
             goalDescription: "The last money upgrade",
             canComplete: function() {return hasUpgrade("M",61)},

@@ -36,7 +36,6 @@ addLayer("H", {
         //if (hasUpgrade('Ma', 14)) mult = mult.times(Math.E)
         if (hasUpgrade('L', 21)) mult = mult.times(upgradeEffect('L', 21))
         if (hasUpgrade('L', 15)) mult = mult.times(1.5)
-        if (inChallenge("L",15) && player.H.points.gte(1)) mult = mult.div(5)
         if (hasUpgrade('L', 22)) mult = mult.times(player.points.log(100))
         if (hasChallenge("L",15)) mult = mult.times(1.25)
         return mult
