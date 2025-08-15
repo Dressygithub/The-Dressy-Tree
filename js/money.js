@@ -319,7 +319,7 @@ addLayer("M", {
         56: {
             title: "Money",
             description: "Generate 1e14",
-            cost: new Decimal(1e13)
+            cost: new Decimal(1e12)
         },
         61: {
             title: "The next layer",

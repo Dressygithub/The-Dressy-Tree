@@ -21,6 +21,7 @@ addLayer("S", {
         if (hasChallenge('H', 11)) return true
         return false
     },
+
     branches: ["S", "H"], 
     color: "#00FFF3",
     requires: new Decimal(1e3), // Can be a function that takes requirement increases into account

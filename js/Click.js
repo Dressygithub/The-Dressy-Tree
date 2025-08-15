@@ -596,6 +596,15 @@ addLayer("Mi", {
             },
             unlocked() { return hasUpgrade('Mi', 92) }
         },
+        94: {
+            title: "cool",
+            description: "2x points",
+            cost: new Decimal(1e25),
+            onPurchase() {
+                player.Mi.clicky = player.Mi.clicky.times(2)
+            },
+            unlocked() { return hasUpgrade('Mi', 93) }
+        },
         
     },
 })

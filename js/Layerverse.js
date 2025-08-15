@@ -196,6 +196,12 @@ addLayer("L", {
             cost: new Decimal(3),
             unlocked() {return hasChallenge("L",15)},
         },
+        24: {
+            title: "Big number haha",
+            description: "1000x points",
+            cost: new Decimal(5),
+            unlocked() {return hasChallenge("L",15)},
+        },
     },
     tabFormat: {
             "Layerverse": {

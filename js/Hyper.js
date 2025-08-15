@@ -25,6 +25,9 @@ addLayer("H", {
         if (hasUpgrade('L',23)) return 0.05
         return 0
     },
+    autoUpgrade() {
+        return false
+    },
     branches: ["H", "M"], 
     color: "#38ffa4",
     requires: new Decimal(25), // Can be a function that takes requirement increases into account
@@ -40,7 +43,7 @@ addLayer("H", {
         //if (hasUpgrade('Ma', 14)) mult = mult.times(Math.E)
         if (hasUpgrade('L', 21)) mult = mult.times(upgradeEffect('L', 21))
         if (hasUpgrade('L', 15)) mult = mult.times(1.5)
-        if (hasUpgrade('L', 22)) mult = mult.times(player.points.log(100))
+        if (hasUpgrade('L', 22)) mult = mult.times(player.points.add(1).log(100).add(1))
         if (hasChallenge("L",15)) mult = mult.times(1.25)
         return mult
     },
