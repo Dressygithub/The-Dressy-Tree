@@ -186,7 +186,7 @@ addLayer("L", {
             cost: new Decimal(2),
             unlocked() {return hasChallenge("L",15)},
             effect() {
-                return player.M.points.add(1).pow(0.01)
+                return player.M.points.add(1).pow(0.05)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
