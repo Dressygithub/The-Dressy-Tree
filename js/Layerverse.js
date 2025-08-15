@@ -118,6 +118,20 @@ addLayer("L", {
             onEnter() {return 1},
             onExit() {return 1}
         },
+        16: {
+            name: "Buyable layers",
+            challengeDescription: "Where did the upgrades go? Complete the buyable layer",
+            rewardDescription: "3x points, 2x dressy points, 1.5x super, 1.25x hyper and more layerverse upgrades",
+            goalDescription: "The last money upgrade",
+            canComplete: function() {return hasUpgrade("M",61)},
+            unlocked() {return hasChallenge("L",14)},
+            rewardEffect() {
+                return "Yes"
+            },
+            rewardDisplay() { return format(challengeEffect(this.layer, this.id)) },
+            onEnter() {return 1},
+            onExit() {return 1}
+        },
     },
     upgrades: { 
         11: {
@@ -176,7 +190,7 @@ addLayer("L", {
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
-        22: {
+        23: {
             title: "A new layer",
             description: "Points boosts points, dressy points, super and hyper",
             cost: new Decimal(3),
