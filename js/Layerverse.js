@@ -191,14 +191,10 @@ addLayer("L", {
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
         23: {
-            title: "A new layer",
-            description: "Points boosts points, dressy points, super and hyper",
+            title: "Op maybe",
+            description: "Generate 5% hyper",
             cost: new Decimal(3),
             unlocked() {return hasChallenge("L",15)},
-            effect() {
-                return player.M.points.add(1).pow(0.01)
-            },
-            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
     },
     tabFormat: {

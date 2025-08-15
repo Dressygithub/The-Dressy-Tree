@@ -21,6 +21,10 @@ addLayer("H", {
             Heff = this.effect();
             return "that are boosting Dressy point gain AND super gain by "+format(Heff.add(1))+"x."
         },
+    passiveGeneration() {
+        if (hasUpgrade('L',23)) return 0.05
+        return 0
+    },
     branches: ["H", "M"], 
     color: "#38ffa4",
     requires: new Decimal(25), // Can be a function that takes requirement increases into account
