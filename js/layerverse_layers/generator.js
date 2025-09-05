@@ -8,13 +8,20 @@ addLayer("G", {
         points: new Decimal(0),
 
         gen1: new Decimal(0),
+        gen1cost: new Decimal(1000),
+        gen1collect: new Decimal(0),
+        gen1costscale: new Decimal(2),
 
-        gen1collect: new Decimal(0)
+        gen2: new Decimal(0),
+        gen2cost: new Decimal(100),
+        gen2collect: new Decimal(0),
+        gen2costscale: new Decimal(1.5)
         
 
     }},
     generate() {
-        
+        player.G.gen1collect = player.G.gen1collect.add(player.G.gen1.div(100))
+        player.G.gen2collect = player.G.gen2collect.add(player.G.gen2.times(3).div(90))
     },
     layerShown(){
         let visible = false
@@ -52,17 +59,85 @@ addLayer("G", {
                     return false
                 }
             },
-            onClick() {return "something"},
+            onClick() { 
+                if (player.points.gte(player.G.gen1cost)) {
+                    player.G.gen1 = player.G.gen1.add(1)
+                    player.points = player.points.sub(player.G.gen1cost)
+                    player.G.gen1cost = player.G.gen1cost.times(player.G.gen1costscale)
+                }
+                else {
+
+                }
+            },
             style() {return {
                 'width': '200px',
                 'height': '120px',
             }},
         },
         12: {
-            display: function() {return "<h2><b>Collect Gen 1 points</b></h2><br><h3>You will get "+player.G.gen1+" Gen points"},
-            description: function() {return "You have "+player.G.gen1+" Generators"},
-            canClick() {return true},
-            onClick() {return "something"},
+            display: function() {return "<h2><b>Collect Gen 1 points</b></h2><br><h3>You will get "+format(player.G.gen1collect.floor())+" Gen points"},
+            canClick() {
+                if (player.G.gen1collect.floor().gte(1)) {
+                    return true
+                }
+                else {
+                    return false
+                }
+            },
+            onClick() {
+                if (player.G.gen1collect.floor().gte(1)) {
+                    player.G.genpoints = player.G.genpoints.add(player.G.gen1collect)
+                    player.G.gen1collect = new Decimal(0)
+                }
+            },
+            style() {return {
+                'width': '200px',
+                'height': '120px',
+            }},
+        },
+
+        21: {
+            display: function() {return "<h2><b>Generator 2</b></h2><br><h3>You have "+player.G.gen2+" Generators of this type<br>Costs: "+format(player.G.gen2cost)+" Generator points"},
+            description: function() {return "You have "+player.G.gen2+" Generators"},
+            canClick() {
+                if (player.G.genpoints.gte(player.G.gen2cost)) {
+                    return true
+                }
+                else {
+                    return false
+                }
+            },
+            onClick() { 
+                if (player.G.genpoints.gte(player.G.gen2cost)) {
+                    player.G.gen2 = player.G.gen2.add(1)
+                    player.G.genpoints = player.G.genpoints.sub(player.G.gen2cost)
+                    player.G.gen2cost = player.G.gen2cost.times(player.G.gen2costscale)
+                }
+                else {
+
+                }
+            },
+            style() {return {
+                'width': '200px',
+                'height': '120px',
+            }},
+        },
+        22: {
+            display: function() {return "<h2><b>Collect Gen 2 points</b></h2><br><h3>You will get "+format(player.G.gen2collect.floor())+" Gen points"},
+            canClick() {
+                if (player.G.gen2collect.floor().gte(1)) {
+                    return true
+                }
+                else {
+                    return false
+                }
+            },
+            onClick() {
+                if (player.G.gen2collect.floor().gte(1)) {
+                    player.G.genpoints = player.G.genpoints.add(player.G.gen2collect)
+                    player.G.gen2collect = new Decimal(0)
+                }
+            },
             style() {return {
                 'width': '200px',
                 'height': '120px',
@@ -72,7 +147,11 @@ addLayer("G", {
     tabFormat: {
         "Generators": {
             content: [
-                "main-display",
+                ["display-text",
+                    function(){
+                        return "You have <h2><span style='color:rgba(255, 255, 255, 1); text-shadow: 0px 0px 10px rgba(255, 230, 230, 1); font-family: Lucida Console, Courier New, monospace'>"+ player.G.genpoints.floor() +"</span></h2> Generator points"
+                    }
+                ],
                 ["display-text",
                     function(){
                         return "You have "+ format(player.points) +" points "

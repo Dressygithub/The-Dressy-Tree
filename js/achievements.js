@@ -67,5 +67,10 @@ addLayer("De", {
             canClick() {return true},
             onClick() {return importSave(player.saves.space)}
         },
+        13: {
+            title: "Import Generators",
+            canClick() {return true},
+            onClick() {return importSave(player.saves.gen)}
+        },
     }
 })

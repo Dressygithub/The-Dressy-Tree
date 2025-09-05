@@ -124,7 +124,7 @@ addLayer("L", {
             rewardDescription: "idk",
             goalDescription: "The last money upgrade",
             canComplete: function() {return hasUpgrade("M",61)},
-            unlocked() {return hasChallenge("L",14)},
+            unlocked() {return true /*hasChallenge("L",14)*/},
             rewardEffect() {
                 return "Yes"
             },
