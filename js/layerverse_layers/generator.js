@@ -7,6 +7,10 @@ addLayer("G", {
         genpoints: new Decimal(0),
         points: new Decimal(0),
 
+        geninf: new Decimal(0),
+        geninfcost: new Decimal(1000),
+        geninfcostscale: new Decimal(2),
+
         gen1: new Decimal(0),
         gen1cost: new Decimal(1000),
         gen1collect: new Decimal(0),
@@ -48,6 +52,32 @@ addLayer("G", {
         {key: "t", description: "t: Reset for prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     clickables: {
+        91: {
+            display: function() {return "<h2><b>Infinite Generator "+player.G.geninf+"</b></h2><br><h3><br>Costs: "+format(player.G.gen1cost)+" points"},
+            description: function() {return "You have "+player.G.gen1+" Generators"},
+            canClick() {
+                if (player.points.gte(player.G.gen1cost)) {
+                    return false
+                }
+                else {
+                    return false
+                }
+            },
+            onClick() { 
+                if (player.points.gte(player.G.gen1cost)) {
+                    player.G.gen1 = player.G.gen1.add(1)
+                    player.points = player.points.sub(player.G.gen1cost)
+                    player.G.gen1cost = player.G.gen1cost.times(player.G.gen1costscale)
+                }
+                else {
+
+                }
+            },
+            style() {return {
+                'width': '200px',
+                'height': '120px',
+            }},
+        },
         11: {
             display: function() {return "<h2><b>Generator 1</b></h2><br><h3>You have "+player.G.gen1+" Generators of this type<br>Costs: "+format(player.G.gen1cost)+" points"},
             description: function() {return "You have "+player.G.gen1+" Generators"},
@@ -158,7 +188,25 @@ addLayer("G", {
                     }
                 ],
                     "blank",
-                    "clickables",
+                    ["clickables",[1,2,3,4,5,6,7,8]],
+                    "blank",
+                    "blank",
+                ],
+            },
+        "Infinite Generator": {
+            content: [
+                ["display-text",
+                    function(){
+                        return "You have <h2><span style='color:rgba(255, 255, 255, 1); text-shadow: 0px 0px 10px rgba(255, 230, 230, 1); font-family: Lucida Console, Courier New, monospace'>"+ player.G.genpoints.floor() +"</span></h2> Generator points"
+                    }
+                ],
+                ["display-text",
+                    function(){
+                        return "You have "+ format(player.points) +" points "
+                    }
+                ],
+                    "blank",
+                    ["clickables",[9]],
                     "blank",
                     "blank",
                 ],
