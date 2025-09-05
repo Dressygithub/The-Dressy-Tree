@@ -119,9 +119,9 @@ addLayer("L", {
             onExit() {return 1}
         },
         16: {
-            name: "Buyable layers",
-            challengeDescription: "Where did the upgrades go? Complete the buyable layer",
-            rewardDescription: "3x points, 2x dressy points, 1.5x super, 1.25x hyper and more layerverse upgrades",
+            name: "Generator layer",
+            challengeDescription: "Complete the generator layer",
+            rewardDescription: "idk",
             goalDescription: "The last money upgrade",
             canComplete: function() {return hasUpgrade("M",61)},
             unlocked() {return hasChallenge("L",14)},
@@ -129,8 +129,8 @@ addLayer("L", {
                 return "Yes"
             },
             rewardDisplay() { return format(challengeEffect(this.layer, this.id)) },
-            onEnter() {return 1},
-            onExit() {return 1}
+            onEnter() {return player.L.inchallenge = true},
+            onExit() {return player.L.inchallenge = false}
         },
     },
     upgrades: { 
