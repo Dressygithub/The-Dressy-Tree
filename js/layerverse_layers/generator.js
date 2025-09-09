@@ -19,13 +19,19 @@ addLayer("G", {
         gen2: new Decimal(0),
         gen2cost: new Decimal(100),
         gen2collect: new Decimal(0),
-        gen2costscale: new Decimal(1.5)
+        gen2costscale: new Decimal(1.5),
+
+        gen3: new Decimal(0),
+        gen3cost: new Decimal(1e4),
+        gen3collect: new Decimal(0),
+        gen3costscale: new Decimal(2)
         
 
     }},
     generate() {
         player.G.gen1collect = player.G.gen1collect.add(player.G.gen1.div(100))
-        player.G.gen2collect = player.G.gen2collect.add(player.G.gen2.times(3).div(90))
+        player.G.gen2collect = player.G.gen2collect.add(player.G.gen2.times(2).div(90))
+        player.G.gen3collect = player.G.gen3collect.add(player.G.gen3.times(3).div(80))
     },
     layerShown(){
         let visible = false
@@ -53,10 +59,9 @@ addLayer("G", {
     ],
     clickables: {
         91: {
-            display: function() {return "<h2><b>Infinite Generator "+player.G.geninf+"</b></h2><br><h3><br>Costs: "+format(player.G.gen1cost)+" points"},
-            description: function() {return "You have "+player.G.gen1+" Generators"},
+            display: function() {return "<h2><b>Infinite Generator "+player.G.geninf+"</b></h2><br><h3><br>Costs: "+format(player.G.geninfcost)+" points"},
             canClick() {
-                if (player.points.gte(player.G.gen1cost)) {
+                if (player.points.gte(player.G.geninfcost)) {
                     return false
                 }
                 else {
@@ -64,13 +69,11 @@ addLayer("G", {
                 }
             },
             onClick() { 
-                if (player.points.gte(player.G.gen1cost)) {
-                    player.G.gen1 = player.G.gen1.add(1)
-                    player.points = player.points.sub(player.G.gen1cost)
-                    player.G.gen1cost = player.G.gen1cost.times(player.G.gen1costscale)
+                if (player.points.gte(player.G.geninfcost)) {
+                    player.G.geninf = player.G.geninf.add(1)
                 }
                 else {
-
+                    return false
                 }
             },
             style() {return {
@@ -166,6 +169,53 @@ addLayer("G", {
                 if (player.G.gen2collect.floor().gte(1)) {
                     player.G.genpoints = player.G.genpoints.add(player.G.gen2collect)
                     player.G.gen2collect = new Decimal(0)
+                }
+            },
+            style() {return {
+                'width': '200px',
+                'height': '120px',
+            }},
+        },
+        31: {
+            display: function() {return "<h2><b>Generator 3</b></h2><br><h3>You have "+player.G.gen3+" Generators of this type<br>Costs: "+format(player.G.gen3cost)+" Generator points"},
+            description: function() {return "You have "+player.G.gen3+" Generators"},
+            canClick() {
+                if (player.G.genpoints.gte(player.G.gen3cost)) {
+                    return true
+                }
+                else {
+                    return false
+                }
+            },
+            onClick() { 
+                if (player.G.genpoints.gte(player.G.gen3cost)) {
+                    player.G.gen3 = player.G.gen3.add(1)
+                    player.G.genpoints = player.G.genpoints.sub(player.G.gen3cost)
+                    player.G.gen3cost = player.G.gen3cost.times(player.G.gen3costscale)
+                }
+                else {
+
+                }
+            },
+            style() {return {
+                'width': '200px',
+                'height': '120px',
+            }},
+        },
+        32: {
+            display: function() {return "<h2><b>Collect Gen 3 points</b></h2><br><h3>You will get "+format(player.G.gen3collect.floor())+" Gen points"},
+            canClick() {
+                if (player.G.gen3collect.floor().gte(1)) {
+                    return true
+                }
+                else {
+                    return false
+                }
+            },
+            onClick() {
+                if (player.G.gen3collect.floor().gte(1)) {
+                    player.G.genpoints = player.G.genpoints.add(player.G.gen3collect)
+                    player.G.gen3collect = new Decimal(0)
                 }
             },
             style() {return {

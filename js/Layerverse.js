@@ -121,9 +121,9 @@ addLayer("L", {
         16: {
             name: "Generator layer",
             challengeDescription: "Complete the generator layer",
-            rewardDescription: "idk",
-            goalDescription: "The last money upgrade",
-            canComplete: function() {return hasUpgrade("M",61)},
+            rewardDescription: "Unlock a sublayer",
+            goalDescription: "10 Generator 9's",
+            canComplete: function() {return false},
             unlocked() {return true /*hasChallenge("L",14)*/},
             rewardEffect() {
                 return "Yes"
