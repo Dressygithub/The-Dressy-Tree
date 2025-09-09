@@ -10,6 +10,7 @@ addLayer("G", {
         geninf: new Decimal(0),
         geninfcost: new Decimal(1000),
         geninfcostscale: new Decimal(2),
+        geninfmult: new Decimal(1),
 
         gen1: new Decimal(0),
         gen1cost: new Decimal(1000),
@@ -29,6 +30,7 @@ addLayer("G", {
 
     }},
     generate() {
+        player.G.geninfmult = player.G.geninfmult.add(player.G.geninf.div(player.G.geninfmult.pow(0.999).add(1)))
         player.G.gen1collect = player.G.gen1collect.add(player.G.gen1.div(100))
         player.G.gen2collect = player.G.gen2collect.add(player.G.gen2.times(2).div(90))
         player.G.gen3collect = player.G.gen3collect.add(player.G.gen3.times(3).div(80))
@@ -62,7 +64,7 @@ addLayer("G", {
             display: function() {return "<h2><b>Infinite Generator "+player.G.geninf+"</b></h2><br><h3><br>Costs: "+format(player.G.geninfcost)+" points"},
             canClick() {
                 if (player.points.gte(player.G.geninfcost)) {
-                    return false
+                    return true
                 }
                 else {
                     return false
@@ -71,6 +73,7 @@ addLayer("G", {
             onClick() { 
                 if (player.points.gte(player.G.geninfcost)) {
                     player.G.geninf = player.G.geninf.add(1)
+                    player.G.geninfcost = player.G.geninfcost.times(player.G.geninfcostscale)
                 }
                 else {
                     return false
@@ -253,6 +256,11 @@ addLayer("G", {
                 ["display-text",
                     function(){
                         return "You have "+ format(player.points) +" points "
+                    }
+                ],
+                ["display-text",
+                    function(){
+                        return "Your infinite generator has provided you with a "+format(player.G.geninfmult)+"x multiplier to your points"
                     }
                 ],
                     "blank",
