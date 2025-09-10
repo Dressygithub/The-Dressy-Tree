@@ -4,13 +4,14 @@ addLayer("G", {
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: true,
-        genpoints: new Decimal(0),
         points: new Decimal(0),
+        genpoints: new Decimal(0),
 
         geninf: new Decimal(0),
         geninfcost: new Decimal(1000),
         geninfcostscale: new Decimal(2),
         geninfmult: new Decimal(1),
+        geninfboost: new Decimal(1),
 
         gen1: new Decimal(0),
         gen1cost: new Decimal(1000),
@@ -30,7 +31,7 @@ addLayer("G", {
 
     }},
     generate() {
-        player.G.geninfmult = player.G.geninfmult.add(player.G.geninf.div(player.G.geninfmult.pow(0.999).add(1)))
+        player.G.geninfmult = player.G.geninfmult.add(player.G.geninf.div(player.G.geninfmult.pow(0.999).add(1))).times(player.G.geninfboost)
         player.G.gen1collect = player.G.gen1collect.add(player.G.gen1.div(100))
         player.G.gen2collect = player.G.gen2collect.add(player.G.gen2.times(2).div(90))
         player.G.gen3collect = player.G.gen3collect.add(player.G.gen3.times(3).div(80))
@@ -228,6 +229,16 @@ addLayer("G", {
             }},
         },
     },
+    upgrades: {
+    11: {
+        title: "Better infinity",
+        description: "1.2x better Infinite Generator power",
+        cost: new Decimal(100),
+        onPurchase() {
+            player.G.geninfboost = player.G.geninfboost.times(1.2)
+        }
+    },
+    },
     tabFormat: {
         "Generators": {
             content: [
@@ -243,6 +254,7 @@ addLayer("G", {
                 ],
                     "blank",
                     ["clickables",[1,2,3,4,5,6,7,8]],
+                    "upgrades",
                     "blank",
                     "blank",
                 ],
@@ -267,6 +279,7 @@ addLayer("G", {
                     "blank",
                     ["clickables",[9]],
                     "blank",
+                    "upgrades",
                     "blank",
                 ],
             },
