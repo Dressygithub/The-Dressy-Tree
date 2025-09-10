@@ -72,6 +72,7 @@ addLayer("G", {
             },
             onClick() { 
                 if (player.points.gte(player.G.geninfcost)) {
+                    player.points = player.points.sub(player.G.geninfcost)
                     player.G.geninf = player.G.geninf.add(1)
                     player.G.geninfcost = player.G.geninfcost.times(player.G.geninfcostscale)
                 }
