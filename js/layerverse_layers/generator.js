@@ -24,7 +24,7 @@ addLayer("G", {
         gen2costscale: new Decimal(1.5),
 
         gen3: new Decimal(0),
-        gen3cost: new Decimal(1e4),
+        gen3cost: new Decimal(1e3),
         gen3collect: new Decimal(0),
         gen3costscale: new Decimal(2)
         
