@@ -11,6 +11,7 @@ addLayer("G", {
         geninfcost: new Decimal(1000),
         geninfcostscale: new Decimal(2),
         geninfmult: new Decimal(1),
+        geninfexpmult: new Decimal(1),
         geninfboost: new Decimal(1),
 
         gen1: new Decimal(0),
@@ -26,15 +27,30 @@ addLayer("G", {
         gen3: new Decimal(0),
         gen3cost: new Decimal(1e3),
         gen3collect: new Decimal(0),
-        gen3costscale: new Decimal(2)
+        gen3costscale: new Decimal(2),
+
+        gen4: new Decimal(0),
+        gen4cost: new Decimal(1e4),
+        gen4collect: new Decimal(0),
+        gen4costscale: new Decimal(2.5),
+
+        gen5: new Decimal(0),
+        gen5cost: new Decimal(1e5),
+        gen5collect: new Decimal(0),
+        gen5costscale: new Decimal(3)
         
 
     }},
     generate() {
         player.G.geninfmult = player.G.geninfmult.add(player.G.geninf.div(player.G.geninfmult.pow(0.999).add(1))).times(player.G.geninfboost)
+        player.G.geninfexpmult = player.G.geninfexpmult.add(player.G.geninf.div(player.G.geninfexpmult)).pow(0.014)
+       
         player.G.gen1collect = player.G.gen1collect.add(player.G.gen1.div(100))
         player.G.gen2collect = player.G.gen2collect.add(player.G.gen2.times(2).div(90))
         player.G.gen3collect = player.G.gen3collect.add(player.G.gen3.times(3).div(80))
+        player.G.gen4collect = player.G.gen4collect.add(player.G.gen4.times(4).div(70))
+        player.G.gen5collect = player.G.gen5collect.add(player.G.gen5.times(5).div(60))
+   
     },
     layerShown(){
         let visible = false
@@ -228,16 +244,100 @@ addLayer("G", {
                 'height': '120px',
             }},
         },
-    },
-    upgrades: {
-    11: {
-        title: "Better infinity",
-        description: "1.2x better Infinite Generator power",
-        cost: new Decimal(100),
-        onPurchase() {
-            player.G.geninfboost = player.G.geninfboost.times(1.2)
-        }
-    },
+        41: {
+            display: function() {return "<h2><b>Generator 4</b></h2><br><h3>You have "+player.G.gen4+" Generators of this type<br>Costs: "+format(player.G.gen4cost)+" Generator points"},
+            description: function() {return "You have "+player.G.gen4+" Generators"},
+            canClick() {
+                if (player.G.genpoints.gte(player.G.gen4cost)) {
+                    return true
+                }
+                else {
+                    return false
+                }
+            },
+            onClick() { 
+                if (player.G.genpoints.gte(player.G.gen4cost)) {
+                    player.G.gen4 = player.G.gen4.add(1)
+                    player.G.genpoints = player.G.genpoints.sub(player.G.gen4cost)
+                    player.G.gen4cost = player.G.gen4cost.times(player.G.gen4costscale)
+                }
+                else {
+
+                }
+            },
+            style() {return {
+                'width': '200px',
+                'height': '120px',
+            }},
+        },
+        42: {
+            display: function() {return "<h2><b>Collect Gen 4 points</b></h2><br><h3>You will get "+format(player.G.gen4collect.floor())+" Gen points"},
+            canClick() {
+                if (player.G.gen4collect.floor().gte(1)) {
+                    return true
+                }
+                else {
+                    return false
+                }
+            },
+            onClick() {
+                if (player.G.gen4collect.floor().gte(1)) {
+                    player.G.genpoints = player.G.genpoints.add(player.G.gen4collect)
+                    player.G.gen4collect = new Decimal(0)
+                }
+            },
+            style() {return {
+                'width': '200px',
+                'height': '120px',
+            }},
+        },
+        51: {
+            display: function() {return "<h2><b>Generator 5</b></h2><br><h3>You have "+player.G.gen5+" Generators of this type<br>Costs: "+format(player.G.gen5cost)+" Generator points"},
+            description: function() {return "You have "+player.G.gen5+" Generators"},
+            canClick() {
+                if (player.G.genpoints.gte(player.G.gen5cost)) {
+                    return true
+                }
+                else {
+                    return false
+                }
+            },
+            onClick() { 
+                if (player.points.gte(player.G.gen5cost)) {
+                    player.G.gen5 = player.G.gen5.add(1)
+                    player.points = player.points.sub(player.G.gen5cost)
+                    player.G.gen5cost = player.G.gen5cost.times(player.G.gen5costscale)
+                }
+                else {
+
+                }
+            },
+            style() {return {
+                'width': '200px',
+                'height': '120px',
+            }},
+        },
+        52: {
+            display: function() {return "<h2><b>Collect Gen 5 points</b></h2><br><h3>You will get "+format(player.G.gen1collect.floor())+" Gen points"},
+            canClick() {
+                if (player.G.gen5collect.floor().gte(1)) {
+                    return true
+                }
+                else {
+                    return false
+                }
+            },
+            onClick() {
+                if (player.G.gen5collect.floor().gte(1)) {
+                    player.G.genpoints = player.G.genpoints.add(player.G.gen5collect)
+                    player.G.gen5collect = new Decimal(0)
+                }
+            },
+            style() {return {
+                'width': '200px',
+                'height': '120px',
+            }},
+        },
     },
     tabFormat: {
         "Generators": {
@@ -276,10 +376,14 @@ addLayer("G", {
                         return "Your infinite generator has provided you with a "+format(player.G.geninfmult)+"x multiplier to your points"
                     }
                 ],
+                ["display-text",
+                    function(){
+                        return "Your infinite generator has provided you with a ^"+format(player.G.geninfexpmult)+" boost to your points"
+                    }
+                ],
                     "blank",
                     ["clickables",[9]],
                     "blank",
-                    "upgrades",
                     "blank",
                 ],
             },

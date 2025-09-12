@@ -117,6 +117,7 @@ function getPointGen() {
 	if (hasUpgrade('L', 24)) gain = gain.times(1000)
 
 	if (inChallenge('L',16)) gain = gain.times(player.G.geninfmult)
+	if (inChallenge('L',16)) gain = gain.pow(player.G.geninfexpmult)
 	
 	return gain
 }
