@@ -121,14 +121,14 @@ addLayer("L", {
         16: {
             name: "Generator layer",
             challengeDescription: "Complete the generator layer",
-            rewardDescription: "Unlock a sublayer",
+            rewardDescription: "Boost points by the amount of time you spend in the layerverse",
             goalDescription: "10 Generator 5's",
             canComplete: function() {return player.G.gen5.gte(5)},
             unlocked() {return hasChallenge("L",14)},
             rewardEffect() {
                 return new Decimal(player.L.resetTime).pow(0.1)
             },
-            rewardDisplay() { return format(challengeEffect(this.layer, this.id)) },
+            rewardDisplay() { return format(challengeEffect(this.layer, this.id))+"x" },
             onEnter() {return player.L.inchallenge = true},
             onExit() {return player.L.inchallenge = false}
         },
