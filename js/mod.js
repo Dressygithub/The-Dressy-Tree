@@ -87,6 +87,8 @@ function getPointGen() {
 	if (hasChallenge('L',11)) gain = gain.times(challengeEffect('L', 11))
 	if (hasChallenge('L',12)) gain = gain.times(challengeEffect('L', 12))
 	if (hasChallenge('L',13)) gain = gain.times(challengeEffect('L', 13))
+	if (hasChallenge("L",15)) gain = gain.times(3)
+	if (hasChallenge('L',16)) gain = gain.times(challengeEffect('L', 16))
 
 	if (hasUpgrade('P', 11)) gain = gain.times(10)
 	

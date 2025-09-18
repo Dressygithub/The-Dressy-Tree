@@ -42,14 +42,14 @@ addLayer("G", {
 
     }},
     generate() {
-        player.G.geninfmult = player.G.geninfmult.add(player.G.geninf.div(player.G.geninfmult.pow(0.999).add(1))).times(player.G.geninfboost)
+        player.G.geninfmult = player.G.geninfmult.add(player.G.geninf.div(player.G.geninfmult.pow(0.01).add(1))).times(player.G.geninfboost)
         player.G.geninfexpmult = player.G.geninfexpmult.add(player.G.geninf.div(player.G.geninfexpmult)).pow(0.014)
        
-        player.G.gen1collect = player.G.gen1collect.add(player.G.gen1.div(100))
-        player.G.gen2collect = player.G.gen2collect.add(player.G.gen2.times(2).div(90))
-        player.G.gen3collect = player.G.gen3collect.add(player.G.gen3.times(3).div(80))
-        player.G.gen4collect = player.G.gen4collect.add(player.G.gen4.times(4).div(70))
-        player.G.gen5collect = player.G.gen5collect.add(player.G.gen5.times(5).div(60))
+        player.G.gen1collect = player.G.gen1collect.add(player.G.gen1.div(50))
+        player.G.gen2collect = player.G.gen2collect.add(player.G.gen2.times(2).div(40))
+        player.G.gen3collect = player.G.gen3collect.add(player.G.gen3.times(3).div(30))
+        player.G.gen4collect = player.G.gen4collect.add(player.G.gen4.times(4).div(20))
+        player.G.gen5collect = player.G.gen5collect.add(player.G.gen5.times(5).div(10))
    
     },
     layerShown(){
@@ -318,7 +318,7 @@ addLayer("G", {
             }},
         },
         52: {
-            display: function() {return "<h2><b>Collect Gen 5 points</b></h2><br><h3>You will get "+format(player.G.gen1collect.floor())+" Gen points"},
+            display: function() {return "<h2><b>Collect Gen 5 points</b></h2><br><h3>You will get "+format(player.G.gen5collect.floor())+" Gen points"},
             canClick() {
                 if (player.G.gen5collect.floor().gte(1)) {
                     return true
@@ -353,7 +353,7 @@ addLayer("G", {
                     }
                 ],
                     "blank",
-                    ["clickables",[1,2,3,4,5,6,7,8]],
+                    ["clickables",[1,2,3,4,5]],
                     "upgrades",
                     "blank",
                     "blank",
