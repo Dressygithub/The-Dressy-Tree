@@ -202,6 +202,15 @@ addLayer("L", {
             cost: new Decimal(5),
             unlocked() {return hasChallenge("L",15)},
         },
+        25: {
+            title: "Unrealistic pricing",
+            description: "The last money upgrade on row 5 costs 1000x less",
+            cost: new Decimal(5),
+            onPurchase() {
+                tmp.M.upgrades[56].cost = new Decimal(tmp.M.upgrades[56].cost.div(1000))
+            },
+            unlocked() {return hasChallenge("L",15)},
+        },
     },
     tabFormat: {
             "Layerverse": {
