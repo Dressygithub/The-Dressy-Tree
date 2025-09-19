@@ -126,7 +126,7 @@ addLayer("L", {
             canComplete: function() {return player.G.gen5.gte(5)},
             unlocked() {return hasChallenge("L",14)},
             rewardEffect() {
-                return new Decimal(player.L.resetTime).pow(0.1)
+                return new Decimal(player.L.resetTime).pow(0.1).add(1)
             },
             rewardDisplay() { return format(challengeEffect(this.layer, this.id))+"x" },
             onEnter() {return player.L.inchallenge = true},
@@ -207,7 +207,6 @@ addLayer("L", {
             description: "The last money upgrade on row 5 costs 1000x less",
             cost: new Decimal(5),
             onPurchase() {
-                tmp.M.upgrades[56].cost = new Decimal(tmp.M.upgrades[56].cost.div(1000))
             },
             unlocked() {return hasChallenge("L",15)},
         },

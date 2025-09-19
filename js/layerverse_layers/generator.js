@@ -45,7 +45,7 @@ addLayer("G", {
         player.G.geninfmult = player.G.geninfmult.add(player.G.geninf.div(player.G.geninfmult.pow(0.01).add(1))).times(player.G.geninfboost)
         player.G.geninfexpmult = player.G.geninfexpmult.add(player.G.geninf.div(player.G.geninfexpmult)).pow(0.014)
        
-        player.G.gen1collect = player.G.gen1collect.add(player.G.gen1.div(50)).times(player.G.geninf.div(25).floor().add(1))
+        player.G.gen1collect = player.G.gen1collect.add(player.G.gen1.times(player.G.geninf.div(25).floor().add(1)).div(50))
         player.G.gen2collect = player.G.gen2collect.add(player.G.gen2.times(2).times(player.G.geninf.div(25).floor().add(1)).div(40))
         player.G.gen3collect = player.G.gen3collect.add(player.G.gen3.times(3).times(player.G.geninf.div(25).floor().add(1)).div(30))
         player.G.gen4collect = player.G.gen4collect.add(player.G.gen4.times(4).times(player.G.geninf.div(25).floor().add(1)).div(20))
