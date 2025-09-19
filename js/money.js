@@ -319,7 +319,10 @@ addLayer("M", {
         56: {
             title: "Money",
             description: "Generate 1e14",
-            cost: new Decimal(1e12)
+            cost: function() {
+                if (hasUpgrade("L",25)) {return new Decimal(1e9)}
+                else {return new Decimal(1e12)}
+            }
         },
         61: {
             title: "The next layer",
