@@ -83,4 +83,17 @@ clickables: {
 },
 
 
-//
+//BUYABLES
+buyables: {
+    12: {
+        title: "<br>Dressy point thing<br>",
+        cost(x) { return new Decimal(30).pow(getBuyableAmount(this.layer, this.id)) },
+        display() { return "Boosts Dressy points<br>" + "Costs: " + format(tmp[this.layer].buyables[this.id].cost) + " money <br>Currently: " + format(buyableEffect(this.layer,this.id))+"x" },
+        canAfford() { return player[this.layer].points.gte(this.cost()) },
+        buy() {
+            player[this.layer].points = player[this.layer].points.sub(this.cost())
+            setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+        },
+        effect() {return new Decimal(1.75).pow(getBuyableAmount(this.layer, this.id).div(new Decimal(Number(inChallenge("L",11))).times(5).add(1)))},
+    },
+}

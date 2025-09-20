@@ -9,7 +9,7 @@ addLayer("G", {
 
         geninf: new Decimal(0),
         geninfcost: new Decimal(1000),
-        geninfcostscale: new Decimal(2),
+        geninfcostscale: new Decimal(1),
         geninfmult: new Decimal(1),
         geninfexpmult: new Decimal(1),
         geninfboost: new Decimal(1),
@@ -17,27 +17,27 @@ addLayer("G", {
         gen1: new Decimal(0),
         gen1cost: new Decimal(1000),
         gen1collect: new Decimal(0),
-        gen1costscale: new Decimal(2),
+        gen1costscale: new Decimal(1),
 
         gen2: new Decimal(0),
         gen2cost: new Decimal(100),
         gen2collect: new Decimal(0),
-        gen2costscale: new Decimal(1.5),
+        gen2costscale: new Decimal(0.5),
 
         gen3: new Decimal(0),
         gen3cost: new Decimal(1e3),
         gen3collect: new Decimal(0),
-        gen3costscale: new Decimal(2),
+        gen3costscale: new Decimal(1),
 
         gen4: new Decimal(0),
         gen4cost: new Decimal(1e4),
         gen4collect: new Decimal(0),
-        gen4costscale: new Decimal(2.5),
+        gen4costscale: new Decimal(1.5),
 
         gen5: new Decimal(0),
         gen5cost: new Decimal(1e5),
         gen5collect: new Decimal(0),
-        gen5costscale: new Decimal(3)
+        gen5costscale: new Decimal(2)
         
 
     }},
@@ -52,6 +52,74 @@ addLayer("G", {
         player.G.gen5collect = player.G.gen5collect.add(player.G.gen5.times(5).times(player.G.geninf.div(20).floor().add(1)).div(10))
    
     },
+    autobuygen() {
+        if (player.PG.automate == true) {
+            if (hasUpgrade("PG",31)) {
+                if (player.points.gte(player.G.gen1cost)) {
+                    player.G.gen1 = player.G.gen1.add(1)
+                    player.points = player.points.sub(player.G.gen1cost)
+                    player.G.gen1cost = player.G.gen1cost.times(player.G.gen1costscale.add(1))
+                }
+                else {
+
+                }
+            }
+            if (hasUpgrade("PG",32)) {
+                if (player.G.genpoints.gte(player.G.gen2cost)) {
+                    player.G.gen2 = player.G.gen2.add(1)
+                    player.G.genpoints = player.G.genpoints.sub(player.G.gen2cost)
+                    player.G.gen2cost = player.G.gen2cost.times(player.G.gen2costscale.add(1))
+                }
+                else {
+
+                }
+            }
+            if (hasUpgrade("PG",33)) {
+                if (player.G.genpoints.gte(player.G.gen3cost)) {
+                        player.G.gen3 = player.G.gen3.add(1)
+                        player.G.genpoints = player.G.genpoints.sub(player.G.gen3cost)
+                        player.G.gen3cost = player.G.gen3cost.times(player.G.gen3costscale.add(1))
+                    }
+                    else {
+
+                    }
+
+            }
+            if (hasUpgrade("PG",34)) {
+                if (player.G.genpoints.gte(player.G.gen4cost)) {
+                        player.G.gen4 = player.G.gen4.add(1)
+                        player.G.genpoints = player.G.genpoints.sub(player.G.gen4cost)
+                        player.G.gen4cost = player.G.gen4cost.times(player.G.gen4costscale.add(1))
+                    }
+                    else {
+
+                    }
+
+            }
+            if (hasUpgrade("PG",35)) {
+                if (player.G.points.gte(player.G.gen5cost)) {
+                        player.G.gen5 = player.G.gen5.add(1)
+                        player.points = player.points.sub(player.G.gen5cost)
+                        player.G.gen5cost = player.G.gen5cost.times(player.G.gen5costscale.add(1))
+                    }
+                    else {
+
+                    }
+
+            }
+            if (hasUpgrade("PG",36)) {
+                if (player.points.gte(player.G.geninfcost)) {
+                    player.points = player.points.sub(player.G.geninfcost)
+                    player.G.geninf = player.G.geninf.add(1)
+                    player.G.geninfcost = player.G.geninfcost.times(player.G.geninfcostscale.add(1))
+                }
+                else {
+                }
+
+            }
+    }
+
+    },
     layerShown(){
         let visible = false
         if (inChallenge("L",16)) visible = true
@@ -59,6 +127,7 @@ addLayer("G", {
         return visible
     },
     color: "#FFFFFF",
+    branches: ["G","PG"],
     requires: new Decimal(100),
     resource: "Generator points", // Name of prestige currency
     baseResource: "Points", // Name of resource prestige is based on
@@ -91,7 +160,7 @@ addLayer("G", {
                 if (player.points.gte(player.G.geninfcost)) {
                     player.points = player.points.sub(player.G.geninfcost)
                     player.G.geninf = player.G.geninf.add(1)
-                    player.G.geninfcost = player.G.geninfcost.times(player.G.geninfcostscale)
+                    player.G.geninfcost = player.G.geninfcost.times(player.G.geninfcostscale.add(1))
                 }
                 else {
                     return false
@@ -117,7 +186,7 @@ addLayer("G", {
                 if (player.points.gte(player.G.gen1cost)) {
                     player.G.gen1 = player.G.gen1.add(1)
                     player.points = player.points.sub(player.G.gen1cost)
-                    player.G.gen1cost = player.G.gen1cost.times(player.G.gen1costscale)
+                    player.G.gen1cost = player.G.gen1cost.times(player.G.gen1costscale.add(1))
                 }
                 else {
 
@@ -165,7 +234,7 @@ addLayer("G", {
                 if (player.G.genpoints.gte(player.G.gen2cost)) {
                     player.G.gen2 = player.G.gen2.add(1)
                     player.G.genpoints = player.G.genpoints.sub(player.G.gen2cost)
-                    player.G.gen2cost = player.G.gen2cost.times(player.G.gen2costscale)
+                    player.G.gen2cost = player.G.gen2cost.times(player.G.gen2costscale.add(1))
                 }
                 else {
 
@@ -212,7 +281,7 @@ addLayer("G", {
                 if (player.G.genpoints.gte(player.G.gen3cost)) {
                     player.G.gen3 = player.G.gen3.add(1)
                     player.G.genpoints = player.G.genpoints.sub(player.G.gen3cost)
-                    player.G.gen3cost = player.G.gen3cost.times(player.G.gen3costscale)
+                    player.G.gen3cost = player.G.gen3cost.times(player.G.gen3costscale.add(1))
                 }
                 else {
 
@@ -259,7 +328,7 @@ addLayer("G", {
                 if (player.G.genpoints.gte(player.G.gen4cost)) {
                     player.G.gen4 = player.G.gen4.add(1)
                     player.G.genpoints = player.G.genpoints.sub(player.G.gen4cost)
-                    player.G.gen4cost = player.G.gen4cost.times(player.G.gen4costscale)
+                    player.G.gen4cost = player.G.gen4cost.times(player.G.gen4costscale.add(1))
                 }
                 else {
 
@@ -306,7 +375,7 @@ addLayer("G", {
                 if (player.points.gte(player.G.gen5cost)) {
                     player.G.gen5 = player.G.gen5.add(1)
                     player.points = player.points.sub(player.G.gen5cost)
-                    player.G.gen5cost = player.G.gen5cost.times(player.G.gen5costscale)
+                    player.G.gen5cost = player.G.gen5cost.times(player.G.gen5costscale.add(1))
                 }
                 else {
 

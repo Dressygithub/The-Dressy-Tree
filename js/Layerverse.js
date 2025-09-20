@@ -5,7 +5,7 @@ addLayer("L", {
     startData() { return {
         unlocked: true,
         points: new Decimal(0),
-        complete: new Decimal(0),
+        completedlayers: new Decimal(0),
         inchallenge: false,
 
         spacecompletionnlimit: new Decimal(10),
@@ -56,6 +56,9 @@ addLayer("L", {
             canComplete: function() {return player.P.points.gte(new Decimal(2).pow(1024))},
             rewardEffect() {
                 return player.points.add(1).log(10).add(1)
+            },
+            onComplete() {
+                player.L.completedlayers = player.L.completedlayers.add(1)
             },
             rewardDisplay() { return format(challengeEffect(this.layer, this.id))+"x" },
             onEnter() {return player.L.inchallenge = true},
@@ -210,6 +213,15 @@ addLayer("L", {
             },
             unlocked() {return hasChallenge("L",15)},
         },
+        26: {
+            title: "You probably need this for the generator challenge",
+            description: "While in a challenge, 1e5x points and boost points by points",
+            cost: new Decimal(6),
+            effect() {
+                return player.points.pow(0.3).add(1)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+        },
     },
     tabFormat: {
             "Layerverse": {
@@ -225,6 +237,7 @@ addLayer("L", {
                     "blank",
                     "blank",
                     "upgrades",
+                    "buyables"
                 ],
             },
             "Challenges": {
