@@ -108,7 +108,7 @@ addLayer("G", {
 
             }
             if (hasUpgrade("PG",36)) {
-                if (player.points.gte(player.G.geninfcost)) {
+                if (player.points.gte(player.G.geninfcost) && player.G.geninf.lte(500)) {
                     player.points = player.points.sub(player.G.geninfcost)
                     player.G.geninf = player.G.geninf.add(1)
                     player.G.geninfcost = player.G.geninfcost.times(player.G.geninfcostscale.add(1))
@@ -149,7 +149,7 @@ addLayer("G", {
         91: {
             display: function() {return "<h2><b>Infinite Generator "+player.G.geninf+"</b></h2><br><h3><br>Costs: "+format(player.G.geninfcost)+" points"},
             canClick() {
-                if (player.points.gte(player.G.geninfcost)) {
+                if (player.points.gte(player.G.geninfcost) && player.G.geninf.lte(500)) {
                     return true
                 }
                 else {
@@ -157,7 +157,7 @@ addLayer("G", {
                 }
             },
             onClick() { 
-                if (player.points.gte(player.G.geninfcost)) {
+                if (player.points.gte(player.G.geninfcost) && player.G.geninf.lte(500)) {
                     player.points = player.points.sub(player.G.geninfcost)
                     player.G.geninf = player.G.geninf.add(1)
                     player.G.geninfcost = player.G.geninfcost.times(player.G.geninfcostscale.add(1))

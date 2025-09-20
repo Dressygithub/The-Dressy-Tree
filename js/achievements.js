@@ -24,7 +24,8 @@ addLayer("De", {
     11: {
         name: "The beginning",
         tooltip: "",
-        done() {return hasUpgrade("D",11)}
+        done() {return hasUpgrade("D",11)},
+        unlocked() {return true}
     },
     12: {
         name: "100",
