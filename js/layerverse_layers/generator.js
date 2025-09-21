@@ -455,6 +455,16 @@ addLayer("G", {
                         return "For each 20 infinite generators you have, you get a "+format(player.G.geninf.div(20).floor().add(1))+"x boost to all your normal generators"
                     }
                 ],
+                ["display-text",
+                    function() {
+                        if (player.L.geninf.gte(500)) {
+                            return "ok i lied it wasnt infinite"
+                        }
+                        else {
+                            return ""
+                        }
+                    }
+                ],
                     "blank",
                     ["clickables",[9]],
                     "blank",
