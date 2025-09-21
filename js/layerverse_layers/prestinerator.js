@@ -38,7 +38,7 @@ addLayer("PG", {
             description: "Infinite generator costscale is reduced",
             cost: new Decimal(1),
             onPurchase() {
-                player.G.geninfcostscale = player.G.geninfcostscale.sub(0.001) 
+                player.G.geninfcostscale = player.G.geninfcostscale.div(1.01) 
             }
         },
         12: {
@@ -87,7 +87,7 @@ addLayer("PG", {
             cost: new Decimal(5),
             onPurchase() {
                 player.G.geninfboost = player.G.geninfboost.times(1.125)
-                player.G.geninfcostscale = player.G.geninfcostscale.pow(2)
+                player.G.geninfcostscale = player.G.geninfcostscale.times(1.5)
             }
         },
         22: {
@@ -96,7 +96,7 @@ addLayer("PG", {
             cost: new Decimal(15),
             onPurchase() {
                 player.G.geninfboost = player.G.geninfboost.times(1.25)
-                player.G.geninfcostscale = player.G.geninfcostscale.pow(2)
+                player.G.geninfcostscale = player.G.geninfcostscale.times(2)
             }
         },
         23: {
@@ -105,7 +105,7 @@ addLayer("PG", {
             cost: new Decimal(45),
             onPurchase() {
                 player.G.geninfboost = player.G.geninfboost.times(1.5)
-                player.G.geninfcostscale = player.G.geninfcostscale.pow(2)
+                player.G.geninfcostscale = player.G.geninfcostscale.times(3)
             }
         },
         23: {
