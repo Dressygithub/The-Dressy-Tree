@@ -9,7 +9,7 @@ addLayer("PG", {
     
     }},
     layerShown(){
-        let visible = false
+        let visible = true
         if (inChallenge("L",16) && player.G.gen3.gte(3) || player.PG.unlocked) visible = true
         if (!inChallenge("L",16)) visible = false
         return visible
