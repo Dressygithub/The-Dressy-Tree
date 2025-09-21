@@ -233,7 +233,14 @@ addLayer("L", {
                     }
                 ],
                     "blank",
-                    "prestige-button",
+                    function() {
+                        if (player.L.inchallenge == false) {
+                            return "prestige-button"
+                        }
+                        else {
+                            return "blank"
+                        }
+                    },
                     "blank",
                     "blank",
                     "upgrades",
