@@ -374,7 +374,7 @@ addLayer("G", {
             onClick() { 
                 if (player.points.gte(player.G.gen5cost)) {
                     player.G.gen5 = player.G.gen5.add(1)
-                    player.points = player.points.sub(player.G.gen5cost)
+                    player.G.points = player.points.sub(player.G.gen5cost)
                     player.G.gen5cost = player.G.gen5cost.times(player.G.gen5costscale.add(1))
                 }
                 else {
