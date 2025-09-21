@@ -457,7 +457,7 @@ addLayer("G", {
                 ],
                 ["display-text",
                     function() {
-                        if (player.L.geninf.gte(500)) {
+                        if (player.G.geninf.gte(500)) {
                             return "ok i lied it wasnt infinite"
                         }
                         else {
