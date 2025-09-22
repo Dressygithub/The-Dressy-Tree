@@ -42,7 +42,7 @@ addLayer("G", {
 
     }},
     generate() {
-        player.G.geninfmult = player.G.geninfmult.add(player.G.geninf.div(player.G.geninfmult.pow(0.01).add(1))).times(player.G.geninfboost)
+        player.G.geninfmult = player.G.geninfmult.add(player.G.geninf.div(player.G.geninfmult.pow(0.01).add(1)).times(player.G.geninfboost))
         player.G.geninfexpmult = player.G.geninfexpmult.add(player.G.geninf.div(player.G.geninfexpmult)).pow(0.014)
        
         player.G.gen1collect = player.G.gen1collect.add(player.G.gen1.times(player.G.geninf.div(20).floor().add(1)).div(50))
