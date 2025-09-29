@@ -44,7 +44,7 @@ addLayer("PG", {
         12: {
             title: "Generator 1 is cheaper wow",
             description: "Generator 1 costscale is reduced",
-            cost: new Decimal(10),
+            cost: new Decimal(5),
             onPurchase() {
                 player.G.gen1costscale = player.G.gen1costscale.div(1.1) 
             }
@@ -52,7 +52,7 @@ addLayer("PG", {
         13: {
             title: "Generator 2 is cheaper wow",
             description: "Generator 2 costscale is reduced",
-            cost: new Decimal(20),
+            cost: new Decimal(10),
             onPurchase() {
                 player.G.gen2costscale = player.G.gen2costscale.div(1.2) 
             }
@@ -60,7 +60,7 @@ addLayer("PG", {
         14: {
             title: "Generator 3 is cheaper wow",
             description: "Generator 3 costscale is reduced",
-            cost: new Decimal(30),
+            cost: new Decimal(25),
             onPurchase() {
                 player.G.gen3costscale = player.G.gen3costscale.div(1.3) 
             }
@@ -68,7 +68,7 @@ addLayer("PG", {
         15: {
             title: "Generator 4 is cheaper wow",
             description: "Generator 4 costscale is reduced",
-            cost: new Decimal(40),
+            cost: new Decimal(50),
             onPurchase() {
                 player.G.gen4costscale = player.G.gen4costscale.div(1.4) 
             }
@@ -76,7 +76,7 @@ addLayer("PG", {
         16: {
             title: "Generator 5 is cheaper wow",
             description: "Generator 5 costscale is reduced",
-            cost: new Decimal(50),
+            cost: new Decimal(100),
             onPurchase() {
                 player.G.gen5costscale = player.G.gen5costscale.div(1.5) 
             }
@@ -84,7 +84,7 @@ addLayer("PG", {
         21: {
             title: "Greater Infinity",
             description: "Infinite generator point boost is boosted but its more expensive",
-            cost: new Decimal(5),
+            cost: new Decimal(1),
             onPurchase() {
                 player.G.geninfboost = player.G.geninfboost.times(1.125)
                 player.G.geninfcostscale = player.G.geninfcostscale.times(1.5)
@@ -93,25 +93,16 @@ addLayer("PG", {
         22: {
             title: "Even greater Infinity",
             description: "Infinite generator point boost is boosted even more but its more expensive",
-            cost: new Decimal(15),
+            cost: new Decimal(5),
             onPurchase() {
                 player.G.geninfboost = player.G.geninfboost.times(1.25)
                 player.G.geninfcostscale = player.G.geninfcostscale.times(2)
             }
         },
         23: {
-            title: "Beyond Infinity",
-            description: "Infinite generator point boost is boosted way more but its more expensive",
-            cost: new Decimal(45),
-            onPurchase() {
-                player.G.geninfboost = player.G.geninfboost.times(1.5)
-                player.G.geninfcostscale = player.G.geninfcostscale.times(3)
-            }
-        },
-        23: {
             title: "Barginning",
             description: "Infinite generator costs less",
-            cost: new Decimal(3),
+            cost: new Decimal(10),
             onPurchase() {
                 player.G.geninfcostscale = player.G.geninfcostscale.div(1.1)
             }
@@ -119,7 +110,7 @@ addLayer("PG", {
         24: {
             title: "Can it get any chaper?",
             description: "Infinite generator costs even less",
-            cost: new Decimal(30),
+            cost: new Decimal(25),
             onPurchase() {
                 player.G.geninfcostscale = player.G.geninfcostscale.div(1.2)
             }
@@ -147,35 +138,35 @@ addLayer("PG", {
         31: {
             title: "Gen 1 Automation",
             description: "Autobuy gen 1",
-            cost: new Decimal(5),
+            cost: new Decimal(1),
             onPurchase() {
             }
         },
         32: {
             title: "Gen 2 Automation",
             description: "Autobuy gen 2",
-            cost: new Decimal(10),
+            cost: new Decimal(5),
             onPurchase() {
             }
         },
         33: {
             title: "Gen 3 Automation",
             description: "Autobuy gen 3",
-            cost: new Decimal(20),
+            cost: new Decimal(10),
             onPurchase() {
             }
         },
         34: {
             title: "Gen 4 Automation",
             description: "Autobuy gen 4",
-            cost: new Decimal(40),
+            cost: new Decimal(25),
             onPurchase() {
             }
         },
         35: {
             title: "Gen 5 Automation",
             description: "Autobuy gen 5",
-            cost: new Decimal(80),
+            cost: new Decimal(50),
             onPurchase() {
             }
         },
