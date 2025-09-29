@@ -223,7 +223,7 @@ addLayer("PG", {
             description: "Read the title and you will find out",
             cost: new Decimal(100),
             effect() {
-                return player.G.geninfmult.log(30)
+                return player.G.geninfmult.add(1).log(30).add(1)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
