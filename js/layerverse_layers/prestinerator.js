@@ -220,7 +220,7 @@ addLayer("PG", {
         },
         46: {
             title: "The infinite generator is a clickable located in the generator layer. It serves as a purpose to earn a growing multiplier for your normal points which can be used to buy generator 1 and more of the infinite generator. This upgrade allows it to also boost Prestinerator points which is a second layer to the generator challenge. It can serve to boost the normal generator layer in different ways such as decreasing cost scales for specific generators via this layers upgrades and boosting the point multiplier for the infinite generator.",
-            description: "nothing times nothing",
+            description: "Read the title and you will find out",
             cost: new Decimal(1),
             effect() {
                 return player.G.geninfmult.log(30)
