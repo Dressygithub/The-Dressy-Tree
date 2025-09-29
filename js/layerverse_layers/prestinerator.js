@@ -22,7 +22,13 @@ addLayer("PG", {
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: new Decimal(0.45), // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
-        mult = new Decimal(1)     
+        mult = new Decimal(1)   
+        if (hasUpgrade('PG', 41)) mult = mult.times(1.5)  
+        if (hasUpgrade('PG', 42)) mult = mult.times(1.6)  
+        if (hasUpgrade('PG', 43)) mult = mult.times(1.7)  
+        if (hasUpgrade('PG', 44)) mult = mult.times(1.8)  
+        if (hasUpgrade('PG', 45)) mult = mult.times(1.9)  
+        if (hasUpgrade('PG', 46)) mult = mult.times(upgradeEffect("PG",46))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -176,6 +182,50 @@ addLayer("PG", {
             cost: new Decimal(100),
             onPurchase() {
             }
+        },
+        41: {
+            title: "Slightly better PG",
+            description: "1.5x Prestinerator points",
+            cost: new Decimal(1),
+            onPurchase() {
+            }
+        },
+        42: {
+            title: "Better PG",
+            description: "1.6x Prestinerator points",
+            cost: new Decimal(5),
+            onPurchase() {
+            }
+        },
+        43: {
+            title: "Awesome PG",
+            description: "1.7x Prestinerator points",
+            cost: new Decimal(10),
+            onPurchase() {
+            }
+        },
+        44: {
+            title: "Ascended PG",
+            description: "1.8x Prestinerator points",
+            cost: new Decimal(25),
+            onPurchase() {
+            }
+        },
+        45: {
+            title: "Transcendental PG",
+            description: "1.9x Prestinerator points",
+            cost: new Decimal(50),
+            onPurchase() {
+            }
+        },
+        46: {
+            title: "The infinite generator is a clickable located in the generator layer. It serves as a purpose to earn a growing multiplier for your normal points which can be used to buy generator 1 and more of the infinite generator. This upgrade allows it to also boost Prestinerator points which is a second layer to the generator challenge. It can serve to boost the normal generator layer in different ways such as decreasing cost scales for specific generators via this layers upgrades and boosting the point multiplier for the infinite generator.",
+            description: "nothing times nothing",
+            cost: new Decimal(1),
+            effect() {
+                return player.G.geninfmult.log(30)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
     },
     clickables: {
