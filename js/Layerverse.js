@@ -125,8 +125,8 @@ addLayer("L", {
             name: "Generator layer",
             challengeDescription: "Complete the generator layer",
             rewardDescription: "Boost points by the amount of time you spend in the layerverse",
-            goalDescription: "10 Generator 5's",
-            canComplete: function() {return player.G.gen5.gte(10)},
+            goalDescription: "1000 Prestinerator points",
+            canComplete: function() {return player.PG.points.gte(1000)},
             unlocked() {return hasChallenge("L",14)},
             rewardEffect() {
                 return new Decimal(player.L.resetTime).pow(0.1).add(1)
