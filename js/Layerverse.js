@@ -21,7 +21,12 @@ addLayer("L", {
     baseResource: "Points", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent: 3, // Prestige currency exponent
+    exponent: function() {
+        if (hasUpgrade("L",31)) {
+            return 2
+        }
+        return 3
+    }, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
         return mult
@@ -124,7 +129,21 @@ addLayer("L", {
         16: {
             name: "Generator layer",
             challengeDescription: "Complete the generator layer",
-            rewardDescription: "Boost points by the amount of time you spend in the layerverse",
+            rewardDescription: "Boost points by the amount of time you spend in the layerverse and unlock the layer generators",
+            goalDescription: "1000 Prestinerator points",
+            canComplete: function() {return player.PG.points.gte(1000)},
+            unlocked() {return hasChallenge("L",14)},
+            rewardEffect() {
+                return new Decimal(player.L.resetTime).pow(0.9).add(1)
+            },
+            rewardDisplay() { return format(challengeEffect(this.layer, this.id))+"x" },
+            onEnter() {return player.L.inchallenge = true},
+            onExit() {return player.L.inchallenge = false}
+        },
+        99991: {
+            name: "Rooms layer (BROKEN)",
+            challengeDescription: "This isnt even an incremental game anymore. Complete the rooms layer",
+            rewardDescription: "Boost points by the amount of time you spend in the layerverse and unlock more stuff",
             goalDescription: "1000 Prestinerator points",
             canComplete: function() {return player.PG.points.gte(1000)},
             unlocked() {return hasChallenge("L",14)},
@@ -132,7 +151,9 @@ addLayer("L", {
                 return new Decimal(player.L.resetTime).pow(0.1).add(1)
             },
             rewardDisplay() { return format(challengeEffect(this.layer, this.id))+"x" },
-            onEnter() {return player.L.inchallenge = true},
+            onEnter() {player.L.inchallenge = true
+                roomslockerlistrng()
+            },
             onExit() {return player.L.inchallenge = false}
         },
     },
@@ -222,6 +243,11 @@ addLayer("L", {
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
+        31: {
+            title: "Awesome price scaling",
+            description: "The layer exponent is subtracted by 1",
+            cost: new Decimal(6),
+        },
     },
     tabFormat: {
             "Layerverse": {
@@ -262,8 +288,29 @@ addLayer("L", {
                     "blank",
                     "blank",
                     "blank",
-                    "challenges",
+                    ["challenges",[1]],
                 ],
             },
-        }
+            "Extra Challenges": {
+                content: [
+                    ["display-text",
+                    function(){
+                        return "You have <h2><span style='color:rgb(0, 0, 255); text-shadow: 0px 0px 10px rgb(132, 0, 255); font-family: Lucida Console, Courier New, monospace'>"+ 0 +"</span></h2> Completeted layers"
+                    }
+                ],  
+                    ["display-text",
+                    function(){
+                        return "<b>NOTE: THESE CHALLENGES WONT SAVE IF YOU EXIT THEM AND NORMAL PROGRESSION WONT SAVE WHEN ENTERING THEM</b>"
+                    }
+                ],  
+                    "blank",
+                    "blank",
+                    "blank",
+                    ["challenges",[9999]]
+                ],
+                unlocked() {return hasChallenge("L",16)}
+            },
+        },
+
+        
 })

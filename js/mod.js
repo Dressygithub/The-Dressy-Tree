@@ -3,7 +3,7 @@ let modInfo = {
 	author: "Dressyapper",
 	pointsName: "Points",
 	id : "dressyapper",
-	modFiles: ["DressyLayer.js", "tree.js", "components.js","achievements.js","Super.js","Hyper.js","Click.js","money.js","Layerverse.js","layerverse_layers/prestige.js", "layerverse_layers/math.js", "layerverse_layers/time.js", "layerverse_layers/space.js", "layerverse_layers/generator.js", "layerverse_layers/prestinerator.js"],
+	modFiles: ["DressyLayer.js", "tree.js", "components.js","achievements.js","Super.js","Hyper.js","Click.js","money.js","Layerverse.js","layerverse_layers/prestige.js", "layerverse_layers/math.js", "layerverse_layers/time.js", "layerverse_layers/space.js", "layerverse_layers/generator.js", "layerverse_layers/prestinerator.js","layerverse_layers/rooms.js"],
 
 	discordName: "",
 	discordLink: "",
@@ -163,4 +163,15 @@ function maxTickLength() {
 // Use this if you need to undo inflation from an older version. If the version is older than the version that fixed the issue,
 // you can cap their current resources with this.
 function fixOldSave(oldVersion){
+}
+
+//Extra code for layers
+function roomslockerlistrng() {
+	let i = 0
+	while (i != 1000) {
+		let rng = Math.round(Math.random())
+		player.R.lockerrooms.push(rng)
+		i++;
+
+	}
 }

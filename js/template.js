@@ -97,3 +97,48 @@ buyables: {
         effect() {return new Decimal(1.75).pow(getBuyableAmount(this.layer, this.id).div(new Decimal(Number(inChallenge("L",11))).times(5).add(1)))},
     },
 }
+
+//TABS
+tabFormat: {
+    "Layerverse": {
+        content: [
+            "main-display",
+            ["display-text",
+                function(){
+                    return "You have <h2><span style='color:rgb(0, 0, 255); text-shadow: 0px 0px 10px rgb(132, 0, 255); font-family: Lucida Console, Courier New, monospace'>"+ 0 +"</span></h2> Completeted layers"
+                }
+            ],
+                "blank",
+                function() {
+                    if (player.L.inchallenge == false) {
+                        return "prestige-button"
+                    }
+                    else {
+                        return "blank"
+                    }
+                },
+                "blank",
+                "blank",
+                "upgrades",
+                "buyables"
+            ],
+        },
+        "Challenges": {
+            content: [
+                ["display-text",
+                    function(){
+                        return "You have <h2><span style='color:rgb(0, 0, 255); text-shadow: 0px 0px 10px rgb(132, 0, 255); font-family: Lucida Console, Courier New, monospace'>"+ 0 +"</span></h2> Completeted layers"
+                    }
+                ],  
+                    ["display-text",
+                    function(){
+                        return "<b>NOTE: THESE CHALLENGES WONT SAVE IF YOU EXIT THEM AND NORMAL PROGRESSION WONT SAVE WHEN ENTERING THEM</b>"
+                    }
+                ],  
+                    "blank",
+                    "blank",
+                    "blank",
+                    "challenges",
+                ],
+            },
+        },
