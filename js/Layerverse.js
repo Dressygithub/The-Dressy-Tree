@@ -16,7 +16,14 @@ addLayer("L", {
         return visible
      },   
     color: "rgb(132, 0, 255)",
-    requires: new Decimal(1e60), // Can be a function that takes requirement increases into account
+    requires: function() {
+        if (hasUpgrade("L",33)) {
+            return new Decimal(1e57)
+        }
+        else {
+            new Decimal(1e60)
+        }
+    }, // Can be a function that takes requirement increases into account
     resource: "Layer points", // Name of prestige currency
     baseResource: "Points", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
@@ -42,6 +49,9 @@ addLayer("L", {
     },
     effect() {
         Leff = player[this.layer].points.add(1).pow(1.1)
+        if (hasUpgrade("L",35)) {
+            Leff = Leff.times(3)
+        }
         return Leff
         },
         effectDescription() {
@@ -242,11 +252,43 @@ addLayer("L", {
                 return player.points.pow(0.3).add(1)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+            unlocked() {return hasChallenge("L",15)},
         },
         31: {
             title: "Awesome price scaling",
             description: "The layer exponent is subtracted by 1",
             cost: new Decimal(6),
+            unlocked() {return hasChallenge("L",16)},
+        },
+        32: {
+            title: "Even lazier",
+            description: "Automate dressy layer, super and hyper and have money layer unlocked without the hyper challenge",
+            cost: new Decimal(6),
+            unlocked() {return hasUpgrade("L",31)},
+        },
+        33: {
+            title: "1",
+            description: "1000x less requirement for layer points",
+            cost: new Decimal(10),
+            unlocked() {return hasUpgrade("L",32)},
+        },
+        34: {
+            title: "2",
+            description: "200x points, simple",
+            cost: new Decimal(10),
+            unlocked() {return hasUpgrade("L",32)},
+        },
+        35: {
+            title: "3",
+            description: "Layerverse effect is 3x better",
+            cost: new Decimal(10),
+            unlocked() {return hasUpgrade("L",32)},
+        },
+        36: {
+            title: "A new layer!",
+            description: "Unlock click mastery",
+            cost: new Decimal(20),
+            unlocked() {return hasUpgrade("L",33) && hasUpgrade("L",34) && hasUpgrade("L",35)},
         },
     },
     tabFormat: {

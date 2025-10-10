@@ -26,7 +26,8 @@ addLayer("H", {
         return 0
     },
     autoUpgrade() {
-        return false
+        if (hasUpgrade("L",32)) {return true}
+        else {return false}
     },
     branches: ["H", "M"], 
     color: "#38ffa4",

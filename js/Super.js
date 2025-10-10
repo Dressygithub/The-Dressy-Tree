@@ -18,7 +18,8 @@ addLayer("S", {
     return 0},
     
     autoUpgrade() {
-        if (hasChallenge('H', 11)) return true
+        if (hasChallenge('H', 11)) {return true}
+        else if (hasUpgrade("L",32)) {return true}
         return false
     },
 

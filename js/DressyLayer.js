@@ -14,8 +14,9 @@ addLayer("D", {
         return 0
     },
     autoUpgrade() {
-        if (hasMilestone('H', 1)) return true
-        return false
+        if (hasMilestone('H', 1)) {return true}
+        else if (hasUpgrade("L",32)) {return true}
+        else {return false}
     },
     layerShown(){
         let visible = true

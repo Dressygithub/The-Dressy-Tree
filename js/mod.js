@@ -101,7 +101,6 @@ function getPointGen() {
 	if (hasUpgrade("Ma",32)) gain = gain.times(upgradeEffect("Ma",32))
 	if (hasUpgrade("Ma",33)) gain = gain.times(upgradeEffect("Ma",33))
 	if (hasUpgrade("Ma",34)) gain = gain.times(upgradeEffect("Ma",34))   	   			
-	
 	if (hasUpgrade('Da', 11)) gain = gain.times(3)
 	if (hasUpgrade('Da', 14)) gain = gain.times(1.5)
 	if (hasUpgrade('Da', 16)) gain = gain.times(upgradeEffect("Da",16))
@@ -112,16 +111,14 @@ function getPointGen() {
 	if (hasMilestone('Hy', 2)) gain = gain.times(2)
 	if (new Decimal(challengeCompletions("L",14)).gte(1)) gain = gain.times(challengeEffect("L",14))
 	if (inChallenge("L",14)) gain = gain.div(new Decimal(2).pow(challengeCompletions("L",14)))
-
 	if (inChallenge("L",15)) gain = gain.div(5)
 	if (hasChallenge("L",15)) gain = gain.times(3)
-
 	if (hasUpgrade('L', 24)) gain = gain.times(1000)
-
 	if (inChallenge('L',16)) gain = gain.times(player.G.geninfmult)
 	if (inChallenge('L',16)) gain = gain.pow(player.G.geninfexpmult)
 	if (hasUpgrade('L', 26) && player.L.inchallenge) gain = gain.times(upgradeEffect("L",26))
 	if (hasUpgrade('L', 26) && player.L.inchallenge) gain = gain.times(1e5)
+	if (hasUpgrade('L', 34)) gain = gain.times(200)
 	return gain
 }
 
