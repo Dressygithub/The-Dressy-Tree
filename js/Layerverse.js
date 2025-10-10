@@ -21,7 +21,7 @@ addLayer("L", {
             return new Decimal(1e57)
         }
         else {
-            new Decimal(1e60)
+            return new Decimal(1e60)
         }
     }, // Can be a function that takes requirement increases into account
     resource: "Layer points", // Name of prestige currency
