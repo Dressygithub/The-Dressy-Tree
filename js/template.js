@@ -142,3 +142,19 @@ tabFormat: {
                 ],
             },
         },
+
+bars: {
+    hi: {
+        direction: RIGHT,
+        width: 600,
+        height: 60,
+        fillStyle: { 'background-color': "green" },
+        borderStyle() { return { "border-color": "white" } },
+        progress() {
+            return 1
+        },
+        display() {
+            return ""
+        }
+        },
+    }

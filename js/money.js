@@ -11,7 +11,7 @@ addLayer("M", {
     }},
     layerShown(){
         let visible = false
-        if (hasUpgrade('D', 33) || hasUpgrade('M',11) || hasUpgrade("L",32)) visible = true
+        if (hasUpgrade('D', 33) || hasUpgrade('M',11) || hasUpgrade("L",32) && !player.L.inChallenge) visible = true
         if (player.L.inChallenge) visible = false
         return visible
     },

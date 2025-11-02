@@ -7,6 +7,19 @@ addLayer("L", {
         points: new Decimal(0),
         completedlayers: new Decimal(0),
         inchallenge: false,
+        level: new Decimal(0),
+        exp: new Decimal(0),
+        expperclick: new Decimal(1),
+        levelprestige: new Decimal(0),
+        rewards: {
+            "1":false,
+            "2":false,
+            "3":false,
+            "4":false,
+            "5":false,
+            "6":false,
+            "7":false,
+        },
 
         spacecompletionnlimit: new Decimal(10),
     }},
@@ -19,6 +32,9 @@ addLayer("L", {
     requires: function() {
         if (hasUpgrade("L",33)) {
             return new Decimal(1e57)
+        }
+        else if (player.L.levelprestige.gte(6)) {
+            return new Decimal(1e54)
         }
         else {
             return new Decimal(1e60)
@@ -167,6 +183,26 @@ addLayer("L", {
             onExit() {return player.L.inchallenge = false}
         },
     },
+    clickables: {
+        11: {
+            title: "Click me!",
+            canClick() {return true},
+            onClick() {
+                if (player.L.levelprestige.gte(4)) {player.L.exp = player.L.exp.add(player.L.expperclick).add(player.L.level).add(player.L.levelprestige.pow(0.1).add(1).floor())}
+                else if (player.L.levelprestige.gte(3)) {player.L.exp = player.L.exp.add(player.L.expperclick).add(player.L.level)}
+                else {player.L.exp = player.L.exp.add(player.L.expperclick)}
+            },
+        },
+        12: {
+            title: function() {return "Prestige, Requires level "+player.L.levelprestige.add(1).times(3)},
+            canClick() {return player.L.level.gte(player.L.levelprestige.add(1).times(3))},
+            onClick() {
+                player.L.exp = new Decimal(0)
+                player.L.level = new Decimal(1)
+                player.L.levelprestige = player.L.levelprestige.add(1)
+            }
+        },
+    },
     upgrades: { 
         11: {
             title: "Welcome to the layerverse",
@@ -286,10 +322,58 @@ addLayer("L", {
         },
         36: {
             title: "A new layer!",
-            description: "Unlock click mastery",
-            cost: new Decimal(20),
+            description: "Unlock click leveling",
+            cost: new Decimal(15),
             unlocked() {return hasUpgrade("L",33) && hasUpgrade("L",34) && hasUpgrade("L",35)},
         },
+    },
+    bars: {
+        exp: {
+            direction: RIGHT,
+            width: 600,
+            height: 60,
+            fillStyle: { 'background-color': "red" },
+            borderStyle() { return { "border-color": "white" } },
+            progress() {
+                let prog = player.L.exp.div(player.L.level.pow(2).times(20).floor())
+                return prog
+            },
+            display() {
+                return "Level: "+player.L.level+"<br> Exp: "+player.L.exp+"/"+player.L.level.pow(2).times(20)
+            }
+        },
+    },
+    expcheck() {
+        if (player.L.exp.gte(player.L.level.pow(2).times(20).floor())) {
+            player.L.exp = new Decimal(0)
+            player.L.level = player.L.level.add(1)
+        }
+    },
+    exprewardcheck() {
+        if (player.L.rewards["1"] == false && player.L.levelprestige.gte(1)) {
+            player.L.expperclick = player.L.expperclick.times(3)
+            player.L.rewards["1"] = true
+        }
+        if (player.L.rewards["2"] == false && player.L.levelprestige.gte(2)) {
+            player.L.expperclick = player.L.expperclick.times(5)
+            player.L.rewards["2"] = true
+        }
+        if (player.L.rewards["3"] == false && player.L.levelprestige.gte(3)) {
+            player.L.rewards["3"] = true
+        }
+        if (player.L.rewards["4"] == false && player.L.levelprestige.gte(4)) {
+            player.L.rewards["4"] = true
+        }
+        if (player.L.rewards["5"] == false && player.L.levelprestige.gte(5)) {
+            player.L.expperclick = player.L.expperclick.times(7)
+            player.L.rewards["5"] = true
+        }
+        if (player.L.rewards["6"] == false && player.L.levelprestige.gte(6)) {
+            player.L.rewards["6"] = true
+        }
+        if (player.L.rewards["7"] == false && player.L.levelprestige.gte(7)) {
+            player.L.rewards["7"] = true
+        }
     },
     tabFormat: {
             "Layerverse": {
@@ -332,6 +416,26 @@ addLayer("L", {
                     "blank",
                     ["challenges",[1]],
                 ],
+            },
+            "Click": {
+                content: [ 
+                    ["bar","exp"],  
+                    "blank",
+                    "blank",
+                    ["display-text",
+                    function(){
+                        return "<h2>Prestiges: "+player.L.levelprestige+""
+                    }],
+                    
+                    "blank",
+                    ["clickables",[1]],
+                    "blank",
+                    ["display-text",
+                    function(){
+                        return "Prestige 1 - 3x exp<br>Prestige 2 - 5x exp<br>Prestige 3 - Level boosts Exp<br>Prestige 4 - Prestiges boost exp<br>Prestige 5 - 7x exp<br>Prestige 6 - The Layerverse requirement is less<br>Prestige 7 - Unlock Charms"
+                    }],
+                ],
+                unlocked() {return hasChallenge("L",16)}
             },
             "Extra Challenges": {
                 content: [
