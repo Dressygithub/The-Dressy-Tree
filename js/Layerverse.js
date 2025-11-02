@@ -322,7 +322,7 @@ addLayer("L", {
         },
         36: {
             title: "A new layer!",
-            description: "Unlock click leveling",
+            description: "Unlock Leveling",
             cost: new Decimal(15),
             unlocked() {return hasUpgrade("L",33) && hasUpgrade("L",34) && hasUpgrade("L",35)},
         },
@@ -417,7 +417,7 @@ addLayer("L", {
                     ["challenges",[1]],
                 ],
             },
-            "Click": {
+            "Leveling": {
                 content: [ 
                     ["bar","exp"],  
                     "blank",
@@ -435,7 +435,7 @@ addLayer("L", {
                         return "Prestige 1 - 3x exp<br>Prestige 2 - 5x exp<br>Prestige 3 - Level boosts Exp<br>Prestige 4 - Prestiges boost exp<br>Prestige 5 - 7x exp<br>Prestige 6 - The Layerverse requirement is less<br>Prestige 7 - Unlock Charms"
                     }],
                 ],
-                unlocked() {return hasChallenge("L",16)}
+                unlocked() {return hasUpgrade("L",36)}
             },
             "Extra Challenges": {
                 content: [
