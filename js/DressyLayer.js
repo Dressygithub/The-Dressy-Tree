@@ -10,6 +10,7 @@ addLayer("D", {
     passiveGeneration() {
         if (hasUpgrade('D',31)) return 0.3
         if (hasMilestone('H', 1)) return 0.15
+        if (hasUpgrade("L",32)) return 0.1
         if (hasMilestone('S', 2)) return 0.1
         return 0
     },

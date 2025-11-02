@@ -22,6 +22,7 @@ addLayer("H", {
             return "that are boosting Dressy point gain AND super gain by "+format(Heff.add(1))+"x."
         },
     passiveGeneration() {
+        if (hasUpgrade("L",32)) return 0.1
         if (hasUpgrade('L',23)) return 0.05
         return 0
     },
