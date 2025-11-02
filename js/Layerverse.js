@@ -33,9 +33,6 @@ addLayer("L", {
         if (hasUpgrade("L",33)) {
             return new Decimal(1e57)
         }
-        else if (player.L.levelprestige.gte(6)) {
-            return new Decimal(1e54)
-        }
         else {
             return new Decimal(1e60)
         }
@@ -369,6 +366,7 @@ addLayer("L", {
             player.L.rewards["5"] = true
         }
         if (player.L.rewards["6"] == false && player.L.levelprestige.gte(6)) {
+            player.L.expperclick = player.L.expperclick.times(2)
             player.L.rewards["6"] = true
         }
         if (player.L.rewards["7"] == false && player.L.levelprestige.gte(7)) {
@@ -432,7 +430,7 @@ addLayer("L", {
                     "blank",
                     ["display-text",
                     function(){
-                        return "Prestige 1 - 3x exp<br>Prestige 2 - 5x exp<br>Prestige 3 - Level boosts Exp<br>Prestige 4 - Prestiges boost exp<br>Prestige 5 - 7x exp<br>Prestige 6 - The Layerverse requirement is less<br>Prestige 7 - Unlock Charms"
+                        return "Prestige 1 - 3x exp<br>Prestige 2 - 5x exp<br>Prestige 3 - Level boosts Exp<br>Prestige 4 - Prestiges boost exp<br>Prestige 5 - 7x exp<br>Prestige 6 - 2x exp<br>Prestige 7 - Unlock Charms"
                     }],
                 ],
                 unlocked() {return hasUpgrade("L",36)}
