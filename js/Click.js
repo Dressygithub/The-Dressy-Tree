@@ -98,7 +98,7 @@ addLayer("Mi", {
     buyables: {
         11: {
             title: "<br>Minigame booster<br>",
-            cost(x) { return new Decimal(x).pow(35).div(buyableEffect("Mi",12)) },
+            cost(x) { return new Decimal(x).pow(2) },
             display() { return "Boosts minigame point gain<br>" + "Cost: " + format(tmp[this.layer].buyables[this.id].cost) + "<br>Currently: " + format(buyableEffect("Mi",11))+"x" },
             canAfford() { return player[this.layer].points.gte(this.cost()) },
             buy() {
