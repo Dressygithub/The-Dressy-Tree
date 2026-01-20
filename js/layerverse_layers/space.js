@@ -156,7 +156,7 @@ addLayer("St", {
             description: "Total stardust boosts points",
             cost: new Decimal(1),
             effect() {
-                return player[this.layer].total.add(1).pow(0.3).add(1).div(new Decimal(2).pow(new Decimal(challengeCompletions("L",14))))
+                return player[this.layer].total.add(1).pow(0.3).add(1).div(new Decimal(2).pow(new Decimal(challengeCompletions("L",14)))).add(1)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
@@ -165,7 +165,7 @@ addLayer("St", {
             description: "Total stardust boosts points again",
             cost: new Decimal(3),
             effect() {
-                return player[this.layer].total.add(1).pow(0.5).add(1).div(new Decimal(2).pow(new Decimal(challengeCompletions("L",14))))
+                return player[this.layer].total.add(1).pow(0.5).add(1).div(new Decimal(2).pow(new Decimal(challengeCompletions("L",14)))).add(1)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
             unlocked() {return hasUpgrade("St",11)}
@@ -298,9 +298,9 @@ addLayer("Hy", {
         done() { return player.Hy.points.gte(25) }
     },
     9: {
-        requirementDescription: "50 Hydrogen",
+        requirementDescription: "50 Hydrogen OR 1 challenge completion",
         effectDescription: "You can reset max",
-        done() { return player.Hy.points.gte(50) }
+        done() { return player.Hy.points.gte(50) || new Decimal(challengeCompletions("L",14)).gte(1) }
     },
     10: {
         requirementDescription: "400 Hydrogen",
