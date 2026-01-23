@@ -1,6 +1,6 @@
-addLayer("De", {
-    name: "Dev panel", // This is optional, only used in a few places, If absent it just uses the layer id.
-    symbol: "Dev", // This appears on the layer's node. Default is the id with the first letter capitalized
+addLayer("A", {
+    name: "Achievements", // This is optional, only used in a few places, If absent it just uses the layer id.
+    symbol: "A", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: true,
@@ -21,33 +21,73 @@ addLayer("De", {
         return new Decimal(1)
     },
     achievements: {
-    11: {
-        name: "The beginning",
-        tooltip: "",
-        done() {return hasUpgrade("D",11)},
-        unlocked() {return true}
-    },
-    12: {
-        name: "100",
-        tooltip: "Get 100 dressy points",
-        done() {return player.D.points.gte(100)}
-    },
-    13: {
-        name: "Thats super!",
-        tooltip: "Get your first super point",
-        done() {return player.S.points.gte(1)}
-    },
-    14: {
-        name: "I wasnt challenged at all",
-        tooltip: "Complete the super challenge which is the first challenge",
-        done() {return hasChallenge('S', 11)}
-    },
-
+        11: {
+            name: "The Beginning",
+            done() {
+                return (hasUpgrade('D', 11))
+            },
+            tooltip: "Get the first upgrade",
+            unlocked() {return true},
+            style() {return {"visibility": "visible",}}
+        },
+        12: {
+            name: "Hundredare",
+            done() {
+                return (player.D.points.gte(100))
+            },
+            tooltip: "Get 100 dressy points",
+            unlocked() {return true},
+            style() {return {"visibility": "visible",}}
+        },
+        13: {
+            name: "A new layer?",
+            done() {
+                return (layers.S.layerShown())
+            },
+            tooltip: "See the next layer",
+            unlocked() {return true},
+            style() {return {"visibility": "visible",}}
+        },
+        14: {
+            name: "Super",
+            done() {
+                return (player.S.points.gte(1))
+            },
+            tooltip: "Get a super point",
+            unlocked() {return true},
+            style() {return {"visibility": "visible",}}
+        },
+        15: {
+            name: "I wasn't challenged at all",
+            done() {
+                return (hasChallenge("S", 11))
+            },
+            tooltip: "Beat the first challenge",
+            unlocked() {return true},
+            style() {return {"visibility": "visible",}}
+        },
+        16: {
+            name: "Hyper",
+            done() {
+                return (player.H.points.gte(1))
+            },
+            tooltip: "Get a hyper point",
+            unlocked() {return true},
+            style() {return {"visibility": "visible",}}
+        },
+        21: {
+            name: "More!",
+            done() {
+                return (hasChallenge("H", 11))
+            },
+            tooltip: "Beat the second challenge",
+            unlocked() {return true},
+            style() {return {"visibility": "visible",}}
+        },
     },
     tabFormat: {
         "Achievements": {
             content: [
-                "main-display",
                 "blank",
                 "blank",
                 "achievements",

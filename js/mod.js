@@ -3,7 +3,7 @@ let modInfo = {
 	author: "Dressyapper",
 	pointsName: "Points",
 	id : "dressyapper",
-	modFiles: ["DressyLayer.js", "tree.js", "components.js","achievements.js","Super.js","Hyper.js","Click.js","money.js","Layerverse.js","layerverse_layers/prestige.js", "layerverse_layers/math.js", "layerverse_layers/time.js", "layerverse_layers/space.js", "layerverse_layers/generator.js", "layerverse_layers/prestinerator.js","layerverse_layers/rooms.js"],
+	modFiles: ["DressyLayer.js", "tree.js", "components.js","achievements.js", "Sachievements.js","Super.js","Hyper.js","Click.js","money.js","Layerverse.js","layerverse_layers/prestige.js", "layerverse_layers/math.js", "layerverse_layers/time.js", "layerverse_layers/space.js", "layerverse_layers/generator.js", "layerverse_layers/prestinerator.js","layerverse_layers/rooms.js"],
 
 	discordName: "",
 	discordLink: "",

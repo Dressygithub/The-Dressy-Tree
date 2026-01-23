@@ -243,7 +243,7 @@ addLayer("L", {
             cost: new Decimal(1),
             unlocked() {return hasChallenge("L",15)},
             effect() {
-                return player.M.points.add(1).pow(0.01)
+                return player.M.points.add(1).pow(0.01).add(1)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
@@ -253,7 +253,7 @@ addLayer("L", {
             cost: new Decimal(2),
             unlocked() {return hasChallenge("L",15)},
             effect() {
-                return player.M.points.add(1).pow(0.05)
+                return player.points.add(1).pow(0.05).add(1)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
@@ -282,7 +282,7 @@ addLayer("L", {
             description: "While in a challenge, 1e5x points and boost points by points",
             cost: new Decimal(6),
             effect() {
-                return player.points.pow(0.3).add(1)
+                return player.points.add(1).pow(0.3).add(1)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
             unlocked() {return hasChallenge("L",15)},
@@ -295,7 +295,7 @@ addLayer("L", {
         },
         32: {
             title: "Even lazier",
-            description: "Automate dressy layer, super and hyper and have money layer unlocked without the hyper challenge. Also generate 10% of dressy points, super and hyper",
+            description: "Automate dressy layer, super and hyper. Also generate 10% of dressy points, super and hyper",
             cost: new Decimal(6),
             unlocked() {return hasUpgrade("L",31)},
         },

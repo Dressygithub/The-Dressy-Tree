@@ -44,7 +44,7 @@ addLayer("S", {
         if (hasUpgrade('L', 21)) mult = mult.times(upgradeEffect('L', 21))
         if (hasUpgrade('L', 14)) mult = mult.times(2)
         if (inChallenge("L",15) && player.S.points.gte(5)) mult = mult.div(5)
-        if (hasUpgrade('L', 22)) mult = mult.times(player.points.log(7))
+        if (hasUpgrade('L', 22)) mult = mult.times(player.points.add(1).log(7).add(1))
         if (hasChallenge("L",15)) mult = mult.times(1.5)
         return mult
     },

@@ -11,11 +11,12 @@ addLayer("M", {
     }},
     layerShown(){
         let visible = false
-        if ((hasUpgrade('D', 33) || hasUpgrade('M',11) || hasUpgrade("L",32)) && !player.L.inChallenge) visible = true
+        if ((hasUpgrade('D', 33)) && !player.L.inChallenge) visible = true
         if (player.L.inChallenge) visible = false
         return visible
     },
     passiveGeneration() {
+        if (player.L.inChallenge) return 0
         if (hasUpgrade('M', 56)) return 1e14
         if (hasUpgrade('M', 55)) return 1e11
         if (hasUpgrade('M', 54)) return 1e10
