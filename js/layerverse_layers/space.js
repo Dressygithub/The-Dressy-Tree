@@ -211,10 +211,10 @@ addLayer("Hy", {
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     milestonePopups: function() {
         if (inChallenge("L", 14)) {
-            return false
+            return true
         }
         else {
-            return true
+            return false
         }
     },
     startData() { return {
