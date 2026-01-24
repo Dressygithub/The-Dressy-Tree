@@ -84,6 +84,123 @@ addLayer("A", {
             unlocked() {return true},
             style() {return {"visibility": "visible",}}
         },
+        22: {
+            name: "More?",
+            done() {
+                return (hasMilestone("H", 3))
+            },
+            tooltip: "Find the next 3 dressy upgrades",
+            unlocked() {return true},
+            style() {return {"visibility": "visible",}}
+        },
+        23: {
+            name: "Capatilism",
+            done() {
+                return (hasUpgrade("M", 11))
+            },
+            tooltip: "Buy the first money upgrade",
+            unlocked() {return true},
+            style() {return {"visibility": "visible",}}
+        },
+        24: {
+            name: "Online marketing",
+            done() {
+                return (hasUpgrade("M", 26))
+            },
+            tooltip: "Get your business online or finish the 2nd row of money",
+            unlocked() {return true},
+            style() {return {"visibility": "visible",}}
+        },
+        25: {
+            name: "Now we're in the millions!",
+            done() {
+                return (layers.M.passiveGeneration() > 1e6)
+            },
+            tooltip: "Generate over a million cash a second or finish the 4nd row of money",
+            unlocked() {return true},
+            style() {return {"visibility": "visible",}}
+        },
+        26: {
+            name: "Are you ready?",
+            done() {
+                return (hasUpgrade("M", 61))
+            },
+            tooltip: "Unlock the LAYERVERSE",
+            unlocked() {return true},
+            style() {return {"visibility": "visible",}}
+        },
+        31: {
+            name: "There is alot more where that came from",
+            done() {
+                return (hasChallenge("L", 11))
+            },
+            tooltip: "Beat the prestige challenge in the layerverse",
+            unlocked() {return true},
+            style() {return {"visibility": "visible",}}
+        },
+        32: {
+            name: "Do you like math?",
+            done() {
+                return (hasChallenge("L", 12))
+            },
+            tooltip: "Beat the math challenge in the layerverse",
+            unlocked() {return true},
+            style() {return {"visibility": "visible",}}
+        },
+        33: {
+            name: "Did that take alot of Time?",
+            done() {
+                return (hasChallenge("L", 13))
+            },
+            tooltip: "Beat the time challenge in the layerverse",
+            unlocked() {return true},
+            style() {return {"visibility": "visible",}}
+        },
+        34: {
+            name: "Vastness",
+            done() {
+                return (hasChallenge("L", 14))
+            },
+            tooltip: "Beat the space challenge in the layerverse",
+            unlocked() {return true},
+            style() {return {"visibility": "visible",}}
+        },
+        35: {
+            name: "Where is the new layer??",
+            done() {
+                return (hasChallenge("L", 15))
+            },
+            tooltip: "Beat the normal layer challenge in the layerverse",
+            unlocked() {return true},
+            style() {return {"visibility": "visible",}}
+        },
+        36: {
+            name: "Generic break eternity incremental game",
+            done() {
+                return (hasChallenge("L", 16))
+            },
+            tooltip: "Beat the generator challenge in the layerverse",
+            unlocked() {return true},
+            style() {return {"visibility": "visible",}}
+        },
+        41: {
+            name: "Isnt this just the minigame layer?",
+            done() {
+                return (hasUpgrade("L", 36))
+            },
+            tooltip: "Unlock Leveling",
+            unlocked() {return true},
+            style() {return {"visibility": "visible",}}
+        },
+        42: {
+            name: "Yes but its cooler",
+            done() {
+                return (player.L.levelprestige.gte(7))
+            },
+            tooltip: "Get to prestige 7 in Leveling",
+            unlocked() {return true},
+            style() {return {"visibility": "visible",}}
+        },
     },
     tabFormat: {
         "Achievements": {

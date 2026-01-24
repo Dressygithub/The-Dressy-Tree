@@ -41,11 +41,11 @@ addLayer("SAch", {
         12: {
             name: "Patience is NOT key",
             done() {
-                return (player.H.resetTime > 750)
+                return (player.H.resetTime > 750 && player.M.points.lte(11))
             },
             tooltip: function() {
                 if (hasAchievement(this.layer, this.id)) {
-                    return "Dont reset hyper or above for 750 seconds"
+                    return "Dont reset hyper or above for 750 seconds while being new to it"
                 }
                 else {
                     return "You dont like a certain layer so you try to avoid it"

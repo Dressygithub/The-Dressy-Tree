@@ -3,7 +3,7 @@ addLayer("L", {
     symbol: "L", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
-        unlocked: true,
+        unlocked: false,
         points: new Decimal(0),
         completedlayers: new Decimal(0),
         inchallenge: false,
@@ -24,7 +24,7 @@ addLayer("L", {
         spacecompletionnlimit: new Decimal(10),
     }},
     layerShown(){
-        let visible = true
+        let visible = false
         if (hasUpgrade('M', 61) || player.L.unlocked) visible = true
         return visible
      },   
@@ -282,7 +282,9 @@ addLayer("L", {
             description: "While in a challenge, 1e5x points and boost points by points",
             cost: new Decimal(6),
             effect() {
-                return player.points.add(1).pow(0.3).add(1)
+                nerf = 1
+                if (player.points.pow(0.3).add(1).gte(1e100)) div = player.points.pow(0.6)
+                return player.points.pow(0.3).add(1).div(nerf)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
             unlocked() {return hasChallenge("L",15)},
