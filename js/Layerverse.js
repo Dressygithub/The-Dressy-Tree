@@ -283,7 +283,7 @@ addLayer("L", {
             cost: new Decimal(6),
             effect() {
                 nerf = 1
-                if (player.points.gte(1e100)) div = player.points.pow(0.6)
+                if (player.points.gte(1e100)) nerf = player.points.div(1.1)
                 return player.points.pow(0.3).add(1).div(nerf)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
